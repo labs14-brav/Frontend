@@ -1,6 +1,6 @@
 [build]
 base = "
-myapp/"
+client/"
 publish = "
 client/build/"
 command = "yarn build"
