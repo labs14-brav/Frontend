@@ -9,7 +9,7 @@ class App extends React.Component {
 
   componentDidMount() {
       axios
-        .get("http://localhost:8080/users")
+        .get("https://brav-staging.herokuapp.com/users")
         .then(res => {
           console.log(res.data);
           this.setState({users: res.data});
@@ -22,7 +22,7 @@ class App extends React.Component {
         <header className="App-header">Hello Brav!!</header>
         <ul>
           {this.state.users.map(user => {
-            return <li> {user.username} </li>
+            return <li> {user.username} -- {user.type} </li>
           })}
         </ul>
       </div>
