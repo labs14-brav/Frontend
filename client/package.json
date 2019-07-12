@@ -1,8 +1,8 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "private": true,
   "description": "Frontend for the Brav application.",
+  "private": true,
   "dependencies": {
     "axios": "^0.19.0",
     "react": "^16.8.6",
