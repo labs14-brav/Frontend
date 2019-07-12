@@ -34,7 +34,7 @@ You can find the deployed project at [beabravone.com](http://www.beabravone.com/
 
 [Trello Board](https://trello.com/b/5sU9ZybM/labs-14-brav)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+[Vision Document](https://www.notion.so/Brav-c00f84c629f84560be196d93846a22cf)
 
 1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
 
