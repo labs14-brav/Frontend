@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom'
 import axios from 'axios';
 import NavBar from "../components/NavBar";
@@ -13,7 +13,9 @@ import { useAuth0 } from "../react-auth0-wrapper";
  */
 
 function Landing() {
-  // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { isAuthenticated, loading, setLoading } = useAuth0();
+
+  console.log('isAuthenticated', isAuthenticated)
 
   // if (isAuthenticated) {
   //   console.log('Redirected')

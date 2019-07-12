@@ -1,7 +1,13 @@
-// src/components/NavBar.js
+/**
+ * Dependencies
+ */
 
 import React from "react";
 import { useAuth0 } from "../react-auth0-wrapper";
+
+/**
+ * Define component
+ */
 
 const NavBar = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -22,5 +28,9 @@ const NavBar = () => {
     </div>
   );
 };
+
+/**
+ * Export component
+ */
 
 export default NavBar;
