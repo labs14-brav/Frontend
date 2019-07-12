@@ -6,6 +6,13 @@ import React, { useState, useEffect, useContext } from "react";
 import createAuth0Client from "@auth0/auth0-spa-js";
 
 /**
+ * Constants
+ */
+
+const DEFAULT_REDIRECT_CALLBACK = () =>
+  window.history.replaceState({}, document.title, window.location.pathname);
+
+/**
  * Create context
  */
 
@@ -16,7 +23,7 @@ const useAuth0 = () => useContext(Auth0Context);
  * Define provider
  */
 
-function Auth0Provider({ children, ...initOptions }) {
+function Auth0Provider({ children, onRedirectCallback = DEFAULT_REDIRECT_CALLBACK, ...initOptions }) {
   const [isAuthenticated, setIsAuthenticated] = useState();
   const [user, setUser] = useState();
   const [auth0Client, setAuth0] = useState();
@@ -27,14 +34,12 @@ function Auth0Provider({ children, ...initOptions }) {
     const initAuth0 = async () => {
       console.log('initAuth0')
       console.log('initOptions', initOptions)
-      const auth0FromHook = await createAuth0Client(initOptions);
+      const auth0FromHook = await createAuth0Client({
+        domain: "brav.auth0.com",
+        client_id: "kOeKAq6ue5IChNwFzJwzpwT7oGMzqHGd"
+      });
       console.log('auth0FromHook', auth0FromHook)
       setAuth0(auth0FromHook);
-
-      if (window.location.search.includes("code=")) {
-        const { appState } = await auth0FromHook.handleRedirectCallback();
-        onRedirectCallback(appState);
-      }
 
       const isAuthenticated = await auth0FromHook.isAuthenticated();
 
