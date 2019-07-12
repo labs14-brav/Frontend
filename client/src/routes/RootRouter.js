@@ -5,7 +5,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { Landing, Home } from '../views/index';
-// import { PrivateRoute } from './helpers/index';
+import { PrivateRoute } from './helpers/index';
 
 /**
  * Define router

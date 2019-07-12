@@ -5,40 +5,12 @@
 import React from 'react';
 import axios from 'axios';
 import NavBar from "../components/NavBar";
-import { tsParenthesizedType } from "@babel/types";
 
 /**
  * Define view
  */
 
-class Home extends React.Component {
-  state = {
-    users: [],
-    offset: 0
-  };
-
-  componentDidMount() {
-      axios
-        .get(baseurl)
-        .then(res => {
-          this.setState({users: res.data});
-        })
-  }
-
-  offSetHandler=(e)=>{
-    this.setState({
-      [e.target.name]:e.target.value
-    })
-  }
-
-  componentDidUpdate() {
-      axios
-      .get(`${baseurl}${this.state.offset}`)
-      .then(res=> {
-        this.setState({users: res.data})
-      })
-  }
-
+class Landing extends React.Component {
   render() {
     return (
       <div className="App">
@@ -59,4 +31,4 @@ class Home extends React.Component {
  * Export view
  */
 
-export default Home
+export default Landing
