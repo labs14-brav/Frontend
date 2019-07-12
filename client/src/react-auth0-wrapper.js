@@ -23,7 +23,10 @@ export const Auth0Provider = ({
 
   useEffect(() => {
     const initAuth0 = async () => {
+      console.log('initAuth0')
+      console.log('initOptions', initOptions)
       const auth0FromHook = await createAuth0Client(initOptions);
+      console.log('auth0FromHook', auth0FromHook)
       setAuth0(auth0FromHook);
 
       if (window.location.search.includes("code=")) {
@@ -42,6 +45,7 @@ export const Auth0Provider = ({
 
       setLoading(false);
     };
+
     initAuth0();
     // eslint-disable-next-line
   }, []);
@@ -68,6 +72,8 @@ export const Auth0Provider = ({
     setIsAuthenticated(true);
     setUser(user);
   };
+
+  console.log('loading', loading)
 
   return (
     <Auth0Context.Provider
