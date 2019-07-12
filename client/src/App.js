@@ -1,7 +1,8 @@
 import React from "react";
 import axios from 'axios';
 import "./App.css";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/navBar";
+import { tsParenthesizedType } from "@babel/types";
 
 let baseurl
 if(process.env.NODE_ENV=='production'){
@@ -20,16 +21,26 @@ class App extends React.Component {
       axios
         .get(baseurl)
         .then(res => {
-          console.log(res.data);
+          //console.log(res.data);
           this.setState({users: res.data});
         })
   }
-  offSetHandler=(e)=>{
-    console.log(e.target.value)
 
+  offSetHandler=(e)=>{
+    //console.log(e.target.value)
     this.setState({
       [e.target.name]:e.target.value
     })
+  }
+
+  componentDidUpdate() {
+    //console.log('inside CDU');
+      axios
+      .get(`${baseurl}${this.state.offset}`)
+      .then(res=> {
+        //console.log(res.data)
+        this.setState({users: res.data})
+      })
   }
 
 
@@ -41,7 +52,7 @@ class App extends React.Component {
         <input type="number" name="offset" value={this.state.offset} onChange={this.offSetHandler}/>
         <ul>
           {this.state.users.map(user => {
-            return <li> {user.username} -- {user.type} </li>
+            return <li> {user.id} -- {user.username} -- {user.type} </li>
           })}
         </ul>
       </div>
