@@ -43,30 +43,23 @@ Our world is plagued with conflict and devastating violence everywhere you look:
 -    feature four
 -    feature five
 
-## 1️⃣ Tech Stack
+## Tech Stack
 
 ### Front end built using:
 
-#### _Front end framework goes here_
+#### React
 
-🚫 Why did you choose this framework?
-
--    point one
--    point two
--    point three
--    point four
+We are using the React library to render the interface and Redux for state management. React is lightweight and unopinionated, so it's perfect for building an MVP.
 
 🚫List the rest of the front end features and libraries in the same format as the framework above.
 
-#### Front end deployed to `🚫insert service here`
+#### Front end deployed to `Netlify`
 
-#### [Back end](🚫link to back end repo here) built using:
+#### [Back end](https://github.com/labs14-brav/Backend) built using:
 
-#### 🚫 back end framework goes here
+#### Back end framework goes here
 
--    point one
--    point two
--    point three
+We are using a PostgresSQL database deployed on Heroku. To access the database we are implementing a RESTful API using NodeJS, Express, and knex. Node lets you write JavaScript on both the front-end and back-end, which increases readability and reduced context-switching.
 
 🚫 List the rest of the back end end features and libraries in the same format as the framework above
 
