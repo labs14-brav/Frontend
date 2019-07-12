@@ -1,13 +1,12 @@
 # Frontend
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
 
 🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
-# 1️⃣ Title of project goes here
+# Brāv
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+You can find the deployed project at [beabravone.com](http://www.beabravone.com/).
 
 ## 4️⃣ Contributors
 
@@ -164,7 +163,7 @@ When contributing to this repository, please first discuss the change you wish t
 Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it in all your interactions with the project.
 
 ## Issue/Bug Request
-   
+
  **If you are having an issue with the existing project code, please submit a bug report under the following guidelines:**
  - Check first to see if your issue has already been reported.
  - Check to see if the issue has recently been fixed by attempting to reproduce the issue using the latest master branch in the repository.
