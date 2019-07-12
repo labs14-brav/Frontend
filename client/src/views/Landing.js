@@ -8,17 +8,6 @@ import NavBar from "../components/NavBar";
 import { tsParenthesizedType } from "@babel/types";
 
 /**
- * Locals
- */
-
-let baseurl
-if (process.env.NODE_ENV=='production') {
-   baseurl="https://bravproduction.herokuapp.com/users"
-} else {
-   baseurl="https://brav-staging.herokuapp.com/users?offset="
-}
-
-/**
  * Define view
  */
 
