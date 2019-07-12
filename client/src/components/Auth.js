@@ -3,8 +3,8 @@
  */
 
 import auth0 from 'auth0-js';
-import history from '../../history';
-import axiosWithAuth from '../../utils/AxiosAuth';
+import history from '../history';
+import axios from 'axios';
 
 /**
  * Constants
@@ -30,7 +30,6 @@ class Auth {
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
     responseType: 'token id_token',
-    audience: 'handy-app-api',
     scope: 'openid profile read:username',
     issuer: AUTH_CONFIG.domain
   });
@@ -48,6 +47,7 @@ class Auth {
   login() {
     this.auth0.authorize();
   }
+
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
@@ -82,8 +82,7 @@ class Auth {
     const user = authResult.idTokenPayload;
 
     // Comment to work locally
-    axiosWithAuth()
-      .post(`${process.env.REACT_APP_API_URL}/register`, user)
+    axios.post(`${process.env.REACT_APP_API_URL}/users/signup`, user)
       .then(async res => {
         console.log(res.data);
 
