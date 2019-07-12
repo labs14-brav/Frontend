@@ -9,7 +9,7 @@ class App extends React.Component {
 
   componentDidMount() {
       axios
-        .get("https://bravproduction.herokuapp.com//users")
+        .get("https://bravproduction.herokuapp.com/users")
         .then(res => {
           console.log(res.data);
           this.setState({users: res.data});
