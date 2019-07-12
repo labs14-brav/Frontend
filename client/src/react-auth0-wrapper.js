@@ -5,12 +5,18 @@
 import React, { useState, useEffect, useContext } from "react";
 import createAuth0Client from "@auth0/auth0-spa-js";
 
-export const Auth0Context = React.createContext();
-export const useAuth0 = () => useContext(Auth0Context);
-export const Auth0Provider = ({
-  children,
-  ...initOptions
-}) => {
+/**
+ * Create context
+ */
+
+const Auth0Context = React.createContext();
+const useAuth0 = () => useContext(Auth0Context);
+
+/**
+ * Define provider
+ */
+
+function Auth0Provider({ children, ...initOptions }) => {
   const [isAuthenticated, setIsAuthenticated] = useState();
   const [user, setUser] = useState();
   const [auth0Client, setAuth0] = useState();
@@ -91,3 +97,13 @@ export const Auth0Provider = ({
     </Auth0Context.Provider>
   );
 };
+
+/**
+ * Export context and provider
+ */
+
+export {
+ Auth0Provider,
+ Auth0Context,
+ useAuth0,
+}
