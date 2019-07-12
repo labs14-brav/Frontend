@@ -3,28 +3,29 @@
  */
 
 import React from 'react';
+import { Redirect } from 'react-router-dom'
 import axios from 'axios';
 import NavBar from "../components/NavBar";
+import { useAuth0 } from "../react-auth0-wrapper";
 
 /**
  * Define view
  */
 
-class Landing extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <NavBar />
-        <header className="App-header">Hello Brav!!</header>
-        <input type="number" name="offset" value={this.state.offset} onChange={this.offSetHandler}/>
-        <ul>
-          {this.state.users.map(user => {
-            return <li> {user.id} -- {user.username} -- {user.type} </li>
-          })}
-        </ul>
-      </div>
-    )
-  }
+function Landing() {
+  // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+
+  // if (isAuthenticated) {
+  //   console.log('Redirected')
+  //   return <Redirect path="/home" />
+  // }
+
+  return (
+    <div className="App">
+      <NavBar />
+      <h1>Brav</h1>
+    </div>
+  )
 }
 
 /**
