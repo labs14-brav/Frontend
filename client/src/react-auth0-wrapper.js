@@ -16,7 +16,7 @@ const useAuth0 = () => useContext(Auth0Context);
  * Define provider
  */
 
-function Auth0Provider({ children, ...initOptions }) => {
+function Auth0Provider({ children, ...initOptions }) {
   const [isAuthenticated, setIsAuthenticated] = useState();
   const [user, setUser] = useState();
   const [auth0Client, setAuth0] = useState();
