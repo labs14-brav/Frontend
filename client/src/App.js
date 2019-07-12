@@ -6,7 +6,7 @@ import { tsParenthesizedType } from "@babel/types";
 
 let baseurl
 if(process.env.NODE_ENV=='production'){
-   baseurl="https://bravproduction.herokuapp.com/users"
+   baseurl="https://bravproduction.herokuapp.com/users?offset="
 }else{
    baseurl="https://brav-staging.herokuapp.com/users?offset="
 }
