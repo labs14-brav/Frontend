@@ -9,11 +9,7 @@ import { Auth0Context } from '../../contexts/index';
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
 
-export const Auth0Provider = ({
-  children,
-  onRedirectCallback = DEFAULT_REDIRECT_CALLBACK,
-  ...initOptions
-}) => {
+function Auth0Provider ({ children, onRedirectCallback = DEFAULT_REDIRECT_CALLBACK, ...initOptions }) => {
   const [isAuthenticated, setIsAuthenticated] = useState();
   const [user, setUser] = useState();
   const [auth0Client, setAuth0] = useState();
@@ -88,3 +84,11 @@ export const Auth0Provider = ({
     </Auth0Context.Provider>
   );
 };
+
+/**
+ * Export
+ */
+
+export {
+  Auth0Provider
+}
