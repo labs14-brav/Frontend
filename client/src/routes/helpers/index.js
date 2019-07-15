@@ -1,13 +1,5 @@
 /**
- * Dependencies
- */
-
-import PrivateRoute from './PrivateRoute'
-
-/**
  * Export route helpers
  */
 
-export {
-  PrivateRoute,
-}
+export { default as PrivateRoute } from './PrivateRoute';

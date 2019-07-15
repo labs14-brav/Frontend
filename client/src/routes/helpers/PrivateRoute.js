@@ -11,7 +11,7 @@ import { UserContext } from '../../contexts/index';
  * Define route component
  */
 
-const PrivateRoute = ({ component: Component, exact: is_exact, path }) => {
+const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path, exact }) => {
   let token = localStorage.getItem("token")
 
   if (is_exact) {
