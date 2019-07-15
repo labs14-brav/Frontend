@@ -13,7 +13,16 @@ import history from './history';
 const AUTH_CONFIG = {
   "domain": "brav.auth0.com",
   "clientId": "kOeKAq6ue5IChNwFzJwzpwT7oGMzqHGd",
-  "callbackUrl": (process.env.NODE_ENV === 'production') ? "http://www.beabravone.com/home" : "http://localhost:3000/home",
+  "callbackUrl": ((env) => {
+    switch (env) {
+      case 'production':
+        return "http://www.beabravone.com/home"
+      case 'staging':
+        return "http://staging.beabravone.com/home"
+      default:
+        return "http://localhost:3000/home"
+    }
+  })(process.env.NODE_ENV)
 }
 
 /**
@@ -31,6 +40,8 @@ class Auth0Legacy {
   });
 
   constructor() {
+    console.log('process.env.NODE_ENV', process.env.NODE_ENV)
+    console.log('AUTH_CONFIG.callbackUrl', AUTH_CONFIG.callbackUrl)
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
