@@ -23,13 +23,21 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
   if (!user) return <Redirect to="/users/login" />
 
   if (exact) {
-    return (
-      <Route exact path={path} render={props => (token) ? <Component {...props} /> : <Redirect to="/" />} />
-    )
+    return <Route key={uuid.v4()} exact path={path} render={props => (
+      <UserContext.Provider value={user}>
+        <ErrorBoundary>
+          <Component {...props} setUser={setUser} />
+        </ErrorBoundary>
+      </UserContext.Provider>
+    )} />
   } else {
-    return (
-      <Route path={path} render={props => (token) ? <Component {...props} /> : <Redirect to="/" />} />
-    )
+    return <Route key={uuid.v4()} path={path} render={props => (
+      <UserContext.Provider value={user}>
+        <ErrorBoundary>
+          <Component {...props} setUser={setUser} />
+        </ErrorBoundary>
+      </UserContext.Provider>
+    )} />
   }
 };
 
