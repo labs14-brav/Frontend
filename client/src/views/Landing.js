@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavBar } from '../components/index';
 import createAuth0Client from '@auth0/auth0-spa-js';
 
@@ -11,6 +11,10 @@ import createAuth0Client from '@auth0/auth0-spa-js';
  */
 
 function Landing() {
+  const [auth0, setAuth0] = useState();
+  const [isAuthenticated, setIsAuthenticated] = useState();
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     async function Auth() {
       const options = {
@@ -36,12 +40,36 @@ function Landing() {
         "scope": "openid profile read:username",
       }
 
-      const auth0FromHook = await createAuth0Client(options);
-      console.log('auth0FromHook', auth0FromHook);
+      const auth0 = await createAuth0Client(options);
+      setAuth0(auth0)
+      console.log('auth0', auth0);
+
+      // Returns true if there's valid information stored, otherwise returns false.
+      const isAuthenticated = await auth0.isAuthenticated()
+      setIsAuthenticated(isAuthenticated);
+      console.log('isAuthenticated', isAuthenticated) //=> false
+
+      if (window.location.search.includes("code=")) {
+        const { appState } = await auth0.handleRedirectCallback();
+        console.log('appState', appState)
+        window.history.replaceState({}, document.title, '/home')
+      }
+
+      setLoading(false);
     }
 
     Auth();
   }, []);
+
+  if (!loading) {
+    auth0.loginWithRedirect({
+      // *Optional
+      // The default URL where Auth0 will redirect your browser to with the
+      // authentication result. Be sure to have this whitelisted in the
+      // "Allowed Callback URLs" field in your Auth0 Application's settings.
+      "redirect_uri": (process.env.NODE_ENV === 'production') ? "http://www.beabravone.com/home" : "http://localhost:3000/home",
+    });
+  }
 
   return (
     <div className="App">
