@@ -22,10 +22,6 @@ const AUTH_CONFIG = {
  */
 
 class Auth {
-  accessToken;
-  idToken;
-  expiresAt;
-
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientID,
@@ -82,11 +78,8 @@ class Auth {
     });
   }
 
-  /**
-   * Check if current time is past the access token's expiry time.
-   */
-
   isAuthenticated() {
+    // Check if current time is past the access token's expiry time.
     return new Date().getTime() < this.expiresAt;
   }
 
