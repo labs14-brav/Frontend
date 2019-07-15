@@ -15,6 +15,11 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
   let token = localStorage.getItem("token")
 
+  function clearUser() {
+    localStorage.removeItem('user')
+    setUser(null)
+  }
+
   if (!user) return <Redirect to="/users/login" />
 
   if (exact) {
