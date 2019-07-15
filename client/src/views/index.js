@@ -2,6 +2,7 @@
  * Export views
  */
 
+export { default as Auth0Callback } from './Auth0Callback';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as GenericError } from './GenericError';
 export { default as Home } from './Home';
