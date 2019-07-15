@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import React from "react";
+import React from 'react';
 
 /**
  * Define component

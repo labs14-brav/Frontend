@@ -2,11 +2,11 @@
  * Dependencies
  */
 
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { RootRouter } from './routes/index';
 import Auth from './components/Auth';
-import "./App.css";
+import './App.css';
 
 const auth = new Auth();
 

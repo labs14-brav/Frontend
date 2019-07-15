@@ -4,7 +4,7 @@
 
 import React from 'react';
 import axios from 'axios';
-import NavBar from "../components/NavBar";
+import NavBar from '../components/NavBar';
 
 /**
  * Locals

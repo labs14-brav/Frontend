@@ -4,7 +4,7 @@
 
 import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
-import NavBar from "../components/NavBar";
+import NavBar from '../components/NavBar';
 
 /**
  * Define view
