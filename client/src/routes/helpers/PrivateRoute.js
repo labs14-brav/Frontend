@@ -15,6 +15,8 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
   let token = localStorage.getItem("token")
 
+  if (!user) return <Redirect to="/users/login" />
+
   if (exact) {
     return (
       <Route exact path={path} render={props => (token) ? <Component {...props} /> : <Redirect to="/" />} />

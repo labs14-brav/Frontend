@@ -4,6 +4,7 @@
 
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { PrivateRoute } from './helpers/index';
 import { Landing, Home, ErrorBoundary } from '../views/index';
 import uuid from 'uuid';
 
