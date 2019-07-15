@@ -5,7 +5,7 @@
 import React from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { RootRouter, UsersRouter, NoMatchRouter } from './routes/index';
-import { Auth0Context } from './contexts/index'
+import { Auth0Provider } from './helpers/index'
 
 /**
  * Import global styles
@@ -19,7 +19,7 @@ import './App.scss';
 
 function App() {
   return (
-    <Auth0Context.Provider>
+    <Auth0Provider>
       <BrowserRouter>
         <Switch>
           {RootRouter}
@@ -27,7 +27,7 @@ function App() {
           {NoMatchRouter}
         </Switch>
       </BrowserRouter>
-    </Auth0Context.Provider>
+    </Auth0Provider>
   );
 };
 

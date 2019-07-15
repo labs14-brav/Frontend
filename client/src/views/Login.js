@@ -3,14 +3,14 @@
  */
 
 import React from 'react';
-import { auth } from '../helpers/index';
+import { useAuth0 } from '../helpers/index';
 
 /**
  * Define view
  */
 
 function Login(props) {
-  auth.login()
+  useAuth0.login()
 
   return (
     <div className="App">

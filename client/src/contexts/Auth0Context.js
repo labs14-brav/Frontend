@@ -2,29 +2,16 @@
  * Dependencies
  */
 
-import React, { useState, useEffect, useContext } from 'react';
-import createAuth0Client from "@auth0/auth0-spa-js";
+import React from 'react';
 
 /**
- * Define context provider
+ * Define context
  */
 
-const Auth0Context = React.createContext({
-  isAuthenticated,
-  user,
-  loading,
-  popupOpen,
-  loginWithPopup,
-  handleRedirectCallback,
-  getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
-  loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
-  getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
-  getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
-  logout: (...p) => auth0Client.logout(...p)
-});
+const Auth0Context = React.createContext();
 
 /**
- * Export context provider
+ * Export context
  */
 
 export default Auth0Context;
