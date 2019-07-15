@@ -68,13 +68,16 @@ class Auth {
 
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
-      if (authResult && authResult.accessToken && authResult.idToken) {
-        this.setSession(authResult);
-      } else if (err) {
-        history.replace('/');
+      if (err) {
         console.error(err);
-        alert(`Error: ${err.error}. Check the console for further details.`);
+        return history.replace('/');
       }
+
+      if (!authResult || !authResult.accessToken || !authResult.idToken) {
+        return history.replace('/');
+      }
+
+      this.setSession(authResult);
     });
   }
 
