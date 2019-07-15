@@ -5,17 +5,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import uuid from 'uuid';
-import { Auth0Context } from '../../contexts/index';
 import { UserContext } from '../../contexts/index';
+import { useAuth0, Auth0Context, Auth0Provider } from '../../helpers/index';
 
 /**
  * Define route component
  */
 
 const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path, exact }) => {
-  const { isAuthenticated, loginWithRedirect } = useContext(Auth0Context);
+  const { loading, isAuthenticated, loginWithRedirect } = useAuth0();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
-  console.error('PrivateRoute.user', user);
 
   function clearUser() {
     localStorage.removeItem('user');
@@ -26,13 +25,17 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
     const ensureAuthenticated = async () => {
       if (!isAuthenticated) {
         await loginWithRedirect({
-          appState: { targetUrl: path }
+          // The default URL where Auth0 will redirect your browser to with the
+          // authentication result. Be sure to have this whitelisted in the
+          // "Allowed Callback URLs" field in your Auth0 Application's settings.
+          "redirect_uri": (process.env.NODE_ENV === 'production') ? "http://www.beabravone.com/home" : "http://localhost:3000/home",
         });
       }
     };
 
-    ensureAuthenticated();
-  }, [isAuthenticated, loginWithRedirect, path]);
+    console.log('loading', loading)
+    if (!loading) ensureAuthenticated();
+  }, [loading, isAuthenticated, loginWithRedirect, path]);
 
   if (!user) return <Redirect to="/users/login" />
 
