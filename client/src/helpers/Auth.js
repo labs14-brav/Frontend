@@ -12,12 +12,12 @@ import history from './history';
 
 const AUTH_CONFIG = {
   "domain": "brav.auth0.com",
-  "clientId": "kOeKAq6ue5IChNwFzJwzpwT7oGMzqHGd",
-  "callbackUrl": (process.env.NODE_ENV === 'production') ? "http://www.beabravone.com/home" : "http://localhost:3000/home"
+  "clientID": "kOeKAq6ue5IChNwFzJwzpwT7oGMzqHGd",
+  "redirectUri": (process.env.NODE_ENV === 'production') ? "http://www.beabravone.com/home" : "http://localhost:3000/home"
 }
 
 /**
- * Define component
+ * Define helper
  */
 
 class Auth {
@@ -27,11 +27,10 @@ class Auth {
 
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
-    clientID: AUTH_CONFIG.clientId,
-    redirectUri: AUTH_CONFIG.callbackUrl,
+    clientID: AUTH_CONFIG.clientID,
+    redirectUri: AUTH_CONFIG.redirectUri,
     responseType: 'token id_token',
     scope: 'openid profile read:username',
-    issuer: AUTH_CONFIG.domain
   });
 
   constructor() {
@@ -163,5 +162,9 @@ class Auth {
     return new Date().getTime() < expiresAt;
   }
 }
+
+/**
+ * Export helper
+ */
 
 export default Auth;
