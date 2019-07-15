@@ -25,6 +25,8 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
     const ensureAuthenticated = async () => {
       if (!isAuthenticated) {
         await loginWithRedirect({
+          // Used to store state before doing the redirect.
+          appState: { targetUrl: path },
           // The default URL where Auth0 will redirect your browser to with the
           // authentication result. Be sure to have this whitelisted in the
           // "Allowed Callback URLs" field in your Auth0 Application's settings.
@@ -33,11 +35,10 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
       }
     };
 
-    console.log('loading', loading)
     if (!loading) ensureAuthenticated();
   }, [loading, isAuthenticated, loginWithRedirect, path]);
 
-  if (!user) return <Redirect to="/users/login" />
+  // if (!user) return <Redirect to="/users/login" />
 
   if (exact) {
     return <Route key={uuid.v4()} exact path={path} render={props => (

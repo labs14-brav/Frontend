@@ -17,6 +17,8 @@ function Login(props) {
     if (isAuthenticated) return <Redirect to="/home" />
 
     await loginWithRedirect({
+      // Used to store state before doing the redirect.
+      appState: { targetUrl: props.history.location.pathname },
       // The default URL where Auth0 will redirect your browser to with the
       // authentication result. Be sure to have this whitelisted in the
       // "Allowed Callback URLs" field in your Auth0 Application's settings.

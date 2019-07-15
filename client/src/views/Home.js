@@ -2,9 +2,10 @@
  * Dependencies
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NavBar from '../components/NavBar';
+import { useAuth0 } from '../helpers/index';
 
 /**
  * Locals
@@ -21,52 +22,45 @@ if (process.env.NODE_ENV === 'production') {
  * Define view
  */
 
-class Home extends React.Component {
-  state = {
-    users: [],
-    offset: 0
-  };
+function Home() {
+  const { logout } = useAuth0();
+  const [users, setUsers] = useState([]);
+  const [offset, setOffset] = useState(0);
 
-  componentDidMount() {
-      axios
-        .get(baseurl)
-        .then(res => {
-          this.setState({users: res.data});
-        })
-  }
+  useEffect(() => {
+    async function fetchUsers() {
+      const res = await axios.get(`${baseurl}${offset}`);
+      setUsers(res.data);
+    }
 
-  offSetHandler=(e)=>{
-    this.setState({
-      [e.target.name]:e.target.value
-    })
-  }
+    fetchUsers()
+  }, [offset]);
 
-  componentDidUpdate() {
-      axios
-      .get(`${baseurl}${this.state.offset}`)
-      .then(res=> {
-        this.setState({users: res.data})
-      })
-  }
+  return (
+    <div className="App">
+      <NavBar logout={logout} />
 
-  render() {
-    return (
-      <div className="App">
-        <NavBar />
-        <header className="App-header">Hello Brav!!</header>
-        <input type="number" name="offset" value={this.state.offset} onChange={this.offSetHandler}/>
-        <ul>
-          {this.state.users.map((user, index) => {
-            return <li key={index}> {user.id} -- {user.username} -- {user.type} </li>
-          })}
-        </ul>
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <header className="App-header">Hello Brav!!</header>
+
+            <input type="number" name="offset" value={offset} onChange={(e) => setOffset(e.target.value)}/>
+
+            <ul>
+              {users.map((user, index) => {
+                return <li key={index}> {user.id} -- {user.username} -- {user.type} </li>
+              })}
+            </ul>
+          </div>
+        </div>
       </div>
-    )
-  }
-}
+    </div>
+  )
+};
 
 /**
  * Export view
  */
 
-export default Home
+export default Home;

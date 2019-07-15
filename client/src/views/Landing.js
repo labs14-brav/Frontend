@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { NavBar } from '../components/index';
 import { useAuth0 } from '../helpers/index';
 
@@ -10,11 +10,13 @@ import { useAuth0 } from '../helpers/index';
  * Define view
  */
 
-function Landing() {
-  const { isAuthenticated, loginWithRedirect, loading } = useAuth0();
+function Landing(props) {
+  const { loginWithRedirect } = useAuth0();
 
   async function auth0LoginWithRedirect() {
     await loginWithRedirect({
+      // Used to store state before doing the redirect.
+      appState: { targetUrl: props.history.location.pathname },
       // The default URL where Auth0 will redirect your browser to with the
       // authentication result. Be sure to have this whitelisted in the
       // "Allowed Callback URLs" field in your Auth0 Application's settings.
