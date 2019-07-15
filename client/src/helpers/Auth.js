@@ -55,6 +55,28 @@ class Auth {
     this.auth0.authorize();
   }
 
+  logout() {
+    this.accessToken = null;
+    this.idToken = null;
+    this.expiresAt = 0;
+
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('token');
+    localStorage.removeItem('account_type');
+    localStorage.removeItem('userID');
+    localStorage.removeItem('firstName');
+    localStorage.removeItem('isBoarded');
+    localStorage.clear();
+
+    this.auth0.logout({
+      returnTo: window.location.origin
+    });
+
+    setTimeout(() => {
+      history.replace('/');
+    }, 1000);
+  }
+
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
@@ -65,6 +87,14 @@ class Auth {
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
     });
+  }
+
+  /**
+   * Check if current time is past the access token's expiry time.
+   */
+
+  isAuthenticated() {
+    return new Date().getTime() < this.expiresAt;
   }
 
   setSession(authResult) {
@@ -129,43 +159,16 @@ class Auth {
       }
     });
   }
-
-  logout() {
-    // Remove tokens and expiry time
-    this.accessToken = null;
-    this.idToken = null;
-    this.expiresAt = 0;
-
-    // Remove isLoggedIn flag from localStorage
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('token');
-    localStorage.removeItem('account_type');
-    localStorage.removeItem('userID');
-    localStorage.removeItem('firstName');
-    localStorage.removeItem('isBoarded');
-    localStorage.clear();
-
-    this.auth0.logout({
-      returnTo: window.location.origin
-    });
-
-    // navigate to the home route
-    setTimeout(() => {
-      history.replace('/');
-    }, 1000);
-  }
-
-  /**
-   * Check if current time is past the access token's expiry time.
-   */
-
-  isAuthenticated() {
-    return new Date().getTime() < this.expiresAt;
-  }
 }
+
+/**
+ * Define client
+ */
+
+const client = new Auth();
 
 /**
  * Export helper
  */
 
-export default Auth;
+export default client;
