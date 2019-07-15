@@ -1,33 +1,35 @@
-import React from "react";
-import axios from 'axios';
-import "./App.css";
+/**
+ * Dependencies
+ */
 
-class App extends React.Component {
-  state = {
-    users: []
-  };
+import React from 'react';
+import { BrowserRouter, Switch } from 'react-router-dom';
+import { RootRouter, UsersRouter, NoMatchRouter } from './routes/index';
 
-  componentDidMount() {
-      axios
-        .get("https://bravproduction.herokuapp.com/users")
-        .then(res => {
-          console.log(res.data);
-          this.setState({users: res.data});
-        })
-  }
+/**
+ * Import global styles
+ */
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">Hello Brav!!</header>
-        <ul>
-          {this.state.users.map(user => {
-            return <li> {user.username} -- {user.type} </li>
-          })}
-        </ul>
-      </div>
-    );
-  }
-}
+import './App.scss';
+
+/**
+ * Define component
+ */
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        {RootRouter}
+        {UsersRouter}
+        {NoMatchRouter}
+      </Switch>
+    </BrowserRouter>
+  );
+};
+
+/**
+ * Export component
+ */
 
 export default App;
