@@ -13,7 +13,7 @@ import axios from 'axios';
 const AUTH_CONFIG = {
   "domain": "brav.auth0.com",
   "clientId": "kOeKAq6ue5IChNwFzJwzpwT7oGMzqHGd",
-  "callbackUrl": "http://localhost:3000/home"
+  "callbackUrl": (process.env.NODE_ENV === 'production') ? "http://www.beabravone.com/home" : "http://localhost:3000/home"
 }
 
 /**

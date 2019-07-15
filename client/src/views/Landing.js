@@ -2,8 +2,7 @@
  * Dependencies
  */
 
-import React, { useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import React from 'react';
 import { NavBar } from '../components/index';
 
 /**

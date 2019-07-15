@@ -11,10 +11,10 @@ import NavBar from '../components/NavBar';
  */
 
 let baseurl
-if(process.env.NODE_ENV=='production'){
-   baseurl="https://bravproduction.herokuapp.com/users?offset="
-}else{
-   baseurl="https://brav-staging.herokuapp.com/users?offset="
+if (process.env.NODE_ENV === 'production') {
+   baseurl = "https://bravproduction.herokuapp.com/users?offset="
+} else {
+   baseurl = "https://brav-staging.herokuapp.com/users?offset="
 }
 
 /**
