@@ -1,13 +1,16 @@
+![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
+![React](https://img.shields.io/badge/react-v16.8.6-blue.svg)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9aaad5da-5fcb-4026-97b4-9d6f628206a3/deploy-status)](https://app.netlify.com/sites/brav/deploys)
+
 # Frontend
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
 
 🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
-# 1️⃣ Title of project goes here
+# Brāv
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+You can find the deployed project at [beabravone.com](http://www.beabravone.com/).
 
 ## 4️⃣ Contributors
 
@@ -22,30 +25,15 @@
 <br>
 <br>
 
-🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
-
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
-![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
-🚫 more info on using badges [here](https://github.com/badges/shields)
-
 ## Project Overview
 
-1️⃣ [Trello Board](https://trello.com/b/5sU9ZybM/labs-14-brav)
+[Trello Board](https://trello.com/b/5sU9ZybM/labs-14-brav)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+[Vision Document](https://www.notion.so/Brav-c00f84c629f84560be196d93846a22cf)
 
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
+[UX Design files](https://www.notion.so/Brav-c00f84c629f84560be196d93846a22cf#b38b8955c85f4bb8ad52863f7e478b03)
 
-🚫 Replace lorem ipsum with a description of your project
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+Our world is plagued with conflict and devastating violence everywhere you look: bullying in schools, violence in our homes, on the streets, across borders, everywhere. Brāv trains anyone in conflict management who in turn manages the conflicts of others directly on the site.
 
 ### 4️⃣ Key Features
 
@@ -55,30 +43,23 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 -    feature four
 -    feature five
 
-## 1️⃣ Tech Stack
+## Tech Stack
 
 ### Front end built using:
 
-#### _Front end framework goes here_
+#### React
 
-🚫 Why did you choose this framework?
-
--    point one
--    point two
--    point three
--    point four
+We are using the React library to render the interface and Redux for state management. React is lightweight and unopinionated, so it's perfect for building an MVP.
 
 🚫List the rest of the front end features and libraries in the same format as the framework above.
 
-#### Front end deployed to `🚫insert service here`
+#### Front end deployed to `Netlify`
 
-#### [Back end](🚫link to back end repo here) built using:
+#### [Back end](https://github.com/labs14-brav/Backend) built using:
 
-#### 🚫 back end framework goes here
+#### Back end framework goes here
 
--    point one
--    point two
--    point three
+We are using a PostgresSQL database deployed on Heroku. To access the database we are implementing a RESTful API using NodeJS, Express, and knex. Node lets you write JavaScript on both the front-end and back-end, which increases readability and reduced context-switching.
 
 🚫 List the rest of the back end end features and libraries in the same format as the framework above
 
@@ -164,7 +145,7 @@ When contributing to this repository, please first discuss the change you wish t
 Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it in all your interactions with the project.
 
 ## Issue/Bug Request
-   
+
  **If you are having an issue with the existing project code, please submit a bug report under the following guidelines:**
  - Check first to see if your issue has already been reported.
  - Check to see if the issue has recently been fixed by attempting to reproduce the issue using the latest master branch in the repository.
@@ -195,4 +176,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation](https://github.com/labs14-brav/Backend/blob/master/README.md) for details on the backend of our project.
