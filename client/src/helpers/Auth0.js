@@ -62,7 +62,7 @@ export const Auth0Provider = ({ children }) => {
 
       if (window.location.search.includes("code=")) {
         const { appState } = await auth0FromHook.handleRedirectCallback();
-        window.history.replaceState({}, document.title, window.location.pathname);
+        // window.history.replaceState({}, document.title, window.location.pathname);
       }
 
       const isAuthenticated = await auth0FromHook.isAuthenticated();

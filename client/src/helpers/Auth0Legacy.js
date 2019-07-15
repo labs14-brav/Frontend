@@ -1,19 +1,56 @@
+/* eslint no-restricted-globals: 0 */
+
 /**
  * Dependencies
  */
 
 import auth0 from 'auth0-js';
 import axios from 'axios';
-import history from './history';
 
 /**
  * Constants
  */
 
+const LOGIN_SUCCESS_PAGE = "/home"
+const LOGIN_FAILURE_PAGE = "/"
+const LOGOUT_PAGE = "/"
+
+let callback_url
+switch (process.env.NODE_ENV) {
+  case 'production':
+    callback_url = 'http://www.beabravone.com/users/callback'
+    break;
+  case 'staging2':
+    callback_url = 'https://brav-staging2.netlify.com/users/callback'
+    break;
+  case 'staging':
+    callback_url = 'https://brav-staging.netlify.com/users/callback'
+    break;
+  default:
+    callback_url = 'http://localhost:3000/users/callback'
+    break;
+}
+
 const AUTH_CONFIG = {
   "domain": "brav.auth0.com",
   "clientId": "kOeKAq6ue5IChNwFzJwzpwT7oGMzqHGd",
-  "callbackUrl": (process.env.NODE_ENV === 'production') ? "http://www.beabravone.com/users/callback" : "http://localhost:3000/users/callback",
+  "callbackUrl": callback_url,
+}
+
+let users_signup_url
+switch (process.env.NODE_ENV) {
+  case 'production':
+    users_signup_url = 'https://bravproduction.herokuapp.com'
+    break;
+  case 'staging2':
+    users_signup_url = 'https://brav-staging2.herokuapp.com'
+    break;
+  case 'staging':
+    users_signup_url = 'https://brav-staging.herokuapp.com'
+    break;
+  default:
+    users_signup_url = 'http://localhost:8080'
+    break;
 }
 
 /**
@@ -26,8 +63,7 @@ class Auth0Legacy {
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
     responseType: 'token id_token',
-    scope: 'openid profile read:username',
-    issuer: AUTH_CONFIG.domain
+    scope: 'openid email profile read:username',
   });
 
   constructor() {
@@ -46,15 +82,12 @@ class Auth0Legacy {
 
   handleAuthentication() {
     console.log('handleAuthentication')
-    this.auth0.parseHash((err, authResult) => {
-      console.log('err', err)
-      console.log('authResult', authResult)
-      if (authResult && authResult.accessToken && authResult.idToken) {
-        this.setSession(authResult);
+    this.auth0.parseHash((err, authResults) => {
+      if (authResults && authResults.accessToken && authResults.idToken) {
+        this.setSession(authResults)
       } else if (err) {
-        history.replace('/');
-        console.log(err);
-        alert(`Error: ${err.error}. Check the console for further details.`);
+        console.error(err);
+        location.pathname = LOGIN_FAILURE_PAGE;
       }
     });
   }
@@ -69,52 +102,29 @@ class Auth0Legacy {
 
   setSession(authResult) {
     console.log('setSession')
-    // Set isLoggedIn flag in localStorage
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('token', authResult.idToken);
+    let expiresAt = JSON.stringify((authResult.expiresIn * 1000 + new Date().getTime()));
 
     // Set the time that the access token will expire at
-    let expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
     this.accessToken = authResult.accessToken;
     this.idToken = authResult.idToken;
     this.expiresAt = expiresAt;
+    localStorage.setItem("access_token", authResult.accessToken);
+    localStorage.setItem("id_token", authResult.idToken);
+    localStorage.setItem("expires_at", expiresAt);
 
     const user = authResult.idTokenPayload;
 
-    // Comment to work locally
-    axios.post(`${process.env.REACT_APP_API_URL}/users/signup`, user)
-      .then(async res => {
-        console.log(res.data);
-
-        if (
-          (res.data.isBoarded && res.data.isBoarded === 0) ||
-          res.data.isBoarded === false
-        ) {
-          // navigate to the onboarding route
-          await localStorage.setItem('userID', res.data.id);
-          history.replace('/onboarding');
-        } else if (
-          (res.data.isBoarded && res.data.isBoarded === 1) ||
-          res.data.isBoarded === true
-        ) {
-          if (res.data.account_type === 'homeowner') {
-            // navigate to the homeowner dashboard route
-            localStorage.setItem('userID', res.data.id);
-            localStorage.setItem('firstName', res.data.first_name);
-            history.replace(
-              `/dashboard-homeowner/users/${res.data.id}/projects/`
-            );
-          } else if (res.data.account_type === 'contractor') {
-            localStorage.setItem('userID', res.data.id);
-            localStorage.setItem('firstName', res.data.first_name);
-            // navigate to the contractor dashboard route
-            history.replace(`/dashboard-contractor/projects/`);
-          }
-        } else {
-          history.replace('/onboarding');
-        }
+    axios.post(`${users_signup_url}/users/signup`, user, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": authResult.idToken
+      }
+    }).then(async res => {
+        await localStorage.setItem('userID', res.data.id);
+        location.hash = "";
+        location.pathname = LOGIN_SUCCESS_PAGE;
       })
-      .catch(err => console.log(err.message));
+      .catch(err => console.error(err.message));
   }
 
   renewSession() {
@@ -123,10 +133,7 @@ class Auth0Legacy {
         this.setSession(authResult);
       } else if (err) {
         this.logout();
-        console.log(err);
-        alert(
-          `Could not get a new token (${err.error}: ${err.error_description}).`
-        );
+        console.error(err);
       }
     });
   }
@@ -146,14 +153,14 @@ class Auth0Legacy {
 
     // navigate to the home route
     setTimeout(() => {
-      history.replace('/');
+      location.hash = "";
+      location.pathname = LOGOUT_PAGE;
     }, 1000);
   }
 
   isAuthenticated() {
-    // Check whether the current time is past the
-    // access token's expiry time
-    let expiresAt = this.expiresAt;
+    // Check whether the current time is past the access token's expiry time.
+    let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
     return new Date().getTime() < expiresAt;
   }
 }
