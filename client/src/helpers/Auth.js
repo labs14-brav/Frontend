@@ -13,7 +13,8 @@ import history from './history';
 const AUTH_CONFIG = {
   "domain": "brav.auth0.com",
   "clientID": "kOeKAq6ue5IChNwFzJwzpwT7oGMzqHGd",
-  "redirectUri": (process.env.NODE_ENV === 'production') ? "http://www.beabravone.com/home" : "http://localhost:3000/home"
+  "redirectUri": (process.env.NODE_ENV === 'production') ? "http://www.beabravone.com/home" : "http://localhost:3000/home",
+  "backend_url": process.env.BACKEND_URL || "http://localhost:5000"
 }
 
 /**
@@ -56,21 +57,13 @@ class Auth {
   }
 
   logout() {
-    this.accessToken = null;
     this.idToken = null;
-    this.expiresAt = 0;
+    this.accessToken = null;
+    this.expiresAt = null;
 
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('token');
-    localStorage.removeItem('account_type');
-    localStorage.removeItem('userID');
-    localStorage.removeItem('firstName');
-    localStorage.removeItem('isBoarded');
     localStorage.clear();
 
-    this.auth0.logout({
-      returnTo: window.location.origin
-    });
+    this.auth0.logout({ returnTo: window.location.origin });
 
     setTimeout(() => {
       history.replace('/');
@@ -83,7 +76,7 @@ class Auth {
         this.setSession(authResult);
       } else if (err) {
         history.replace('/');
-        console.log(err);
+        console.error(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
     });
@@ -97,7 +90,7 @@ class Auth {
     return new Date().getTime() < this.expiresAt;
   }
 
-  setSession(authResult) {
+  async setSession(authResult) {
     // Set isLoggedIn flag in localStorage
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('token', authResult.idToken);
@@ -110,40 +103,13 @@ class Auth {
 
     const user = authResult.idTokenPayload;
 
-    // Comment to work locally
-    axios.post(`${process.env.REACT_APP_API_URL}/users/signup`, user)
-      .then(async res => {
-        console.log(res.data);
+    try {
+      const res = await axios.post(`${AUTH_CONFIG.backend_url}/users/signup`, user);
 
-        if (
-          (res.data.isBoarded && res.data.isBoarded === 0) ||
-          res.data.isBoarded === false
-        ) {
-          // navigate to the onboarding route
-          await localStorage.setItem('userID', res.data.id);
-          history.replace('/onboarding');
-        } else if (
-          (res.data.isBoarded && res.data.isBoarded === 1) ||
-          res.data.isBoarded === true
-        ) {
-          if (res.data.account_type === 'homeowner') {
-            // navigate to the homeowner dashboard route
-            localStorage.setItem('userID', res.data.id);
-            localStorage.setItem('firstName', res.data.first_name);
-            history.replace(
-              `/dashboard-homeowner/users/${res.data.id}/projects/`
-            );
-          } else if (res.data.account_type === 'contractor') {
-            localStorage.setItem('userID', res.data.id);
-            localStorage.setItem('firstName', res.data.first_name);
-            // navigate to the contractor dashboard route
-            history.replace(`/dashboard-contractor/projects/`);
-          }
-        } else {
-          history.replace('/onboarding');
-        }
-      })
-      .catch(err => console.log(err.message));
+      history.replace('/home');
+    } catch(err) {
+      console.error(err)
+    }
   }
 
   renewSession() {
@@ -152,10 +118,8 @@ class Auth {
         this.setSession(authResult);
       } else if (err) {
         this.logout();
-        console.log(err);
-        alert(
-          `Could not get a new token (${err.error}: ${err.error_description}).`
-        );
+        console.error(err);
+        alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
       }
     });
   }
