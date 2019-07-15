@@ -2,9 +2,10 @@
  * Dependencies
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import uuid from 'uuid';
+import { Auth0Context } from '../../contexts/index';
 import { UserContext } from '../../contexts/index';
 
 /**
@@ -12,13 +13,26 @@ import { UserContext } from '../../contexts/index';
  */
 
 const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path, exact }) => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
-  let token = localStorage.getItem("token")
+  const { isAuthenticated, loginWithRedirect } = useContext(Auth0Context);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  console.error('PrivateRoute.user', user);
 
   function clearUser() {
-    localStorage.removeItem('user')
-    setUser(null)
+    localStorage.removeItem('user');
+    setUser(null);
   }
+
+  useEffect(() => {
+    const ensureAuthenticated = async () => {
+      if (!isAuthenticated) {
+        await loginWithRedirect({
+          appState: { targetUrl: path }
+        });
+      }
+    };
+
+    ensureAuthenticated();
+  }, [isAuthenticated, loginWithRedirect, path]);
 
   if (!user) return <Redirect to="/users/login" />
 

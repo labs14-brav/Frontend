@@ -3,7 +3,6 @@
  */
 
 import auth0 from 'auth0-js';
-import axios from 'axios';
 import history from './history';
 
 /**
@@ -14,7 +13,8 @@ const AUTH_CONFIG = {
   "domain": "brav.auth0.com",
   "clientID": "kOeKAq6ue5IChNwFzJwzpwT7oGMzqHGd",
   "redirectUri": (process.env.NODE_ENV === 'production') ? "http://www.beabravone.com/home" : "http://localhost:3000/home",
-  "backend_url": process.env.BACKEND_URL || "http://localhost:5000"
+  "backend_url": process.env.BACKEND_URL || "http://localhost:5000",
+  "returnTo": process.env.RETURN_TO_URL || "http://localhost:3000"
 }
 
 /**
@@ -49,7 +49,14 @@ class Auth {
   }
 
   login() {
-    this.auth0.authorize();
+    this.auth0.authorize((err, result) => {
+      if (err) {
+        console.error(err);
+        return history.replace('/');
+      }
+
+      console.log('result', result)
+    });
   }
 
   logout() {
@@ -59,7 +66,7 @@ class Auth {
 
     localStorage.clear();
 
-    this.auth0.logout({ returnTo: window.location.origin });
+    this.auth0.logout({ returnTo: AUTH_CONFIG.returnTo });
 
     setTimeout(() => {
       history.replace('/');
@@ -68,6 +75,7 @@ class Auth {
 
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
+      console.log('handleAuthentication.authResult', authResult)
       if (err) {
         console.error(err);
         return history.replace('/');
@@ -87,21 +95,18 @@ class Auth {
   }
 
   async setSession(authResult) {
-    // Set isLoggedIn flag in localStorage
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('token', authResult.idToken);
-
-    // Set the time that the access token will expire at
-    let expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
-    this.accessToken = authResult.accessToken;
-    this.idToken = authResult.idToken;
-    this.expiresAt = expiresAt;
-
-    const user = authResult.idTokenPayload;
+    console.log('setSession.authResult', authResult)
+    // localStorage.setItem('token', authResult.idToken);
+    //
+    // this.idToken = authResult.idToken;
+    // let expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
+    // this.accessToken = authResult.accessToken;
+    // this.expiresAt = expiresAt;
+    //
+    // const user = authResult.idTokenPayload;
 
     try {
-      const res = await axios.post(`${AUTH_CONFIG.backend_url}/users/signup`, user);
-
+      // const res = await axios.post(`${AUTH_CONFIG.backend_url}/users/signup`, user);
       history.replace('/home');
     } catch(err) {
       console.error(err)
@@ -113,9 +118,8 @@ class Auth {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
       } else if (err) {
-        this.logout();
         console.error(err);
-        alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
+        this.logout();
       }
     });
   }

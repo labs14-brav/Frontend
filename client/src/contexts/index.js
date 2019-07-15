@@ -2,4 +2,5 @@
  * Export contexts
  */
 
-export { default as UserContext } from './UserContext'
+export { default as Auth0Context } from './Auth0Context';
+export { default as UserContext } from './UserContext';

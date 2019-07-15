@@ -56,8 +56,8 @@ class Home extends React.Component {
         <header className="App-header">Hello Brav!!</header>
         <input type="number" name="offset" value={this.state.offset} onChange={this.offSetHandler}/>
         <ul>
-          {this.state.users.map(user => {
-            return <li> {user.id} -- {user.username} -- {user.type} </li>
+          {this.state.users.map((user, index) => {
+            return <li key={index}> {user.id} -- {user.username} -- {user.type} </li>
           })}
         </ul>
       </div>
