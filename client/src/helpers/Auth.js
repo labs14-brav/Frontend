@@ -34,13 +34,21 @@ class Auth {
   });
 
   constructor() {
+    this.getAccessToken = this.getAccessToken.bind(this);
+    this.getIdToken = this.getIdToken.bind(this);
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
-    this.getAccessToken = this.getAccessToken.bind(this);
-    this.getIdToken = this.getIdToken.bind(this);
     this.renewSession = this.renewSession.bind(this);
+  }
+
+  getAccessToken() {
+    return this.accessToken;
+  }
+
+  getIdToken() {
+    return this.idToken;
   }
 
   login() {
@@ -57,14 +65,6 @@ class Auth {
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
     });
-  }
-
-  getAccessToken() {
-    return this.accessToken;
-  }
-
-  getIdToken() {
-    return this.idToken;
   }
 
   setSession(authResult) {
@@ -155,11 +155,12 @@ class Auth {
     }, 1000);
   }
 
+  /**
+   * Check if current time is past the access token's expiry time.
+   */
+
   isAuthenticated() {
-    // Check whether the current time is past the
-    // access token's expiry time
-    let expiresAt = this.expiresAt;
-    return new Date().getTime() < expiresAt;
+    return new Date().getTime() < this.expiresAt;
   }
 }
 
