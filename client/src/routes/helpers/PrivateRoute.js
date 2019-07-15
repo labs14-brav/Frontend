@@ -13,7 +13,7 @@ import { useAuth0, Auth0Context, Auth0Provider } from '../../helpers/index';
  */
 
 const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path, exact }) => {
-  const { loading, isAuthenticated, loginWithRedirect } = useAuth0();
+  // const { loading, isAuthenticated, loginWithRedirect } = useAuth0();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
   function clearUser() {
@@ -21,23 +21,24 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
     setUser(null);
   }
 
-  useEffect(() => {
-    const ensureAuthenticated = async () => {
-      if (!isAuthenticated) {
-        await loginWithRedirect({
-          // Used to store state before doing the redirect.
-          appState: { targetUrl: path },
-          // The default URL where Auth0 will redirect your browser to with the
-          // authentication result. Be sure to have this whitelisted in the
-          // "Allowed Callback URLs" field in your Auth0 Application's settings.
-          "redirect_uri": (process.env.NODE_ENV === 'production') ? "http://www.beabravone.com/home" : "http://localhost:3000/home",
-        });
-      }
-    };
+  // useEffect(() => {
+  //   const ensureAuthenticated = async () => {
+  //     if (!isAuthenticated) {
+  //       await loginWithRedirect({
+  //         // Used to store state before doing the redirect.
+  //         appState: { targetUrl: path },
+  //         // The default URL where Auth0 will redirect your browser to with the
+  //         // authentication result. Be sure to have this whitelisted in the
+  //         // "Allowed Callback URLs" field in your Auth0 Application's settings.
+  //         "redirect_uri": (process.env.NODE_ENV === 'production') ? "http://www.beabravone.com/home" : "http://localhost:3000/home",
+  //       });
+  //     }
+  //   };
+  //
+  //   if (!loading) ensureAuthenticated();
+  // }, [loading, isAuthenticated, loginWithRedirect, path]);
 
-    if (!loading) ensureAuthenticated();
-  }, [loading, isAuthenticated, loginWithRedirect, path]);
-
+  console.log('user', user)
   // if (!user) return <Redirect to="/users/login" />
 
   if (exact) {
