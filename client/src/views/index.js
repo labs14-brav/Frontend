@@ -1,17 +1,8 @@
 /**
- * Dependencies
- */
-
-import Home from './Home';
-import Landing from './Landing';
-import Login from './Login';
-
-/**
  * Export views
  */
 
-export {
-  Home,
-  Landing,
-  Login,
-};
+export { default as Home } from './Home';
+export { default as Landing } from './Landing';
+export { default as Login } from './Login';
+export { default as NoMatch } from './NoMatch';

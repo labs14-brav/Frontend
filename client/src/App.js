@@ -8,6 +8,7 @@ import Auth from './components/Auth';
 import {
   RootRouter,
   UsersRouter,
+  NoMatchRouter,
 } from './routes/index';
 
 /**
@@ -43,6 +44,7 @@ class App extends React.Component {
         <Switch>
           {RootRouter}
           {UsersRouter}
+          {NoMatchRouter}
         </Switch>
       </BrowserRouter>
     );
