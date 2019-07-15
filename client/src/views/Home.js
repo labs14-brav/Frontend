@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === 'production') {
  */
 
 function Home() {
-  const { logout } = useAuth0();
+  const { isAuthenticated, logout } = useAuth0();
   const [users, setUsers] = useState([]);
   const [offset, setOffset] = useState(0);
 
@@ -36,6 +36,8 @@ function Home() {
     fetchUsers()
   }, [offset]);
 
+  console.log('Home.isAuthenticated', isAuthenticated)
+
   return (
     <div className="App">
       <NavBar logout={logout} />
@@ -43,9 +45,10 @@ function Home() {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <header className="App-header">Hello Brav!!</header>
+            <header className="App-header"><h4>Hello Brāv!</h4></header>
 
-            <input type="number" name="offset" value={offset} onChange={(e) => setOffset(e.target.value)}/>
+            <label htmlFor="input-offset">Offset</label><br/>
+            <input id="input-offset" type="number" name="offset" value={offset} onChange={(e) => setOffset(e.target.value)}/>
 
             <ul>
               {users.map((user, index) => {

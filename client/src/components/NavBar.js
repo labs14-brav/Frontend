@@ -12,6 +12,8 @@ import { useAuth0 } from '../helpers/index';
 const NavBar = (props) => {
   const { isAuthenticated, loginWithRedirect, loading } = useAuth0();
 
+  console.log('NavBar.isAuthenticated', isAuthenticated)
+
   return (
     <div className="container">
       <div className="row">
