@@ -165,6 +165,10 @@ class Auth0Legacy {
   }
 }
 
+/**
+ * Create auth0 client
+ */
+
 const auth0_legacy = new Auth0Legacy()
 
 /**
