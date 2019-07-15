@@ -13,16 +13,7 @@ import history from './history';
 const AUTH_CONFIG = {
   "domain": "brav.auth0.com",
   "clientId": "kOeKAq6ue5IChNwFzJwzpwT7oGMzqHGd",
-  "callbackUrl": ((env) => {
-    switch (env) {
-      case 'production':
-        return "http://www.beabravone.com/home"
-      case 'staging':
-        return "http://staging.beabravone.com/home"
-      default:
-        return "http://localhost:3000/home"
-    }
-  })(process.env.NODE_ENV)
+  "callbackUrl": (process.env.NODE_ENV === 'production') ? "http://www.beabravone.com/users/callback" : "http://localhost:3000/users/callback",
 }
 
 /**
@@ -40,8 +31,6 @@ class Auth0Legacy {
   });
 
   constructor() {
-    console.log('process.env.NODE_ENV', process.env.NODE_ENV)
-    console.log('AUTH_CONFIG.callbackUrl', AUTH_CONFIG.callbackUrl)
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
@@ -56,7 +45,10 @@ class Auth0Legacy {
   }
 
   handleAuthentication() {
+    console.log('handleAuthentication')
     this.auth0.parseHash((err, authResult) => {
+      console.log('err', err)
+      console.log('authResult', authResult)
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
       } else if (err) {
@@ -76,6 +68,7 @@ class Auth0Legacy {
   }
 
   setSession(authResult) {
+    console.log('setSession')
     // Set isLoggedIn flag in localStorage
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('token', authResult.idToken);

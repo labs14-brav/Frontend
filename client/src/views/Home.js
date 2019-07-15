@@ -33,6 +33,7 @@ function Home() {
       setUsers(res.data);
     }
 
+    auth0_legacy.handleAuthentication()
     fetchUsers()
   }, [offset]);
 
