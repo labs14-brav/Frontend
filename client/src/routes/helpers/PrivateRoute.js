@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import uuid from 'uuid';
 import { UserContext } from '../../contexts/index';
@@ -12,9 +12,10 @@ import { UserContext } from '../../contexts/index';
  */
 
 const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path, exact }) => {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
   let token = localStorage.getItem("token")
 
-  if (is_exact) {
+  if (exact) {
     return (
       <Route exact path={path} render={props => (token) ? <Component {...props} /> : <Redirect to="/" />} />
     )
