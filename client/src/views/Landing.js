@@ -14,7 +14,14 @@ function Landing(props) {
   return (
     <div className="App">
       <NavBar login={props.login} />
-      <h1>Brav</h1>
+
+      <div className="container">
+        <div className="row">
+          <div className="col-12 py-3">
+            <h1>Brāv</h1>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
