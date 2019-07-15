@@ -3,8 +3,8 @@
  */
 
 import auth0 from 'auth0-js';
-import history from '../history';
 import axios from 'axios';
+import history from './history';
 
 /**
  * Constants
