@@ -4,13 +4,14 @@
 
 import React from 'react';
 import { NavBar } from '../components/index';
-import { auth0_legacy } from '../helpers/index';
+import { auth0_legacy, mixpanel } from '../helpers/index';
 
 /**
  * Define view
  */
 
 function Landing(props) {
+  mixpanel.track('Visited landing page');
   // const { loginWithRedirect } = useAuth0();
   //
   // async function auth0LoginWithRedirect() {
