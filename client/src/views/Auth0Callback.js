@@ -20,7 +20,6 @@ function Auth0Callback() {
     <div className="container">
       <div className="row mx-auto">
         <div className="col-12">
-          <h1>Callback</h1>
           <Loader type="TailSpin" color="gray" height={150} width={150} />
           <p>Loading...</p>
 
