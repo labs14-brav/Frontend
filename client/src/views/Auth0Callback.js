@@ -5,6 +5,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { auth0_legacy } from '../helpers/index'
+import Loader from 'react-loader-spinner'
 
 /**
  * Define view
@@ -19,7 +20,8 @@ function Auth0Callback() {
     <div className="container">
       <div className="row mx-auto">
         <div className="col-12">
-          <h1>Callback</h1>
+          <Loader type="TailSpin" color="gray" height={150} width={150} />
+          <p>Loading...</p>
 
           <Link to="/" className="btn btn-md btn-primary">Return to main page</Link>
         </div>
