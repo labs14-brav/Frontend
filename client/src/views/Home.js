@@ -5,7 +5,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NavBar from '../components/NavBar';
-import { auth0_legacy } from '../helpers/index';
+
 
 /**
  * Locals
@@ -25,7 +25,6 @@ if (process.env.NODE_ENV === 'production') {
 function Home() {
   const [users, setUsers] = useState([]);
   const [offset, setOffset] = useState(0);
-  // const { isAuthenticated, logout, handleRedirectCallback } = useAuth0();
 
   useEffect(() => {
     async function fetchUsers() {
@@ -38,7 +37,7 @@ function Home() {
 
   return (
     <div className="App">
-      <NavBar logout={auth0_legacy.logout} />
+      <NavBar logout='' />
 
       <div className="container">
         <div className="row">
