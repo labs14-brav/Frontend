@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import React from 'react';
+import React,{useEffect} from 'react';
 import { Redirect } from 'react-router-dom';
 import { firebase } from '../helpers/index';
 
@@ -13,8 +13,12 @@ import { firebase } from '../helpers/index';
 
 function Login(props) {
 
-  firebase();
+  
 
+  useEffect(()=>{
+    firebase();
+  },[]);
+  
   return (
     <div className="App">
       <div className="container">
