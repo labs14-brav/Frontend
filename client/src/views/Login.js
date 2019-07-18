@@ -17,6 +17,7 @@ function Login(props) {
 
   useEffect(()=>{
     firebase();
+  
   },[]);
   
   return (
