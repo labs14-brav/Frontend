@@ -6,6 +6,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import firebase from 'firebase'; 
 import uuid from 'uuid';
+import axios from 'axios';
 
 /**
  * Define route component
@@ -29,6 +30,12 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
     localStorage.setItem('token',JSON.stringify(token));
     console.log(token);
     console.log(user);
+
+    
+      axios
+      .post('http://localhost:8888/users/auth',{user:user,token:token})
+
+
     } else {
       // User is signed out.
       // ...
