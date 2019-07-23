@@ -12,9 +12,24 @@ import axios from 'axios';
  * Define route component
  */
 
+let baseurl
+if (process.env.NODE_ENV === 'production') 
+{
+   baseurl = "https://bravproduction.herokuapp.com/users/auth"
+}else if(process.env.NODE_ENV === 'staging')
+{
+  baseurl = "https://brav-staging.herokuapp.com/users/auth"
+} 
+else 
+{
+   baseurl = "http://localhost:8888/users/auth"
+}
+
+
 const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path, exact }) => {
   
   firebase.auth().onAuthStateChanged(async (user)=> {
+    console.log("onAuthStateChanged",user)
     if (user) {
       // User is signed in.
     let displayName = user.displayName;
@@ -28,12 +43,13 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
     let token = await user.getIdToken();
       // ...
     localStorage.setItem('token',JSON.stringify(token));
+
     console.log(token);
     console.log(user);
 
     
       axios
-      .post('http://localhost:8888/users/auth',{user:user,token:token})
+      .post(baseurl,{user:user,token:token})
 
 
     } else {
