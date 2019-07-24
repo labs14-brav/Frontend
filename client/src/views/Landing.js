@@ -5,6 +5,7 @@
 import React from 'react';
 import { NavBar } from '../components/index';
 import { mixpanel } from '../helpers/index';
+import {Link} from 'react-router-dom';
 
 
 /**
@@ -22,7 +23,7 @@ function Landing(props) {
         <div className="row">
           <div className="col-12 py-3">
             <h1>Brāv</h1>
-      
+            <Link to='/users/login'>login/signup</Link>
           </div>
         </div>
       </div>
