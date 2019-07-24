@@ -12,10 +12,16 @@ import NavBar from '../components/NavBar';
  */
 
 let baseurl
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') 
+{
    baseurl = "https://bravproduction.herokuapp.com/users?offset="
-} else {
-   baseurl = "https://brav-staging.herokuapp.com/users?offset="
+}else if(process.env.NODE_ENV === 'staging')
+{
+  baseurl = "https://brav-staging.herokuapp.com/users?offset="
+} 
+else 
+{
+   baseurl = "http://localhost:8888/users?offset="
 }
 
 /**
@@ -28,7 +34,7 @@ function Home() {
 
   useEffect(() => {
     async function fetchUsers() {
-      const res = await axios.get(`${baseurl}${offset}`);
+      const res = await axios.get("https://bravproduction.herokuapp.com/users");
       setUsers(res.data);
     }
 
@@ -49,7 +55,7 @@ function Home() {
 
             <ul>
               {users.map((user, index) => {
-                return <li key={index}> {user.id} -- {user.username} -- {user.type} </li>
+                return <li key={index}> {user.id} -- {user.email} -- {user.type} </li>
               })}
             </ul>
           </div>
