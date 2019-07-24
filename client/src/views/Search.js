@@ -4,6 +4,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import MediatorList from '../components/MediatorList';
 
 
 /**
@@ -24,6 +25,8 @@ function Search() {
 
   return (
     <div className="App">
+        <h3> Search for a Mediator</h3>
+        <MediatorList />
     </div>
   )
 };
