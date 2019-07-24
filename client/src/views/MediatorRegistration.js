@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {
     FormGroup,
     Container,
@@ -14,15 +15,28 @@ import {
     ListItemText
 } from "@material-ui/core";
 
+
+// adds styles to select inputs
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+    PaperProps: {
+        style: {
+            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+            width: 250
+        }
+    }
+};
+
 const useStyles = makeStyles(theme => ({
     root: {
         display: "flex",
         flexWrap: "wrap"
     },
     formControl: {
-        margin: theme.spacing(1),
-        minWidth: 120,
-        maxWidth: 300
+        // margin: theme.spacing(1),
+        // minWidth: 120,
+        // maxWidth: 300
     },
     chips: {
         display: "flex",
@@ -37,33 +51,21 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function MediatorRegistration() {
+    // this is the state of all the inputs in the form
     const [values, setValues] = useState({
         license: "",
         experience: "",
-        specialization: "",
-        language: ""
+        specializations: [],
+        languages: []
     });
 
     const classes = useStyles();
-
-    const names = ["tyler", "andy", "michael"];
-
-    const [personName, setPersonName] = React.useState([]);
+    const languages = ["english", "spanish", "french"];
+    const specializations = ["accounting", "divorce", "landlord & tenant"];
 
     const handleChange = prop => e => {
         setValues({ ...values, [prop]: e.target.value });
     };
-
-    function handleChangeMultiple(event) {
-        const { options } = event.target;
-        const value = [];
-        for (let i = 0, l = options.length; i < l; i += 1) {
-            if (options[i].selected) {
-                value.push(options[i].value);
-            }
-        }
-        setPersonName(value);
-    }
 
     const handleSubmit = () => {
         console.log("values", values);
@@ -75,23 +77,9 @@ function MediatorRegistration() {
             <FormGroup>
                 <TextField
                     label="License Number"
-                    variant="outlined"
                     value={values.license}
                     onChange={handleChange("license")}
                 />
-                <FormControl>
-                    <InputLabel htmlFor="age-simple">Specialization</InputLabel>
-                    <Select
-                        onChange={handleChange("specialization")}
-                        value={values.specialization}
-                    >
-                        <MenuItem value="accounting">Accounting</MenuItem>
-                        <MenuItem value="divorce">Divorce</MenuItem>
-                        <MenuItem value="landlord & tenant">
-                            Landlord & Tenant
-                        </MenuItem>
-                    </Select>
-                </FormControl>
                 <FormControl>
                     <InputLabel htmlFor="age-simple">
                         Years of Experience
@@ -100,38 +88,31 @@ function MediatorRegistration() {
                         onChange={handleChange("experience")}
                         value={values.experience}
                     >
-                        <MenuItem value={`>2yrs`}>{`>2yrs`}</MenuItem>
+                        <MenuItem value={`<2yrs`}>{`less than 2yrs`}</MenuItem>
                         <MenuItem value={`2-5yrs`}>{`2-5yrs`}</MenuItem>
-                        <MenuItem value={`<5yrs`}>{`<5yrs`}</MenuItem>
-                    </Select>
-                </FormControl>
-                <FormControl>
-                    <InputLabel htmlFor="age-simple">Language</InputLabel>
-                    <Select
-                        onChange={handleChange("language")}
-                        value={values.language}
-                    >
-                        <MenuItem value={"english"}>English</MenuItem>
-                        <MenuItem value={"spanish"}>Spanish</MenuItem>
-                        <MenuItem value={"french"}>French</MenuItem>
+                        <MenuItem value={`>5yrs`}>{`more than 5yrs`}</MenuItem>
                     </Select>
                 </FormControl>
 
-                <FormControl>
+                <FormControl className={classes.formControl}>
                     <InputLabel htmlFor="select-multiple-checkbox">
-                        Tag
+                        Specializations
                     </InputLabel>
                     <Select
                         multiple
-                        value={personName}
-                        onChange={handleChange}
+                        value={values.specializations}
+                        onChange={handleChange("specializations")}
                         input={<Input id="select-multiple-checkbox" />}
                         renderValue={selected => selected.join(", ")}
+                        MenuProps={MenuProps}
                     >
-                        {names.map(name => (
+                        {specializations.map(name => (
                             <MenuItem key={name} value={name}>
                                 <Checkbox
-                                    checked={personName.indexOf(name) > -1}
+                                    checked={
+                                        values.specializations.indexOf(name) >
+                                        -1
+                                    }
                                 />
                                 <ListItemText primary={name} />
                             </MenuItem>
@@ -141,20 +122,20 @@ function MediatorRegistration() {
 
                 <FormControl className={classes.formControl}>
                     <InputLabel htmlFor="select-multiple-checkbox">
-                        Tag
+                        Languages
                     </InputLabel>
                     <Select
                         multiple
-                        value={personName}
-                        onChange={handleChange}
+                        value={values.languages}
+                        onChange={handleChange("languages")}
                         input={<Input id="select-multiple-checkbox" />}
                         renderValue={selected => selected.join(", ")}
                         MenuProps={MenuProps}
                     >
-                        {names.map(name => (
+                        {languages.map(name => (
                             <MenuItem key={name} value={name}>
                                 <Checkbox
-                                    checked={personName.indexOf(name) > -1}
+                                    checked={values.languages.indexOf(name) > -1}
                                 />
                                 <ListItemText primary={name} />
                             </MenuItem>
