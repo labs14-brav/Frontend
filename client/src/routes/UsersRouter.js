@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { Login } from '../views/index';
+import { Login, Settings } from '../views/index';
 import uuid from 'uuid';
 
 /**
@@ -17,6 +17,7 @@ const UsersRouter = [
   <Route key={uuid.v4()} path='/users/signup' render={() => <Redirect to='/users/login' />} />,
   <Route key={uuid.v4()} path='/users/login' render={(props) => <Login {...props} />} />,
   <Route key={uuid.v4()} path='/users/register' render={(props) => <Login {...props} />} />,
+  <Route key={uuid.v4()} path='/users/settings' render={(props) => <Settings {...props} />} />,
 ];
 
 /**
