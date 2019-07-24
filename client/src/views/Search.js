@@ -18,14 +18,14 @@ import MediatorList from '../components/MediatorList';
 
 function Search(props) {
   const [currentCase, setCase] = useState({});
-  console.log('Case ID --------------', props.match.params.id);
-  useEffect(() => {
-    
-      async function getCase() {
-          const res = await axios.get(`${process.env.REACT_APP_API_URL}/cases/:id`)
-          console.log(res.data);
-      }
-  }, []);
+//   console.log('Case ID --------------', props.match.params.id);
+//   useEffect(() => {
+
+//       async function getCase() {
+//           const res = await axios.get(`${process.env.REACT_APP_API_URL}/cases/:id`)
+//           console.log(res.data);
+//       }
+//   }, []);
 
   return (
     <div className="App">

@@ -3,7 +3,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { axioswithAuth } from '../helpers/index';
 import MediatorCard from './MediatorCard';
 
 /**
@@ -12,11 +12,14 @@ import MediatorCard from './MediatorCard';
 
 const MediatorList = (props) => {
     const [mediators, setMediators] = useState([]);
-
+    // console.log('LOCAL STORAGE ----------', localStorage.getItem('token'));
+    // console.log('REACT ENV -----', process.env.REACT_APP_API_URL);
     useEffect(() => {
+        
+        console.log('Inside useEffect ----');
         async function fetchMediators() {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/mediators`);
-            console.log('Inside useEffect -----------------', res.data);
+            const res = await axioswithAuth().get(`http://localhost:8888/mediators`);
+            // console.log('Inside fetchMediators -----------------', res.data);
             setMediators(res.data);
         }
 

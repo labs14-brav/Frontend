@@ -42,8 +42,7 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
 
     let token = await user.getIdToken();
       // ...
-    localStorage.setItem('token',JSON.stringify(token));
-
+    localStorage.setItem('token', token);
     // console.log(token);
     // console.log(user);
 

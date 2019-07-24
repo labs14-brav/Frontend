@@ -34,7 +34,7 @@ function Home() {
 
   useEffect(() => {
     async function fetchUsers() {
-      const res = await axios.get("https://bravproduction.herokuapp.com/users");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/users`);
       setUsers(res.data);
     }
 
