@@ -6,6 +6,7 @@ import React from 'react';
 import { NavBar } from '../components/index';
 import { mixpanel } from '../helpers/index';
 
+
 /**
  * Define view
  */
@@ -21,6 +22,7 @@ function Landing(props) {
         <div className="row">
           <div className="col-12 py-3">
             <h1>Brāv</h1>
+           
           </div>
         </div>
       </div>
