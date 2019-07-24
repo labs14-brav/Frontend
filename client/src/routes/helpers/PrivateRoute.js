@@ -24,7 +24,7 @@ else
 {
    baseurl = "http://localhost:8888/users/auth"
 }
-
+console.log(process.env.NODE_ENV,"environment")
 
 const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path, exact }) => {
   
@@ -49,7 +49,7 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
 
     
       axios
-      .post(baseurl,{user:user,token:token})
+      .post("https://brav-staging.herokuapp.com/users/auth",{user:user,token:token})
 
 
     } else {
