@@ -17,7 +17,7 @@ let baseurl
        baseurl = "https://brav-staging.herokuapp.com/users?offset="
     }
 
-const  CaseForm=(props)=>{
+const CaseForm = (props) =>{
     const [form, setValues] = useState({
       "disputeCategory":"",
       "email":"",
@@ -43,11 +43,10 @@ const  CaseForm=(props)=>{
 
 
     return (
-      <div className="App">
+      <div className="App" style={{maxWidth:"800px",margin:"0 auto"}}>
 
-        <form style={{display:"flex",flexDirection:"column",justifyContent:"spaceBetween"}} onSubmit={onSubitHandler}> 
+        <form style={{padding:"20px",marginTop:"50px",display:"flex",flexDirection:"column",justifyContent:"spaceAround"}} onSubmit={onSubitHandler}> 
 
-       
 
           <div style={{display:"flex",flexDirection:"column"}}>
           <label htmlFor="inputCategory">Type Of Conflict:</label>
@@ -70,7 +69,7 @@ const  CaseForm=(props)=>{
 
        
 
-        <button onClick={onSubitHandler}>submit</button>
+        <button style={{width:"100px",margin:"0 auto", marginTop:"20px"}}onClick={onSubitHandler}>submit</button>
 
         </form>
       </div>
