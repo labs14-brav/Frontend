@@ -17,9 +17,9 @@ let baseurl
        baseurl = "https://brav-staging.herokuapp.com/users?offset="
     }
 
-function CaseForm(){
+const  CaseForm=(props)=>{
     const [form, setValues] = useState({
-      "category":"",
+      "disputeCategory":"",
       "email":"",
       "description":"",
       "partiesInvolved":""
@@ -33,22 +33,45 @@ function CaseForm(){
     }
 
 
-    const onSubitHandler=e=>{
+    const onSubitHandler = async e =>{
       e.preventDefault();
       console.log(form)
-      // axios
-      // .post(`${baseurl}/cases`,form)
+      await axios
+      .post(`${baseurl}/cases`,form)
+      props.history.push("/home");
     }
 
 
     return (
-      <div className="App" >
-        <form style={{display:'flex',flexDirection:"row"}} > 
-        <label >Type Of Conflict:<input type="text" name="category" value={form.category} onChange={updateField}/><br/></label>
-        <label >Email:<input type="email" name="email" value={form.email} onChange={updateField}/><br/></label>
-        <label >Parties Involed:<textarea id="confirmationText"  cols="15" rows ="8" name="partiesInvolved" value={form.partiesInvolved} onChange={updateField}></textarea><br/></label>
-        <label >Short Description of Conflict:<textarea id="confirmationText"  cols="86" rows ="20" name="description" value={form.description} onChange={updateField}></textarea><br/></label>
+      <div className="App">
+
+        <form style={{display:"flex",flexDirection:"column",justifyContent:"spaceBetween"}} onSubmit={onSubitHandler}> 
+
+       
+
+          <div style={{display:"flex",flexDirection:"column"}}>
+          <label htmlFor="inputCategory">Type Of Conflict:</label>
+          <input id="inputCategory" type="text" name="disputeCategory" value={form.disputeCategory} onChange={updateField} required/>
+          </div>
+          
+
+          
+          <div style={{display:"flex",flexDirection:"column"}}>
+          <label htmlFor="inputEmail">Parties Involed:Email</label>
+          <input id="inputEmail" type="email" name="email" value={form.email} onChange={updateField} />
+          </div>
+          
+
+          
+          <div style={{display:"flex",flexDirection:"column"}}>
+          <label htmlFor="inputDescription">Short Description of Conflict:</label>
+          <textarea id="inputDescription"  cols="86" rows ="20" name="description" value={form.description} onChange={updateField}></textarea>
+          </div>
+
+       
+
         <button onClick={onSubitHandler}>submit</button>
+
         </form>
       </div>
     )
