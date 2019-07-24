@@ -12,7 +12,7 @@ import axios from 'axios';
 
 function CaseForm(){
     const [form, setValues] = useState({
-      "category":"e",
+      "category":"",
       "email":"",
       "description":"",
       "partiesInvolved":""

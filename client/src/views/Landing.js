@@ -22,7 +22,7 @@ function Landing(props) {
         <div className="row">
           <div className="col-12 py-3">
             <h1>Brāv</h1>
-           
+      
           </div>
         </div>
       </div>

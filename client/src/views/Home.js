@@ -5,7 +5,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NavBar from '../components/NavBar';
-
+import {Link} from 'react-router-dom';
 
 /**
  * Locals
@@ -52,6 +52,7 @@ function Home() {
                 return <li key={index}> {user.id} -- {user.username} -- {user.type} </li>
               })}
             </ul>
+            <Link to="/cases/new" >Create a Case</Link>
           </div>
         </div>
       </div>
