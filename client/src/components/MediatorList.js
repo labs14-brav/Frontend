@@ -4,6 +4,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import MediatorCard from './MediatorCard';
 
 /**
  * Define component
@@ -14,11 +15,7 @@ const MediatorList = (props) => {
 
     useEffect(() => {
         async function fetchMediators() {
-            //boolean check for env that will change axios request
-            //https://bravproduction.herokuapp.com/mediators
-            //https://brav-staging.herokuapp.com/mediators
-            //http://localhost:8888/mediators
-            const res = await axios.get("http://localhost:8888/mediators");
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/mediators`);
             console.log('Inside useEffect -----------------', res.data);
             setMediators(res.data);
         }

@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
-import { RootRouter, UsersRouter, NoMatchRouter } from './routes/index';
+import { RootRouter, UsersRouter, TestRouter, NoMatchRouter } from './routes/index';
 
 /**
  * Import global styles
@@ -22,6 +22,7 @@ function App() {
       <Switch>
         {RootRouter}
         {UsersRouter}
+        {TestRouter}
         {NoMatchRouter}
       </Switch>
     </BrowserRouter>

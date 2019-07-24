@@ -16,11 +16,15 @@ import MediatorList from '../components/MediatorList';
  * Define view
  */
 
-function Search() {
-  const [mediators, setUsers] = useState([]);
+function Search(props) {
   const [currentCase, setCase] = useState({});
-
+  console.log('Case ID --------------', props.match.params.id);
   useEffect(() => {
+    
+      async function getCase() {
+          const res = await axios.get(`${process.env.REACT_APP_API_URL}/cases/:id`)
+          console.log(res.data);
+      }
   }, []);
 
   return (
