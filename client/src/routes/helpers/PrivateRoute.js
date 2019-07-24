@@ -24,12 +24,12 @@ else
 {
    baseurl = "http://localhost:8888/users/auth"
 }
-console.log(process.env.NODE_ENV,"environment")
+// console.log(process.env.NODE_ENV,"environment")
 
 const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path, exact }) => {
   
   firebase.auth().onAuthStateChanged(async (user)=> {
-    console.log("onAuthStateChanged",user)
+    // console.log("onAuthStateChanged",user)
     if (user) {
       // User is signed in.
     let displayName = user.displayName;
@@ -44,8 +44,8 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
       // ...
     localStorage.setItem('token',JSON.stringify(token));
 
-    console.log(token);
-    console.log(user);
+    // console.log(token);
+    // console.log(user);
 
     
       axios
