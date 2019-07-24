@@ -34,7 +34,7 @@ function Home() {
 
   useEffect(() => {
     async function fetchUsers() {
-      const res = await axios.get(`${baseurl}${offset}`);
+      const res = await axios.get("https://brav-staging.herokuapp.com/users");
       setUsers(res.data);
     }
 
@@ -55,7 +55,7 @@ function Home() {
 
             <ul>
               {users.map((user, index) => {
-                return <li key={index}> {user.id} -- {user.username} -- {user.type} </li>
+                return <li key={index}> {user.id} -- {user.email} -- {user.type} </li>
               })}
             </ul>
           </div>
