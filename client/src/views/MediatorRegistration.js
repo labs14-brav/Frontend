@@ -8,8 +8,33 @@ import {
     MenuItem,
     Select,
     InputLabel,
-    FormControl
+    FormControl,
+    Input,
+    Checkbox,
+    ListItemText
 } from "@material-ui/core";
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        display: "flex",
+        flexWrap: "wrap"
+    },
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+        maxWidth: 300
+    },
+    chips: {
+        display: "flex",
+        flexWrap: "wrap"
+    },
+    chip: {
+        margin: 2
+    },
+    noLabel: {
+        marginTop: theme.spacing(3)
+    }
+}));
 
 function MediatorRegistration() {
     const [values, setValues] = useState({
@@ -19,9 +44,26 @@ function MediatorRegistration() {
         language: ""
     });
 
+    const classes = useStyles();
+
+    const names = ["tyler", "andy", "michael"];
+
+    const [personName, setPersonName] = React.useState([]);
+
     const handleChange = prop => e => {
         setValues({ ...values, [prop]: e.target.value });
     };
+
+    function handleChangeMultiple(event) {
+        const { options } = event.target;
+        const value = [];
+        for (let i = 0, l = options.length; i < l; i += 1) {
+            if (options[i].selected) {
+                value.push(options[i].value);
+            }
+        }
+        setPersonName(value);
+    }
 
     const handleSubmit = () => {
         console.log("values", values);
@@ -44,8 +86,10 @@ function MediatorRegistration() {
                         value={values.specialization}
                     >
                         <MenuItem value="accounting">Accounting</MenuItem>
-                        <MenuItem value="automobile">Automobile</MenuItem>
-                        <MenuItem value="landlord & tenant">Landlord & Tenant</MenuItem>
+                        <MenuItem value="divorce">Divorce</MenuItem>
+                        <MenuItem value="landlord & tenant">
+                            Landlord & Tenant
+                        </MenuItem>
                     </Select>
                 </FormControl>
                 <FormControl>
@@ -72,7 +116,53 @@ function MediatorRegistration() {
                         <MenuItem value={"french"}>French</MenuItem>
                     </Select>
                 </FormControl>
-                <Button onClick={() => handleSubmit()} >Submit</Button>
+
+                <FormControl>
+                    <InputLabel htmlFor="select-multiple-checkbox">
+                        Tag
+                    </InputLabel>
+                    <Select
+                        multiple
+                        value={personName}
+                        onChange={handleChange}
+                        input={<Input id="select-multiple-checkbox" />}
+                        renderValue={selected => selected.join(", ")}
+                    >
+                        {names.map(name => (
+                            <MenuItem key={name} value={name}>
+                                <Checkbox
+                                    checked={personName.indexOf(name) > -1}
+                                />
+                                <ListItemText primary={name} />
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+
+                <FormControl className={classes.formControl}>
+                    <InputLabel htmlFor="select-multiple-checkbox">
+                        Tag
+                    </InputLabel>
+                    <Select
+                        multiple
+                        value={personName}
+                        onChange={handleChange}
+                        input={<Input id="select-multiple-checkbox" />}
+                        renderValue={selected => selected.join(", ")}
+                        MenuProps={MenuProps}
+                    >
+                        {names.map(name => (
+                            <MenuItem key={name} value={name}>
+                                <Checkbox
+                                    checked={personName.indexOf(name) > -1}
+                                />
+                                <ListItemText primary={name} />
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+
+                <Button onClick={() => handleSubmit()}>Submit</Button>
             </FormGroup>
         </Container>
     );
