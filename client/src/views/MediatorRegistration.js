@@ -15,7 +15,6 @@ import {
     ListItemText
 } from "@material-ui/core";
 
-
 // adds styles to select inputs
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -53,10 +52,12 @@ const useStyles = makeStyles(theme => ({
 function MediatorRegistration() {
     // this is the state of all the inputs in the form
     const [values, setValues] = useState({
+        type: "user",
         license: "",
         experience: "",
-        specializations: [],
-        languages: []
+        specialization: [],
+        language: [],
+        general_details: ""
     });
 
     const classes = useStyles();
@@ -68,13 +69,25 @@ function MediatorRegistration() {
     };
 
     const handleSubmit = () => {
-        console.log("values", values);
+        values.specialization = JSON.stringify(values.specialization);
+        values.language = JSON.stringify(values.language);
+        const id = localStorage.getItem("id");
+        axios.put(
+            `${process.env.REACT_APP_API_URL}/users/${id}/mediator-upgrade`,
+            values,
+            { headers: { Authorization: localStorage.getItem("token") } }
+        );
     };
 
     return (
         <Container maxWidth="sm">
             <h1>Mediator Registration</h1>
             <FormGroup>
+                <TextField
+                    label="General Details"
+                    value={values.general_details}
+                    onChange={handleChange("general_details")}
+                />
                 <TextField
                     label="License Number"
                     value={values.license}
@@ -100,8 +113,8 @@ function MediatorRegistration() {
                     </InputLabel>
                     <Select
                         multiple
-                        value={values.specializations}
-                        onChange={handleChange("specializations")}
+                        value={values.specialization}
+                        onChange={handleChange("specialization")}
                         input={<Input id="select-multiple-checkbox" />}
                         renderValue={selected => selected.join(", ")}
                         MenuProps={MenuProps}
@@ -110,8 +123,7 @@ function MediatorRegistration() {
                             <MenuItem key={name} value={name}>
                                 <Checkbox
                                     checked={
-                                        values.specializations.indexOf(name) >
-                                        -1
+                                        values.specialization.indexOf(name) > -1
                                     }
                                 />
                                 <ListItemText primary={name} />
@@ -122,12 +134,12 @@ function MediatorRegistration() {
 
                 <FormControl className={classes.formControl}>
                     <InputLabel htmlFor="select-multiple-checkbox">
-                        Languages
+                        Language
                     </InputLabel>
                     <Select
                         multiple
-                        value={values.languages}
-                        onChange={handleChange("languages")}
+                        value={values.language}
+                        onChange={handleChange("language")}
                         input={<Input id="select-multiple-checkbox" />}
                         renderValue={selected => selected.join(", ")}
                         MenuProps={MenuProps}
@@ -135,7 +147,7 @@ function MediatorRegistration() {
                         {languages.map(name => (
                             <MenuItem key={name} value={name}>
                                 <Checkbox
-                                    checked={values.languages.indexOf(name) > -1}
+                                    checked={values.language.indexOf(name) > -1}
                                 />
                                 <ListItemText primary={name} />
                             </MenuItem>
