@@ -29,7 +29,7 @@ const CaseShow = props => {
     <>
         <h3> Your cases: </h3>
         <Button variant="outlined" color="primary" className={classes.button}>
-            <Link to="/cases/1/mediator-search"> Find a Mediator </Link>
+            <Link style={{textDecoration:'none', color:'inherit'}}to="/cases/1/mediator-search"> Find a Mediator </Link>
         </Button>
     </>
   )
