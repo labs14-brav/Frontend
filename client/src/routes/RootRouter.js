@@ -18,7 +18,8 @@ const RootRouter = [
   <Route key={uuid.v4()} path="/login" render={() => <Redirect to="/users/login" />} />,
   <Route key={uuid.v4()} path="/signup" render={() => <Redirect to="/users/login" />} />,
   <Route key={uuid.v4()} path="/register" render={() => <Redirect to="/users/login" />} />,
-  <PrivateRoute key={uuid.v4()} path="/home" component={Home} errorBoundary={ErrorBoundary} />,
+  <PrivateRoute key={uuid.v4()}  path="/home" component={Home} errorBoundary={ErrorBoundary} />,
+  
 ];
 
 /**

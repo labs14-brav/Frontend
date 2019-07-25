@@ -4,16 +4,19 @@
   "description": "Frontend for the Brav application.",
   "private": true,
   "dependencies": {
-    "@auth0/auth0-spa-js": "^1.0.2",
-    "auth0-js": "^9.11.1",
+    "@material-ui/core": "^4.2.1",
     "axios": "^0.19.0",
+    "firebase": "^6.3.0",
+    "firebaseui": "^4.1.0",
     "history": "^4.9.0",
-    "materialize-css": "^1.0.0",
+    "mixpanel-browser": "^2.29.0",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-loader-spinner": "^2.3.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-testing-library": "^8.0.1",
     "uuid": "^3.3.2"
   },
   "scripts": {

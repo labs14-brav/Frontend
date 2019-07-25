@@ -4,58 +4,73 @@
 
 import React, { useState, useEffect, useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import firebase from 'firebase'; 
 import uuid from 'uuid';
-import { UserContext } from '../../contexts/index';
-import { useAuth0, Auth0Context, Auth0Provider } from '../../helpers/index';
+import axios from 'axios';
 
 /**
  * Define route component
  */
 
+let baseurl
+if (process.env.NODE_ENV === 'production') 
+{
+   baseurl = "https://bravproduction.herokuapp.com/users/auth"
+}else if(process.env.NODE_ENV === 'staging')
+{
+  baseurl = "https://brav-staging.herokuapp.com/users/auth"
+} 
+else 
+{
+   baseurl = "http://localhost:8888/users/auth"
+}
+// console.log(process.env.NODE_ENV,"environment")
+
 const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path, exact }) => {
-  // const { loading, isAuthenticated, loginWithRedirect } = useAuth0();
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  
+  firebase.auth().onAuthStateChanged(async (user)=> {
+    // console.log("onAuthStateChanged",user)
+    if (user) {
+      // User is signed in.
+    let displayName = user.displayName;
+    let email = user.email;
+    let emailVerified = user.emailVerified;
+    let photoURL = user.photoURL;
+    let isAnonymous = user.isAnonymous;
+    let uid = user.uid;
+    let providerData = user.providerData;
 
-  function clearUser() {
-    localStorage.removeItem('user');
-    setUser(null);
-  }
+    let token = await user.getIdToken();
+    console.log(token);
+      // ...
+    localStorage.setItem('token',token);
 
-  // useEffect(() => {
-  //   const ensureAuthenticated = async () => {
-  //     if (!isAuthenticated) {
-  //       await loginWithRedirect({
-  //         // Used to store state before doing the redirect.
-  //         appState: { targetUrl: path },
-  //         // The default URL where Auth0 will redirect your browser to with the
-  //         // authentication result. Be sure to have this whitelisted in the
-  //         // "Allowed Callback URLs" field in your Auth0 Application's settings.
-  //         "redirect_uri": (process.env.NODE_ENV === 'production') ? "http://www.beabravone.com/home" : "http://localhost:3000/home",
-  //       });
-  //     }
-  //   };
-  //
-  //   if (!loading) ensureAuthenticated();
-  // }, [loading, isAuthenticated, loginWithRedirect, path]);
+    // console.log(token);
+    // console.log(user);
 
-  console.log('user', user)
-  // if (!user) return <Redirect to="/users/login" />
+    
+      axios
+      .post(`${process.env.REACT_APP_API_URL}/users/auth`,{user:user,token:token})
+
+
+    } else {
+      // User is signed out.
+      // ...
+    }
+  }); 
+
 
   if (exact) {
     return <Route key={uuid.v4()} exact path={path} render={props => (
-      <UserContext.Provider value={user}>
-        <ErrorBoundary>
-          <Component {...props} setUser={setUser} />
-        </ErrorBoundary>
-      </UserContext.Provider>
+      <ErrorBoundary>
+        <Component {...props} />
+      </ErrorBoundary>
     )} />
   } else {
     return <Route key={uuid.v4()} path={path} render={props => (
-      <UserContext.Provider value={user}>
-        <ErrorBoundary>
-          <Component {...props} setUser={setUser} />
-        </ErrorBoundary>
-      </UserContext.Provider>
+      <ErrorBoundary>
+        <Component {...props} />
+      </ErrorBoundary>
     )} />
   }
 };

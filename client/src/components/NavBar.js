@@ -3,18 +3,12 @@
  */
 
 import React, { useState } from 'react';
-// import { useAuth0 } from '../helpers/index';
 
 /**
  * Define component
  */
 
 const NavBar = (props) => {
-  // const { isAuthenticated } = useAuth0();
-  // {isAuthenticated ?
-  //   <button onClick={props.logout}>Logout</button> :
-  //   <button onClick={props.login}>Login</button>
-  // }
 
   return (
     <div className="container">

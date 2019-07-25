@@ -5,17 +5,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NavBar from '../components/NavBar';
-import { auth0_legacy } from '../helpers/index';
+import {Link} from 'react-router-dom';
 
 /**
  * Locals
  */
 
 let baseurl
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') 
+{
    baseurl = "https://bravproduction.herokuapp.com/users?offset="
-} else {
-   baseurl = "https://brav-staging.herokuapp.com/users?offset="
+}else if(process.env.NODE_ENV === 'staging')
+{
+  baseurl = "https://brav-staging.herokuapp.com/users?offset="
+} 
+else 
+{
+   baseurl = "http://localhost:8888/users?offset="
 }
 
 /**
@@ -25,11 +31,10 @@ if (process.env.NODE_ENV === 'production') {
 function Home() {
   const [users, setUsers] = useState([]);
   const [offset, setOffset] = useState(0);
-  // const { isAuthenticated, logout, handleRedirectCallback } = useAuth0();
 
   useEffect(() => {
     async function fetchUsers() {
-      const res = await axios.get(`${baseurl}${offset}`);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/users`);
       setUsers(res.data);
     }
 
@@ -38,7 +43,7 @@ function Home() {
 
   return (
     <div className="App">
-      <NavBar logout={auth0_legacy.logout} />
+      <NavBar logout='' />
 
       <div className="container">
         <div className="row">
@@ -50,9 +55,10 @@ function Home() {
 
             <ul>
               {users.map((user, index) => {
-                return <li key={index}> {user.id} -- {user.username} -- {user.type} </li>
+                return <li key={index}> {user.id} -- {user.email} -- {user.type} </li>
               })}
             </ul>
+            <Link to="/cases/new" >Create a Case</Link>
           </div>
         </div>
       </div>
