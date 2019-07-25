@@ -13,17 +13,12 @@ import Grid from '@material-ui/core/Grid';
 
 const MediatorList = (props) => {
     const [mediators, setMediators] = useState([]);
-    // console.log('LOCAL STORAGE ----------', localStorage.getItem('token'));
-    // console.log('REACT ENV -----', process.env.REACT_APP_API_URL);
+
     useEffect(() => {
-        
-        console.log('Inside useEffect ----');
         async function fetchMediators() {
             const res = await axioswithAuth().get(`http://localhost:8888/mediators`);
-            // console.log('Inside fetchMediators -----------------', res.data);
             setMediators(res.data);
         }
-
         fetchMediators()
         }, []);
         //re-check when filters change eventually, but for now just mimic ComponentDidMount. 
