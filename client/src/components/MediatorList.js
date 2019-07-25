@@ -5,6 +5,7 @@
 import React, { useState, useEffect } from 'react';
 import { axioswithAuth } from '../helpers/index';
 import MediatorCard from './MediatorCard';
+import Grid from '@material-ui/core/Grid';
 
 /**
  * Define component
@@ -28,11 +29,13 @@ const MediatorList = (props) => {
         //re-check when filters change eventually, but for now just mimic ComponentDidMount. 
 
   return (
-    <div className="list-container">
-        {mediators.map(mediator => {
-            return <MediatorCard mediator={mediator} key={mediator.uid} />
-        })}
-    </div>
+      <>
+        <Grid >
+            {mediators.map(mediator => {
+                return <MediatorCard mediator={mediator} key={mediator.uid} />
+            })}
+        </Grid>
+    </>
   );
 };
 

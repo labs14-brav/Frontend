@@ -4,6 +4,7 @@
   "description": "Frontend for the Brav application.",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.2.1",
     "axios": "^0.19.0",
     "firebase": "^6.3.0",
     "firebaseui": "^4.1.0",
