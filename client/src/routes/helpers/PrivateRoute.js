@@ -41,6 +41,7 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
     let providerData = user.providerData;
 
     let token = await user.getIdToken();
+    console.log(token);
       // ...
     localStorage.setItem('token', token);
     // console.log(token);
@@ -48,7 +49,7 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
 
     
       axios
-      .post("https://brav-staging.herokuapp.com/users/auth",{user:user,token:token})
+      .post(`${process.env.REACT_APP_API_URL}/users/auth`,{user:user,token:token})
 
 
     } else {
