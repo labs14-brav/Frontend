@@ -5,10 +5,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+// maerial-ui imports
+
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
-import { textAlign } from '@material-ui/system';
+import Button from '@material-ui/core/Button';
 
 /**
  * Define component
@@ -27,8 +29,8 @@ if (process.env.NODE_ENV === 'production') {
         display: 'flex',
         flexWrap: 'wrap',
         flexDirection:'column',
-        justifyContent:'space-between',
-        alignItems:'space-between'
+        justifyContent:'center',
+        alignItems:'center',
       },
       textField: {
         marginLeft: theme.spacing(1),
@@ -41,8 +43,11 @@ if (process.env.NODE_ENV === 'production') {
       menu: {
         width: 200,
       },
+      button: {
+        margin: theme.spacing(1),
+        width: 50,
+      },
     }));
-
 
     const disputeCategory = [
       {
@@ -70,6 +75,8 @@ if (process.env.NODE_ENV === 'production') {
         label: 'Domestic violence',
       },
     ];
+
+
 const CaseForm = (props) =>{
   const classes = useStyles();
   
@@ -77,7 +84,6 @@ const CaseForm = (props) =>{
         "disputeCategory":"",
         "email":"",
         "description":"",
-        "partiesInvolved":""
       });
 
       const updateField = e => {
@@ -91,7 +97,7 @@ const CaseForm = (props) =>{
         setValues({ ...form, [name]: event.target.value });
       };
       
-      const onSubitHandler = async e =>{
+      const onSubmitHandler = async e =>{
         e.preventDefault();
         console.log(form)
         await axios
@@ -101,42 +107,9 @@ const CaseForm = (props) =>{
 
 
     return (
-      // <div className="App" style={{maxWidth:"800px",margin:"0 auto"}}>
 
-      //    <form style={{padding:"20px",marginTop:"50px",display:"flex",flexDirection:"column",justifyContent:"spaceAround"}} onSubmit={onSubitHandler}> 
-        
-      
-
-      //     <div style={{display:"flex",flexDirection:"column"}}>
-      //     <label htmlFor="inputCategory">Type Of Conflict:</label>
-      //     <input id="inputCategory" type="text" name="disputeCategory" value={form.disputeCategory} onChange={updateField} required/>
-      //     </div>
-         
-  
-          
-      //     <div style={{display:"flex",flexDirection:"column"}}>
-      //     <label htmlFor="inputEmail">Parties Involed:Email</label>
-      //     <input id="inputEmail" type="email" name="email" value={form.email} onChange={updateField} />
-      //     </div>
-          
-
-          
-      //     <div style={{display:"flex",flexDirection:"column"}}>
-      //     <label htmlFor="inputDescription">Short Description of Conflict:</label>
-      //     <textarea id="inputDescription"  cols="86" rows ="20" name="description" value={form.description} onChange={updateField}></textarea>
-      //     </div>
-
-       
-
-      //   <button style={{width:"100px",margin:"0 auto", marginTop:"20px"}}onClick={onSubitHandler}>submit</button>
-
-      //   </form> 
-
-
-      // </div>
-
-      <div style={{maxWidth:"800px",margin:"0 auto"}}>
-        <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubitHandler}>
+      <div style={{maxWidth:"800px",margin:"0 auto",padding:"100px"}}>
+        <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>
 
             <TextField
             required
@@ -144,6 +117,7 @@ const CaseForm = (props) =>{
             className={classes.textField}
             value={form.disputeCategory}
             onChange={handleChange("disputeCategory")}
+            
             SelectProps={{
               MenuProps: {
                 className: classes.menu,
@@ -168,20 +142,24 @@ const CaseForm = (props) =>{
             variant="outlined"
             onChange={updateField}
             value={form.email}
+           
           />
+
             <TextField
             name="description"
-            label="Short Description of Conflict"
+            label="Description of Conflict"
             multiline
             rowsMax="8"
             value={form.description}
             onChange={updateField}
             margin="normal"
             variant="outlined"
+          
             />
+
+            <Button className={classes.button} onClick={onSubmitHandler}>submit</Button>
+
         </form>
-
-
       </div>
     )
   };
