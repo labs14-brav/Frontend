@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import NavBar from '../components/NavBar';
+import {NavBar,MediatorCasesShow} from '../components/index';
 import {Link} from 'react-router-dom';
 
 /**
@@ -58,7 +58,8 @@ function Home() {
                 return <li key={index}> {user.id} -- {user.email} -- {user.type} </li>
               })}
             </ul>
-            <Link to="/cases"> View Cases </Link>
+            <MediatorCasesShow/>
+            <Link to="/cases"> View Cases </Link><br/>
             <Link to="/cases/new" >Create a Case</Link>
           </div>
         </div>

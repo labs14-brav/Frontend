@@ -3,9 +3,10 @@
  */
 
 import React from 'react';
-import { NavBar } from '../components/index';
+import { NavBar,MediatorCasesShow} from '../components/index';
 import { mixpanel } from '../helpers/index';
 import {Link} from 'react-router-dom';
+
 
 
 /**
