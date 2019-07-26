@@ -58,6 +58,7 @@ function Home() {
                 return <li key={index}> {user.id} -- {user.email} -- {user.type} </li>
               })}
             </ul>
+            <Link to="/cases"> View Cases </Link>
             <Link to="/cases/new" >Create a Case</Link>
           </div>
         </div>
