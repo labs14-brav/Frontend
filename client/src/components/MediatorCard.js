@@ -24,15 +24,16 @@ const MediatorCard = (props) => {
   return (
     <Card >
       <CardContent >
-        <h5 className='card-name' color='textPrimary'> {props.mediator.name} </h5>
-        <p className='card-label' color='textSecondary'>License:</p> 
+        <h5 className='card-name'> {props.mediator.name} </h5>
+        <p className='card-label'>License:</p> 
         <p className='card-info'>{props.mediator.license}</p>
         <p className='card-label'>Experience:</p>
         <p className='card-info'>{props.mediator.experience}</p>
         <p className='card-label'>Specialization:</p>
         <p className='card-info'> {props.mediator.specialization}</p>
-        <p className='card-label'>Language:</p><p>{props.mediator.language}</p>
-        <p display='block' className='card-bio'>{props.mediator.professional_bio}</p>
+        <p className='card-label'>Language:</p>
+        <p>{props.mediator.language}</p>
+        <p className='card-bio'>{props.mediator.professional_bio}</p>
         </CardContent>
         <CardActions>
           <button>Select</button>
