@@ -16,8 +16,9 @@ const MediatorList = (props) => {
 
     useEffect(() => {
         async function fetchMediators() {
-            const res = await axioswithAuth().get(`http://localhost:8888/mediators`);
+            const res = await axioswithAuth().get(`${process.env.REACT_APP_API_URL}/mediators`);
             setMediators(res.data);
+            // setMediators(testMediators);
         }
         fetchMediators()
         }, []);
