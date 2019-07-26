@@ -5,41 +5,41 @@ import axios from 'axios';
 
 export default function MediatorCasesShow() {
 
-    const fakeCases = [
-        {
-            description: "sdfghjmnfdbfsvdcsfgh",
-            dispute_category: "Eldercsdfare",
-            id: 22,
-            parties_involved: "asssdfc@gmail.com",
-            user_email: "tacofisdfsh2299@gmail.com",
-            user_uid: "NssbtkAzIEsdfYoJfn6iFf5a2o0bq03",
-        },
-        {
-            description: "sdfghjmnfdbfsvdcsfgh",
-            dispute_category: "Eldercaresdfs",
-            id: 23,
-            parties_involved: "asfsdfssc@gmail.com",
-            user_email: "tacofissdfh2299@gmail.com",
-            user_uid: "NssbtkAzIEYoJfn6iFf5a2o0bq03",
-        },
-        {
-            description: "sdffdbfsvdcsfgh",
-            dispute_category: "Eldercare",
-            id: 24,
-            parties_involved: "asdfsssc@gmail.com",
-            user_email: "tacofish2sdfsdf99@gmail.com",
-            user_uid: "NssbtkAsdfsdfzIEYoJfn6iFf5a2o0bq03",
-        },
-        {
-            description: "sdfghsdfsjmnfdbfsvdcsfgh",
-            dispute_category: "Eldesdfsdfsrcare",
-            id: 25,
-            parties_involved: "aasdfsdfsdfssc@gmail.com",
-            user_email: "tacofish2299@gmail.com",
-            user_uid: "NssbtksdfsdfAzIEYoJfn6iFf5a2o0bq03",
-        },
+    // const fakeCases = [
+    //     {
+    //         description: "sdfghjmnfdbfsvdcsfgh",
+    //         dispute_category: "Eldercsdfare",
+    //         id: 22,
+    //         parties_involved: "asssdfc@gmail.com",
+    //         user_email: "tacofisdfsh2299@gmail.com",
+    //         user_uid: "NssbtkAzIEsdfYoJfn6iFf5a2o0bq03",
+    //     },
+    //     {
+    //         description: "sdfghjmnfdbfsvdcsfgh",
+    //         dispute_category: "Eldercaresdfs",
+    //         id: 23,
+    //         parties_involved: "asfsdfssc@gmail.com",
+    //         user_email: "tacofissdfh2299@gmail.com",
+    //         user_uid: "NssbtkAzIEYoJfn6iFf5a2o0bq03",
+    //     },
+    //     {
+    //         description: "sdffdbfsvdcsfgh",
+    //         dispute_category: "Eldercare",
+    //         id: 24,
+    //         parties_involved: "asdfsssc@gmail.com",
+    //         user_email: "tacofish2sdfsdf99@gmail.com",
+    //         user_uid: "NssbtkAsdfsdfzIEYoJfn6iFf5a2o0bq03",
+    //     },
+    //     {
+    //         description: "sdfghsdfsjmnfdbfsvdcsfgh",
+    //         dispute_category: "Eldesdfsdfsrcare",
+    //         id: 25,
+    //         parties_involved: "aasdfsdfsdfssc@gmail.com",
+    //         user_email: "tacofish2299@gmail.com",
+    //         user_uid: "NssbtksdfsdfAzIEYoJfn6iFf5a2o0bq03",
+    //     },
 
-    ];
+    // ];
 
     const [cases,setCases]= useState([])
     useEffect(() => {
