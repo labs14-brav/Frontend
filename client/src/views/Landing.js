@@ -6,6 +6,10 @@ import React from 'react';
 import { NavBar,MediatorCasesShow} from '../components/index';
 import { mixpanel } from '../helpers/index';
 import {Link} from 'react-router-dom';
+import {
+  Button,
+  makeStyles
+ } from "@material-ui/core";
 
 
 
@@ -13,22 +17,29 @@ import {Link} from 'react-router-dom';
  * Define view
  */
 
+const useStyles = makeStyles(theme => ({
+  button: {
+      margin: "5px",
+  }
+}))
+
 function Landing(props) {
+  const classes = useStyles();
   mixpanel.track('Visited landing page');
 
   return (
-    <div className="App">
-      <NavBar login={''} />
+    <>
+      <div className="landingNav" >
+      <Link to='/users/login'><Button className={classes.button} variant="contained" color="primary" >signup</Button></Link>
 
-      <div className="container">
-        <div className="row">
-          <div className="col-12 py-3">
-            <h1>Brāv</h1>
-            <Link to='/users/login'>login/signup</Link>
-          </div>
-        </div>
+      <Link to='/users/login'><Button className={classes.button} variant="contained" color="primary" >login</Button></Link>
       </div>
+    <div className="App">
+      {/* <NavBar login={''} /> */}
+            <img className="brav-logo" src="https://www.brav.org/img/brav-logo.png" />
+           
     </div>
+    </>
   )
 };
 
