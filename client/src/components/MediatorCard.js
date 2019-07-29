@@ -32,7 +32,7 @@ const MediatorCard = (props) => {
         <p className='card-label'>Specialization:</p>
         <p className='card-info'> {props.mediator.specialization}</p>
         <p className='card-label'>Language:</p>
-        <p>{props.mediator.language}</p>
+        <p className='card-info'>{props.mediator.language}</p>
         <p className='card-bio'>{props.mediator.professional_bio}</p>
         </CardContent>
         <CardActions>

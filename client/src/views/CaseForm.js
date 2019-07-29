@@ -67,7 +67,6 @@ const CaseForm = (props) =>{
       
       
       const handleChange = name => event => {
-        console.log(event.target.value,"sdfgsgf")
         setValues({ ...form, [name]: event.target.value });
       };
       
