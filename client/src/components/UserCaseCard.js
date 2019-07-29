@@ -8,6 +8,11 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 
+import axioswithAuth from '../helpers/axioswithAuth';
+
+//styles
+import './UserCaseCard.scss';
+
 
 const useStyles = makeStyles(theme => ({
     button: {
@@ -44,7 +49,6 @@ const UserCaseCard = (props) => {
     const [open, setOpen] = useState(false);
     const [modalStyle] = useState(getModalStyle);
     const [textState, setText] = useState('');
-    console.log(props);
     const classes = useStyles();
 
 
@@ -63,20 +67,37 @@ const UserCaseCard = (props) => {
      */
     const submitPost = e => {
         e.preventDefault();
+        let request = {
+            description: textState
+        };
+        //need to update this with proper case ID coming in from props.
+        axioswithAuth().post(`${process.env.REACT_APP_API_URL}/cases/${props.case.id}/addendums`, request)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(error => {
+                console.error(error);
+            })
+            //reset text state
+        setText('');
     }
     const handleChanges = e => {
         setText(e.target.value);
     }
 
+
+    //Need to update link in Mediator-Search link to the proper case ID when possible.
     return(
         <>
         <Card> 
             <CardContent>
-                <p> {props.case.name}</p>
+                <h5> {props.case.description}</h5>
+                <h6>Type: {props.case.dispute_category} </h6>
+                <h6>Involves: {props.case.parties_involved} </h6>
             </CardContent>
             <CardActions>
                 <Button variant="outlined" color="primary" className={classes.button}>
-                    <Link style={{textDecoration:'none', color:'inherit'}}to="/cases/1/mediator-search"> Find a Mediator </Link>
+                    <Link style={{textDecoration:'none', color:'inherit'}}to= {`/cases/${props.case.id}/mediator-search`}> Find a Mediator </Link>
                 </Button>
                 <Button onClick={handleOpen}>
                     Edit Case
@@ -89,17 +110,17 @@ const UserCaseCard = (props) => {
         onClose={handleClose}>
             <div style={modalStyle} className={classes.paper}>
                 <form onSubmit={submitPost} className='modal-form'>
-                 <textarea placeholder="Add Case Information..." 
-                 onChange={handleChanges} 
-                 value={textState}
-                 className="modal-text" 
-                 cols='50'
-                 rows='15'/>
-                     <Button variant="outlined" color="primary" className={classes.submitbutton}>
+                    <textarea placeholder="Add Case Information..." 
+                        onChange={handleChanges} 
+                        value={textState}
+                        className="modal-text" 
+                        cols='50'
+                        rows='15'/>
+                    <Button variant="outlined" color="primary" className={classes.submitbutton} onClick={submitPost}>
                          Submit
-                     </Button>
+                    </Button>
                 </form>
-                </div>
+            </div>
         </Modal>
         </>
     )
