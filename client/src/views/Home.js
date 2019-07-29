@@ -4,8 +4,12 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import NavBar from '../components/NavBar';
-import {Link} from 'react-router-dom';
+import { NavBar } from '../components/index';
+import { Link } from 'react-router-dom';
+
+import {
+  Button
+} from "@material-ui/core";
 
 /**
  * Locals
@@ -32,14 +36,14 @@ function Home() {
   const [users, setUsers] = useState([]);
   const [offset, setOffset] = useState(0);
 
-  useEffect(() => {
-    async function fetchUsers() {
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/users`);
-      setUsers(res.data);
-    }
+  // useEffect(() => {
+  //   async function fetchUsers() {
+  //     const res = await axios.get(`${process.env.REACT_APP_API_URL}/users`);
+  //     setUsers(res.data);
+  //   }
 
-    fetchUsers()
-  }, [offset]);
+  //   fetchUsers()
+  // }, [offset]);
 
   return (
     <div className="App">
@@ -48,18 +52,10 @@ function Home() {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <header className="App-header"><h4>Hello Brāv!</h4></header>
-
-            <label htmlFor="input-offset">Offset</label><br/>
-            <input id="input-offset" type="number" name="offset" value={offset} onChange={(e) => setOffset(e.target.value)}/>
-
-            <ul>
-              {users.map((user, index) => {
-                return <li key={index}> {user.id} -- {user.email} -- {user.type} </li>
-              })}
-            </ul>
-            <Link to="/cases"> View Cases </Link>
-            <Link to="/cases/new" >Create a Case</Link>
+           <h1>Welcome to brav</h1>
+            <Link to="/cases"><Button variant="contained" color="primary"> View Cases </Button></Link><br/>
+            <Link to="/cases/new" ><Button variant="contained" color="primary" > Create a Case </Button></Link>
+            <Link to="/users/settings" ><Button variant="contained" color="primary" > settings </Button></Link>
           </div>
         </div>
       </div>
