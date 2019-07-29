@@ -11,7 +11,7 @@ import {
     error: null
   };
   
-  export const fetchUserReducer = (state = initialState, action) => {
+  export const fetchUsersReducer = (state = initialState, action) => {
     switch (action.type) {
       case FETCH_USERS_START:
         return {

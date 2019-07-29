@@ -1,11 +1,11 @@
-import axiosWithAuth from '../utils/AxiosAuth';
+import axiosWithAuth from '../../utils/AxiosAuth';
 import {
   FETCH_USERS_START,
   FETCH_USERS_SUCCESS,
   FETCH_USERS_FAILURE
 } from './index';
 
-export const getProjects = users => dispatch => {
+export const fetchUsers = users => dispatch => {
   dispatch({type:FETCH_USERS_START});
 
   return axiosWithAuth()

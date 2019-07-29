@@ -9,6 +9,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore, compose } from 'redux'
+import rootReducer from './store/reducers/';
 
 /**
  * Render component to DOM
