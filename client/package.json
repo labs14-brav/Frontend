@@ -4,11 +4,11 @@
   "description": "Frontend for the Brav application.",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.2.1",
     "axios": "^0.19.0",
     "firebase": "^6.3.0",
     "firebaseui": "^4.1.0",
     "history": "^4.9.0",
-    "materialize-css": "^1.0.0",
     "mixpanel-browser": "^2.29.0",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",

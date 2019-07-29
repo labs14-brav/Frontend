@@ -41,16 +41,23 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
     let providerData = user.providerData;
 
     let token = await user.getIdToken();
+    console.log(token);
       // ...
-    localStorage.setItem('token',JSON.stringify(token));
-
+    localStorage.setItem('token', token);
     // console.log(token);
     // console.log(user);
 
     
       axios
       .post(`${process.env.REACT_APP_API_URL}/users/auth`,{user:user,token:token})
-
+      .then(res => {
+        localStorage.setItem("id",res.data.id);
+      })
+      .catch(err => {
+        console.log(err)
+      })
+      // axios
+      // .post(`${process.env.REACT_APP_API_URL}/users/auth`,{user:user,token:token})
 
     } else {
       // User is signed out.
