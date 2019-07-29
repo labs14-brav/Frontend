@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { PrivateRoute } from './helpers/index';
-import { Search, CaseShow, ErrorBoundary } from '../views/index';
+import { Search, UserCaseShow, ErrorBoundary } from '../views/index';
 import uuid from 'uuid';
 import CaseForm from '../views/CaseForm'
 
@@ -13,7 +13,7 @@ import CaseForm from '../views/CaseForm'
  */
 
 const RootRouter = [
-  <PrivateRoute key={uuid.v4()}  path="/cases/" component={CaseShow} errorBoundary={ErrorBoundary} />,
+  <PrivateRoute key={uuid.v4()}  path="/cases/" component={UserCaseShow} errorBoundary={ErrorBoundary} />,
   <PrivateRoute key={uuid.v4()}  path="/cases/new" component={CaseForm} errorBoundary={ErrorBoundary} />,
   <PrivateRoute key={uuid.v4()} path="/cases/:id/mediator-search" component={Search} errorBoundary={ErrorBoundary} />
 ];
