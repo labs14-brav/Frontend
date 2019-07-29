@@ -13,14 +13,26 @@ const useStyles = makeStyles(theme => ({
     button: {
         margin: theme.spacing(1)
     },
+    submitbutton: {
+        justifyContent: 'center',
+    },
+    modal: {
+        position: 'absolute',
+        margin: '0 auto',
+    },
     paper: {
         position: 'absolute',
-        width: 400,
+        top: '25%',
+        left: '40%',
+        width: '25%',
+        height: 300,
         backgroundColor: theme.palette.background.paper,
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 4),
         outline: 'none',
+        display: 'flex',
+        justifyContent: 'center',
       },
 }))
 
@@ -31,52 +43,62 @@ function getModalStyle() {
 const UserCaseCard = (props) => {
     const [open, setOpen] = useState(false);
     const [modalStyle] = useState(getModalStyle);
+    const [textState, setText] = useState('');
     console.log(props);
     const classes = useStyles();
 
+
+    /**
+     * Modal functions
+     */
     const handleOpen = () => {
         setOpen(true);
     }
-
     const handleClose = () => {
         setOpen(false);
     }
 
+    /**
+     These two functions are for the text input in the modal
+     */
     const submitPost = e => {
         e.preventDefault();
     }
-    
     const handleChanges = e => {
-        
+        setText(e.target.value);
     }
 
     return(
         <>
         <Card> 
             <CardContent>
-                <p> test </p>
+                <p> {props.case.name}</p>
             </CardContent>
             <CardActions>
                 <Button variant="outlined" color="primary" className={classes.button}>
                     <Link style={{textDecoration:'none', color:'inherit'}}to="/cases/1/mediator-search"> Find a Mediator </Link>
                 </Button>
                 <Button onClick={handleOpen}>
-                    Add information
+                    Edit Case
                 </Button>
             </CardActions>
         </Card>
         <Modal
+        className={classes.modal}
         open={open}
         onClose={handleClose}>
             <div style={modalStyle} className={classes.paper}>
-                <form onSubmit={submitPost}>
-                 <textarea placeholder="Add Information" onChange={handleChanges}>
-                     </textarea>    
-                     <button>
+                <form onSubmit={submitPost} className='modal-form'>
+                 <textarea placeholder="Add Case Information..." 
+                 onChange={handleChanges} 
+                 value={textState}
+                 className="modal-text" 
+                 cols='50'
+                 rows='15'/>
+                     <Button variant="outlined" color="primary" className={classes.submitbutton}>
                          Submit
-                     </button>
+                     </Button>
                 </form>
-               
                 </div>
         </Modal>
         </>
