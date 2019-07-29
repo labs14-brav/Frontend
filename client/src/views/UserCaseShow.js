@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import { MediatorCasesShow } from '../components';
 import { makeStyles } from '@material-ui/core/styles';
+import { UserCaseList } from '../components/index';
 import Button from '@material-ui/core/Button';
 
 /**
@@ -23,8 +24,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-//  Switch 1 in the link to :id when we have cases.
-const CaseShow = props => {
+const UserCaseShow = props => {
         const classes = useStyles();
   return (
     <>
@@ -32,6 +32,7 @@ const CaseShow = props => {
         <Button variant="outlined" color="primary" className={classes.button}>
             <Link style={{textDecoration:'none', color:'inherit'}}to="/cases/1/mediator-search"> Find a Mediator </Link>
         </Button>
+        <UserCaseList />
     </>
   )
 };
@@ -40,4 +41,4 @@ const CaseShow = props => {
  * Export view
  */
 
-export default CaseShow;
+export default UserCaseShow;

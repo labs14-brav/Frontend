@@ -55,6 +55,7 @@ function Home() {
            <h1>Welcome to brav</h1>
             <Link to="/cases"><Button variant="contained" color="primary"> View Cases </Button></Link><br/>
             <Link to="/cases/new" ><Button variant="contained" color="primary" > Create a Case </Button></Link>
+            <Link to="/users/settings" ><Button variant="contained" color="primary" > settings </Button></Link>
           </div>
         </div>
       </div>
