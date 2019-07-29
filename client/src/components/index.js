@@ -3,6 +3,7 @@
  */
 
 export { default as NavBar } from './NavBar';
+export { default as DeactivateAccountButton } from './DeactivateAccountButton';
 export { default as MediatorList } from './MediatorList';
 export {default as MediatorCasesShow} from './MediatorCasesShow';
 export {default as CaseDetails} from './CaseDetails';
