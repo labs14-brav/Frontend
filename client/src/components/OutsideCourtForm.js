@@ -50,9 +50,13 @@ const OutsideCourtForm = (props) => {
     const classes = useStyles();
   
       const [form, setValues] = useState({
+        "court_case": false,
         "parties_involved":"",
-        "description":"",
-        "dispute_category":""
+        "parties_contact_info":"",
+        "description": "",
+        "dispute_category": "",
+        "dispute_amount": null,
+        "case_notes":""
       });
       
       

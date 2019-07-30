@@ -4,6 +4,7 @@
 
 import React, { useState, Component } from 'react';
 import axios from 'axios';
+import { Route, Redirect } from 'react-router-dom';
 
 // maerial-ui imports
 
@@ -13,17 +14,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 
-/**
- * Define component
- */
+//react component import
+import { OutsideCourtForm, CourtForm } from '../components/index'
 
-
-let baseurl
-if (process.env.NODE_ENV === 'production') {
-   baseurl = "https://bravproduction.herokuapp.com/users?offset="
-} else {
-   baseurl = "https://brav-staging.herokuapp.com/users?offset="
-}
 
 // Global Component Styles
 
@@ -57,6 +50,28 @@ if (process.env.NODE_ENV === 'production') {
 
 
 const CaseForm = (props) =>{
+
+  const courtFormHandler = e => {
+    e.preventDefault();
+    return <Redirect to="/cases/new/court"/>
+  }
+
+  const outsideCourtFormHandler = e => {
+    e.preventDefault();
+  }
+
+  return(
+    <div className="caseform-container">
+      <h3>Is your case a...</h3>
+    <Button onClick={courtFormHandler}>
+      Court Referral
+    </Button>
+      <h3> or a </h3>
+    <Button onClick={outsideCourtFormHandler}>
+      Non-Court Referral?
+    </Button>
+    </div>
+  )
   
   };
   

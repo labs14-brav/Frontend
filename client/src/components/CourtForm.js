@@ -50,9 +50,16 @@ const CourtForm = (props) => {
     const classes = useStyles();
   
       const [form, setValues] = useState({
+        "court_case": true,
         "parties_involved":"",
+        "parties_contact_info":"",
         "description":"",
-        "dispute_category":""
+        "dispute_category":"",
+        "court_jurisdiction":"",
+        "court_number":"",
+        "court_filing_data":"",
+        "court_case_type":"",
+        "case_notes":""
       });
       
       
