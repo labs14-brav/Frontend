@@ -22,6 +22,7 @@ const bg_grey = grey[900];
 
 function SettingsNavBar(props) {
   function logout() {
+    localStorage.clear()
     window.location = '/'
   }
 
