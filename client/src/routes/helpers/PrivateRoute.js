@@ -48,8 +48,9 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
     // console.log(user);
 
     
-      axios
-      .post("https://brav-staging.herokuapp.com/users/auth",{user:user,token:token})
+    axios
+    .post(`${process.env.REACT_APP_API_URL}/users/auth`,{user:user,token:token})
+
 
 
     } else {
