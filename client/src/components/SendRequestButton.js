@@ -10,7 +10,7 @@ class SendCodeRequest extends Component {
     }
 
     async sendRequest() {
-        await axios.post('/mediators/:id/cases');
+        await axios.post(`/mediators/${mediator_id}/cases`);
     }
 
     render() {
