@@ -85,7 +85,6 @@ const UserCaseCard = (props) => {
         setText(e.target.value);
     }
 
-
     //Need to update link in Mediator-Search link to the proper case ID when possible.
     return(
         <>
