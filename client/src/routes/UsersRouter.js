@@ -19,6 +19,7 @@ const UsersRouter = [
   <Route key={uuid.v4()} path='/users/register' render={(props) => <Login {...props} />} />,
   <Route key={uuid.v4()} path='/users/settings' render={(props) => <Settings {...props} />} />,
   <Route key={uuid.v4()} path='/users/mediator-registration' render={(props) => <MediatorRegistration {...props} />} />,
+
 ];
 
 /**
