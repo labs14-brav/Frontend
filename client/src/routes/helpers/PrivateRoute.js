@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect, useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import firebase from 'firebase'; 
+import firebase from 'firebase';
 import uuid from 'uuid';
 import axios from 'axios';
 
@@ -13,23 +13,16 @@ import axios from 'axios';
  */
 
 let baseurl
-if (process.env.NODE_ENV === 'production') 
-{
+if (process.env.NODE_ENV === 'production') {
    baseurl = "https://bravproduction.herokuapp.com/users/auth"
-}else if(process.env.NODE_ENV === 'staging')
-{
+} else if (process.env.NODE_ENV === 'staging') {
   baseurl = "https://brav-staging.herokuapp.com/users/auth"
-} 
-else 
-{
+} else {
    baseurl = "http://localhost:8888/users/auth"
 }
-// console.log(process.env.NODE_ENV,"environment")
 
 const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path, exact }) => {
-  
   firebase.auth().onAuthStateChanged(async (user)=> {
-    // console.log("onAuthStateChanged",user)
     if (user) {
       // User is signed in.
     let displayName = user.displayName;
@@ -41,20 +34,15 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
     let providerData = user.providerData;
 
     let token = await user.getIdToken();
-    console.log(token);
-      // ...
-    localStorage.setItem('token', token);
-    // console.log(token);
-    // console.log(user);
 
-    
+    localStorage.setItem('token', token);
       axios
-      .post(`${process.env.REACT_APP_API_URL}/users/auth`,{user:user,token:token})
+      .post(`${process.env.REACT_APP_API_URL}/users/auth`, { user: user, token: token })
       .then(res => {
-        localStorage.setItem("id",res.data.id);
+        localStorage.setItem("id", res.data.id);
       })
       .catch(err => {
-        console.log(err)
+        console.error(err)
       })
       // axios
       // .post(`${process.env.REACT_APP_API_URL}/users/auth`,{user:user,token:token})
@@ -63,8 +51,7 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
       // User is signed out.
       // ...
     }
-  }); 
-
+  });
 
   if (exact) {
     return <Route key={uuid.v4()} exact path={path} render={props => (
