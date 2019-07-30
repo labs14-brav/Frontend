@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import UserCaseCard from "./UserCaseCard";
+import MediatorCaseCard from "./MediatorCaseCard";
 
 import axioswithAuth from "../helpers/axioswithAuth";
 
@@ -20,7 +20,7 @@ const MediatorCaseList = props => {
     return (
         <div className="list-container">
             {cases.map(ele => {
-                return <UserCaseCard case={ele} key={ele.id} />;
+                return <MediatorCaseCard case={ele} key={ele.id} />;
             })}
         </div>
     );

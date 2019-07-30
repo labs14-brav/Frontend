@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 
-import { UserCaseList } from '../components/index';
-
 import { Button, Card, makeStyles, Container } from "@material-ui/core";
 
 import { NavBar } from "../components";
+import MediatorCaseList from "../components/MediatorCaseList";
 
 const useStyles = makeStyles({
     card: {
@@ -39,7 +38,7 @@ export default function MediatorCasesShow() {
         <>
             <NavBar />
             <div className="mediator-cases-show">
-                <UserCaseList />
+                <MediatorCaseList />
             </div>
         </>
     );
