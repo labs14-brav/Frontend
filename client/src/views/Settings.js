@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { DeactivateAccountButton } from '../components/index'
+import { DeactivateAccountButton, SettingsNavBar } from '../components/index'
 
 /**
  * Define view
@@ -19,6 +19,7 @@ function Settings() {
         </div>
 
         <div className="col-9 bg-brav">
+          <SettingsNavBar />
           <h1 className="text-center">My Settings</h1>
 
           <Link to="/users/mediator-registration" >Register as Mediator</Link>
