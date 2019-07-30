@@ -14,3 +14,4 @@ export { default as MediatorRegistration } from './MediatorRegistration';
 export {default as CaseForm} from './CaseForm'
 export {default as UserCaseShow} from './UserCaseShow';
 export {default as MediatorCasesShow} from './MediatorCasesShow';
+export {default as AdminHome} from './AdminHome';
