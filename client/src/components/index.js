@@ -6,5 +6,5 @@ export { default as NavBar } from './NavBar';
 export { default as MediatorList } from './MediatorList';
 export { default as CaseDetails } from './CaseDetails';
 export { default as UserCaseList } from './UserCaseList';
-export { default as MediatorCaseList } from './MediatorCaseList';
+export { default as MediatorCaseList } from './MediatorPendingCaseList';
 export {default as AdminMediatorRequestList} from './AdminMediatorRequestList';

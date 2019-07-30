@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import { Button, Card, makeStyles, Container } from "@material-ui/core";
 
 import { NavBar } from "../components";
-import MediatorCaseList from "../components/MediatorCaseList";
+import MediatorCaseList from "../components/MediatorPendingCaseList";
 
 const useStyles = makeStyles({
     card: {

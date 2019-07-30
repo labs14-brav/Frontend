@@ -61,28 +61,15 @@ const MediatorCaseCard = props => {
     /**
      These two functions are for the text input in the modal
      */
-    const submitPost = e => {
-        e.preventDefault();
-        let request = {
-            description: textState
-        };
-        //need to update this with proper case ID coming in from props.
-        axioswithAuth()
-            .post(
-                `${process.env.REACT_APP_API_URL}/cases/${
-                    props.case.id
-                }/addendums`,
-                request
-            )
-            .then(res => {
-                console.log(res);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-        //reset text state
-        setText("");
+    const acceptRequest = () => {
+        console.log("accepting request...")
     };
+    
+    const declineRequest = () => {
+        console.log("declining request...")
+
+    };
+
     const handleChanges = e => {
         setText(e.target.value);
     };
@@ -101,16 +88,18 @@ const MediatorCaseCard = props => {
                         variant="outlined"
                         color="primary"
                         className={classes.button}
+                        onClick={acceptRequest}
                     >
                         Accept
                     </Button>
-                    <Button onClick={handleOpen}>Decline</Button>
+                    <Button onClick={declineRequest}>Decline</Button>
                     <Button onClick={handleOpen}>Case Details</Button>
                 </CardActions>
             </Card>
+
             <Modal className={classes.modal} open={open} onClose={handleClose}>
                 <div style={modalStyle} className={classes.paper}>
-                    <form onSubmit={submitPost} className="modal-form">
+                    <form className="modal-form">
                         <textarea
                             placeholder="Add Case Information..."
                             onChange={handleChanges}
@@ -123,9 +112,9 @@ const MediatorCaseCard = props => {
                             variant="outlined"
                             color="primary"
                             className={classes.submitbutton}
-                            onClick={submitPost}
+                            onClick={handleClose}
                         >
-                            Submit
+                            Close
                         </Button>
                     </form>
                 </div>
