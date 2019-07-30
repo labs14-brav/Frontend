@@ -12,4 +12,4 @@ export { default as NoMatch } from './NoMatch';
 export { default as Settings } from './Settings';
 export { default as MediatorRegistration } from './MediatorRegistration';
 export {default as CaseForm} from './CaseForm'
-export {default as CaseShow} from './CaseShow';
+export {default as UserCaseShow} from './UserCaseShow';
