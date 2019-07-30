@@ -21,6 +21,10 @@ const bg_grey = grey[900];
  */
 
 function SettingsNavBar(props) {
+  function logout() {
+    window.location = '/'
+  }
+
   return (
     <AppBar position="static" color="default">
       <Toolbar className="bg-white">
@@ -30,7 +34,7 @@ function SettingsNavBar(props) {
           </Typography>
         </Link>
 
-        <Button onClick={props.logout}>Sign Out</Button>
+        <Button onClick={logout}>Sign Out</Button>
       </Toolbar>
     </AppBar>
   );

@@ -15,7 +15,8 @@ import Typography from '@material-ui/core/Typography';
 
 const HeaderH1 = styled('h1')({
   textAlign: 'center',
-  padding: '50px 0px',
+  padding: '40px 0px',
+  margin: '0px',
 });
 
 const HeaderH2 = styled('h2')({
