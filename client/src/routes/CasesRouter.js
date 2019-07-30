@@ -6,7 +6,6 @@ import React from "react";
 import { PrivateRoute } from "./helpers/index";
 import {
     Search,
-    CaseShow,
     ErrorBoundary,
     CaseForm,
     UserCaseShow,
@@ -30,7 +29,7 @@ const RootRouter = [
     <PrivateRoute
         key={uuid.v4()}
         exact
-        path="/medator-cases"
+        path="/mediator-cases"
         component={MediatorCasesShow}
         errorBoundary={ErrorBoundary}
     />,

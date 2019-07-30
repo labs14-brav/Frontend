@@ -50,7 +50,7 @@ function Home() {
                         View Cases - User
                     </Button>
                 </Link>
-                <Link to="/medator-cases">
+                <Link to="/mediator-cases">
                     <Button variant="contained" color="primary">
                         View Cases - Mediator
                     </Button>

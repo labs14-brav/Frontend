@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 
+import { UserCaseList } from '../components/index';
+
 import { Button, Card, makeStyles, Container } from "@material-ui/core";
 
 import { NavBar } from "../components";
@@ -37,23 +39,7 @@ export default function MediatorCasesShow() {
         <>
             <NavBar />
             <div className="mediator-cases-show">
-                <ul>
-                    {cases.map((cases, index) => {
-                        return (
-                            <Card className={classes.card}>
-                                <li style={{ padding: "10px" }} key={index}>
-                                    {cases.dispute_category}{" "}
-                                </li>
-                                <li>{cases.user_email}</li>
-                                <Button>
-                                    <Link to={`/cases/${cases.id}`}>
-                                        view details
-                                    </Link>
-                                </Button>
-                            </Card>
-                        );
-                    })}
-                </ul>
+                <UserCaseList />
             </div>
         </>
     );
