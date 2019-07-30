@@ -4,7 +4,17 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { DeactivateAccountButton, SettingsNavBar } from '../components/index'
+import { DeactivateAccountButton, SettingsNavBar } from '../components/index';
+import { styled } from '@material-ui/styles';
+
+/**
+ * Define styles
+ */
+
+const Header = styled('h1')({
+  textAlign: 'center',
+  padding: '50px 0px',
+})
 
 /**
  * Define view
@@ -20,7 +30,7 @@ function Settings() {
 
         <div className="col-9 bg-brav">
           <SettingsNavBar />
-          <h1 className="text-center">My Settings</h1>
+          <Header>My Settings</Header>
 
           <Link to="/users/mediator-registration" >Register as Mediator</Link>
           <DeactivateAccountButton />

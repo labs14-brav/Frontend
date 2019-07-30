@@ -4,7 +4,16 @@
 
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import grey from '@material-ui/core/colors/grey';
+
+/**
+ * Constants
+ */
+
+const bg_grey = grey[900];
 
 /**
  * Define component
@@ -13,15 +22,11 @@ import Button from '@material-ui/core/Button';
 function SettingsNavBar(props) {
   return (
     <AppBar position="static">
-      <div className="row bg-white">
-        <div className="col-6">
-          <h4>Home</h4>
-        </div>
+      <Toolbar className="bg-white">
+        <Typography variant="h6" color={bg_grey}>Home</Typography>
 
-        <div className="col-6 d-flex justify-content-end py-3">
-          <Button onClick={props.logout}>Sign Out</Button>
-        </div>
-      </div>
+        <Button onClick={props.logout}>Sign Out</Button>
+      </Toolbar>
     </AppBar>
   );
 };
