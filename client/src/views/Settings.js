@@ -11,9 +11,15 @@ import { styled } from '@material-ui/styles';
  * Define styles
  */
 
-const Header = styled('h1')({
+const HeaderH1 = styled('h1')({
   textAlign: 'center',
   padding: '50px 0px',
+})
+
+const HeaderH2 = styled('h2')({
+  textAlign: 'center',
+  padding: '10px 0px',
+  color: 'white',
 })
 
 /**
@@ -22,19 +28,17 @@ const Header = styled('h1')({
 
 function Settings() {
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-3 bg-brav-secondary">
-          <h3>Brav</h3>
-        </div>
+    <div className="row">
+      <div className="col-2 bg-brav-secondary">
+        <HeaderH2>Brāv</HeaderH2>
+      </div>
 
-        <div className="col-9 bg-brav">
-          <SettingsNavBar />
-          <Header>My Settings</Header>
+      <div className="col-10 bg-brav">
+        <SettingsNavBar />
+        <HeaderH1>My Settings</HeaderH1>
 
-          <Link to="/users/mediator-registration" >Register as Mediator</Link>
-          <DeactivateAccountButton />
-        </div>
+        <Link to="/users/mediator-registration" >Register as Mediator</Link>
+        <DeactivateAccountButton />
       </div>
     </div>
   );
