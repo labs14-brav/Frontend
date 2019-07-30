@@ -40,8 +40,8 @@ function DeactivateAccountButton(props) {
 
     if (yes) {
       axioswithAuth().put('/users/deactivate')
-      // localStorage.clear()
-      // window.location = '/'
+      localStorage.clear()
+      window.location = '/'
     }
   }
 
