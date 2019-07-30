@@ -1,4 +1,4 @@
-import axiosWithAuth from '../../utils/AxiosAuth';
+import axiosWithAuth from '../../helpers/axioswithAuth'
 import {
   FETCH_USERS_START,
   FETCH_USERS_SUCCESS,

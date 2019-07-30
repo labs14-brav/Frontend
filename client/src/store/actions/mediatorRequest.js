@@ -1,4 +1,4 @@
-import axiosWithAuth from '../../utils/AxiosAuth';
+import axiosWithAuth from '../../helpers/axioswithAuth'
 import {
   MEDIATOR_REQUEST_START,
   MEDIATOR_REQUEST_SUCCESS,
