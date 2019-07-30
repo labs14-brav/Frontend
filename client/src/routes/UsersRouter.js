@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { Login, Settings, MediatorRegistration,AdminHome } from '../views/index';
+import { Login, Settings, MediatorRegistration } from '../views/index';
 import uuid from 'uuid';
 
 /**
@@ -19,7 +19,6 @@ const UsersRouter = [
   <Route key={uuid.v4()} path='/users/register' render={(props) => <Login {...props} />} />,
   <Route key={uuid.v4()} path='/users/settings' render={(props) => <Settings {...props} />} />,
   <Route key={uuid.v4()} path='/users/mediator-registration' render={(props) => <MediatorRegistration {...props} />} />,
-  <Route key={uuid.v4()} path='/users/admin' render={(props) => <AdminHome {...props} />} />,
 
 ];
 

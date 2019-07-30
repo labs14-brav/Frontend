@@ -28,7 +28,8 @@ import {
             "License":"12424ewcsc",
             "experience":"23",
             "specialization":"sevrs",
-            "language":"Sdfsec"
+            "language":"Sdfsec",
+            "uid":"wegqc"
 
         },
         {
@@ -36,7 +37,8 @@ import {
             "License":"124234ewcsc",
             "experience":"2",
             "specialization":"sers",
-            "language":"Sdfsec"
+            "language":"Sdfsec",
+            "uid":"wegqc"
 
         },
         {
@@ -44,7 +46,8 @@ import {
             "License":"124ewcsc",
             "experience":"3",
             "specialization":"sevs",
-            "language":"Sdec"
+            "language":"Sdec",
+            "uid":"wegqc"
 
         }
     ])
@@ -61,6 +64,25 @@ import {
         }
         fetchRequests()
       },[]);
+
+
+
+        const handleSubmitAccept = (uid) => {
+          axios.put(
+              `${process.env.REACT_APP_API_URL}/users/${uid}/mediator-request-accepted`,
+              { headers: { Authorization: localStorage.getItem("token") } }
+          );
+      };
+
+        const handleSubmitDecline = (uid) => {
+        axios.put(
+            `${process.env.REACT_APP_API_URL}/users/${uid}/mediator-request-declined`,
+            { headers: { Authorization: localStorage.getItem("token") } }
+        );
+      };
+
+
+
   
 
 
@@ -77,8 +99,8 @@ import {
                 return <Card className={classes.card}>
                     <li style={{padding:"10px"}} key={index}>{requests.License}</li>
                     <li>{requests.specialization}</li>
-                    <Button>Accept</Button>
-                    <Button>Decline</Button>
+                    <Button onClick={()=>handleSubmitAccept(requests.uid)}>Accept</Button>
+                    <Button onClick={()=>handleSubmitDecline(requests.uid)}>Decline</Button>
                 </Card>
                     
                 })}</ul>

@@ -7,6 +7,7 @@ const AdminHome=(props)=>{
 
             return (
                     <div>
+                        <h1>AdminMediatorRequestList</h1>
                         <AdminMediatorRequestList/>
                     </div>
 
