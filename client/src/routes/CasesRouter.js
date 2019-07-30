@@ -9,7 +9,8 @@ import {
     CaseShow,
     ErrorBoundary,
     CaseForm,
-    UserCaseShow
+    UserCaseShow,
+    MediatorCasesShow,
 } from "../views/index";
 import { CaseDetails } from "../components/index";
 import uuid from "uuid";
@@ -24,6 +25,13 @@ const RootRouter = [
         exact
         path="/cases"
         component={UserCaseShow}
+        errorBoundary={ErrorBoundary}
+    />,
+    <PrivateRoute
+        key={uuid.v4()}
+        exact
+        path="/medator-cases"
+        component={MediatorCasesShow}
         errorBoundary={ErrorBoundary}
     />,
     <PrivateRoute

@@ -28,7 +28,6 @@ const UserCaseShow = props => {
         const classes = useStyles();
   return (
     <>
-        <MediatorCasesShow/>
         <Button variant="outlined" color="primary" className={classes.button}>
             <Link style={{textDecoration:'none', color:'inherit'}}to="/cases/1/mediator-search"> Find a Mediator </Link>
         </Button>
