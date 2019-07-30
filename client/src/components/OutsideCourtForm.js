@@ -3,7 +3,7 @@
  */
 
 import React, { useState, Component } from 'react';
-import axios from 'axios';
+import axioswithAuth from '../helpers/axioswithAuth';
 
 // maerial-ui imports
 
@@ -16,14 +16,6 @@ import Select from '@material-ui/core/Select';
 /**
  * Define component
  */
-
-
-let baseurl
-if (process.env.NODE_ENV === 'production') {
-   baseurl = "https://bravproduction.herokuapp.com/users?offset="
-} else {
-   baseurl = "https://brav-staging.herokuapp.com/users?offset="
-}
 
 // Global Component Styles
 
@@ -71,20 +63,15 @@ const OutsideCourtForm = (props) => {
       const onSubmitHandler = async e =>{
         e.preventDefault();
         console.log(form,"form")
-        await axios
-        .post(`${process.env.REACT_APP_API_URL}/cases`,form,{
-          headers: {
-            "Authorization": localStorage.getItem('token'),
-          },})
-        .then(res => {
-          console.log("add new case: ", res.data)
-        })
-        .catch(err => {
-          console.log("add case err", err.response)
-        })
-        props.history.push("/home");
-      }
-
+        await axioswithAuth.post(`/cases`, form)
+            .then(res => {
+            console.log("add new case: ", res.data)
+            })
+            .catch(err => {
+            console.log("add case err", err.response)
+            })
+            props.history.push("/home");
+        }
 
     return (
 
