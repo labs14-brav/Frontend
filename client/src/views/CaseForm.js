@@ -4,7 +4,7 @@
 
 import React, { useState, Component } from 'react';
 import axios from 'axios';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router';
 
 // maerial-ui imports
 
@@ -53,11 +53,12 @@ const CaseForm = (props) =>{
 
   const courtFormHandler = e => {
     e.preventDefault();
-    return <Redirect to="/cases/new/court"/>
+    props.history.push('/cases/new/court');
   }
 
   const outsideCourtFormHandler = e => {
     e.preventDefault();
+    props.history.push('/cases/new/outside');
   }
 
   return(
