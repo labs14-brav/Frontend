@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { DeactivateAccountButton, SettingsNavBar } from '../components/index';
 import { styled } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 /**
  * Define styles
@@ -26,6 +27,7 @@ const HeaderH2 = styled('h2')({
 const HeaderH3 = styled('h3')({
   color: '#333',
   fontWeight: '800',
+  paddingBottom: '20px',
 });
 
 /**
@@ -44,22 +46,34 @@ function Settings() {
 
         <HeaderH1>My Settings</HeaderH1>
 
-        <Grid container>
-          <Grid item xs={12} sm={6}>
-            <HeaderH3>Contact Info</HeaderH3>
+        <div style={{ padding: '36px' }}>
+          <Grid container spacing={9}>
+            <Grid item xs={12} md={6}>
+              <HeaderH3>Contact Info</HeaderH3>
+              <Typography>Name: </Typography>
+              <Typography>Email: </Typography>
+              <Typography>Phone: </Typography>
+              <Typography>Time Zone: </Typography>
+              <Typography>Location: </Typography>
+            </Grid>
 
+            <Grid item xs={12} md={6}>
+              <HeaderH3>Billing</HeaderH3>
+              <Typography>Card Number: </Typography>
+              <Typography>Expiration Date: </Typography>
+              <Typography>Credit Card Security: </Typography>
+              <Typography>Payment Type: </Typography>
+              <Typography>Country: </Typography>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <HeaderH3>Billing</HeaderH3>
-          </Grid>
-        </Grid>
+        </div>
 
-        <Link to="/users/mediator-registration">Register as Mediator</Link>
-        <DeactivateAccountButton />
       </Grid>
     </Grid>
   );
 }
+// <Link to="/users/mediator-registration">Register as Mediator</Link>
+// <DeactivateAccountButton />
 
 /**
  * Export view
