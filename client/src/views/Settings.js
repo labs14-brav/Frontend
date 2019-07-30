@@ -3,67 +3,16 @@
  */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { DeactivateAccountButton, SettingsNavBar } from '../components/index';
-import { styled } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-
-/**
- * Define styles
- */
-
-const HeaderH1 = styled('h1')({
-  textAlign: 'center',
-  padding: '40px 0px',
-  margin: '0px',
-});
-
-const HeaderH2 = styled('h2')({
-  textAlign: 'center',
-  padding: '10px 0px',
-  color: 'white',
-});
-
-const HeaderH3 = styled('h3')({
-  color: '#333',
-  fontWeight: '800',
-  paddingBottom: '20px',
-});
-
-const BecomeMediatorLink = styled(Link)({
-  color: '#FFF',
-  backgroundColor: '#E55557',
-  boxShadow: '0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)',
-  padding: '6px 16px',
-  textDecoration:'none',
-  lineHeight: '1.75',
-  fontWeight: 500,
-  borderRadius: '4px',
-  '&:hover': {
-    backgroundColor: '#be4345',
-  },
-  '&:active': {
-    boxShadow: '0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12)',
-  }
-})
-
-const EditUserLink = styled(Link)({
-  color: '#333',
-  backgroundColor: '#E5E6E8',
-  boxShadow: '0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)',
-  padding: '6px 76px',
-  textDecoration:'none',
-  lineHeight: '1.75',
-  fontWeight: 500,
-  borderRadius: '4px',
-  '&:hover': {
-    backgroundColor: '#bbbbbb',
-  },
-  '&:active': {
-    boxShadow: '0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12)',
-  }
-})
+import {
+  HeaderH1,
+  HeaderH2,
+  HeaderH3,
+  BecomeMediatorLink,
+  EditUserLink,
+} from './styles/index'
 
 /**
  * Define view
@@ -110,7 +59,7 @@ function Settings() {
             </Grid>
 
             <Grid item xs={12} md={6}>
-              <EditUserLink to="/settings">Edit</EditUserLink>
+              <EditUserLink to="/users/settings">Edit</EditUserLink>
             </Grid>
           </Grid>
 
