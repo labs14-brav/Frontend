@@ -41,7 +41,7 @@ import { OutsideCourtForm, CourtForm } from '../components/index'
           },
           button: {
             margin: theme.spacing(1),
-            width: 50,
+            width: 100,
           },
     
     }));
@@ -50,7 +50,7 @@ import { OutsideCourtForm, CourtForm } from '../components/index'
 
 
 const CaseForm = (props) =>{
-
+const classes = useStyles();
   const courtFormHandler = e => {
     e.preventDefault();
     props.history.push('/cases/new/court');
@@ -64,13 +64,13 @@ const CaseForm = (props) =>{
   return(
     <div className="caseform-container">
       <h3>Is your case a...</h3>
-    <Button onClick={courtFormHandler}>
-      Court Referral
-    </Button>
-      <h3> or a </h3>
-    <Button onClick={outsideCourtFormHandler}>
-      Non-Court Referral?
-    </Button>
+      <Button className={classes.button} onClick={courtFormHandler}>
+        Court Referral
+      </Button>
+        <h3> or a </h3>
+      <Button className={classes.button} onClick={outsideCourtFormHandler}>
+        Non-Court Referral?
+      </Button>
     </div>
   )
   
