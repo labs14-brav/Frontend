@@ -4,7 +4,6 @@
 
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
-import { MediatorCasesShow } from '../components';
 import { makeStyles } from '@material-ui/core/styles';
 import { UserCaseList } from '../components/index';
 import Button from '@material-ui/core/Button';
@@ -28,7 +27,6 @@ const UserCaseShow = props => {
         const classes = useStyles();
   return (
     <>
-        <MediatorCasesShow/>
         <Button variant="outlined" color="primary" className={classes.button}>
             <Link style={{textDecoration:'none', color:'inherit'}}to="/cases/1/mediator-search"> Find a Mediator </Link>
         </Button>

@@ -14,11 +14,22 @@
 /**
  * Grid framework using class-based styles
  */
+ 
+ @import './grid/grid.scss';
+ @import './grid/flex.scss';
+ @import './grid/spacing.scss';
+ 
+ /**
+  * Custom component styles
+  */
 
+@import './landing.scss';
+@import './navbar.scss';
+@import './home.scss';
+@import './mediator-cases-show.scss';
 @import './grid/grid.scss';
 @import './grid/flex.scss';
 @import './grid/spacing.scss';
-@import './landing.scss';
 
 /**
  * Colors
