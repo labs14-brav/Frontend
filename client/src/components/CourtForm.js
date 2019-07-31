@@ -30,7 +30,7 @@ import Select from '@material-ui/core/Select';
           textField: {
             marginLeft: theme.spacing(1),
             marginRight: theme.spacing(1),
-            // width: 200,
+            width: 200,
           },
           dense: {
             marginTop: 19,
@@ -57,7 +57,7 @@ const CourtForm = (props) => {
         "dispute_category":"",
         "court_jurisdiction":"",
         "court_number":"",
-        "court_filing_data":"",
+        "court_filing_date":"",
         "court_case_type":"",
         "case_notes":""
       });
@@ -89,9 +89,18 @@ const CourtForm = (props) => {
     
           <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>
 
-              <Select
-                value={form.dispute_category}
-                onChange={handleChange("dispute_category")}
+               
+            <TextField
+              className={classes.textField}
+              select
+              label="Case Type"
+              value={form.dispute_category}
+              onChange={handleChange("dispute_category")}
+              SelectProps={{
+                MenuProps: {
+                className: classes.menu,
+                }
+              }}
               >
                 <MenuItem value="Landlord/Tenant">Landlord/Tenant</MenuItem>
                 <MenuItem value="Eldercare">Eldercare</MenuItem>
@@ -99,10 +108,12 @@ const CourtForm = (props) => {
                 <MenuItem value="Domestic">Domestic</MenuItem>
                 <MenuItem value="Workplace">Workplace</MenuItem>
                 <MenuItem value="Penal">Penal</MenuItem>
-            </Select>
+            </TextField>
+
+
 
               <TextField
-              label="Third Party Email"
+              label="Dispute Participants"
               type="email"
               name="parties_involved"
               autoComplete="email"
@@ -110,7 +121,23 @@ const CourtForm = (props) => {
               variant="outlined"
               onChange={handleChange("parties_involved")}
               value={form.parties_involved}  
-            />
+              />
+
+              <TextField 
+              label="Participant Contact Info"
+              value={form.parties_contact_info}
+              onChange={handleChange("parties_contact_info")}
+              margin="normal"
+              variant="outlined"/>
+
+              <TextField 
+              label="Dispute Amount"
+              helperText="if applicable"
+              value={form.dispute_amount}
+              onChange={handleChange("dispute_amount")}
+              margin="normal"
+              variant="outlined"/>
+
 
               <TextField
               name="description"
@@ -119,6 +146,46 @@ const CourtForm = (props) => {
               rowsMax="8"
               value={form.description}
               onChange={handleChange("description")}
+              margin="normal"
+              variant="outlined"
+              />
+
+              <TextField
+              name="Jurisdiction_Court_ID"
+              label="Jurisdiction"
+              helperText="or Court ID"
+              value={form.court_jurisdiction}
+              onChange={handleChange("court_jurisdiction")}
+              margin="normal"
+              variant="outlined"
+              />
+
+              <TextField
+              name="court_number"
+              label="Case Number"
+              value={form.court_number}
+              onChange={handleChange("court_number")}
+              margin="normal"
+              variant="outlined"
+              />
+
+              <TextField
+              name="filing_date"
+              label="Case Filing Date"
+              value={form.court_filing_date}
+              onChange={handleChange("court_filing_date")}
+              margin="normal"
+              variant="outlined"
+              />
+
+              <TextField
+              name="case_notes"
+              label="Case Notes"
+              helperText="if applicable"
+              multiline
+              rowsMax="8"
+              value={form.case_notes}
+              onChange={handleChange("case_notes")}
               margin="normal"
               variant="outlined"
               />
