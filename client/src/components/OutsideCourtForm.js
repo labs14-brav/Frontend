@@ -98,7 +98,7 @@ const OutsideCourtForm = (props) => {
             </Select>
 
               <TextField
-              label="Third Party Email"
+              label="Dispute Participants"
               type="email"
               name="parties_involved"
               autoComplete="email"
@@ -106,7 +106,22 @@ const OutsideCourtForm = (props) => {
               variant="outlined"
               onChange={handleChange("parties_involved")}
               value={form.parties_involved}  
-            />
+              />
+              
+              <TextField 
+              label="Participant Contact Information"
+              value={form.parties_contact_info}
+              onChange={handleChange("parties_contact_info")}
+              margin="normal"
+              variant="outlined"/>
+
+              <TextField 
+              label="Dispute Amount"
+              value={form.dispute_amount}
+              onChange={handleChange("dispute_amount")}
+              margin="normal"
+              variant="outlined"/>`
+
 
               <TextField
               name="description"

@@ -8,11 +8,8 @@ import { Route, Redirect } from 'react-router';
 
 // maerial-ui imports
 
-import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
-import Select from '@material-ui/core/Select';
 
 //react component import
 import { OutsideCourtForm, CourtForm } from '../components/index'
@@ -21,32 +18,11 @@ import { OutsideCourtForm, CourtForm } from '../components/index'
 // Global Component Styles
 
     const useStyles = makeStyles(theme => ({
-          container: {
-            display: 'flex',
-            flexWrap: 'wrap',
-            flexDirection:'column',
-            justifyContent:'center',
-            alignItems:'center',
-          },
-          textField: {
-            marginLeft: theme.spacing(1),
-            marginRight: theme.spacing(1),
-            // width: 200,
-          },
-          dense: {
-            marginTop: 19,
-          },
-          menu: {
-            width: 200,
-          },
           button: {
             margin: theme.spacing(1),
             width: 100,
           },
-    
     }));
-
-
 
 
 const CaseForm = (props) =>{
