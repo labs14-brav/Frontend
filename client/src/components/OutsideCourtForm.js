@@ -30,7 +30,7 @@ import Select from '@material-ui/core/Select';
           textField: {
             marginLeft: theme.spacing(1),
             marginRight: theme.spacing(1),
-            // width: 200,
+            width: 200,
           },
           dense: {
             marginTop: 19,
@@ -84,10 +84,18 @@ const OutsideCourtForm = (props) => {
           <h1 style={{textAlign:"center"}}>Case form</h1>
     
           <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>
-
-              <Select
-                value={form.dispute_category}
-                onChange={handleChange("dispute_category")}
+            
+            <TextField
+              className={classes.textField}
+              select
+              label="Dispute Type"
+              value={form.dispute_category}
+              onChange={handleChange("dispute_category")}
+              SelectProps={{
+                MenuProps: {
+                className: classes.menu,
+                }
+              }}
               >
                 <MenuItem value="Landlord/Tenant">Landlord/Tenant</MenuItem>
                 <MenuItem value="Eldercare">Eldercare</MenuItem>
@@ -95,7 +103,7 @@ const OutsideCourtForm = (props) => {
                 <MenuItem value="Domestic">Domestic</MenuItem>
                 <MenuItem value="Workplace">Workplace</MenuItem>
                 <MenuItem value="Penal">Penal</MenuItem>
-            </Select>
+            </TextField>
 
               <TextField
               label="Dispute Participants"
@@ -107,9 +115,9 @@ const OutsideCourtForm = (props) => {
               onChange={handleChange("parties_involved")}
               value={form.parties_involved}  
               />
-              
+
               <TextField 
-              label="Participant Contact Information"
+              label="Participant Contact Info"
               value={form.parties_contact_info}
               onChange={handleChange("parties_contact_info")}
               margin="normal"
@@ -117,10 +125,11 @@ const OutsideCourtForm = (props) => {
 
               <TextField 
               label="Dispute Amount"
+              helperText="if applicable"
               value={form.dispute_amount}
               onChange={handleChange("dispute_amount")}
               margin="normal"
-              variant="outlined"/>`
+              variant="outlined"/>
 
 
               <TextField
