@@ -9,7 +9,7 @@ import { NavBar } from "../components";
 import {
     MediatorPendingCaseList,
     MediatorAcceptedCaseList,
-    MediatorDeclinedCaseList
+    MediatorCompletedCaseList
 } from "../components";
 
 const useStyles = makeStyles({
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 export default function MediatorCasesShow() {
     const classes = useStyles();
 
-    const [selectedTab, setSelectedTab] = useState("pending")
+    const [selectedTab, setSelectedTab] = useState("pending");
 
     useEffect(() => {
         
@@ -34,7 +34,7 @@ export default function MediatorCasesShow() {
             <div className="mediator-cases-show">
                 <Button onClick={() => setSelectedTab("pending")}>Pending</Button>
                 <Button onClick={() => setSelectedTab("accepted")}>Accepted</Button>
-                <Button onClick={() => setSelectedTab("declined")} >Declined</Button>
+                <Button onClick={() => setSelectedTab("completed")} >Completed</Button>
                { selectedTab === "pending" ? <div>
                     <hi>Pending</hi>
                     <MediatorPendingCaseList />
@@ -43,9 +43,9 @@ export default function MediatorCasesShow() {
                 <hi>Accepted</hi>
                 <MediatorAcceptedCaseList />
                 </div> : null}
-                { selectedTab === "declined" ? <div>
-                    <hi>Declined</hi>
-                    <MediatorDeclinedCaseList />
+                { selectedTab === "completed" ? <div>
+                    <hi>Completed</hi>
+                    <MediatorCompletedCaseList />
                 </div> : null}
             </div>
         </>

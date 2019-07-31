@@ -9,8 +9,7 @@ import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
 import AcceptCaseModal from "./modals/AcceptCaseModal";
 import DeclineCaseModal from "./modals/DeclineCaseModal";
-
-import axioswithAuth from "../helpers/axioswithAuth";
+import CompleteCaseModal from "./modals/CompleteCaseModal";
 
 //styles
 import "./UserCaseCard.scss";
@@ -78,8 +77,13 @@ const MediatorCaseCard = props => {
                     <h6>Involves: {props.case.parties_involved} </h6>
                 </CardContent>
                 <CardActions>
-                    <AcceptCaseModal caseId={props.case.id} />
-                    <DeclineCaseModal caseId={props.case.id} />
+                   
+                    { props.case.case_declined_at === null && props.case.case_accepted_at === null && props.case.case_completed_at === null ?<AcceptCaseModal fetchCases={props.fetchCases} caseId={props.case.id} /> : null }
+
+                    { props.case.case_declined_at === null && props.case.case_accepted_at === null && props.case.case_completed_at === null ?<DeclineCaseModal fetchCases={props.fetchCases} caseId={props.case.id} /> : null}
+
+                    { props.case.case_accepted_at && props.case.case_declined_at === null && props.case.case_completed_at === null ?<CompleteCaseModal fetchCases={props.fetchCases} caseId={props.case.id} /> : null }
+
                     <Button onClick={handleOpen}>Case Details</Button>
                 </CardActions>
             </Card>

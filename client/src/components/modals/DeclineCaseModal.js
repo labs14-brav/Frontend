@@ -94,7 +94,7 @@ class AcceptCaseModal extends React.Component {
         .put(`/cases/${this.props.caseId}/case-request-declined`)
         .then((res) => {
             this.setState({ open: false });
-            console.log(res);
+            this.props.fetchCases();
         })
         .catch((err) => {
             console.log(err);

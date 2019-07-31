@@ -3,12 +3,12 @@ import MediatorCaseCard from "./MediatorCaseCard";
 
 import axioswithAuth from "../helpers/axioswithAuth";
 
-const MediatorCaseList = props => {
+const MediatorCompletedCaseList = props => {
     const [cases, setCases] = useState([]);
 
     async function fetchCases() {
         const res = await axioswithAuth().get(
-            `${process.env.REACT_APP_API_URL}/cases/pending-cases`
+            `${process.env.REACT_APP_API_URL}/cases/completed-cases`
         );
         // endpoint needs to be updated to a specific user's cases.
         setCases(res.data.fetch_cases);
@@ -27,4 +27,4 @@ const MediatorCaseList = props => {
     );
 };
 
-export default MediatorCaseList;
+export default MediatorCompletedCaseList;

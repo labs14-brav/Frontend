@@ -60,7 +60,7 @@ const OpenDialogueButton = withStyles(styles)(props => {
             className={classes.openButton}
             onClick={onOpen}
         >
-            Accept
+            Complete
         </Button>
     );
 });
@@ -78,7 +78,7 @@ const DialogActions = withStyles(theme => ({
     }
 }))(MuiDialogActions);
 
-class AcceptCaseModal extends React.Component {
+class CompleteCaseModal extends React.Component {
     state = {
         open: false
     };
@@ -91,7 +91,7 @@ class AcceptCaseModal extends React.Component {
     
     handleClose = () => {
         axioswithAuth()
-        .put(`/cases/${this.props.caseId}/case-request-accepted`)
+        .put(`/cases/${this.props.caseId}/case-request-completed`)
         .then((res) => {
             this.setState({ open: false });
             this.props.fetchCases();
@@ -117,7 +117,7 @@ class AcceptCaseModal extends React.Component {
                         Are you sure you?
                     </DialogTitle>
                         <Button onClick={this.handleClose} color="primary">
-                            Yes, Accept
+                            Yes, Complete
                         </Button>
                     <DialogActions>
                     </DialogActions>
@@ -127,4 +127,4 @@ class AcceptCaseModal extends React.Component {
     }
 }
 
-export default AcceptCaseModal;
+export default CompleteCaseModal;
