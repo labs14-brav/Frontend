@@ -95,6 +95,7 @@ const CourtForm = (props) => {
               select
               label="Case Type"
               value={form.dispute_category}
+              helperText="required"
               onChange={handleChange("dispute_category")}
               SelectProps={{
                 MenuProps: {
