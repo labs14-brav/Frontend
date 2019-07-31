@@ -48,8 +48,7 @@ import Select from '@material-ui/core/Select';
 
 const CourtForm = (props) => {
     const classes = useStyles();
-  
-      const [form, setValues] = useState({
+    const [form, setValues] = useState({
         "court_case": true,
         "parties_involved":"",
         "parties_contact_info":"",
@@ -58,25 +57,27 @@ const CourtForm = (props) => {
         "court_jurisdiction":"",
         "court_number":"",
         "court_filing_date":"",
-        "court_case_type":"",
         "case_notes":""
       });
       
       
       const handleChange = name => event => {
+        console.log(name)
+        console.log(event.target.value)
         setValues({ ...form, [name]: event.target.value });
       };
       
       const onSubmitHandler = async e =>{
         e.preventDefault();
         console.log(form,"form")
-        await axioswithAuth.post(`/cases`, form)
+        let created = await axioswithAuth().post(`/cases`, form)
         .then(res => {
           console.log("add new case: ", res.data)
         })
         .catch(err => {
           console.log("add case err", err.response)
         })
+        console.log(created);
         props.history.push("/home");
       }
 
@@ -108,6 +109,7 @@ const CourtForm = (props) => {
                 <MenuItem value="Domestic">Domestic</MenuItem>
                 <MenuItem value="Workplace">Workplace</MenuItem>
                 <MenuItem value="Penal">Penal</MenuItem>
+                <MenuItem value="Other">Other</MenuItem>
             </TextField>
 
 
@@ -125,6 +127,7 @@ const CourtForm = (props) => {
 
               <TextField 
               label="Participant Contact Info"
+              name="parties_contact_info"
               value={form.parties_contact_info}
               onChange={handleChange("parties_contact_info")}
               margin="normal"
@@ -132,6 +135,7 @@ const CourtForm = (props) => {
 
               <TextField 
               label="Dispute Amount"
+              name="dispute_amount"
               helperText="if applicable"
               value={form.dispute_amount}
               onChange={handleChange("dispute_amount")}
@@ -151,7 +155,7 @@ const CourtForm = (props) => {
               />
 
               <TextField
-              name="Jurisdiction_Court_ID"
+              name="court_jurisdiction"
               label="Jurisdiction"
               helperText="or Court ID"
               value={form.court_jurisdiction}
@@ -170,7 +174,7 @@ const CourtForm = (props) => {
               />
 
               <TextField
-              name="filing_date"
+              name="court_filing_date"
               label="Case Filing Date"
               value={form.court_filing_date}
               onChange={handleChange("court_filing_date")}

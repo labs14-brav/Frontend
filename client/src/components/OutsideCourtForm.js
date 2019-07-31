@@ -67,13 +67,14 @@ const OutsideCourtForm = (props) => {
       const onSubmitHandler = async e =>{
         e.preventDefault();
         console.log(form,"form")
-        await axioswithAuth.post(`/cases`, form)
+        let posted = await axioswithAuth().post(`/cases`, form)
             .then(res => {
             console.log("add new case: ", res.data)
             })
             .catch(err => {
             console.log("add case err", err.response)
             })
+            console.log(posted);
             props.history.push("/home");
         }
 
@@ -84,7 +85,7 @@ const OutsideCourtForm = (props) => {
           <h1 style={{textAlign:"center"}}>Case form</h1>
     
           <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>
-            
+
             <TextField
               className={classes.textField}
               select
