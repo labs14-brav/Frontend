@@ -57,6 +57,8 @@ function MediatorFilter(props) {
     
     //material ui styles
     const classes = useStyles();
+    const languages = ["english", "spanish", "french"];
+    const specializations = ["accounting", "divorce", "landlord & tenant"];
 
     //mimic CDM to populate the inputs
     useEffect(() => {
@@ -144,8 +146,9 @@ function MediatorFilter(props) {
                         }
                     }}
                     >
-                        <MenuItem value="Landlord/Tenant">Landlord/Tenant</MenuItem>
-                        <MenuItem value="Penal">Penal</MenuItem>
+                        <MenuItem value={`<2 years`}>{`less than 2 years`}</MenuItem>
+                        <MenuItem value={`2-5 years`}>{`2-5 years`}</MenuItem>
+                        <MenuItem value={`>5 years`}>{`more than 5 years`}</MenuItem>
                 </TextField>
             </div>
             </form>
