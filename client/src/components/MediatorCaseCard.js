@@ -62,12 +62,25 @@ const MediatorCaseCard = props => {
      These two functions are for the text input in the modal
      */
     const acceptRequest = () => {
-        console.log("accepting request...")
+        axioswithAuth()
+        .put("/cases/1/case-request-accepted")
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => {
+            console.log(err);
+       });
     };
     
     const declineRequest = () => {
-        console.log("declining request...")
-
+        axioswithAuth()
+        .put("/cases/1/case-request-declined")
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => {
+            console.log(err);
+       });
     };
 
     const handleChanges = e => {
