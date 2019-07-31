@@ -54,6 +54,7 @@ const CourtForm = (props) => {
         "parties_contact_info":"",
         "description":"",
         "dispute_category":"",
+        "dispute_amount":null,
         "court_jurisdiction":"",
         "court_number":"",
         "court_filing_date":"",
@@ -62,22 +63,20 @@ const CourtForm = (props) => {
       
       
       const handleChange = name => event => {
-        console.log(name)
-        console.log(event.target.value)
         setValues({ ...form, [name]: event.target.value });
       };
       
       const onSubmitHandler = async e =>{
         e.preventDefault();
-        console.log(form,"form")
+        // console.log(form,"form")
         let created = await axioswithAuth().post(`/cases`, form)
         .then(res => {
-          console.log("add new case: ", res.data)
+          console.log(res.data)
         })
         .catch(err => {
-          console.log("add case err", err.response)
+          console.error(err.response)
         })
-        console.log(created);
+        // console.log(created);
         props.history.push("/home");
       }
 

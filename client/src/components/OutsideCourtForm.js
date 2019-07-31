@@ -66,15 +66,15 @@ const OutsideCourtForm = (props) => {
       
       const onSubmitHandler = async e =>{
         e.preventDefault();
-        console.log(form,"form")
+        // console.log(form,"form")
         let posted = await axioswithAuth().post(`/cases`, form)
             .then(res => {
             console.log("add new case: ", res.data)
             })
             .catch(err => {
-            console.log("add case err", err.response)
+            console.error(err.response)
             })
-            console.log(posted);
+            // console.log(posted);
             props.history.push("/home");
         }
 
