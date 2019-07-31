@@ -30,6 +30,7 @@ function Search(props) {
   return (
     <div className="App">
         <h3> Search for a Mediator</h3>
+        <MediatorFilter />
         <MediatorList />
     </div>
   )
