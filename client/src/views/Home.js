@@ -16,14 +16,14 @@ import {
  */
 
 let baseurl
-if (process.env.NODE_ENV === 'production') 
+if (process.env.NODE_ENV === 'production')
 {
    baseurl = "https://bravproduction.herokuapp.com/users?offset="
 }else if(process.env.NODE_ENV === 'staging')
 {
   baseurl = "https://brav-staging.herokuapp.com/users?offset="
-} 
-else 
+}
+else
 {
    baseurl = "http://localhost:8888/users?offset="
 }
