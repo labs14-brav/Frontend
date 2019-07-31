@@ -7,6 +7,8 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
+import AcceptCaseModal from "./modals/AcceptCaseModal";
+import DeclineCaseModal from "./modals/DeclineCaseModal";
 
 import axioswithAuth from "../helpers/axioswithAuth";
 
@@ -62,14 +64,14 @@ const MediatorCaseCard = props => {
      These two functions are for the text input in the modal
      */
     const acceptRequest = () => {
-        axioswithAuth()
-        .put("/cases/1/case-request-accepted")
-        .then((res) => {
-            console.log(res);
-        })
-        .catch((err) => {
-            console.log(err);
-       });
+    //     axioswithAuth()
+    //     .put("/cases/1/case-request-accepted")
+    //     .then((res) => {
+    //         console.log(res);
+    //     })
+    //     .catch((err) => {
+    //         console.log(err);
+    //    });
     };
     
     const declineRequest = () => {
@@ -97,15 +99,8 @@ const MediatorCaseCard = props => {
                     <h6>Involves: {props.case.parties_involved} </h6>
                 </CardContent>
                 <CardActions>
-                    <Button
-                        variant="outlined"
-                        color="primary"
-                        className={classes.button}
-                        onClick={acceptRequest}
-                    >
-                        Accept
-                    </Button>
-                    <Button onClick={declineRequest}>Decline</Button>
+                    <AcceptCaseModal />
+                    <DeclineCaseModal />
                     <Button onClick={handleOpen}>Case Details</Button>
                 </CardActions>
             </Card>
