@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import MediatorList from '../components/MediatorList';
+import { MediatorList, MediatorFilter } from '../components/index';
 
 
 /**
