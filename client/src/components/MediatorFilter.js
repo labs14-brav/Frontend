@@ -81,7 +81,6 @@ function MediatorFilter(props) {
                 label="Specialty"
                 name="specialty"
                 value={filter.specialty}
-                helperText="required"
                 onChange={handleChanges}
                 SelectProps={{
                     MenuProps: {
@@ -103,7 +102,6 @@ function MediatorFilter(props) {
                 label="Price Range"
                 name="price"
                 value={filter.price}
-                helperText="required"
                 onChange={handleChanges}
                 SelectProps={{
                     MenuProps: {
@@ -122,7 +120,6 @@ function MediatorFilter(props) {
                     label="Language"
                     name="language"
                     value={filter.language}
-                    helperText="required"
                     onChange={handleChanges}
                     SelectProps={{
                         MenuProps: {
@@ -140,7 +137,6 @@ function MediatorFilter(props) {
                     label="Experience"
                     name="experience"
                     value={filter.experience}
-                    helperText="required"
                     onChange={handleChanges}
                     SelectProps={{
                         MenuProps: {
