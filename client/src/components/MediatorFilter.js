@@ -44,10 +44,16 @@ const useStyles = makeStyles(theme => ({
 
 
 function MediatorFilter(props) {
-    const [specialty, setSpecialty] = useState("");
-    const [price, setPrice] = useState("");
-    const [experience, setExperience] = useState("");
-    const [language, setLanguage] = useState("");
+    // const [specialty, setSpecialty] = useState("");
+    // const [price, setPrice] = useState("");
+    // const [experience, setExperience] = useState("");
+    // const [language, setLanguage] = useState("");
+    const [filter, setFilter] = useState({
+        specialty: '',
+        language: '',
+        price: '',
+        experience: '',
+    })
     
     //material ui styles
     const classes = useStyles();
@@ -59,7 +65,10 @@ function MediatorFilter(props) {
 
     //handleChanges for inputs
     const handleChanges = event => {
-
+        console.log(event.target);
+        setFilter({ ...filter,
+            [event.target.name] : event.target.value,
+        })
     }
 
     return (
@@ -70,9 +79,10 @@ function MediatorFilter(props) {
                 className={classes.textField}
                 select
                 label="Specialty"
-                value={specialty}
+                name="specialty"
+                value={filter.specialty}
                 helperText="required"
-                onChange={''}
+                onChange={handleChanges}
                 SelectProps={{
                     MenuProps: {
                     className: classes.menu,
@@ -91,9 +101,10 @@ function MediatorFilter(props) {
                 className={classes.textField}
                 select
                 label="Price Range"
-                value={price}
+                name="price"
+                value={filter.price}
                 helperText="required"
-                onChange={''}
+                onChange={handleChanges}
                 SelectProps={{
                     MenuProps: {
                     className: classes.menu,
@@ -109,9 +120,10 @@ function MediatorFilter(props) {
                     className={classes.textField}
                     select
                     label="Language"
-                    value={language}
+                    name="language"
+                    value={filter.language}
                     helperText="required"
-                    onChange={''}
+                    onChange={handleChanges}
                     SelectProps={{
                         MenuProps: {
                         className: classes.menu,
@@ -126,9 +138,10 @@ function MediatorFilter(props) {
                     className={classes.textField}
                     select
                     label="Experience"
-                    value={experience}
+                    name="experience"
+                    value={filter.experience}
                     helperText="required"
-                    onChange={''}
+                    onChange={handleChanges}
                     SelectProps={{
                         MenuProps: {
                         className: classes.menu,
