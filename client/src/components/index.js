@@ -9,4 +9,6 @@ export { default as MediatorCasesShow } from './MediatorCasesShow';
 export { default as NavBar } from './NavBar';
 export { default as SettingsNavBar } from './SettingsNavBar';
 export { default as UserCaseList } from './UserCaseList';
+export { default as OutsideCourtForm } from './OutsideCourtForm';
+export { default as CourtForm } from './CourtForm';
 export {default as AdminMediatorRequestList} from './AdminMediatorRequestList';
