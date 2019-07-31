@@ -71,6 +71,7 @@ function MediatorRegistration() {
     const handleSubmit = () => {
         values.specialization = JSON.stringify(values.specialization);
         values.language = JSON.stringify(values.language);
+        console.log(values,"values")
         const id = localStorage.getItem("id");
         axios.put(
             `${process.env.REACT_APP_API_URL}/users/${id}/mediator-upgrade`,
