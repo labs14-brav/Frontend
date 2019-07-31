@@ -63,27 +63,6 @@ const MediatorCaseCard = props => {
     /**
      These two functions are for the text input in the modal
      */
-    const acceptRequest = () => {
-    //     axioswithAuth()
-    //     .put("/cases/1/case-request-accepted")
-    //     .then((res) => {
-    //         console.log(res);
-    //     })
-    //     .catch((err) => {
-    //         console.log(err);
-    //    });
-    };
-    
-    const declineRequest = () => {
-        axioswithAuth()
-        .put("/cases/1/case-request-declined")
-        .then((res) => {
-            console.log(res);
-        })
-        .catch((err) => {
-            console.log(err);
-       });
-    };
 
     const handleChanges = e => {
         setText(e.target.value);
@@ -99,8 +78,8 @@ const MediatorCaseCard = props => {
                     <h6>Involves: {props.case.parties_involved} </h6>
                 </CardContent>
                 <CardActions>
-                    <AcceptCaseModal />
-                    <DeclineCaseModal />
+                    <AcceptCaseModal caseId={props.case.id} />
+                    <DeclineCaseModal caseId={props.case.id} />
                     <Button onClick={handleOpen}>Case Details</Button>
                 </CardActions>
             </Card>

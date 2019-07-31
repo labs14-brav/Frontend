@@ -6,7 +6,11 @@ import Grid from "@material-ui/core/Grid";
 import { Button, Card, makeStyles, Container } from "@material-ui/core";
 
 import { NavBar } from "../components";
-import MediatorCaseList from "../components/MediatorPendingCaseList";
+import {
+    MediatorPendingCaseList,
+    MediatorAcceptedCaseList,
+    MediatorDeclinedCaseList
+} from "../components";
 
 const useStyles = makeStyles({
     card: {
@@ -18,27 +22,31 @@ const useStyles = makeStyles({
 export default function MediatorCasesShow() {
     const classes = useStyles();
 
-    const [cases, setCases] = useState([]);
+    const [selectedTab, setSelectedTab] = useState("pending")
+
     useEffect(() => {
-        async function fetchCases() {
-            const res = await axios.get(
-                `${process.env.REACT_APP_API_URL}/cases`,
-                {
-                    headers: {
-                        Authorization: localStorage.getItem("token")
-                    }
-                }
-            );
-            setCases(res.data);
-        }
-        fetchCases();
+        
     }, []);
 
     return (
         <>
             <NavBar />
             <div className="mediator-cases-show">
-                <MediatorCaseList />
+                <Button onClick={() => setSelectedTab("pending")}>Pending</Button>
+                <Button onClick={() => setSelectedTab("accepted")}>Accepted</Button>
+                <Button onClick={() => setSelectedTab("declined")} >Declined</Button>
+               { selectedTab === "pending" ? <div>
+                    <hi>Pending</hi>
+                    <MediatorPendingCaseList />
+                </div> : null }
+                { selectedTab === "accepted" ? <div>
+                <hi>Accepted</hi>
+                <MediatorAcceptedCaseList />
+                </div> : null}
+                { selectedTab === "declined" ? <div>
+                    <hi>Declined</hi>
+                    <MediatorDeclinedCaseList />
+                </div> : null}
             </div>
         </>
     );

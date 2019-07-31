@@ -91,7 +91,7 @@ class AcceptCaseModal extends React.Component {
     
     handleClose = () => {
         axioswithAuth()
-        .put("/cases/1/case-request-accepted")
+        .put(`/cases/${this.props.caseId}/case-request-accepted`)
         .then((res) => {
             this.setState({ open: false });
             console.log(res);
