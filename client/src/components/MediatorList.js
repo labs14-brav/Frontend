@@ -16,7 +16,15 @@ const MediatorList = (props) => {
 
     useEffect(() => {
         async function fetchMediators() {
-            const res = await axioswithAuth().get(`${process.env.REACT_APP_API_URL}/mediators`);
+            const res = await axioswithAuth().get(`${process.env.REACT_APP_API_URL}/mediators`, {
+                params: {
+                    language: '',
+                    price: '',
+                    specialty: '',
+                    experience: '',
+                }
+            });
+            console.log(res);
             setMediators(res.data);
             // setMediators(testMediators);
         }

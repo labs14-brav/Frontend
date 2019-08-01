@@ -105,9 +105,9 @@ function MediatorFilter(props) {
                     }
                 }}
                 >
-                    <MenuItem value="<25$">Less than 25$</MenuItem>
-                    <MenuItem value="25-75$">25-75$</MenuItem>
-                    <MenuItem value=">75$">Greater than 75$ </MenuItem>
+                    <MenuItem value="<25">Less than 25$</MenuItem>
+                    <MenuItem value="25-75">25-75$</MenuItem>
+                    <MenuItem value=">75">Greater than 75$ </MenuItem>
                 </TextField>
             </div>
             <div className="right-container">

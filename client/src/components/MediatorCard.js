@@ -20,6 +20,7 @@ import CardContent from '@material-ui/core/CardContent';
  })
 
 const MediatorCard = (props) => {
+  console.log("Mediator card props", props)
   const classes = useStyles();
   return (
     <Card >

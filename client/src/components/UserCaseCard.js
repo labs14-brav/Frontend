@@ -97,7 +97,14 @@ const UserCaseCard = (props) => {
             </CardContent>
             <CardActions>
                 <Button variant="outlined" color="primary" className={classes.button}>
-                    <Link style={{textDecoration:'none', color:'inherit'}}to= {`/cases/${props.case.id}/mediator-search`}> Find a Mediator </Link>
+                    <Link style={{textDecoration:'none', color:'inherit'}} 
+                    to= {{
+                        pathname: `/cases/${props.case.id}/mediator-search`,
+                        state: {
+                            currentcase: props.case
+                        }
+                    }}
+                    > Find a Mediator </Link>
                 </Button>
                 <Button onClick={handleOpen}>
                     Edit Case
