@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
 
 function MediatorFilter(props) {
     const [filter, setFilter] = useState({
-        specialty: '',
+        specialization: '',
         language: '',
         price: '',
         experience: '',
@@ -59,7 +59,7 @@ function MediatorFilter(props) {
     //mimic CDM to populate the inputs
     useEffect(() => {
         setFilter({
-            specialty: props.currentcase.dispute_category
+            specialization: props.currentcase.dispute_category
         })
     }, [])
 
@@ -79,8 +79,8 @@ function MediatorFilter(props) {
                 className={classes.textField}
                 select
                 label="Specialty"
-                name="specialty"
-                value={filter.specialty}
+                name="specialization"
+                value={filter.specialization}
                 onChange={handleChanges}
                 SelectProps={{
                     MenuProps: {
