@@ -12,11 +12,19 @@ import Grid from '@material-ui/core/Grid';
  */
 
 const MediatorList = (props) => {
+    console.log(props);
     const [mediators, setMediators] = useState([]);
 
     useEffect(() => {
         async function fetchMediators() {
-            const res = await axioswithAuth().get(`${process.env.REACT_APP_API_URL}/mediators`);
+            const res = await axioswithAuth().get(`${process.env.REACT_APP_API_URL}/mediators`, {
+                params: {
+                    language: props.filter.language,
+                    price: props.filter.price,
+                    specialty: props.filter.specialty,
+                    experience: props.filter.experience,
+                }
+            });
             setMediators(res.data);
             // setMediators(testMediators);
         }
