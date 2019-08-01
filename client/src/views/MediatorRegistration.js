@@ -14,6 +14,7 @@ import {
     Checkbox,
     ListItemText
 } from "@material-ui/core";
+import axioswithAuth from '../helpers/axioswithAuth';
 
 // adds styles to select inputs
 const ITEM_HEIGHT = 48;
@@ -46,10 +47,13 @@ const useStyles = makeStyles(theme => ({
     },
     noLabel: {
         marginTop: theme.spacing(3)
+    },
+    PriceInput: { 
+        width: 75,
     }
 }));
 
-function MediatorRegistration() {
+function MediatorRegistration(props) {
     // this is the state of all the inputs in the form
     const [values, setValues] = useState({
         type: "user",
@@ -74,11 +78,16 @@ function MediatorRegistration() {
         values.language = JSON.stringify(values.language);
         console.log(values,"values")
         const id = localStorage.getItem("id");
-        axios.put(
-            `${process.env.REACT_APP_API_URL}/users/${id}/mediator-upgrade`,
-            values,
-            { headers: { Authorization: localStorage.getItem("token") } }
-        );
+        axioswithAuth()
+            .put(`/users/${id}/mediator-upgrade`, values)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(error => {
+                console.error(error);
+            })
+            //need to add some sort of confirmation message here
+        props.history.push('/users/settings')
     };
 
     return (
@@ -118,7 +127,8 @@ function MediatorRegistration() {
                         value={values.specialization}
                         onChange={handleChange("specialization")}
                         input={<Input id="select-multiple-checkbox" />}
-                        renderValue={selected => selected.join(", ")}
+                        // renderValue={selected => selected.join(", ")}
+                        renderValue={() => values.specialization.join(", ")}
                         MenuProps={MenuProps}
                     >
                         {specializations.map(name => (
@@ -156,6 +166,19 @@ function MediatorRegistration() {
                         ))}
                     </Select>
                 </FormControl>
+                    <TextField
+                        id="standard-dense"
+                        type="number"
+                        label="Price"
+                        value={values.price}
+                        onChange={handleChange("price")}
+                        className={classes.PriceInput}
+                        margin="dense"
+                        helperText="Dollars/Hour"
+                    />
+                <FormControl>
+
+                    </FormControl>
 
                 <Button onClick={() => handleSubmit()}>Submit</Button>
             </FormGroup>
