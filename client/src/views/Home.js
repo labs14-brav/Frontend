@@ -4,10 +4,20 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { NavBar } from "../components/index";
+import { NavBar, SideNavBlock } from "../components/index";
 import { Link } from "react-router-dom";
 
-import { Button } from "@material-ui/core";
+import { 
+    Button,
+    Grid, 
+} from "@material-ui/core";
+import {
+    HeaderH1,
+    HeaderH2,
+    HeaderH3,
+    BecomeMediatorLink,
+    EditUserLink,
+  } from './styles/index'
 
 /**
  * Locals
@@ -42,24 +52,15 @@ function Home() {
     return (
         <>
             <NavBar />
-            <div className="home">
-                <Link to="/cases/new">
-                    <Button variant="contained" color="primary">
-                        {" "}
-                        Create a Case{" "}
-                    </Button>
-                </Link>
-                <Link to="/cases">
-                    <Button variant="contained" color="primary">
-                        View Cases - User
-                    </Button>
-                </Link>
-                <Link to="/mediator-cases">
-                    <Button variant="contained" color="primary">
-                        View Cases - Mediator
-                    </Button>
-                </Link>
-            </div>
+            <Grid container style={{ height: '100vh' }}>
+
+                <SideNavBlock />
+                <Grid item xs={8} sm={9} lg={10} style={{ backgroundColor: '#ECF6FF' }}>
+                    
+                </Grid>
+
+
+            </Grid>
         </>
     );
 }
