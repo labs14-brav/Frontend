@@ -55,14 +55,15 @@ function MediatorRegistration() {
         type: "user",
         license: "",
         experience: "",
+        price: 0,
         specialization: [],
         language: [],
         general_details: ""
     });
 
     const classes = useStyles();
-    const languages = ["english", "spanish", "french"];
-    const specializations = ["accounting", "divorce", "landlord & tenant"];
+    const languages = ["English", "Spanish", "Chinese"];
+    const specializations = ["Landlord/Tenant", "Eldercare", "Commercial", "Domestic", "Workplace", "Penal", "Other"];
 
     const handleChange = prop => e => {
         setValues({ ...values, [prop]: e.target.value });
@@ -102,9 +103,9 @@ function MediatorRegistration() {
                         onChange={handleChange("experience")}
                         value={values.experience}
                     >
-                        <MenuItem value={`<2yrs`}>{`less than 2yrs`}</MenuItem>
-                        <MenuItem value={`2-5yrs`}>{`2-5yrs`}</MenuItem>
-                        <MenuItem value={`>5yrs`}>{`more than 5yrs`}</MenuItem>
+                        <MenuItem value={`<2 years`}>{`Less than 2 years`}</MenuItem>
+                        <MenuItem value={`2-5 years`}>{`2-5 years`}</MenuItem>
+                        <MenuItem value={`>5 years`}>{`More than 5 years`}</MenuItem>
                     </Select>
                 </FormControl>
 

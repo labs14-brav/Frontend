@@ -147,9 +147,9 @@ function MediatorFilter(props) {
                         }
                     }}
                     >
-                        <MenuItem value={`<2 years`}>{`less than 2 years`}</MenuItem>
+                        <MenuItem value={`<2 years`}>{`Less than 2 years`}</MenuItem>
                         <MenuItem value={`2-5 years`}>{`2-5 years`}</MenuItem>
-                        <MenuItem value={`>5 years`}>{`more than 5 years`}</MenuItem>
+                        <MenuItem value={`>5 years`}>{`More than 5 years`}</MenuItem>
                 </TextField>
             </div>
             </form>
