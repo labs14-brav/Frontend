@@ -22,7 +22,7 @@ const MediatorList = (props) => {
                 params: {
                     language: props.filter.language,
                     price: props.filter.price,
-                    specialty: props.filter.specialty,
+                    specialization: props.filter.specialization,
                     experience: props.filter.experience,
                 }
             });
