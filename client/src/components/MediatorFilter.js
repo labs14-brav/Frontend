@@ -49,13 +49,17 @@ function MediatorFilter(props) {
         price: '',
         experience: '',
     })
+
+    console.log("filter props", props);
     
     //material ui styles
     const classes = useStyles();
 
     //mimic CDM to populate the inputs
     useEffect(() => {
-
+        setFilter({
+            specialty: props.currentcase.dispute_category
+        })
     }, [])
 
     //handleChanges for inputs
