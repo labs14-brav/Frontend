@@ -4,9 +4,6 @@ import React, { useState, useEffect } from 'react';
  * Material UI dependencies
  */
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
@@ -44,10 +41,6 @@ const useStyles = makeStyles(theme => ({
 
 
 function MediatorFilter(props) {
-    // const [specialty, setSpecialty] = useState("");
-    // const [price, setPrice] = useState("");
-    // const [experience, setExperience] = useState("");
-    // const [language, setLanguage] = useState("");
     const [filter, setFilter] = useState({
         specialty: '',
         language: '',
@@ -57,8 +50,6 @@ function MediatorFilter(props) {
     
     //material ui styles
     const classes = useStyles();
-    const languages = ["english", "spanish", "french"];
-    const specializations = ["accounting", "divorce", "landlord & tenant"];
 
     //mimic CDM to populate the inputs
     useEffect(() => {
@@ -96,6 +87,7 @@ function MediatorFilter(props) {
                     <MenuItem value="Domestic">Domestic</MenuItem>
                     <MenuItem value="Workplace">Workplace</MenuItem>
                     <MenuItem value="Penal">Penal</MenuItem>
+                    <MenuItem value="Other">Other</MenuItem>
                 </TextField>
 
                 <TextField
@@ -111,8 +103,9 @@ function MediatorFilter(props) {
                     }
                 }}
                 >
-                    <MenuItem value="Landlord/Tenant">Landlord/Tenant</MenuItem>
-                    <MenuItem value="Penal">Penal</MenuItem>
+                    <MenuItem value="<25$">Less than 25$</MenuItem>
+                    <MenuItem value="25-75$">25-75$</MenuItem>
+                    <MenuItem value=">75$">Greater than 75$ </MenuItem>
                 </TextField>
             </div>
             <div className="right-container">
@@ -129,8 +122,9 @@ function MediatorFilter(props) {
                         }
                     }}
                     >
-                        <MenuItem value="Landlord/Tenant">Landlord/Tenant</MenuItem>
-                        <MenuItem value="Penal">Penal</MenuItem>
+                        <MenuItem value="English">English</MenuItem>
+                        <MenuItem value="Spanish">Spanish</MenuItem>
+                        <MenuItem value="Chinese">Chinese</MenuItem>
                 </TextField>
 
                 <TextField
