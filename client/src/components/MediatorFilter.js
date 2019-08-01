@@ -21,8 +21,10 @@ const useStyles = makeStyles(theme => ({
       alignItems:'center',
     },
     textField: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
+      marginLeft: theme.spacing(2),
+      marginRight: theme.spacing(2),
+      marginTop: theme.spacing(1),
+      marginBottom: theme.spacing(1),
       width: 200,
     },
     dense: {
@@ -58,7 +60,7 @@ function MediatorFilter(props) {
 
     //handleChanges for inputs
     const handleChanges = event => {
-        console.log(event.target);
+        // console.log(event.target);
         setFilter({ ...filter,
             [event.target.name] : event.target.value,
         })
