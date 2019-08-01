@@ -51,7 +51,7 @@ function MediatorFilter(props) {
         experience: '',
     })
 
-    console.log("filter props", props);
+    //console.log("filter props", props);
     
     //material ui styles
     const classes = useStyles();

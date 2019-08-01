@@ -35,6 +35,8 @@ const MediatorCard = (props) => {
         <p className='card-label'>Language:</p>
         <p className='card-info'>{props.mediator.language}</p>
         <p className='card-bio'>{props.mediator.professional_bio}</p>
+        <p className="card-label">Price: </p>
+        <p className='card-info'>{props.mediator.price}</p>
         </CardContent>
         <CardActions>
           <button>Select</button>

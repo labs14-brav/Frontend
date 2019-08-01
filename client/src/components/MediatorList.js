@@ -16,6 +16,7 @@ const MediatorList = (props) => {
     const [mediators, setMediators] = useState([]);
 
     useEffect(() => {
+        console.log('Inside Mediator List UseEffect-- Mediators are updating.')
         async function fetchMediators() {
             const res = await axioswithAuth().get(`${process.env.REACT_APP_API_URL}/mediators`, {
                 params: {
@@ -29,7 +30,7 @@ const MediatorList = (props) => {
             // setMediators(testMediators);
         }
         fetchMediators()
-        }, []);
+        }, [props.filter]);
         //re-check when filters change eventually, but for now just mimic ComponentDidMount. 
 
   return (
