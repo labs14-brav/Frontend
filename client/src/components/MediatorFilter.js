@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { MediatorList } from './index';
 
 /**
  * Material UI dependencies
@@ -152,6 +153,7 @@ function MediatorFilter(props) {
                 </TextField>
             </div>
             </form>
+            <MediatorList filter={filter}/>
         </div>
     )
 

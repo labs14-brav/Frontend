@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { MediatorList, MediatorFilter } from '../components/index';
+import { MediatorFilter } from '../components/index';
 
 
 /**
@@ -24,7 +24,6 @@ function Search(props) {
     <div className="App">
         <h3> Search for a Mediator</h3>
         <MediatorFilter currentcase={props.location.state.currentcase}/>
-        <MediatorList />
     </div>
   )
 };
