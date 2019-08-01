@@ -78,7 +78,7 @@ function MediatorFilter(props) {
                 <TextField
                 className={classes.textField}
                 select
-                label="Specialty"
+                label="Specialization"
                 name="specialization"
                 value={filter.specialization}
                 onChange={handleChanges}
