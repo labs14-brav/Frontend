@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react'
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import axioswithAuth from '../helpers/axioswithAuth';
 import Grid from '@material-ui/core/Grid';
 
 import {
@@ -26,11 +26,8 @@ import {
   
     useEffect(() => {
         async function fetchRequests() {
-  
-          const res = await axios.get(`${process.env.REACT_APP_API_URL}/mediators/pending`,{
-            headers: {
-              "Authorization": localStorage.getItem('token'),
-            },});
+
+          const res = await axioswithAuth().get('/mediators/pending');
           console.log(res,"response")
           setRequests(res.data);
         }
@@ -38,25 +35,30 @@ import {
       },[]);
 
 
-
         const handleSubmitAccept = (id) => {
-          const adminEmail=JSON.parse(localStorage.getItem("firebaseui::rememberedAccounts"))[0].email
-          
+          // const adminEmail=JSON.parse(localStorage.getItem("firebaseui::rememberedAccounts"))[0].email
+          // const adminEmail="labs14brav-admin@gmail.com"
 
-          axios.put(
-              `${process.env.REACT_APP_API_URL}/users/${id}/mediator-request-accepted`,{email:adminEmail},
-              { headers: { Authorization: localStorage.getItem("token") } }
-          );
-          
-          
+          axioswithAuth()
+          .put( `/users/${id}/mediator-request-accepted`)
+          .then((res) => {
+            console.log(res)
+          })
+          .catch((err) => {
+            console.log(err)
+          });
       };
 
-        const handleSubmitDecline = (e,id) => {
-          const adminEmail=JSON.parse(localStorage.getItem("firebaseui::rememberedAccounts"))[0].email
-        axios.put(
-            `${process.env.REACT_APP_API_URL}/users/${id}/mediator-request-declined`,{email:adminEmail},
-            { headers: { Authorization: localStorage.getItem("token") } }
-        );
+        const handleSubmitDecline = (id) => {
+
+          axioswithAuth()
+          .put(`/users/${id}/mediator-request-declined`, )
+          .then((res) => {
+            console.log(res)
+          })
+          .catch((err) => {
+            console.log(err)
+          });
       };
 
 
