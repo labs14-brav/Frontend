@@ -30,17 +30,18 @@ import Select from '@material-ui/core/Select';
           textField: {
             marginLeft: theme.spacing(1),
             marginRight: theme.spacing(1),
-            width: 200,
+            width: 400,
           },
           dense: {
             marginTop: 19,
           },
           menu: {
-            width: 200,
+            width: 400,
           },
           button: {
             margin: theme.spacing(1),
-            width: 200,
+            width: 400,
+            height: 60,
             color: 'white',
             backgroundColor: '#5C90C1',
             "&:hover": {
@@ -91,7 +92,7 @@ const CourtForm = (props) => {
 
     return (
 
-      <div style={{maxWidth:"1100px",margin:"0 auto",padding:"100px"}}>
+      <div style={{maxWidth:"1100px",margin:"0 auto",padding:"100px 30px"}}>
 
           <h1 style={{textAlign:"center"}}>Court Case Form</h1>
     
@@ -123,6 +124,7 @@ const CourtForm = (props) => {
 
 
               <TextField
+              className={classes.textField}
               label="Dispute Participants"
               type="email"
               name="parties_involved"
@@ -134,6 +136,7 @@ const CourtForm = (props) => {
               />
 
               <TextField 
+              className={classes.textField}
               label="Participant Contact Info"
               name="parties_contact_info"
               value={form.parties_contact_info}
@@ -142,15 +145,18 @@ const CourtForm = (props) => {
               variant="outlined"/>
 
               <TextField 
+              className={classes.textField}
               label="Dispute Amount"
               name="dispute_amount"
               helperText="if applicable"
               value={form.dispute_amount}
+              type="number"
               onChange={handleChange("dispute_amount")}
               margin="normal"
               variant="outlined"/>
 
               <TextField
+              className={classes.textField}
               name="court_jurisdiction"
               label="Jurisdiction"
               helperText="or Court ID"
@@ -161,6 +167,7 @@ const CourtForm = (props) => {
               />
 
               <TextField
+              className={classes.textField}
               name="court_number"
               label="Case Number"
               value={form.court_number}
@@ -170,6 +177,7 @@ const CourtForm = (props) => {
               />
 
               <TextField
+              className={classes.textField}
               name="court_filing_date"
               label="Case Filing Date"
               value={form.court_filing_date}
@@ -179,6 +187,7 @@ const CourtForm = (props) => {
               />
 
               <TextField
+              className={classes.textField}
               name="case_notes"
               label="Case Notes"
               helperText="if applicable"
@@ -191,6 +200,7 @@ const CourtForm = (props) => {
               />
 
               <TextField
+              className={classes.textField}
               name="description"
               label="Description of Conflict"
               multiline

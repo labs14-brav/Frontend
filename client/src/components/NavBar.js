@@ -32,7 +32,7 @@ const bg_grey = grey[900];
 function NavBar(props) {
   function logout() {
     localStorage.clear()
-    firebase.auth().signout()
+    // firebase.auth().signout()
     window.location = '/'
   }
 

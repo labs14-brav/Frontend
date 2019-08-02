@@ -3,6 +3,7 @@
  */
 
 import React from "react";
+import uuid from "uuid";
 import { PrivateRoute } from "./helpers/index";
 import {
     Search,
@@ -12,8 +13,6 @@ import {
     MediatorCasesShow,
     CaseShow
 } from "../views/index";
-import uuid from "uuid";
-
 import { CaseDetails, CourtForm, OutsideCourtForm } from "../components/index";
 
 /**
@@ -48,18 +47,6 @@ const RootRouter = [
         component={OutsideCourtForm}
         errorBoundary={ErrorBoundary}
     />,
-    // <PrivateRoute
-    //     key={uuid.v4()}
-    //     path="/cases/:id/mediator-search"
-    //     component={Search}
-    //     errorBoundary={ErrorBoundary}
-    // />,
-    // <PrivateRoute
-    //     key={uuid.v4()}
-    //      path="/cases/:id"
-    //     component={CaseDetails}
-    //     errorBoundary={ErrorBoundary}
-    // />,
     <PrivateRoute
         key={uuid.v4()}
         exact

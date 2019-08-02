@@ -1,8 +1,13 @@
 #case-label {
-    color: red;
+    border-bottom: .5px solid #A3A2A2;
+    color: #A3A2A2;
+    opacity: 50%;
 }
 
-
+#case-description {
+    height: 75px;
+    overflow: hidden;
+}
 
 
 .modal-form { 

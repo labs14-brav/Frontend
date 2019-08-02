@@ -32,9 +32,10 @@ function Search(props) {
         flexDirection:"column",
         justifyContent:"center",
         alignItems:"center",
-        padding:"20px",
+        padding:"40px",
         }}>
               <HeaderH1> Search for a Mediator</HeaderH1>
+           
               <MediatorFilter currentcase={props.location.state.currentcase}/>
   
     </div>
