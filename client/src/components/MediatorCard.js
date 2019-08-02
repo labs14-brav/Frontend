@@ -3,6 +3,8 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -21,6 +23,12 @@ import CardContent from '@material-ui/core/CardContent';
 
 const MediatorCard = (props) => {
   const classes = useStyles();
+
+  function handleRequest() {
+    axios.post(`/mediators/${props.mediator.id}/cases`)
+}
+
+
   return (
     <Card >
       <CardContent >
@@ -36,7 +44,7 @@ const MediatorCard = (props) => {
         <p className='card-bio'>{props.mediator.professional_bio}</p>
         </CardContent>
         <CardActions>
-          <button>Select</button>
+          <button onClick={handleRequest}>Select</button>
         </CardActions>
     </Card>
   );

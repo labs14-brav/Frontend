@@ -9,6 +9,9 @@ import { Link } from "react-router-dom";
 
 import { Button } from "@material-ui/core";
 
+import {axioswithAuth} from '../helpers/index'
+import SendRequestButton from "../components/SendRequestButton";
+
 /**
  * Locals
  */

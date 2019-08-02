@@ -1,25 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class SendCodeRequest extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            mediators: []
-        }
+function SendRequestButton(props) {
+    function handleRequest() {
+        axios.post(`/mediators/${props.mediator.id}/cases`)
     }
 
-    async sendRequest() {
-        await axios.post(`/mediators/${mediator_id}/cases`);
-    }
-
-    render() {
-        return (
-            <div onClick={this.sendRequest}>
-                Send Request
-            </div>
-        )
-    }
+    return (
+        <SendRequestButton onClick={handleRequest}>
+            Send Request
+        </SendRequestButton>
+    )
 }
 
-export default SendCodeRequest;
+export default SendRequestButton;
