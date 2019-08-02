@@ -30,8 +30,6 @@ export default function MediatorCasesShow() {
 
     return (
         <Grid container>
-            {/* <NavBar /> */}
-            {/* <SideNavBlock/> */}
             <Grid item xs={8} sm={9} lg={10} className="bg-brav" style={{paddingTop: "50px", backgroundColor: "#ECF6FF"}} className="mediator-cases-show">
                 <Button onClick={() => setSelectedTab("pending")}>Pending</Button>
                 <Button onClick={() => setSelectedTab("accepted")}>Accepted</Button>

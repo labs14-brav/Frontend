@@ -21,17 +21,11 @@ import { CaseDetails, CourtForm, OutsideCourtForm } from "../components/index";
  */
 
 const RootRouter = [
+    
     <PrivateRoute
         key={uuid.v4()}
         exact
-        path="/mediator-cases"
-        component={MediatorCasesShow}
-        errorBoundary={ErrorBoundary}
-    />,
-    <PrivateRoute
-        key={uuid.v4()}
-        exact
-        path="/cases/"
+         path="/cases"
         component={UserCaseShow}
         errorBoundary={ErrorBoundary}
     />,
@@ -54,18 +48,25 @@ const RootRouter = [
         component={OutsideCourtForm}
         errorBoundary={ErrorBoundary}
     />,
+    // <PrivateRoute
+    //     key={uuid.v4()}
+    //     path="/cases/:id/mediator-search"
+    //     component={Search}
+    //     errorBoundary={ErrorBoundary}
+    // />,
+    // <PrivateRoute
+    //     key={uuid.v4()}
+    //      path="/cases/:id"
+    //     component={CaseDetails}
+    //     errorBoundary={ErrorBoundary}
+    // />,
     <PrivateRoute
         key={uuid.v4()}
-        path="/cases/:id/mediator-search"
-        component={Search}
+        exact
+        path="/mediator-cases"
+        component={MediatorCasesShow}
         errorBoundary={ErrorBoundary}
     />,
-    <PrivateRoute
-        key={uuid.v4()}
-        path="/cases/:id"
-        component={CaseDetails}
-        errorBoundary={ErrorBoundary}
-    />
 ];
 
 /**

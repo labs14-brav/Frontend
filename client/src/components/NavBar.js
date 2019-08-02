@@ -49,7 +49,7 @@ function NavBar(props) {
               Home
             </Typography>
           </Link>
-          <Link to="users/settings" style={{textDecoration:"none"}}><Button>Settings</Button></Link>
+          <Link to="/users/settings" style={{textDecoration:"none"}}><Button>Settings</Button></Link>
           <Button onClick={logout}>Sign Out</Button>
           
         </Toolbar>

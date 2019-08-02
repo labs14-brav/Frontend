@@ -25,7 +25,7 @@ function Landing(props) {
     return (
         <>
             <div className="landingNav">
-                <Link to="/users/login">
+                <Link to="/users/login" style={{textDecoration:"none"}}>
                     <Button
                         className={classes.button}
                         variant="contained"
@@ -35,7 +35,7 @@ function Landing(props) {
                     </Button>
                 </Link>
 
-                <Link to="/users/login">
+                <Link to="/users/login" style={{textDecoration:"none"}}>
                     <Button
                         className={classes.button}
                         variant="contained"

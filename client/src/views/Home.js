@@ -6,7 +6,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { NavBar, SideNavBlock } from "../components/index";
 import { Link } from "react-router-dom";
-
 import { 
     Button,
     Grid, 
@@ -50,18 +49,14 @@ function Home() {
     // }, [offset]);
 
     return (
-        <>
-            {/* <NavBar /> */}
-            <Grid container style={{ height: '100vh' }}>
+        <div style={{paddingTop:"15%"}}>
+         
+        
 
-                {/* <SideNavBlock /> */}
-                <Grid item xs={8} sm={9} lg={10} style={{ backgroundColor: '#ECF6FF' }}>
-                    
-                </Grid>
+                <Button  variant="outlined" color="primary"><Link to="/cases/new" style={{ textDecoration:"none"}}>Create A Case</Link></Button>
 
-
-            </Grid>
-        </>
+    
+        </div>
     );
 }
 

@@ -94,10 +94,7 @@ function MediatorRegistration(props) {
     return (
 
         <>
-        <Grid container>
-            <Grid item xs={8} sm={9} lg={10} className="bg-brav" style={{paddingTop: "50px", backgroundColor: "#ECF6FF"}} className="mediator-cases-show">
-            
-            <Container maxWidth="sm">
+            <Container maxWidth="sm" style={{paddingTop:"15%"}}>
             <h1>Mediator Registration</h1>
             <FormGroup>
                 <TextField
@@ -189,90 +186,8 @@ function MediatorRegistration(props) {
                 <Button onClick={() => handleSubmit()}>Submit</Button>
             </FormGroup>
             </Container>
-            </Grid>
-            </Grid>
         </>
 
-
-
-        // <Container maxWidth="sm">
-        //     <h1>Mediator Registration</h1>
-        //     <FormGroup>
-        //         <TextField
-        //             label="General Details"
-        //             value={values.general_details}
-        //             onChange={handleChange("general_details")}
-        //         />
-        //         <TextField
-        //             label="License Number"
-        //             value={values.license}
-        //             onChange={handleChange("license")}
-        //         />
-        //         <FormControl>
-        //             <InputLabel htmlFor="age-simple">
-        //                 Years of Experience
-        //             </InputLabel>
-        //             <Select
-        //                 onChange={handleChange("experience")}
-        //                 value={values.experience}
-        //             >
-        //                 <MenuItem value={`<2yrs`}>{`less than 2yrs`}</MenuItem>
-        //                 <MenuItem value={`2-5yrs`}>{`2-5yrs`}</MenuItem>
-        //                 <MenuItem value={`>5yrs`}>{`more than 5yrs`}</MenuItem>
-        //             </Select>
-        //         </FormControl>
-
-        //         <FormControl className={classes.formControl}>
-        //             <InputLabel htmlFor="select-multiple-checkbox">
-        //                 Specializations
-        //             </InputLabel>
-        //             <Select
-        //                 multiple
-        //                 value={values.specialization}
-        //                 onChange={handleChange("specialization")}
-        //                 input={<Input id="select-multiple-checkbox" />}
-        //                 renderValue={selected => selected.join(", ")}
-        //                 MenuProps={MenuProps}
-        //             >
-        //                 {specializations.map(name => (
-        //                     <MenuItem key={name} value={name}>
-        //                         <Checkbox
-        //                             checked={
-        //                                 values.specialization.indexOf(name) > -1
-        //                             }
-        //                         />
-        //                         <ListItemText primary={name} />
-        //                     </MenuItem>
-        //                 ))}
-        //             </Select>
-        //         </FormControl>
-
-        //         <FormControl className={classes.formControl}>
-        //             <InputLabel htmlFor="select-multiple-checkbox">
-        //                 Language
-        //             </InputLabel>
-        //             <Select
-        //                 multiple
-        //                 value={values.language}
-        //                 onChange={handleChange("language")}
-        //                 input={<Input id="select-multiple-checkbox" />}
-        //                 renderValue={selected => selected.join(", ")}
-        //                 MenuProps={MenuProps}
-        //             >
-        //                 {languages.map(name => (
-        //                     <MenuItem key={name} value={name}>
-        //                         <Checkbox
-        //                             checked={values.language.indexOf(name) > -1}
-        //                         />
-        //                         <ListItemText primary={name} />
-        //                     </MenuItem>
-        //                 ))}
-        //             </Select>
-        //         </FormControl>
-
-        //         <Button onClick={() => handleSubmit()}>Submit</Button>
-        //     </FormGroup>
-        // </Container>
     );
 }
 

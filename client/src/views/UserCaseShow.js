@@ -28,13 +28,9 @@ const useStyles = makeStyles(theme => ({
 const UserCaseShow = props => {
         const classes = useStyles();
   return (
-    <>
-    <Grid container>
-        <Grid item xs={8} sm={9} lg={10} className="bg-brav" style={{paddingTop: "50px", backgroundColor: "#ECF6FF"}} className="mediator-cases-show">
+    <div style={{paddingTop:"15%"}}>
         <UserCaseList />
-        </Grid>
-        </Grid>
-    </>
+    </div>
   )
 };
 

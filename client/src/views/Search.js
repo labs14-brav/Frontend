@@ -24,16 +24,10 @@ function Search(props) {
   return (
 
 
-    <>
-    <Grid container>
-        <Grid item xs={8} sm={9} lg={10} className="bg-brav" style={{paddingTop: "50px", backgroundColor: "#ECF6FF"}} className="mediator-cases-show">
-        <div className="App">
-        <h3> Search for a Mediator</h3>
-        <MediatorFilter currentcase={props.location.state.currentcase}/>
-        </div>
-        </Grid>
-        </Grid>
-    </>
+    <div style={{paddingTop:"10%"}}>
+              <h3> Search for a Mediator</h3>
+              <MediatorFilter currentcase={props.location.state.currentcase}/>
+    </div>
    
   )
 };

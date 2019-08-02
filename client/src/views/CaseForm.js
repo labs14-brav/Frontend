@@ -39,10 +39,8 @@ const classes = useStyles();
   }
 
   return(
-<>
-    <Grid container>
-        <Grid item xs={8} sm={9} lg={10} className="bg-brav" style={{paddingTop: "50px", backgroundColor: "#ECF6FF"}} className="mediator-cases-show">
-        <div className="caseform-container">
+ 
+        <div style={{paddingTop:"15%"}}>
       <h3>Is your case a...</h3>
       <Button className={classes.button} onClick={courtFormHandler}>
         Court Referral
@@ -51,10 +49,8 @@ const classes = useStyles();
       <Button className={classes.button} onClick={outsideCourtFormHandler}>
         Non-Court Referral?
       </Button>
-    </div>
-        </Grid>
-        </Grid>
-    </>
+      </div>
+   
   )
   
   };

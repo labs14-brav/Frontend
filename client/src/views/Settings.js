@@ -20,11 +20,8 @@ import {
 
 function Settings() {
   return (
-    <Grid container style={{ height: '100vh' }}>
-    {/* <NavBar /> */}
-      {/* <SideNavBlock /> */}
-      <Grid item xs={8} sm={9} lg={10} className="bg-brav" style={{paddingTop: "50px"}}>
-
+  
+<div style={{paddingTop:"5%"}}>
         <HeaderH1>My Settings</HeaderH1>
 
         <div style={{ padding: '36px' }}>
@@ -68,9 +65,7 @@ function Settings() {
             </Grid>
           </Grid>
         </div>
-
-      </Grid>
-    </Grid>
+    </div>
   );
 }
 
