@@ -14,8 +14,17 @@ import { Button, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
     button: {
-        margin: "5px"
-    }
+        margin: theme.spacing(1),
+        width: 100,
+        color: 'white',
+        backgroundColor: '#5C90C1',
+        "&:hover": {
+          backgroundColor: "#517EA8"
+        },
+        "&:active": {
+          backgroundColor: "#476e91"
+        }
+      }
 }));
 
 function Landing(props) {

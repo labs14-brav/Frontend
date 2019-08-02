@@ -40,7 +40,15 @@ import Select from '@material-ui/core/Select';
           },
           button: {
             margin: theme.spacing(1),
-            width: 50,
+            width: 200,
+            color: 'white',
+            backgroundColor: '#5C90C1',
+            "&:hover": {
+              backgroundColor: "#517EA8"
+            },
+            "&:active": {
+              backgroundColor: "#476e91"
+            }
           },
     
     }));
@@ -85,7 +93,7 @@ const CourtForm = (props) => {
 
       <div style={{maxWidth:"1100px",margin:"0 auto",padding:"100px"}}>
 
-          <h1 style={{textAlign:"center"}}>Case form</h1>
+          <h1 style={{textAlign:"center"}}>Court Case Form</h1>
     
           <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>
 
@@ -142,18 +150,6 @@ const CourtForm = (props) => {
               margin="normal"
               variant="outlined"/>
 
-
-              <TextField
-              name="description"
-              label="Description of Conflict"
-              multiline
-              rowsMax="8"
-              value={form.description}
-              onChange={handleChange("description")}
-              margin="normal"
-              variant="outlined"
-              />
-
               <TextField
               name="court_jurisdiction"
               label="Jurisdiction"
@@ -187,14 +183,26 @@ const CourtForm = (props) => {
               label="Case Notes"
               helperText="if applicable"
               multiline
-              rowsMax="8"
+              rows="8"
               value={form.case_notes}
               onChange={handleChange("case_notes")}
               margin="normal"
               variant="outlined"
               />
 
-              <Button className={classes.button} onClick={onSubmitHandler}>submit</Button>
+              <TextField
+              name="description"
+              label="Description of Conflict"
+              multiline
+              rows="8"
+              value={form.description}
+              onChange={handleChange("description")}
+              margin="normal"
+              variant="outlined"
+              />
+
+
+              <Button className={classes.button} onClick={onSubmitHandler} variant="contained">Submit</Button>
 
           </form>
       </div>

@@ -3,10 +3,12 @@
  */
 
 import React from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { RootRouter, UsersRouter, TestRouter, NoMatchRouter, CasesRouter } from './routes/index';
 import { Grid } from '@material-ui/core';
 import { NavBar, SideNavBlock } from './components';
+import { Landing } from './views';
+import uuid from 'uuid';
 
 /**
  * Import global styles
@@ -21,6 +23,7 @@ import './App.scss';
 function App() {
   return (
     <BrowserRouter>
+      <Route key={uuid.v4()} exact path="/" component={Landing} />
       <Grid container style={{ height: '100vh' }} >
         <NavBar/>
         <SideNavBlock />

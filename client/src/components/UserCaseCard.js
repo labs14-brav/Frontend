@@ -7,6 +7,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
+import Grid from '@material-ui/core/Grid';
 
 import axioswithAuth from '../helpers/axioswithAuth';
 
@@ -26,18 +27,15 @@ const useStyles = makeStyles(theme => ({
         margin: '0 auto',
     },
     paper: {
-        position: 'absolute',
-        top: '25%',
-        left: '40%',
-        width: '25%',
-        height: 300,
+        // width: '25%',
+        // height: 300,
         backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
+        border: '1px solid #000',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 4),
         outline: 'none',
-        display: 'flex',
-        justifyContent: 'center',
+        // display: 'flex',
+        // justifyContent: 'center',
       },
 }))
 
@@ -80,20 +78,20 @@ const UserCaseCard = (props) => {
             })
             //reset text state
         setText('');
+        handleClose();
     }
     const handleChanges = e => {
         setText(e.target.value);
     }
 
-
-    //Need to update link in Mediator-Search link to the proper case ID when possible.
     return(
         <>
-        <Card> 
+        <Grid item xs={12} sm={12} md={6} lg={6}>
+        <Card className={classes.paper}> 
             <CardContent>
-                <h5> {props.case.description}</h5>
-                <h6>Type: {props.case.dispute_category} </h6>
-                <h6>Involves: {props.case.parties_involved} </h6>
+                <h5 className="case-description"> {props.case.description}</h5>
+                <h6 className="case-dispute">Type: {props.case.dispute_category}</h6> <h6>{props.case.dispute_category}</h6>
+                <h6 className="case-parties">Involves: {props.case.parties_involved}</h6><h6>{props.case.parties_involved}</h6>
             </CardContent>
             <CardActions>
                 <Button variant="outlined" color="primary" className={classes.button}>
@@ -111,6 +109,7 @@ const UserCaseCard = (props) => {
                 </Button>
             </CardActions>
         </Card>
+        </Grid>
         <Modal
         className={classes.modal}
         open={open}

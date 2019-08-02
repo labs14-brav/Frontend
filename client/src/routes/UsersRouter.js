@@ -15,6 +15,7 @@ import uuid from 'uuid';
 const UsersRouter = [
   <Route key={uuid.v4()} exact path='/users' render={() => <Redirect to='/' />} />,
   <Route key={uuid.v4()}  path='/users/settings' render={(props) => <Settings {...props} />} />,
+  // <Route key={uuid.v4()}  path='/users/authenticate' render={(props) => <Login {...props} />} />,
   <Route key={uuid.v4()}  path='/users/mediator-registration' render={(props) => <MediatorRegistration {...props} />} />,
   <PrivateRoute key={uuid.v4()}    path="/home" component={Home} errorBoundary={ErrorBoundary} />,
   <PrivateRoute key={uuid.v4()}   path='/admin' component={AdminHome} errorBoundary={ErrorBoundary} />,

@@ -22,14 +22,10 @@ import {
 const SideNavBlock = (props) => {
   return (
         <Grid item xs={4} sm={3} lg={2} className="bg-brav-secondary" >
-            { true ?
-                <div className="lowerNavBlock" >
+            <div className="lowerNavBlock">
                 <Link to="/mediator-cases">
                 View Cases - Mediator
                 </Link>
-            </div>
-            :
-            <div className="lowerNavBlock">
                 <Link to="/cases/new">
                     Create Case
                 </Link>
@@ -37,7 +33,6 @@ const SideNavBlock = (props) => {
                     View Cases 
                 </Link>
             </div>
-        }
         </Grid>
   );
 };

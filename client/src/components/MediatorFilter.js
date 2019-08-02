@@ -41,8 +41,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-
-
 function MediatorFilter(props) {
     const [filter, setFilter] = useState({
         specialization: '',
@@ -50,8 +48,6 @@ function MediatorFilter(props) {
         price: '',
         experience: '',
     })
-
-    //console.log("filter props", props);
     
     //material ui styles
     const classes = useStyles();

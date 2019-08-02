@@ -37,7 +37,7 @@ function NavBar(props) {
   }
 
   return (
-    <Grid container style={{boxShadow:"5px 0px 8px #888888"}} className="navBarTop">
+    <Grid container style={{position: 'absolute', boxShadow:"5px 0px 8px #888888"}} className="navBarTop">
       <Grid item xs={4} sm={3} lg={2} className="bg-brav-secondary">
         <h1 className="braveHeader">Brāv</h1>
       </Grid>

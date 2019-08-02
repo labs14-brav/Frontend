@@ -22,39 +22,14 @@ import {
  * Locals
  */
 
-let baseurl
-if (process.env.NODE_ENV === 'production')
-{
-   baseurl = "https://bravproduction.herokuapp.com/users?offset="
-}else if(process.env.NODE_ENV === 'staging')
-{
-  baseurl = "https://brav-staging.herokuapp.com/users?offset="
-}
-else
-{
-   baseurl = "http://localhost:8888/users?offset="
-}
-
 function Home() {
     const [users, setUsers] = useState([]);
     const [offset, setOffset] = useState(0);
 
-    // useEffect(() => {
-    //   async function fetchUsers() {
-    //     const res = await axios.get(`${process.env.REACT_APP_API_URL}/users`);
-    //     setUsers(res.data);
-    //   }
-
-    //   fetchUsers()
-    // }, [offset]);
-
     return (
         <div style={{paddingTop:"15%"}}>
-         
-        
 
                 <Button  variant="outlined" color="primary"><Link to="/cases/new" style={{ textDecoration:"none"}}>Create A Case</Link></Button>
-
     
         </div>
     );

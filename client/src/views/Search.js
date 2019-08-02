@@ -6,7 +6,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MediatorFilter } from '../components/index';
 import Grid from "@material-ui/core/Grid";
-
+import {
+  HeaderH1,
+} from './styles/index'
 
 /**
  * Locals
@@ -24,11 +26,20 @@ function Search(props) {
   return (
 
 
-    <div style={{paddingTop:"10%"}}>
-              <h3> Search for a Mediator</h3>
-              <MediatorFilter currentcase={props.location.state.currentcase}/>
-    </div>
    
+    <div style={{  paddingTop:"100px",
+        display:"flex",
+        flexDirection:"column",
+        justifyContent:"center",
+        alignItems:"center",
+        padding:"20px",
+        }}>
+              <HeaderH1> Search for a Mediator</HeaderH1>
+              <MediatorFilter currentcase={props.location.state.currentcase}/>
+  
+    </div>
+  
+
   )
 };
 

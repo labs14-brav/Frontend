@@ -13,6 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 
+
 /**
  * Define component
  */
@@ -40,7 +41,15 @@ import Select from '@material-ui/core/Select';
           },
           button: {
             margin: theme.spacing(1),
-            width: 50,
+            width: 200,
+            color: 'white',
+            backgroundColor: '#5C90C1',
+            "&:hover": {
+              backgroundColor: "#517EA8"
+            },
+            "&:active": {
+              backgroundColor: "#476e91"
+            }
           },
     
     }));
@@ -82,7 +91,7 @@ const OutsideCourtForm = (props) => {
 
       <div style={{maxWidth:"1100px",margin:"0 auto",padding:"100px"}}>
 
-          <h1 style={{textAlign:"center"}}>Case form</h1>
+          <h1 style={{textAlign:"center"}}>Outside Court Form</h1>
     
           <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>
 
@@ -138,14 +147,14 @@ const OutsideCourtForm = (props) => {
               name="description"
               label="Description of Conflict"
               multiline
-              rowsMax="8"
+              rows="8"
               value={form.description}
               onChange={handleChange("description")}
               margin="normal"
               variant="outlined"
               />
 
-              <Button className={classes.button} onClick={onSubmitHandler}>submit</Button>
+              <Button className={classes.button} onClick={onSubmitHandler} variant="contained">submit</Button>
 
           </form>
       </div>
