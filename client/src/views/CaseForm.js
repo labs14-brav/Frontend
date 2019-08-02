@@ -22,8 +22,16 @@ import './CaseForm.scss';
 
     const useStyles = makeStyles(theme => ({
           button: {
-            // margin: theme.spacing(1),
+            margin: theme.spacing(2),
             width: 200,
+            color: 'white',
+            backgroundColor: '#5C90C1',
+            "&:hover": {
+              backgroundColor: "#517EA8"
+            },
+            "&:active": {
+              backgroundColor: "#476e91"
+            }
           },
     }));
 
@@ -43,11 +51,11 @@ const classes = useStyles();
   return(
         <div className="court-question-container" style={{paddingTop:"15%"}}>
           <h3>Is your case a</h3>
-          <Button className={classes.button} onClick={courtFormHandler}>
+          <Button className={classes.button} onClick={courtFormHandler} variant="contained">
             Court Referral
           </Button>
             <h3> or a </h3>
-          <Button className={classes.button} onClick={outsideCourtFormHandler}>
+          <Button className={classes.button} onClick={outsideCourtFormHandler} variant="contained">
             Non-Court Referral?
           </Button>
       </div>
