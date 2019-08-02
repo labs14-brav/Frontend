@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { DeactivateAccountButton, NavBar } from '../components/index';
+import { DeactivateAccountButton, NavBar, SideNavBlock } from '../components/index';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import {
@@ -21,12 +21,9 @@ import {
 function Settings() {
   return (
     <Grid container style={{ height: '100vh' }}>
-      {/* <Grid item xs={4} sm={3} lg={2} className="bg-brav-secondary">
-        <HeaderH2>Brāv</HeaderH2>
-      </Grid> */}
-
-      <Grid item xs={12} sm={12} lg={12} className="bg-brav">
-        <NavBar />
+    {/* <NavBar /> */}
+      {/* <SideNavBlock /> */}
+      <Grid item xs={8} sm={9} lg={10} className="bg-brav" style={{paddingTop: "50px"}}>
 
         <HeaderH1>My Settings</HeaderH1>
 

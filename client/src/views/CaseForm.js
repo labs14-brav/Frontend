@@ -10,6 +10,7 @@ import { Route, Redirect } from 'react-router';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Grid from "@material-ui/core/Grid";
 
 //react component import
 import { OutsideCourtForm, CourtForm } from '../components/index'
@@ -38,7 +39,10 @@ const classes = useStyles();
   }
 
   return(
-    <div className="caseform-container">
+<>
+    <Grid container>
+        <Grid item xs={8} sm={9} lg={10} className="bg-brav" style={{paddingTop: "50px", backgroundColor: "#ECF6FF"}} className="mediator-cases-show">
+        <div className="caseform-container">
       <h3>Is your case a...</h3>
       <Button className={classes.button} onClick={courtFormHandler}>
         Court Referral
@@ -48,6 +52,9 @@ const classes = useStyles();
         Non-Court Referral?
       </Button>
     </div>
+        </Grid>
+        </Grid>
+    </>
   )
   
   };

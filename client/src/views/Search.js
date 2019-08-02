@@ -5,6 +5,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MediatorList from '../components/MediatorList';
+import Grid from "@material-ui/core/Grid";
 
 
 /**
@@ -28,10 +29,19 @@ function Search(props) {
 //   }, []);
 
   return (
-    <div className="App">
+
+
+    <>
+    <Grid container>
+        <Grid item xs={8} sm={9} lg={10} className="bg-brav" style={{paddingTop: "50px", backgroundColor: "#ECF6FF"}} className="mediator-cases-show">
+        <div className="App">
         <h3> Search for a Mediator</h3>
         <MediatorList />
-    </div>
+        </div>
+        </Grid>
+        </Grid>
+    </>
+   
   )
 };
 

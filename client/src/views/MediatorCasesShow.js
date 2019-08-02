@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 
 import { Button, Card, makeStyles, Container } from "@material-ui/core";
 
-import { NavBar } from "../components";
+import { NavBar,SideNavBlock } from "../components";
 import {
     MediatorPendingCaseList,
     MediatorAcceptedCaseList,
@@ -29,9 +29,10 @@ export default function MediatorCasesShow() {
     }, []);
 
     return (
-        <>
-            <NavBar />
-            <div className="mediator-cases-show">
+        <Grid container>
+            {/* <NavBar /> */}
+            {/* <SideNavBlock/> */}
+            <Grid item xs={8} sm={9} lg={10} className="bg-brav" style={{paddingTop: "50px", backgroundColor: "#ECF6FF"}} className="mediator-cases-show">
                 <Button onClick={() => setSelectedTab("pending")}>Pending</Button>
                 <Button onClick={() => setSelectedTab("accepted")}>Accepted</Button>
                 <Button onClick={() => setSelectedTab("completed")} >Completed</Button>
@@ -47,7 +48,7 @@ export default function MediatorCasesShow() {
                     <hi>Completed</hi>
                     <MediatorCompletedCaseList />
                 </div> : null}
-            </div>
-        </>
+            </Grid>
+        </Grid>
     );
 }

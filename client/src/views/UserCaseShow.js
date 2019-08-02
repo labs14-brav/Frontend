@@ -7,6 +7,8 @@ import {Link} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { UserCaseList } from '../components/index';
 import Button from '@material-ui/core/Button';
+import Grid from "@material-ui/core/Grid";
+import {  Card, Container } from "@material-ui/core";
 
 /**
  * Locals
@@ -27,10 +29,11 @@ const UserCaseShow = props => {
         const classes = useStyles();
   return (
     <>
-        <Button variant="outlined" color="primary" className={classes.button}>
-            <Link style={{textDecoration:'none', color:'inherit'}}to="/cases/1/mediator-search"> Find a Mediator </Link>
-        </Button>
+    <Grid container>
+        <Grid item xs={8} sm={9} lg={10} className="bg-brav" style={{paddingTop: "50px", backgroundColor: "#ECF6FF"}} className="mediator-cases-show">
         <UserCaseList />
+        </Grid>
+        </Grid>
     </>
   )
 };

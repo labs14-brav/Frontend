@@ -51,10 +51,10 @@ function Home() {
 
     return (
         <>
-            <NavBar />
+            {/* <NavBar /> */}
             <Grid container style={{ height: '100vh' }}>
 
-                <SideNavBlock />
+                {/* <SideNavBlock /> */}
                 <Grid item xs={8} sm={9} lg={10} style={{ backgroundColor: '#ECF6FF' }}>
                     
                 </Grid>
