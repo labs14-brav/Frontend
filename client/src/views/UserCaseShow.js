@@ -11,11 +11,6 @@ import Grid from "@material-ui/core/Grid";
 import {  Card, Container } from "@material-ui/core";
 
 /**
- * Locals
- */
-
-
-/**
  * Define view
  */
 
@@ -26,7 +21,8 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const UserCaseShow = props => {
-        const classes = useStyles();
+  const classes = useStyles();
+
   return (
     <div style={{paddingTop:"15%"}}>
         <UserCaseList />

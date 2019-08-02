@@ -21,23 +21,19 @@ import './App.scss';
 function App() {
   return (
     <BrowserRouter>
-        <Grid container style={{ height: '100vh' }} >
-              <NavBar/>
-              <SideNavBlock />
-          <Grid item xs={8} sm={9} lg={10} style={{ backgroundColor: '#ECF6FF' }}>
-        <Switch>
+      <Grid container style={{ height: '100vh' }} >
+        <NavBar/>
+        <SideNavBlock />
+        <Grid item xs={8} sm={9} lg={10} style={{ backgroundColor: '#ECF6FF' }}>
+          <Switch>
             {RootRouter}
             {UsersRouter}
             {CasesRouter}
             {TestRouter}
             {NoMatchRouter}
-        </Switch>
-          </Grid>
+          </Switch>
         </Grid>
-     
-        
-      
-     
+      </Grid>
     </BrowserRouter>
   );
 };

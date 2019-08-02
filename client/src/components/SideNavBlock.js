@@ -24,10 +24,10 @@ const SideNavBlock = (props) => {
         <Grid item xs={4} sm={3} lg={2} className="bg-brav-secondary" >
             <div className="lowerNavBlock">
                 <Link to="/cases/new">
-                    Create a Case
+                    Create Case
                 </Link>
                 <Link to="/cases">
-                    View Cases - User
+                    View Cases 
                 </Link>
                 <Link to="/mediator-cases">
                     View Cases - Mediator

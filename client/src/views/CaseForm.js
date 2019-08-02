@@ -15,13 +15,15 @@ import Grid from "@material-ui/core/Grid";
 //react component import
 import { OutsideCourtForm, CourtForm } from '../components/index'
 
+import './CaseForm.scss';
+
 
 // Global Component Styles
 
     const useStyles = makeStyles(theme => ({
           button: {
-            margin: theme.spacing(1),
-            width: 100,
+            // margin: theme.spacing(1),
+            width: 200,
           },
     }));
 
@@ -39,16 +41,15 @@ const classes = useStyles();
   }
 
   return(
- 
-        <div style={{paddingTop:"15%"}}>
-      <h3>Is your case a...</h3>
-      <Button className={classes.button} onClick={courtFormHandler}>
-        Court Referral
-      </Button>
-        <h3> or a </h3>
-      <Button className={classes.button} onClick={outsideCourtFormHandler}>
-        Non-Court Referral?
-      </Button>
+        <div className="court-question-container" style={{paddingTop:"15%"}}>
+          <h3>Is your case a</h3>
+          <Button className={classes.button} onClick={courtFormHandler}>
+            Court Referral
+          </Button>
+            <h3> or a </h3>
+          <Button className={classes.button} onClick={outsideCourtFormHandler}>
+            Non-Court Referral?
+          </Button>
       </div>
    
   )

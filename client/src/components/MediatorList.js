@@ -35,10 +35,14 @@ const MediatorList = (props) => {
 
   return (
       <>
-        <Grid >
+        <Grid container spacing={3} >
+        
             {mediators.map(mediator => {
+                // <Grid item xs={6}>
                 return <MediatorCard mediator={mediator} key={mediator.uid} />
+                // </Grid >
             })}
+           
         </Grid>
     </>
   );

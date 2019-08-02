@@ -48,7 +48,7 @@ function Settings() {
           <Grid container spacing={9}>
             <Grid item xs={12} md={6}>
               <BecomeMediatorLink to="/users/mediator-registration">
-                Register as Mediator
+                Become a Brāv One
               </BecomeMediatorLink>
             </Grid>
 
