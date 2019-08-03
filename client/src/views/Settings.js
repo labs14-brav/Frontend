@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { DeactivateAccountButton, SettingsNavBar } from '../components/index';
+import { DeactivateAccountButton, NavBar, SideNavBlock } from '../components/index';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import {
@@ -20,14 +20,8 @@ import {
 
 function Settings() {
   return (
-    <Grid container style={{ height: '100vh' }}>
-      <Grid item xs={4} sm={3} lg={2} className="bg-brav-secondary">
-        <HeaderH2>Brāv</HeaderH2>
-      </Grid>
-
-      <Grid item xs={8} sm={9} lg={10} className="bg-brav">
-        <SettingsNavBar />
-
+  
+<div style={{paddingTop:"5%"}}>
         <HeaderH1>My Settings</HeaderH1>
 
         <div style={{ padding: '36px' }}>
@@ -54,7 +48,7 @@ function Settings() {
           <Grid container spacing={9}>
             <Grid item xs={12} md={6}>
               <BecomeMediatorLink to="/users/mediator-registration">
-                Register as Mediator
+                Become a Brāv One
               </BecomeMediatorLink>
             </Grid>
 
@@ -71,9 +65,7 @@ function Settings() {
             </Grid>
           </Grid>
         </div>
-
-      </Grid>
-    </Grid>
+    </div>
   );
 }
 

@@ -10,17 +10,28 @@ import { Route, Redirect } from 'react-router';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Grid from "@material-ui/core/Grid";
 
 //react component import
 import { OutsideCourtForm, CourtForm } from '../components/index'
+
+import './CaseForm.scss';
 
 
 // Global Component Styles
 
     const useStyles = makeStyles(theme => ({
           button: {
-            margin: theme.spacing(1),
-            width: 100,
+            margin: theme.spacing(2),
+            width: 200,
+            color: 'white',
+            backgroundColor: '#5C90C1',
+            "&:hover": {
+              backgroundColor: "#517EA8"
+            },
+            "&:active": {
+              backgroundColor: "#476e91"
+            }
           },
     }));
 
@@ -38,16 +49,17 @@ const classes = useStyles();
   }
 
   return(
-    <div className="caseform-container">
-      <h3>Is your case a...</h3>
-      <Button className={classes.button} onClick={courtFormHandler}>
-        Court Referral
-      </Button>
-        <h3> or a </h3>
-      <Button className={classes.button} onClick={outsideCourtFormHandler}>
-        Non-Court Referral?
-      </Button>
-    </div>
+        <div className="court-question-container" style={{paddingTop:"15%"}}>
+          <h3>Is your case a</h3>
+          <Button className={classes.button} onClick={courtFormHandler} variant="contained">
+            Court Referral
+          </Button>
+            <h3> or a </h3>
+          <Button className={classes.button} onClick={outsideCourtFormHandler} variant="contained">
+            Non-Court Referral?
+          </Button>
+      </div>
+   
   )
   
   };

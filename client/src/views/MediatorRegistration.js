@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 import {
     FormGroup,
     Container,
@@ -91,7 +92,9 @@ function MediatorRegistration(props) {
     };
 
     return (
-        <Container maxWidth="sm">
+
+        <>
+            <Container maxWidth="sm" style={{paddingTop:"15%"}}>
             <h1>Mediator Registration</h1>
             <FormGroup>
                 <TextField
@@ -182,7 +185,9 @@ function MediatorRegistration(props) {
 
                 <Button onClick={() => handleSubmit()}>Submit</Button>
             </FormGroup>
-        </Container>
+            </Container>
+        </>
+
     );
 }
 

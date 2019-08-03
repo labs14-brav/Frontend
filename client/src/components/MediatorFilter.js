@@ -8,6 +8,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import {
+    Container,
+    FormGroup,
+    FormControl
+} from "@material-ui/core";
 
 /**
  * Material UI Styles
@@ -41,8 +46,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-
-
 function MediatorFilter(props) {
     const [filter, setFilter] = useState({
         specialization: '',
@@ -50,8 +53,6 @@ function MediatorFilter(props) {
         price: '',
         experience: '',
     })
-
-    //console.log("filter props", props);
     
     //material ui styles
     const classes = useStyles();
@@ -72,8 +73,9 @@ function MediatorFilter(props) {
     }
 
     return (
+
+        
         <div className={classes.container}>
-            <form>
             <div className="left-container">
                 <TextField
                 className={classes.textField}
@@ -151,10 +153,13 @@ function MediatorFilter(props) {
                         <MenuItem value={`2-5 years`}>{`2-5 years`}</MenuItem>
                         <MenuItem value={`>5 years`}>{`More than 5 years`}</MenuItem>
                 </TextField>
+
             </div>
-            </form>
+
+           
             <MediatorList filter={filter}/>
-        </div>
+         </div>
+        
     )
 
 }

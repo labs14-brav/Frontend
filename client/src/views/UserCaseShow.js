@@ -7,11 +7,8 @@ import {Link} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { UserCaseList } from '../components/index';
 import Button from '@material-ui/core/Button';
-
-/**
- * Locals
- */
-
+import Grid from "@material-ui/core/Grid";
+import {  Card, Container } from "@material-ui/core";
 
 /**
  * Define view
@@ -24,14 +21,12 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const UserCaseShow = props => {
-        const classes = useStyles();
+  const classes = useStyles();
+
   return (
-    <>
-        <Button variant="outlined" color="primary" className={classes.button}>
-            <Link style={{textDecoration:'none', color:'inherit'}}to="/cases/1/mediator-search"> Find a Mediator </Link>
-        </Button>
+    <div style={{paddingTop:"15%"}}>
         <UserCaseList />
-    </>
+    </div>
   )
 };
 

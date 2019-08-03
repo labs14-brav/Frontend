@@ -7,11 +7,13 @@ import { axioswithAuth } from '../helpers/index';
 import MediatorCard from './MediatorCard';
 import Grid from '@material-ui/core/Grid';
 
+
 /**
  * Define component
  */
 
 const MediatorList = (props) => {
+   
     console.log(props);
     const [mediators, setMediators] = useState([]);
 
@@ -34,13 +36,19 @@ const MediatorList = (props) => {
         //re-check when filters change eventually, but for now just mimic ComponentDidMount. 
 
   return (
-      <>
-        <Grid >
+      
+        <Grid container spacing={4} >
+        
             {mediators.map(mediator => {
-                return <MediatorCard mediator={mediator} key={mediator.uid} />
+                return (
+                
+                        <MediatorCard mediator={mediator} key={mediator.uid} />
+                 );
+                    
             })}
+       
         </Grid>
-    </>
+   
   );
 };
 
