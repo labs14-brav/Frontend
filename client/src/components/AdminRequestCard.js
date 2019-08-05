@@ -50,9 +50,9 @@ const useStyles = makeStyles(theme => ({
 
     const handleSubmitAccept = (id) => {
 
-            // let yes = window.confirm('Are you sure?')
+            let yes = window.confirm('Are you sure?')
         
-            // if (yes) {
+            if (yes) {
                 axioswithAuth()
                 .put( `/users/${id}/mediator-request-accepted`)
                 .then((res) => {
@@ -62,7 +62,7 @@ const useStyles = makeStyles(theme => ({
                   console.log(err)
                   props.history.push('/admin')
                 });
-            // }
+            }
 
     };
     
@@ -102,7 +102,7 @@ const useStyles = makeStyles(theme => ({
                 <p id="case-label">Price: </p>
                 <p className='card-info'>{props.requests.price}/hr</p>
             </CardContent>
-              <CardActions>
+              <CardActions >
                     <Button onClick={(e)=>handleSubmitAccept(props.requests.id)}>Accept</Button>
                     <Button onClick={(e)=>handleSubmitDecline(props.requests.id)}>Decline</Button>
               </CardActions>

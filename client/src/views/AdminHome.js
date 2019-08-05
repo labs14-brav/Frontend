@@ -13,7 +13,10 @@ import {
 
 const AdminHome=(props)=>{
 
-            return (
+
+
+    
+return (
                
     <div container style={{paddingTop:"10%", margin: '20px 40px',}}>
                 

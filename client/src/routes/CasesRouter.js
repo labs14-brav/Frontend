@@ -54,6 +54,11 @@ const RootRouter = [
         component={MediatorCasesShow}
         errorBoundary={ErrorBoundary}
     />,
+    <PrivateRoute 
+        key={uuid.v4()} 
+        path="/cases/:id/mediator-search"
+        component={Search} 
+        errorBoundary={ErrorBoundary} />,
 ];
 
 /**

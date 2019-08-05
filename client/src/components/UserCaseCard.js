@@ -153,7 +153,7 @@ const UserCaseCard = (props) => {
                             Add Information
                         </Button>
                         <Button className={classes.tertiarybutton} onClick={handlefullOpen} variant="outlined">
-                            Extra Information
+                            View Details
                         </Button>
                     </CardActions>
                 </Card>

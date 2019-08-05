@@ -39,6 +39,18 @@ import {
       },[]);
 
 
+
+
+      if (requests.length === 0) {
+        return(
+            <>
+            
+            <h3 style={{textAlign:"center"}}> There are no pending Mediator requests. </h3>
+            
+            </>
+        )
+    }else{
+
     return (
       
         
@@ -58,5 +70,6 @@ import {
             </Grid>
          
     )
+              }
   }
   export default AdminMediatorRequestList

@@ -1,10 +1,10 @@
 import React from 'react';
+import './Addendum.scss';
 
 
 function Addendum(props) {
-    console.log('Inside Addendum');
     return (
-        <p>{props.text}</p>
+        <li className="addendum-text">{props.text}</li>
     )
 }
 
