@@ -54,14 +54,13 @@ function NavBar(props) {
       <Grid item xs={8} sm={9} lg={10}>
         <nav position="static" color="default">
           <Toolbar className="bg-white">
-            <Link to={checkType()} style={{ color: 'inherit', textDecoration: 'none', flexGrow: 1 }}>
-              <Typography variant="h6">
-                Cases
-              </Typography>
+            <Link to={checkType()} style={{ color: 'inherit', textDecoration: 'none', fontWeight: 500, color: 'rgba(0, 0, 0, 0.87)' }}>
+              Cases
             </Link>
+            <span style={{ flexGrow: 1 }}></span>
             <Link to="/users/settings" style={{textDecoration:"none"}}><Button>Settings</Button></Link>
             <Button onClick={logout}>Sign Out</Button>
-            
+
           </Toolbar>
         </nav>
       </Grid>

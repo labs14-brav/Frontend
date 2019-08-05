@@ -25,7 +25,7 @@ function Settings() {
         <HeaderH1>My Settings</HeaderH1>
           <Grid container spacing={9} justify="center">
             <Grid item xs={6} md={4}>
-              <HeaderH3 justify="center">Contact Info</HeaderH3>
+              <HeaderH3>Contact Info</HeaderH3>
               <Typography>Name: </Typography>
               <Typography>Email: </Typography>
               <Typography>Phone: </Typography>

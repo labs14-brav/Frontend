@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { RootRouter, UsersRouter, TestRouter, NoMatchRouter, CasesRouter } from './routes/index';
 import { Grid } from '@material-ui/core';
 import { NavBar, SideNavBlock } from './components';
@@ -43,6 +43,7 @@ function App() {
           <Route key={uuid.v4()} exact path="/" component={Landing} />
           <Route key={uuid.v4()} exact path='/auth' component={Login} />
           <PrivateRoute key={uuid.v4()} exact path="/auth/callback" component={AuthCallback} errorBoundary={ErrorBoundary} />
+          <Redirect to='/' />
         </Switch>
       }
     </BrowserRouter>

@@ -85,7 +85,7 @@ const CourtForm = (props) => {
     .catch(err => {
       console.error(err.response)
     })
-    props.history.push("/cases");
+    window.location='/cases';
   }
 
   return (

@@ -33,8 +33,6 @@ import {
           
           const res = await axioswithAuth().get('/mediators/pending');
           console.log(res,"response")
-          // res.data.specialization = JSON.parse(res.data.specialization);
-          // res.data.language = JSON.parse(res.data.language);
           setRequests(res.data);
         }
         fetchRequests()

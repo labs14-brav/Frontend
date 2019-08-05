@@ -147,7 +147,6 @@ const OutsideCourtForm = (props) => {
               margin="normal"
               variant="outlined"/>
 
-
               <TextField
               className={classes.textField}
               name="description"

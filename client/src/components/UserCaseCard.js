@@ -1,20 +1,31 @@
+/**
+ * Dependencies
+ */
+
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
+import AddendumsList from './AddendumsList'
 
+/**
+ * Material UI imports
+ */
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import Modal from '@material-ui/core/Modal';
 import Grid from '@material-ui/core/Grid';
 import Dialog from '@material-ui/core/Dialog';
-
+import IconButton from '@material-ui/core/IconButton';
+import Toolbar from '@material-ui/core/Toolbar';
+import CloseIcon from '@material-ui/icons/Close';
 import axioswithAuth from '../helpers/axioswithAuth';
 
-//styles
-import './UserCaseCard.scss';
+/**
+ * Import styles
+ */
 
+import './UserCaseCard.scss';
 
 const useStyles = makeStyles(theme => ({
     primarybutton: {
@@ -39,9 +50,12 @@ const useStyles = makeStyles(theme => ({
     modal: {
         margin: '0 auto',
         width: '50%',
+        [theme.breakpoints.down('sm')]: {
+            width: '90%',
+          }
     },
     paper: {
-        height: '400px',
+        height: '370px',
         backgroundColor: theme.palette.background.paper,
         border: '1px solid #000',
         boxShadow: theme.shadows[5],
@@ -54,8 +68,13 @@ function getModalStyle() {
 
 }
 
+/**
+ *  Define component
+ */
+
 const UserCaseCard = (props) => {
     const [open, setOpen] = useState(false);
+    const [fullopen, setFullOpen] = useState(false);
     const [modalStyle] = useState(getModalStyle);
     const [textState, setText] = useState('');
     const classes = useStyles();
@@ -64,11 +83,23 @@ const UserCaseCard = (props) => {
     /**
      * Modal functions
      */
-    const handleOpen = () => {
+
+     const handleOpen = () => {
         setOpen(true);
     }
     const handleClose = () => {
         setOpen(false);
+    }
+
+    /** 
+     * Full screen Dialog Methods
+     */
+
+     const handlefullOpen = () => {
+        setFullOpen(true);
+    }
+    const handlefullClose = () => {
+        setFullOpen(false);
     }
 
     /**
@@ -95,35 +126,39 @@ const UserCaseCard = (props) => {
         setText(e.target.value);
     }
 
-    return(
+    return (
         <>
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-        <Card className={classes.paper}> 
-            <CardContent>
-                <h6 id="case-label">Type</h6>
-                <h5 id="case-dispute">{props.case.dispute_category}</h5>
-                <h6 id="case-label">Involves</h6>
-                <h5 id="case-parties">{props.case.parties_involved}</h5>
-                <h6 id="case-label">Description</h6>
-                <h5 id="case-description">{props.case.description}</h5>
-            </CardContent>
-            <CardActions>
-                <Button variant="outlined" color="primary" className={classes.primarybutton}>
-                    <Link style={{textDecoration:'none', color:'inherit'}} 
-                    to= {{
-                        pathname: `/cases/${props.case.id}/mediator-search`,
-                        state: {
-                            currentcase: props.case
-                        }
-                    }}
-                    > Find a Mediator </Link>
-                </Button>
-                <Button className={classes.secondarybutton} onClick={handleOpen} variant="outlined">
-                    Add Information
-                </Button>
-            </CardActions>
-        </Card>
-        </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={6}>
+                <Card className={classes.paper}> 
+                    <CardContent>
+                        <h6 id="case-label">Type</h6>
+                        <h5 id="case-dispute">{props.case.dispute_category}</h5>
+                        <h6 id="case-label">Involves</h6>
+                        <h5 id="case-parties">{props.case.parties_involved}</h5>
+                        <h6 id="case-label">Description</h6>
+                        <h5 id="case-description">{props.case.description}</h5>
+                    </CardContent>
+                    <CardActions>
+                        <Button variant="outlined" color="primary" className={classes.primarybutton}>
+                            <Link style={{textDecoration:'none', color:'inherit'}} 
+                            to= {{
+                                pathname: `/cases/${props.case.id}/mediator-search`,
+                                state: {
+                                    currentcase: props.case
+                                }
+                            }}
+                            > Find a Mediator </Link>
+                        </Button>
+                        <Button className={classes.secondarybutton} onClick={handleOpen} variant="outlined">
+                            Add Information
+                        </Button>
+                        <Button className={classes.tertiarybutton} onClick={handlefullOpen} variant="outlined">
+                            Extra Information
+                        </Button>
+                    </CardActions>
+                </Card>
+            </Grid>
+
         <Dialog
         className={classes.modal}
         open={open}
@@ -142,10 +177,21 @@ const UserCaseCard = (props) => {
                 </form>
             </div>
         </Dialog>
-        </>
+
+        <Dialog fullScreen open={fullopen} onClose={handlefullClose}>
+            <Toolbar >
+                <IconButton edge="end" onClick={handlefullClose}>
+                    <CloseIcon />
+                </IconButton>
+            </Toolbar>
+            <AddendumsList case={props.case}/>
+        </Dialog>
+    </>
     )
 }
 
+/**
+ *  Export component
+ */
 
-        
 export default UserCaseCard;

@@ -1,6 +1,10 @@
 import React, { useEffect,useState } from 'react'
 import { Link } from 'react-router-dom';
 import { AdminMediatorRequestList } from '../components';
+import {
+    HeaderH1,
+    
+  } from './styles/index'
 import { 
     Button,
     Grid, 
@@ -10,20 +14,16 @@ import {
 const AdminHome=(props)=>{
 
             return (
-                <div style={{  paddingTop:"100px",
-                display:"flex",
-                flexDirection:"column",
-                justifyContent:"center",
-                alignItems:"center",
-                padding:"40px",
-                }}>
-
-                <h1>AdminMediatorRequestList</h1>
+               
+    <div container style={{paddingTop:"10%", margin: '20px 40px',}}>
+                
+                <h1 style={{textAlign:"center"}}>RequestList</h1>
                 <AdminMediatorRequestList/>
+            
+        </div>
+            
 
-            </div>
-
-            )
+        )
 
 
 }

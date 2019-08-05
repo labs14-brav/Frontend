@@ -32,10 +32,12 @@ function AuthCallback(props) {
       }).then(res => {
         localStorage.setItem('type', res.data.type);
         localStorage.setItem('id', res.data.id);
-        
+
         if(res.data.type === 'mediator') {
           window.location = '/mediator-cases'
-        } else {
+        } else if(res.data.type === 'admin'){
+          window.location = '/admin'
+        }else{
           window.location = '/cases'
         }
       }).catch(err => {
