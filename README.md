@@ -56,11 +56,9 @@ We are using a PostgresSQL database deployed on Heroku. To access the database w
 
 This API is used to authenticate the individuals, mediators and admin to log into the system using their email and password. It handles identity related tasks.
 
-## 2️⃣ Payment API here
+## Payment API - Stripe
 
-🚫Replace text below with a description of the API
-
-This is the way you take out your flustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
+This API is connected to payments between users and mediators. It acts as a secure payment solution with multiple payment options. It will allow users to pay mediators for their time and services securely, and easily.
 
 ## 3️⃣ Misc API here
 
