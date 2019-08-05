@@ -83,13 +83,17 @@ In order for the app to function correctly, the user must set up their own envir
 | doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
 | rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
 
-# 4️⃣ Testing
+## 4️⃣ Testing
 
 🚫Document what you used for testing and why
 
-# 4️⃣ Installation Instructions
+## Installation Instructions
 
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+Run the following commands to install all dependencies:
+
+```
+npm install
+```
 
 ## Other Scripts
 
