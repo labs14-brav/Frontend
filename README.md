@@ -25,13 +25,16 @@ You can find the deployed project at [beabravone.com](http://www.beabravone.com/
 
 Our world is plagued with conflict and devastating violence everywhere you look: bullying in schools, violence in our homes, on the streets, across borders, everywhere. Brāv trains anyone in conflict management who in turn manages the conflicts of others directly on the site.
 
-### 4️⃣ Key Features
+### Key Features
 
--    feature one
--    feature two
--    feature three
--    feature four
--    feature five
+1. On-boarding for new users will include sign-in, sign-up, and logout.
+2. User settings. A user will be able to change their password.
+3. Manage Cases. A user will be able to edit the details of a case.
+4. Search Mediators. A user will be able to filter mediators.
+5. Schedule sessions for conflict resolution discussion— assign Mediator, and email third party using SendGrid.
+6. Request to be mediator. The onboarding for mediators will involve a manual approval process that includes Stripe Connect.
+7. Chat with a mediator using in-app messaging.
+8. Admin Views for viewing mediators, cases, and schedules
 
 ## Tech Stack
 
