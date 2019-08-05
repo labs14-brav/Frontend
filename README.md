@@ -52,11 +52,9 @@ We are using a PostgresSQL database deployed on Heroku. To access the database w
 
 ## APIs
 
-## 2️⃣ Authentication API here
+## Authentication API - Firebase
 
-🚫Replace text below with a description of the API
-
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
+This API is used to authenticate the individuals, mediators and admin to log into the system using their email and password. It handles identity related tasks.
 
 ## 2️⃣ Payment API here
 
