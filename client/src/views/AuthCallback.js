@@ -30,8 +30,14 @@ function AuthCallback(props) {
         user: user,
         token: token
       }).then(res => {
+        localStorage.setItem('type', res.data.type);
         localStorage.setItem('id', res.data.id);
-        window.location = '/home'
+        
+        if(res.data.type === 'mediator') {
+          window.location = '/mediator-cases'
+        } else {
+          window.location = '/cases'
+        }
       }).catch(err => {
         console.error(err)
         window.location = '/users/login'

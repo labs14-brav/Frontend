@@ -10,15 +10,18 @@ import {
 const AdminHome=(props)=>{
 
             return (
-                <>
-                <Grid container style={{ height: '100vh' }}>
-                    <Grid item xs={8} sm={9} lg={10} style={{ backgroundColor: "#ECF6FF",display:"flex",justifyContent:"center",alignItems:"Center"}}>
-                    <h1>AdminMediatorRequestList</h1>
-                    <AdminMediatorRequestList/>
-    
-                    </Grid>
-                </Grid>
-                </>
+                <div style={{  paddingTop:"100px",
+                display:"flex",
+                flexDirection:"column",
+                justifyContent:"center",
+                alignItems:"center",
+                padding:"40px",
+                }}>
+
+                <h1>AdminMediatorRequestList</h1>
+                <AdminMediatorRequestList/>
+
+            </div>
 
             )
 

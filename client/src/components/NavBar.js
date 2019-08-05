@@ -36,18 +36,27 @@ function NavBar(props) {
     window.location = '/'
   }
 
+  function checkType() {
+    let type = localStorage.getItem("type");
+    if (type === 'mediator') {
+     return '/mediator-cases';
+    } else {
+      return '/cases';
+    }
+  }
+
   return (
     <Grid container style={{position: 'absolute', boxShadow:"5px 0px 8px #888888"}} className="navBarTop">
       <Grid item xs={4} sm={3} lg={2} className="bg-brav-secondary">
-        <h1 className="braveHeader">Brāv</h1>
+        <h1 className="bravHeader">Brāv</h1>
       </Grid>
 
       <Grid item xs={8} sm={9} lg={10}>
         <nav position="static" color="default">
           <Toolbar className="bg-white">
-            <Link to="/home" style={{ color: 'inherit', textDecoration: 'none', flexGrow: 1 }}>
+            <Link to={checkType()} style={{ color: 'inherit', textDecoration: 'none', flexGrow: 1 }}>
               <Typography variant="h6">
-                Home
+                Cases
               </Typography>
             </Link>
             <Link to="/users/settings" style={{textDecoration:"none"}}><Button>Settings</Button></Link>

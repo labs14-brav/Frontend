@@ -21,12 +21,10 @@ import {
 function Settings() {
   return (
   
-<div style={{paddingTop:"5%"}}>
+      <div className="settings" style={{paddingTop:"5%", margin:"0 auto"}}>
         <HeaderH1>My Settings</HeaderH1>
-
-        <div style={{ padding: '36px' }}>
-          <Grid container spacing={9}>
-            <Grid item xs={12} md={6}>
+          <Typography container spacing={9} justify="center">
+            <Grid item xs={12} md={4}>
               <HeaderH3>Contact Info</HeaderH3>
               <Typography>Name: </Typography>
               <Typography>Email: </Typography>
@@ -35,24 +33,24 @@ function Settings() {
               <Typography>Location: </Typography>
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            <Typography item xs={12} md={4}>
               <HeaderH3>Billing</HeaderH3>
               <Typography>Card Number: </Typography>
               <Typography>Expiration Date: </Typography>
               <Typography>Credit Card Security: </Typography>
               <Typography>Payment Type: </Typography>
               <Typography>Country: </Typography>
-            </Grid>
-          </Grid>
+            </Typography>
+          </Typography>
 
-          <Grid container spacing={9}>
-            <Grid item xs={12} md={6}>
+          <Grid container spacing={9} justify="center">
+            <Grid item xs={12} md={4}>
               <BecomeMediatorLink to="/users/mediator-registration">
                 Become a Brāv One
               </BecomeMediatorLink>
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={4}>
               <EditUserLink to="/users/settings">Edit</EditUserLink>
             </Grid>
           </Grid>
@@ -64,7 +62,6 @@ function Settings() {
               <DeactivateAccountButton />
             </Grid>
           </Grid>
-        </div>
     </div>
   );
 }

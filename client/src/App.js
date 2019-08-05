@@ -28,8 +28,7 @@ function App() {
       localStorage.getItem("token") ?
       <Grid container style={{ height: '100vh' }} >
         <NavBar/>
-        <SideNavBlock />
-        <Grid item xs={8} sm={9} lg={10} style={{ backgroundColor: '#ECF6FF' }}>
+        <Grid item xs={12} sm={12} lg={12} style={{ backgroundColor: '#ECF6FF' }}>
           <Switch>
             {RootRouter}
             {UsersRouter}
