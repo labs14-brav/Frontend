@@ -83,9 +83,9 @@ In order for the app to function correctly, the user must set up their own envir
 | doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
 | rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
 
-## 4️⃣ Testing
+## Testing
 
-🚫Document what you used for testing and why
+We are using the `react-testing-library` dependency for Frontend tests. Since that dependency is deprecated we'll be migrating that to `@testing-library/react`.
 
 ## Installation Instructions
 
