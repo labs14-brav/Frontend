@@ -62,7 +62,11 @@ This API is connected to payments between users and mediators. It acts as a secu
 
 ## Email API - SendGrid
 
-SendGrid allows us to send secure emails. For example when a user forgets their password and needs to reset or when they need to receive email reminders or notifications. 
+SendGrid allows us to send secure emails. For example when a user forgets their password and needs to reset or when they need to receive email reminders or notifications.
+
+## Analytics API - Mixpanel
+
+This API enables insights into users behavior. User behavior can be broken down into discrete actions and recorded using Mixpanel. The user analytics will help inform feature development.
 
 # 3️⃣ Environment Variables
 
