@@ -8,6 +8,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
+import SendRequestButton from './SendRequestButton';
 /**
  * Define component
  */
@@ -62,7 +63,7 @@ const MediatorCard = (props) => {
                 <p className='card-info'>{props.mediator.price}/hr</p>
             </CardContent>
               <CardActions>
-                <button>Select</button>
+                <SendRequestButton mediator = {props.mediator}/>
               </CardActions>
        
     </Card>
