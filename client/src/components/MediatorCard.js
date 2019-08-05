@@ -9,19 +9,40 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-
+import Grid from '@material-ui/core/Grid';
 /**
  * Define component
  */
 
- //name, license, experience, specialization, language, professional_bio
- const useStyles = makeStyles({
-   card: {
 
-   },
- })
+
+
+const useStyles = makeStyles(theme => ({
+  button: {
+      margin: theme.spacing(1)
+  },
+  submitbutton: {
+      justifyContent: 'center',
+  },
+  modal: {
+      position: 'absolute',
+      margin: '0 auto',
+  },
+  paper: {
+      // width: '25%',
+      // height: 300,
+      backgroundColor: theme.palette.background.paper,
+      border: '1px solid #000',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 4),
+      outline: 'none',
+      // display: 'flex',
+      // justifyContent: 'center',
+    },
+}))
 
 const MediatorCard = (props) => {
+  
   const classes = useStyles();
 
   function handleRequest() {
@@ -47,6 +68,8 @@ const MediatorCard = (props) => {
           <button onClick={handleRequest}>Select</button>
         </CardActions>
     </Card>
+    </Grid>
+  </>
   );
 };
 

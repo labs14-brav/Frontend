@@ -7,8 +7,9 @@ const MediatorAcceptedCaseList = props => {
     const [cases, setCases] = useState([]);
 
     async function fetchCases() {
+        const mediatorId = localStorage.getItem("id");
         const res = await axioswithAuth().get(
-            `${process.env.REACT_APP_API_URL}/cases/accepted-cases`
+            `/cases/${mediatorId}/active-cases`
         );
         // endpoint needs to be updated to a specific user's cases.
         setCases(res.data.fetch_cases);

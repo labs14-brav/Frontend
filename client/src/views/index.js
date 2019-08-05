@@ -11,7 +11,8 @@ export { default as Search } from './Search';
 export { default as NoMatch } from './NoMatch';
 export { default as Settings } from './Settings';
 export { default as MediatorRegistration } from './MediatorRegistration';
-export {default as CaseForm} from './CaseForm'
-export {default as UserCaseShow} from './UserCaseShow';
-export {default as MediatorCasesShow} from './MediatorCasesShow';
-export {default as AdminHome} from './AdminHome';
+export { default as CaseForm } from './CaseForm'
+export { default as UserCaseShow } from './UserCaseShow';
+export { default as MediatorCasesShow } from './MediatorCasesShow';
+export { default as AdminHome } from './AdminHome';
+export { default as AuthCallback} from './AuthCallback';
