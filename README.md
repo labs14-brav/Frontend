@@ -44,19 +44,13 @@ Our world is plagued with conflict and devastating violence everywhere you look:
 
 We are using the React library to render the interface and Redux for state management. React is lightweight and unopinionated, so it's perfect for building an MVP.
 
-🚫List the rest of the front end features and libraries in the same format as the framework above.
-
 #### Front end deployed to `Netlify`
 
-#### [Back end](https://github.com/labs14-brav/Backend) built using:
-
-#### Back end framework goes here
+#### [Back end](https://github.com/labs14-brav/Backend) deployed to `Heroku`
 
 We are using a PostgresSQL database deployed on Heroku. To access the database we are implementing a RESTful API using NodeJS, Express, and knex. Node lets you write JavaScript on both the front-end and back-end, which increases readability and reduced context-switching.
 
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
-
-# APIs
+## APIs
 
 ## 2️⃣ Authentication API here
 
