@@ -68,8 +68,8 @@ const MediatorCard = (props) => {
           <button onClick={handleRequest}>Select</button>
         </CardActions>
     </Card>
-    </Grid>
-  </>
+  //   </Grid>
+  // </>
   );
 };
 
