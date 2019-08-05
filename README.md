@@ -52,23 +52,23 @@ We are using a PostgresSQL database deployed on Heroku. To access the database w
 
 ## APIs
 
-## Authentication API - Firebase
+#### Authentication API - Firebase
 
 This API is used to authenticate the individuals, mediators and admin to log into the system using their email and password. It handles identity related tasks.
 
-## Payment API - Stripe
+#### Payment API - Stripe
 
 This API is connected to payments between users and mediators. It acts as a secure payment solution with multiple payment options. It will allow users to pay mediators for their time and services securely, and easily.
 
-## Email API - SendGrid
+#### Email API - SendGrid
 
 SendGrid allows us to send secure emails. For example when a user forgets their password and needs to reset or when they need to receive email reminders or notifications.
 
-## Analytics API - Mixpanel
+#### Analytics API - Mixpanel
 
 This API enables insights into users behavior. User behavior can be broken down into discrete actions and recorded using Mixpanel. The user analytics will help inform feature development.
 
-# 3️⃣ Environment Variables
+## 3️⃣ Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
