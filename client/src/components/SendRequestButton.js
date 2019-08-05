@@ -7,9 +7,9 @@ import axios from 'axios';
     }
 
      return (
-        <SendRequestButton onClick={handleRequest}>
+        <button onClick={handleRequest}>
             Send Request
-        </SendRequestButton>
+        </button>
     )
 }
 

@@ -63,7 +63,7 @@ const MediatorCard = (props) => {
                 <p className='card-info'>{props.mediator.price}/hr</p>
             </CardContent>
               <CardActions>
-                <SendRequestButton mediator = {props.mediator}/>
+                <SendRequestButton mediator={props.mediator}/>
               </CardActions>
        
     </Card>

@@ -70,11 +70,11 @@ import {
       
         <Container>
             <Grid> 
-                container 
+                {/* container 
                 spacing={2} 
                 justify="center" 
                 style={{maxWidth:"1100px",margin:"0 auto",padding:"100px", 
-                }}>
+                }}> */}
                 <ul>
                 {requests.map((requests, index) => {
                 return <Card className={classes.card}>
