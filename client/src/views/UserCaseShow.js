@@ -6,7 +6,8 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { UserCaseList } from '../components/index';
 import Button from '@material-ui/core/Button';
-import Fab from '@material-ui/core/Fab';
+
+import './UserCaseShow.scss';
 
 /**
  * Define view
@@ -18,8 +19,9 @@ const useStyles = makeStyles(theme => ({
     },
     caseButton: {
       margin: theme.spacing(2),
-      width: '15%',
+      width: '30%',
       height: 50,
+      boxShadow: "5px 5px 5px #bec3c8",
       color: 'white',
       backgroundColor: '#5C90C1',
       "&:hover": {
@@ -27,6 +29,9 @@ const useStyles = makeStyles(theme => ({
       },
       "&:active": {
         backgroundColor: "#476e91"
+      },
+      [theme.breakpoints.down('sm')]: {
+        width: '50%',
       }
     },
 }))
@@ -40,8 +45,8 @@ const UserCaseShow = props => {
   }
 
   return (
-    <div style={{paddingTop:"15%"}}>
-       <Button   className={classes.caseButton} variant="outlined" color="primary" onClick={buttonHandler}>Create a Case</Button>
+    <div style={{paddingTop:"12.5%"}} className="cases-container">
+       <Button className={classes.caseButton} variant="outlined" onClick={buttonHandler}>Create a Case</Button>
         <UserCaseList />
     </div>
   )

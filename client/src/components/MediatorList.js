@@ -14,7 +14,7 @@ import Grid from '@material-ui/core/Grid';
 
 const MediatorList = (props) => {
    
-    console.log(props);
+    console.log("list props", props);
     const [mediators, setMediators] = useState([]);
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const MediatorList = (props) => {
             {mediators.map(mediator => {
                 return (
                 
-                        <MediatorCard mediator={mediator} key={mediator.uid} />
+                        <MediatorCard mediator={mediator} currentcase={props.currentcase} key={mediator.uid} />
                  );
                     
             })}

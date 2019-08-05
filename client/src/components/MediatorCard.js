@@ -28,20 +28,16 @@ const useStyles = makeStyles(theme => ({
       margin: '0 auto',
   },
   paper: {
-      // width: '25%',
-      // height: 300,
       backgroundColor: theme.palette.background.paper,
       border: '1px solid #000',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 4),
       outline: 'none',
-      // display: 'flex',
-      // justifyContent: 'center',
     },
 }))
 
 const MediatorCard = (props) => {
-  
+  console.log('Card props', props);
   const classes = useStyles();
   return (
     <>
@@ -63,7 +59,7 @@ const MediatorCard = (props) => {
                 <p className='card-info'>{props.mediator.price}/hr</p>
             </CardContent>
               <CardActions>
-                <SendRequestButton mediator={props.mediator}/>
+                <SendRequestButton mediator={props.mediator} currentcase={props.currentcase}/>
               </CardActions>
        
     </Card>

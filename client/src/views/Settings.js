@@ -21,11 +21,11 @@ import {
 function Settings() {
   return (
   
-      <div className="settings" style={{paddingTop:"5%", margin:"0 auto"}}>
+      <div container style={{paddingTop:"5%"}}>
         <HeaderH1>My Settings</HeaderH1>
-          <Typography container spacing={9} justify="center">
-            <Grid item xs={12} md={4}>
-              <HeaderH3>Contact Info</HeaderH3>
+          <Grid container spacing={9} justify="center">
+            <Grid item xs={6} md={4}>
+              <HeaderH3 justify="center">Contact Info</HeaderH3>
               <Typography>Name: </Typography>
               <Typography>Email: </Typography>
               <Typography>Phone: </Typography>
@@ -33,15 +33,15 @@ function Settings() {
               <Typography>Location: </Typography>
             </Grid>
 
-            <Typography item xs={12} md={4}>
+            <Grid item xs={6} md={4}>
               <HeaderH3>Billing</HeaderH3>
               <Typography>Card Number: </Typography>
               <Typography>Expiration Date: </Typography>
               <Typography>Credit Card Security: </Typography>
               <Typography>Payment Type: </Typography>
               <Typography>Country: </Typography>
-            </Typography>
-          </Typography>
+            </Grid>
+          </Grid>
 
           <Grid container spacing={9} justify="center">
             <Grid item xs={12} md={4}>
@@ -55,10 +55,10 @@ function Settings() {
             </Grid>
           </Grid>
 
-          <Grid container spacing={9}>
-            <Grid item xs={12} md={6}></Grid>
+          <Grid container spacing={9} justify="center">
+            <Grid item xs={12} md={4}></Grid>
 
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={4}>
               <DeactivateAccountButton />
             </Grid>
           </Grid>

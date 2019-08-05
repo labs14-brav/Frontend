@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { axioswithAuth } from '../helpers/index';
 
- function SendRequestButton(props) {
-    function handleRequest() {
-        axios.post(`/mediators/${props.mediator.id}/cases`)
+function SendRequestButton(props) {
+    console.log('request props', props)
+    function handleRequest() {    
+        axioswithAuth().post(`/mediators/${props.mediator.id}/cases`, props.currentcase.id)
+            .then(res => {
+                console.log(res);
+            })
+            .error(err => {
+                console.error(err);
+            })
     }
 
-     return (
+    return (
         <button onClick={handleRequest}>
             Send Request
         </button>
     )
 }
 
- export default SendRequestButton;
+export default SendRequestButton;

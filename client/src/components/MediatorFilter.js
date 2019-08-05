@@ -157,7 +157,7 @@ function MediatorFilter(props) {
             </div>
 
            
-            <MediatorList filter={filter}/>
+            <MediatorList filter={filter} currentcase={props.currentcase}/>
          </div>
         
     )
