@@ -2,73 +2,37 @@
  * Dependencies
  */
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import NavBar from '../components/NavBar';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { NavBar, SideNavBlock } from "../components/index";
+import { Link } from "react-router-dom";
+import { 
+    Button,
+    Grid, 
+} from "@material-ui/core";
+import {
+    HeaderH1,
+    HeaderH2,
+    HeaderH3,
+    BecomeMediatorLink,
+    EditUserLink,
+  } from './styles/index'
 
 /**
  * Locals
  */
 
-let baseurl
-if (process.env.NODE_ENV === 'production') 
-{
-   baseurl = "https://bravproduction.herokuapp.com/users?offset="
-}else if(process.env.NODE_ENV === 'staging')
-{
-  baseurl = "https://brav-staging.herokuapp.com/users?offset="
-} 
-else 
-{
-   baseurl = "http://localhost:8888/users?offset="
-}
-
-/**
- * Define view
- */
-
 function Home() {
-  const [users, setUsers] = useState([]);
-  const [offset, setOffset] = useState(0);
+    const [users, setUsers] = useState([]);
+    const [offset, setOffset] = useState(0);
 
-  useEffect(() => {
-    async function fetchUsers() {
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/users`);
-      setUsers(res.data);
-    }
+    return (
+        <div style={{paddingTop:"15%"}}>
 
-    fetchUsers()
-  }, [offset]);
-
-  return (
-    <div className="App">
-      <NavBar logout='' />
-
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <header className="App-header"><h4>Hello Brāv!</h4></header>
-
-            <label htmlFor="input-offset">Offset</label><br/>
-            <input id="input-offset" type="number" name="offset" value={offset} onChange={(e) => setOffset(e.target.value)}/>
-
-            <ul>
-              {users.map((user, index) => {
-                return <li key={index}> {user.id} -- {user.email} -- {user.type} </li>
-              })}
-            </ul>
-            <Link to="/cases"> View Cases </Link>
-            <Link to="/cases/new" >Create a Case</Link>
-          </div>
+                <Button  variant="outlined" color="primary"><Link to="/cases/new" style={{ textDecoration:"none"}}>Create A Case</Link></Button>
+    
         </div>
-      </div>
-    </div>
-  )
-};
-
-/**
- * Export view
- */
+    );
+}
 
 export default Home;
