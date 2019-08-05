@@ -2,27 +2,17 @@
 ![React](https://img.shields.io/badge/react-v16.8.6-blue.svg)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/9aaad5da-5fcb-4026-97b4-9d6f628206a3/deploy-status)](https://app.netlify.com/sites/brav/deploys)
 
-# Frontend
-
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
-
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
-
-# Brāv
+# Frontend - Brāv
 
 You can find the deployed project at [beabravone.com](http://www.beabravone.com/).
 
-## 4️⃣ Contributors
+## Contributors
 
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
-
-|                                       [Student 1](https://github.com/)                                        |                                       [Student 2](https://github.com/)                                        |                                       [Student 3](https://github.com/)                                        |                                       [Student 4](https://github.com/)                                        |                                       [Student 5](https://github.com/)                                        |
+| [Andy Bettisworth](https://github.com/wurde) | [Angel Torres](https://github.com/angel-torres) | [Brennon Nuckols](https://github.com/brennuck) | [Michael Falahee](https://github.com/Mjfalahee) | [Rogelio Caballero](https://github.com/rogercp) |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)             |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |
+[<img src="https://github.com/favicon.ico" width="15">](https://github.com/wurde) | [<img src="https://github.com/favicon.ico" width="15">](https://github.com/angel-torres) | [<img src="https://github.com/favicon.ico" width="15">](https://github.com/brennuck) | [<img src="https://github.com/favicon.ico" width="15">](https://github.com/Mjfalahee) | [<img src="https://github.com/favicon.ico" width="15">](https://github.com/rogercp) |
+| [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/bettisworth) | [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/) | [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/) | [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/) | [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/) |
 
-<br>
 <br>
 
 ## Project Overview
@@ -35,13 +25,16 @@ You can find the deployed project at [beabravone.com](http://www.beabravone.com/
 
 Our world is plagued with conflict and devastating violence everywhere you look: bullying in schools, violence in our homes, on the streets, across borders, everywhere. Brāv trains anyone in conflict management who in turn manages the conflicts of others directly on the site.
 
-### 4️⃣ Key Features
+### Key Features
 
--    feature one
--    feature two
--    feature three
--    feature four
--    feature five
+1. On-boarding for new users will include sign-in, sign-up, and logout.
+2. User settings. A user will be able to change their password.
+3. Manage Cases. A user will be able to edit the details of a case.
+4. Search Mediators. A user will be able to filter mediators.
+5. Schedule sessions for conflict resolution discussion— assign Mediator, and email third party using SendGrid.
+6. Request to be mediator. The onboarding for mediators will involve a manual approval process that includes Stripe Connect.
+7. Chat with a mediator using in-app messaging.
+8. Admin Views for viewing mediators, cases, and schedules
 
 ## Tech Stack
 
@@ -51,68 +44,37 @@ Our world is plagued with conflict and devastating violence everywhere you look:
 
 We are using the React library to render the interface and Redux for state management. React is lightweight and unopinionated, so it's perfect for building an MVP.
 
-🚫List the rest of the front end features and libraries in the same format as the framework above.
-
 #### Front end deployed to `Netlify`
 
-#### [Back end](https://github.com/labs14-brav/Backend) built using:
-
-#### Back end framework goes here
+#### [Back end](https://github.com/labs14-brav/Backend) deployed to `Heroku`
 
 We are using a PostgresSQL database deployed on Heroku. To access the database we are implementing a RESTful API using NodeJS, Express, and knex. Node lets you write JavaScript on both the front-end and back-end, which increases readability and reduced context-switching.
 
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
+## APIs
 
-# APIs
+#### Authentication API - Firebase
 
-## 2️⃣ Authentication API here
+This API is used to authenticate the individuals, mediators and admin to log into the system using their email and password. It handles identity related tasks.
 
-🚫Replace text below with a description of the API
+#### Payment API - Stripe
 
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
+This API is connected to payments between users and mediators. It acts as a secure payment solution with multiple payment options. It will allow users to pay mediators for their time and services securely, and easily.
 
-## 2️⃣ Payment API here
+#### Email API - SendGrid
 
-🚫Replace text below with a description of the API
+SendGrid allows us to send secure emails. For example when a user forgets their password and needs to reset or when they need to receive email reminders or notifications.
 
-This is the way you take out your flustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
+#### Analytics API - Mixpanel
 
-## 3️⃣ Misc API here
+This API enables insights into users behavior. User behavior can be broken down into discrete actions and recorded using Mixpanel. The user analytics will help inform feature development.
 
-🚫Replace text below with a description of the API
-
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
-
-# 3️⃣ Environment Variables
+## Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-🚫These are just examples, replace them with the specifics for your app
+    *  REACT_APP_API_URL - the Backend URL.
 
-    *  REACT_APP_apiKey - this is your Google API key, which can be generated in the Google Cloud Console
-    *  REACT_APP_authDomain - when you set up your Firebase project, this information will be in the dashboard
-    *  REACT_APP_databaseURL - in the Firebase dashboard
-    *  REACT_APP_projectID - in the Firebase dashboard
-    *  REACT_APP_storageBucket - in the Firebase dashboard
-    *  REACT_APP_messagingSenderId - in the Firebase dashboard
-    *  REACT_APP_stripe_API - this is your public Stripe API key, generated in the Stripe dashboard
-    *  REACT_APP_backendURL - optional for your local development server
-    *  REACT_APP_clientid - this is the Stripe_connect clientID, generated in Stripe_connect settings
-    *  REACT_APP_stripe_plan - this is the ID for a second Stripe subscription plan, generated under Stripe products
-
-# 5️⃣ Content Licenses
+## 5️⃣ Content Licenses
 
 🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
 
@@ -121,22 +83,23 @@ In order for the app to function correctly, the user must set up their own envir
 | doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
 | rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
 
-# 4️⃣ Testing
+## Testing
 
-🚫Document what you used for testing and why
+We are using the `react-testing-library` dependency for Frontend tests. Since that dependency is deprecated we'll be migrating that to `@testing-library/react`.
 
-# 4️⃣ Installation Instructions
+## Installation Instructions
 
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+Run the following commands to install all dependencies:
+
+```
+npm install
+```
 
 ## Other Scripts
 
-🚫replace these examples with your own
-
-    * typecheck - runs the TypeScript compiler
-    * build - creates a build of the application
-    * start - starts the production server after a build is created
-    * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
+    * build - creates a build of the application.
+    * start - starts the production server after a build is created.
+    * test - runs tests.
 
 # Contributing
 
