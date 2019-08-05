@@ -2,13 +2,7 @@
 ![React](https://img.shields.io/badge/react-v16.8.6-blue.svg)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/9aaad5da-5fcb-4026-97b4-9d6f628206a3/deploy-status)](https://app.netlify.com/sites/brav/deploys)
 
-# Frontend
-
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
-
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
-
-# Brāv
+# Frontend - Brāv
 
 You can find the deployed project at [beabravone.com](http://www.beabravone.com/).
 
