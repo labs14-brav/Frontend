@@ -14,7 +14,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 
-
 /**
  * Define styles
  */
@@ -50,7 +49,6 @@ const MediatorCard = (props) => {
     <>
       <Grid item xs={12} md={6} lg={6}>
         <Card className={classes.paper}>
-  
           <CardContent>
               <h5 className='card-name'> {props.mediator.name} </h5>
               <p id="case-label">License:</p> 
