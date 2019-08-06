@@ -31,10 +31,6 @@ function Landing(props) {
     const classes = useStyles();
     mixpanel.track("Visited landing page");
 
-    const handleAuthentication = {
-        
-    };
-
     return (
         <>
             <div className="landingNav">

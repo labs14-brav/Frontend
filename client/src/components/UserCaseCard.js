@@ -47,9 +47,11 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(1)
     },
     submitbutton: {
+        margin: theme.spacing(1),
         justifyContent: 'center',
     },
     deletebutton: {
+        margin: theme.spacing(1),
         color: '#E55557',
         borderColor: '#E55557',
 
@@ -144,7 +146,7 @@ const UserCaseCard = (props) => {
         axioswithAuth().delete(`${process.env.REACT_APP_API_URL}/cases/${props.case.id}`)
             .then(res => {
                 console.log(res.data);
-                window.location.reload();
+                props.fetchCases();
             })
             .catch(error => {
                 console.error(error);

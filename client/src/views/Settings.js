@@ -6,6 +6,11 @@ import React from 'react';
 import { DeactivateAccountButton, NavBar, SideNavBlock } from '../components/index';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
+import { styled } from '@material-ui/styles';
+import { Button } from '@material-ui/core';
+import axios from 'axios';
+import { axioswithAuth } from '../helpers/index';
 
 import {
   HeaderH1,
@@ -18,6 +23,8 @@ import {
 /**
  * Define view
  */
+
+
 
 function Settings() {
   return (
@@ -36,9 +43,12 @@ function Settings() {
             </Grid>
 
             <Grid item xs={6}>
-                <BecomeMediatorLink  to="/users/mediator-registration">
+            <Link style={{textDecoration:"none"}} to="/users/mediator-registration">
+                <BecomeMediatorLink>  
                 Become a Mediator
               </BecomeMediatorLink>
+              </Link>
+              
             </Grid>
 
             <Grid item xs={6}>
