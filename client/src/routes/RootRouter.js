@@ -5,7 +5,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { PrivateRoute } from './helpers/index';
-import { Home, ErrorBoundary, AdminHome, Login} from '../views/index';
+import { ErrorBoundary, AdminHome, Login} from '../views/index';
 import uuid from 'uuid';
 
 /**
@@ -13,6 +13,7 @@ import uuid from 'uuid';
  */
 
 const RootRouter = [
+  <Route key={uuid.v4()} exact path="/" render={() => <Redirect to="/cases" />} />,
   <Route key={uuid.v4()} path="/signin" render={() => <Redirect to="/users/login" />} />,
   <Route key={uuid.v4()} path="/login" render={() => <Redirect to="/users/login" />} />,
   <Route key={uuid.v4()} path="/signup" render={() => <Redirect to="/users/login" />} />,
@@ -21,8 +22,6 @@ const RootRouter = [
   <Route key={uuid.v4()} path='/users/signup' render={() => <Redirect to='/users/login' />} />,
   <Route key={uuid.v4()} path='/users/login' render={(props) => <Login {...props} />} />,
   <Route key={uuid.v4()} path='/users/register' render={(props) => <Login {...props} />} />,
-  
-  
 ];
 
 /**

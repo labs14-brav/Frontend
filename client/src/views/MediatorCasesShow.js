@@ -116,15 +116,15 @@ export default function MediatorCasesShow() {
                 <NavTab label="Completed" />
             </NavTabs>
             { selectedTab === "pending" ? <div>
-                <hi>Pending</hi>
+                <h1>Pending</h1>
                 <MediatorPendingCaseList />
             </div> : null }
             { selectedTab === "accepted" ? <div>
-            <hi>Accepted</hi>
+            <h1>Accepted</h1>
             <MediatorAcceptedCaseList />
             </div> : null}
             { selectedTab === "completed" ? <div>
-                <hi>Completed</hi>
+                <h1>Completed</h1>
                 <MediatorCompletedCaseList />
             </div> : null}
         </MediatorCasesShowStyle>

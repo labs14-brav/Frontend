@@ -12,9 +12,7 @@ import uuid from 'uuid';
  * Define router
  */
 
-const TestRouter = [
-  <Route key={uuid.v4()} path="/cases/:id/mediator-search" component={Search} errorBoundary={ErrorBoundary} />,
-];
+const TestRouter = [];
 
 /**
  * Export router

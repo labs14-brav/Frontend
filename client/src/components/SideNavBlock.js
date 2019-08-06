@@ -3,23 +3,21 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { axioswithAuth } from '../helpers/index';
-import MediatorCard from './MediatorCard';
 import Grid from '@material-ui/core/Grid';
 import { Link } from "react-router-dom";
-import {
-    HeaderH1,
-    HeaderH2,
-    HeaderH3,
-    BecomeMediatorLink,
-    EditUserLink,
-  } from '../views/styles/index';
+
 
 /**
  * Define component
  */
 
 const SideNavBlock = (props) => {
+
+    const userType = localStorage.getItem("type");
+    console.log(userType)
+
+    useEffect();
+
   return (
         <Grid item xs={4} sm={3} lg={2} className="bg-brav-secondary" >
             <div className="lowerNavBlock">

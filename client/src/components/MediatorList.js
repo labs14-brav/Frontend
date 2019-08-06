@@ -7,18 +7,14 @@ import { axioswithAuth } from '../helpers/index';
 import MediatorCard from './MediatorCard';
 import Grid from '@material-ui/core/Grid';
 
-
 /**
  * Define component
  */
 
 const MediatorList = (props) => {
-   
-    console.log(props);
     const [mediators, setMediators] = useState([]);
 
     useEffect(() => {
-        console.log('Inside Mediator List UseEffect-- Mediators are updating.')
         async function fetchMediators() {
             const res = await axioswithAuth().get(`${process.env.REACT_APP_API_URL}/mediators`, {
                 params: {
@@ -29,27 +25,19 @@ const MediatorList = (props) => {
                 }
             });
             setMediators(res.data);
-            // setMediators(testMediators);
         }
         fetchMediators()
-        }, [props.filter]);
-        //re-check when filters change eventually, but for now just mimic ComponentDidMount. 
+    }, [props.filter]);
 
-  return (
-      
-        <Grid container spacing={4} >
-        
+    return (
+        <Grid container spacing={4} className="mt-4">
             {mediators.map(mediator => {
                 return (
-                
-                        <MediatorCard mediator={mediator} key={mediator.uid} />
+                    <MediatorCard mediator={mediator} currentcase={props.currentcase} key={mediator.uid} />
                  );
-                    
             })}
-       
         </Grid>
-   
-  );
+    );
 };
 
 /**

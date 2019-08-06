@@ -6,9 +6,13 @@
     z-index:10;
 }
 
-.braveHeader {
-    display: block;
+.bravHeader {
+    display: flex;
     color: white;
-   text-align: center;
-   margin: 0;
+    text-align: center;
+    margin: 0;
+    background-color: #598EBF;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 }

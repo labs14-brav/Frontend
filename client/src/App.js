@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { RootRouter, UsersRouter, TestRouter, NoMatchRouter, CasesRouter } from './routes/index';
 import { Grid } from '@material-ui/core';
 import { NavBar, SideNavBlock } from './components';
@@ -28,8 +28,7 @@ function App() {
       localStorage.getItem("token") ?
       <Grid container style={{ height: '100vh' }} >
         <NavBar/>
-        <SideNavBlock />
-        <Grid item xs={8} sm={9} lg={10} style={{ backgroundColor: '#ECF6FF' }}>
+        <Grid item xs={12} sm={12} lg={12} style={{ backgroundColor: '#ECF6FF' }}>
           <Switch>
             {RootRouter}
             {UsersRouter}
@@ -44,6 +43,7 @@ function App() {
           <Route key={uuid.v4()} exact path="/" component={Landing} />
           <Route key={uuid.v4()} exact path='/auth' component={Login} />
           <PrivateRoute key={uuid.v4()} exact path="/auth/callback" component={AuthCallback} errorBoundary={ErrorBoundary} />
+          <Redirect to='/' />
         </Switch>
       }
     </BrowserRouter>

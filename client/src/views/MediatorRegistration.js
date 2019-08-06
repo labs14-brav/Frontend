@@ -58,6 +58,7 @@ function MediatorRegistration(props) {
     // this is the state of all the inputs in the form
     const [values, setValues] = useState({
         type: "user",
+        name:"",
         license: "",
         experience: "",
         price: 0,
@@ -97,6 +98,11 @@ function MediatorRegistration(props) {
             <Container maxWidth="sm" style={{paddingTop:"15%"}}>
             <h1>Mediator Registration</h1>
             <FormGroup>
+            <TextField
+                    label="Full Name"
+                    value={values.name}
+                    onChange={handleChange("name")}
+                />
                 <TextField
                     label="General Details"
                     value={values.general_details}
