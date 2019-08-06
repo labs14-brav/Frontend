@@ -5,6 +5,7 @@
 import React from 'react';
 import { MediatorFilter } from '../components/index';
 import { HeaderH1 } from './styles/index';
+import Grid from '@material-ui/core/Grid';
 
 /**
  * Define view

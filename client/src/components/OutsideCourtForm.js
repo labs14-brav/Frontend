@@ -4,6 +4,7 @@
 
 import React, { useState, Component } from 'react';
 import axioswithAuth from '../helpers/axioswithAuth';
+import SimpleDialog from './modals/SimpleDialog';
 
 // maerial-ui imports
 
@@ -68,8 +69,18 @@ const OutsideCourtForm = (props) => {
       "dispute_amount": null,
       "case_notes":""
     });
-      
-      
+    const [open, setOpen] = useState(false);
+    /**
+     * Dialog Methods
+     */
+  
+     function handleOpen() {
+       setOpen(true);
+     }
+     function handleClose() {
+       setOpen(false);
+     }
+     
       const handleChange = name => event => {
         setValues({ ...form, [name]: event.target.value });
       };
@@ -79,11 +90,11 @@ const OutsideCourtForm = (props) => {
         let posted = await axioswithAuth().post(`/cases`, form)
             .then(res => {
             console.log("add new case: ", res.data)
+            handleOpen();
             })
             .catch(err => {
             console.error(err.response)
             })
-            window.location = '/cases';
         }
 
     return (
@@ -162,6 +173,14 @@ const OutsideCourtForm = (props) => {
               <Button className={classes.button} onClick={onSubmitHandler} variant="contained">submit</Button>
 
           </form>
+          <SimpleDialog
+        open={open}
+        onClose={handleClose}
+        titleText={'Case created'}
+        bodyText={''}
+        redirect={'/cases'}
+        redirectText={'Cases'}
+      />
       </div>
     )
 }

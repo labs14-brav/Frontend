@@ -36,7 +36,7 @@ import {
           setRequests(res.data);
         }
         fetchRequests()
-      },[]);
+      },[requests]);
 
 
 

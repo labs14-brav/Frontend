@@ -4,6 +4,8 @@
 
 import React, { useState, Component } from 'react';
 import axioswithAuth from '../helpers/axioswithAuth';
+import SimpleDialog from './modals/SimpleDialog.js';
+
 
 /**
  * Material-UI imports
@@ -71,22 +73,45 @@ const CourtForm = (props) => {
     "court_filing_date": "",
     "case_notes": ""
   });
-      
+  const [open, setOpen] = useState(false);
+  const [errorOpen, setErrorOpen] = useState(false);
+  /**
+   * Dialog Methods
+   */
+
+   function handleOpen() {
+     setOpen(true);
+   }
+   function handleErrorOpen() {
+     setErrorOpen(true);
+   }
+   function handleClose() {
+     setOpen(false);
+   }
+   function handleErrorClose() {
+     setErrorOpen(false);
+   }
+   
+  /**
+   *  Form Methods
+  */
   const handleChange = name => event => {
     setValues({ ...form, [name]: event.target.value });
   };
       
-  const onSubmitHandler = async e => {
+  const onSubmitHandler = e => {
     e.preventDefault();
-    let created = await axioswithAuth().post(`/cases`, form)
+    axioswithAuth().post(`/cases`, form)
     .then(res => {
-      console.log(res.data)
+      console.log(res.data);
+      handleOpen();
     })
     .catch(err => {
       console.error(err.response)
     })
-    window.location='/cases';
+   
   }
+
 
   return (
     <div style={{maxWidth:"1100px",margin:"0 auto",padding:"100px 30px"}}>
@@ -100,6 +125,7 @@ const CourtForm = (props) => {
           value={form.dispute_category}
           helperText="required"
           onChange={handleChange("dispute_category")}
+          required
           SelectProps={{
             MenuProps: {
             className: classes.menu,
@@ -209,6 +235,22 @@ const CourtForm = (props) => {
 
         <Button className={classes.button} onClick={onSubmitHandler} variant="contained">Submit</Button>
       </form>
+      <SimpleDialog
+        open={open}
+        onClose={handleClose}
+        titleText={'Case created'}
+        bodyText={''}
+        redirect={'/cases'}
+        redirectText={'Cases'}
+      />
+      <SimpleDialog
+        open={errorOpen}
+        onClose={handleErrorClose}
+        titleText={'Error creating case'}
+        bodyText={'Please try again'}
+        redirect={''}
+        redirectText={''}
+        />
     </div>
   )
 }

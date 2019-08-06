@@ -30,7 +30,7 @@ const MediatorList = (props) => {
     }, [props.filter]);
 
     return (
-        <Grid container spacing={4} className="mt-4">
+        <Grid container spacing={4} >
             {mediators.map(mediator => {
                 return (
                     <MediatorCard mediator={mediator} currentcase={props.currentcase} key={mediator.uid} />
