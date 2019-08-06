@@ -13,17 +13,15 @@ import Grid from '@material-ui/core/Grid';
 
 function Search(props) {
   return (
-    <div style={{ 
-        paddingTop:"100px",
-        display:"flex",
-        flexDirection:"column",
-        justifyContent:"center",
-        alignItems:"center",
-        padding:"40px" 
-    }}>
-        <HeaderH1> Search for a Mediator</HeaderH1>
+    <Grid container spacing={9} justify="center" style={{padding:"100px"}}>
+      <Grid item xs={12}>
+        <HeaderH1>Search for a Mediator</HeaderH1>
+      </Grid>
+
+      <Grid item xs={12}>
         <MediatorFilter currentcase={props.location.state.currentcase}/>
-    </div>
+      </Grid>
+    </Grid>
   )
 };
 

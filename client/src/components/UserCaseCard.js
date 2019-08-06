@@ -5,6 +5,8 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import AddendumsList from './AddendumsList'
+import AreYouSureDialog from './modals/AreYouSureDialog';
+import axioswithAuth from '../helpers/axioswithAuth';
 
 /**
  * Material UI imports
@@ -19,7 +21,7 @@ import Dialog from '@material-ui/core/Dialog';
 import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import CloseIcon from '@material-ui/icons/Close';
-import axioswithAuth from '../helpers/axioswithAuth';
+
 
 /**
  * Import styles
@@ -80,12 +82,13 @@ function getModalStyle() {
 const UserCaseCard = (props) => {
     const [open, setOpen] = useState(false);
     const [fullopen, setFullOpen] = useState(false);
+    const [sureOpen, setSureOpen] = useState(false);
     const [modalStyle] = useState(getModalStyle);
     const [textState, setText] = useState('');
     const classes = useStyles();
 
     /**
-     * Modal functions
+     * Dialog functions
      */
 
      const handleOpen = () => {
@@ -95,15 +98,22 @@ const UserCaseCard = (props) => {
         setOpen(false);
     }
 
-    /** 
-     * Full screen Dialog Methods
-     */
-
      const handlefullOpen = () => {
         setFullOpen(true);
     }
     const handlefullClose = () => {
         setFullOpen(false);
+    }
+
+    const handleSureOpen = () => {
+        setSureOpen(true);
+    }
+
+    const handleSureClose = value => {
+        setSureOpen(false);
+        if (value === true) {
+            handleDelete();
+        }
     }
 
     /**
@@ -130,20 +140,24 @@ const UserCaseCard = (props) => {
         setText(e.target.value);
     }
 
-    const handleDelete = e => {
-        e.preventDefault();
+    function handleDelete() {
         axioswithAuth().delete(`${process.env.REACT_APP_API_URL}/cases/${props.case.id}`)
             .then(res => {
-                console.log(res.data)
+                console.log(res.data);
+                window.location.reload();
             })
             .catch(error => {
                 console.error(error);
             })
     }
-    console.log(props.numCases);
+    
     return (
         <>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
+            <Grid 
+                item xs={12} 
+                sm={12} 
+                md={props.numCases === 1 ? 12 : 6} 
+                lg={props.numCases === 1 ? 12 : 6}>
                 <Card className={classes.paper}> 
                     <CardContent>
                         <h6 id="case-label">Type</h6>
@@ -170,12 +184,14 @@ const UserCaseCard = (props) => {
                         <Button className={classes.tertiarybutton} onClick={handlefullOpen} variant="outlined">
                             View Details
                         </Button>
-                        <Button className={classes.deletebutton} onClick={handleDelete} variant="outlined">
+                        <Button className={classes.deletebutton} onClick={handleSureOpen} variant="outlined">
                             Delete Case
                         </Button>
                     </CardActions>
                 </Card>
             </Grid>
+
+
         <Dialog
         className={classes.modal}
         open={open}
@@ -195,6 +211,7 @@ const UserCaseCard = (props) => {
             </div>
         </Dialog>
 
+
         <Dialog fullScreen open={fullopen} onClose={handlefullClose}>
             <Toolbar >
                 <IconButton edge="end" onClick={handlefullClose}>
@@ -203,6 +220,8 @@ const UserCaseCard = (props) => {
             </Toolbar>
             <AddendumsList case={props.case}/>
         </Dialog>
+
+        <AreYouSureDialog open={sureOpen} onClose={handleSureClose}/>
     </>
     )
 }

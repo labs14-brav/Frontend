@@ -6,7 +6,6 @@ import React from 'react';
 import { DeactivateAccountButton, NavBar, SideNavBlock } from '../components/index';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import  Button  from '@material-ui/core';
 
 import {
   HeaderH1,
@@ -25,6 +24,7 @@ function Settings() {
   
       <div container style={{paddingTop:"5%",overflowX:"hidden",overflowY:"hidden"}} >
         <HeaderH1>My Settings</HeaderH1>
+
           <Grid container spacing={9} justify="center" style={{display:"flex",flexDirection:"column", alignItems:"center"}} >
             <Grid item xs={6}>
               <HeaderH3>Contact Info</HeaderH3>
@@ -35,21 +35,11 @@ function Settings() {
               <Typography>Location: </Typography>
             </Grid>
 
-          {/* </Grid> */}
-
-          {/* <Grid container spacing={9} justify="center"> */}
             <Grid item xs={6}>
-             
                 <BecomeMediatorLink  to="/users/mediator-registration">
-                {/* <Button variant="contained"> */}
                 Become a Mediator
-                {/* </Button> */}
               </BecomeMediatorLink>
-              
             </Grid>
-          {/* </Grid> */}
-
-          {/* <Grid container spacing={9} justify="center"> */}
 
             <Grid item xs={6}>
               <DeactivateAccountButton />

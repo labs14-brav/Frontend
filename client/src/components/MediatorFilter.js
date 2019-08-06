@@ -91,6 +91,7 @@ function MediatorFilter(props) {
                         }
                     }}
                     >
+                        <MenuItem value=""></MenuItem>
                         <MenuItem value="Landlord/Tenant">Landlord/Tenant</MenuItem>
                         <MenuItem value="Eldercare">Eldercare</MenuItem>
                         <MenuItem value="Commercial">Commercial</MenuItem>
@@ -116,6 +117,7 @@ function MediatorFilter(props) {
                         }
                     }}
                     >
+                        <MenuItem value=""></MenuItem>
                         <MenuItem value="<25">Less than 25$</MenuItem>
                         <MenuItem value="25-75">25-75$</MenuItem>
                         <MenuItem value=">75">Greater than 75$ </MenuItem>
@@ -139,6 +141,7 @@ function MediatorFilter(props) {
                             }
                         }}
                         >
+                            <MenuItem value=""></MenuItem>
                             <MenuItem value="English">English</MenuItem>
                             <MenuItem value="Spanish">Spanish</MenuItem>
                             <MenuItem value="Chinese">Chinese</MenuItem>
@@ -160,6 +163,7 @@ function MediatorFilter(props) {
                             }
                         }}
                         >
+                        <MenuItem value=""></MenuItem>
                         <MenuItem value={`<2 years`}>{`Less than 2 years`}</MenuItem>
                         <MenuItem value={`2-5 years`}>{`2-5 years`}</MenuItem>
                         <MenuItem value={`>5 years`}>{`More than 5 years`}</MenuItem>

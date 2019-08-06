@@ -10,7 +10,7 @@ import SimpleDialog from './modals/SimpleDialog';
  * Material-UI
  */
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
@@ -32,6 +32,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: 400,
+    color: '#598EBF'
   },
   dense: {
     marginTop: 19,
@@ -52,6 +53,15 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: "#476e91"
     }
   },
+  outlinedRoot: {
+    '&$focused $notchedOutline': {
+      borderColor: '#598EBF',
+      borderWidth: 1,
+      color: '#598EBF'
+    }
+  },
+  notchedOutline: {},
+  focused: {},
 }));
 
 /**
@@ -109,6 +119,19 @@ const OutsideCourtForm = (props) => {
         })
     }
 
+    const InputProps = {
+      classes: {
+
+                root: classes.outlinedRoot,
+        notchedOutline: classes.notchedOutline,
+        focused: classes.focused
+     
+
+     }
+    }
+
+    
+
     return (
       <div style={{maxWidth:"1100px",margin:"0 auto",padding:"100px 30px"}}>
           <Typography style={{textAlign:"center"}} variant="h3">Case Form</Typography>
@@ -127,6 +150,8 @@ const OutsideCourtForm = (props) => {
                   className: classes.menu,
                 }
               }}
+              variant="outlined"
+              InputProps = {InputProps}
               >
                 <MenuItem value="Landlord/Tenant">Landlord/Tenant</MenuItem>
                 <MenuItem value="Eldercare">Eldercare</MenuItem>
@@ -146,6 +171,7 @@ const OutsideCourtForm = (props) => {
               variant="outlined"
               onChange={handleChange("parties_involved")}
               value={form.parties_involved}  
+              InputProps = {InputProps}
               />
 
               <TextField 
@@ -155,7 +181,8 @@ const OutsideCourtForm = (props) => {
               name="parties_contact_info"
               onChange={handleChange("parties_contact_info")}
               margin="normal"
-              variant="outlined"/>
+              variant="outlined"
+              InputProps = {InputProps}/>
 
               <TextField 
               className={classes.textField}
@@ -166,7 +193,8 @@ const OutsideCourtForm = (props) => {
               type="number"
               onChange={handleChange("dispute_amount")}
               margin="normal"
-              variant="outlined"/>
+              variant="outlined"
+              InputProps = {InputProps}/>
 
               <TextField
               className={classes.textField}
@@ -178,9 +206,10 @@ const OutsideCourtForm = (props) => {
               onChange={handleChange("description")}
               margin="normal"
               variant="outlined"
+              InputProps = {InputProps}
               />
 
-              <Button className={classes.button} onClick={onSubmitHandler} variant="contained">submit</Button>
+              <Button className={classes.button} onClick={onSubmitHandler} variant="contained" InputProps = {InputProps}>submit</Button>
 
           </form>
 

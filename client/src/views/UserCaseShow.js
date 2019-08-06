@@ -19,19 +19,17 @@ const useStyles = makeStyles(theme => ({
     },
     caseButton: {
       margin: theme.spacing(2),
-      width: '30%',
+      width: '200px',
       height: 50,
       boxShadow: "5px 5px 5px #bec3c8",
       color: 'white',
       backgroundColor: '#5C90C1',
+      marginBottom: '40px',
       "&:hover": {
         backgroundColor: "#517EA8"
       },
       "&:active": {
         backgroundColor: "#476e91"
-      },
-      [theme.breakpoints.down('sm')]: {
-        width: '50%',
       }
     },
 }))
@@ -45,7 +43,7 @@ const UserCaseShow = props => {
   }
 
   return (
-    <div style={{paddingTop:"12.5%"}} className="cases-container">
+    <div style={{paddingTop:"15%"}} className="cases-container">
        <Button className={classes.caseButton} variant="outlined" onClick={buttonHandler}>Create a Case</Button>
         <UserCaseList />
     </div>

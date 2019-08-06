@@ -45,9 +45,15 @@ const useStyles = makeStyles(theme => ({
 const MediatorCard = (props) => {
   const classes = useStyles();
 
+
+
   return (
     <>
-      <Grid item xs={12} md={6} lg={6}>
+        <Grid 
+                item xs={12} 
+                sm={12} 
+                md={props.numMediators === 1 ? 12 : 6} 
+                lg={props.numMediators === 1 ? 12 : 6}>
         <Card className={classes.paper}>
           <CardContent>
               <h5 className='card-name'> {props.mediator.name} </h5>

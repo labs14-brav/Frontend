@@ -22,13 +22,16 @@ const UserCaseList = (props) => {
 
     return (
         <div className="list-container">
-        <Grid container spacing={3} 
-        direction="row"
-        justify="space-evenly">
-            {cases.map(ele => {
-                return <UserCaseCard numCases={cases.length} case={ele} key={ele.id}/>
-            })}
-        </Grid>
+            {
+                cases.length < 1 ? <div>You have no open cases...</div> : 
+                <Grid container spacing={3} 
+                direction="row"
+                justify="space-evenly">
+                    {cases.map(ele => {
+                        return <UserCaseCard numCases={cases.length} case={ele} key={ele.id}/>
+                    })}
+                </Grid>
+            }
         </div>
     )
 }
