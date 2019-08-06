@@ -45,6 +45,27 @@ function NavBar(props) {
     }
   }
 
+  if(localStorage.getItem("type")==='admin'){
+    return (
+
+          <Grid container style={{position: 'absolute', boxShadow:"5px 0px 8px #888888"}} className="navBarTop">
+            <Grid item xs={4} sm={3} lg={2} className="bg-brav-secondary">
+              <h1 className="bravHeader">Brāv</h1>
+            </Grid>
+
+            <Grid item xs={8} sm={9} lg={10}>
+              <nav position="static" color="default">
+                <Toolbar className="bg-white">
+                  <span style={{ flexGrow: 1 }}></span>
+                  <Button onClick={logout}>Sign Out</Button>
+                </Toolbar>
+              </nav>
+            </Grid>
+        </Grid>
+    )
+
+  }else{
+
   return (
     <Grid container style={{position: 'absolute', boxShadow:"5px 0px 8px #888888"}} className="navBarTop">
       <Grid item xs={4} sm={3} lg={2} className="bg-brav-secondary">
@@ -66,6 +87,7 @@ function NavBar(props) {
       </Grid>
     </Grid>
   );
+  }
 };
 
 /**
