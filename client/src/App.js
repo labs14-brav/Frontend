@@ -26,7 +26,7 @@ function App() {
     <BrowserRouter>
       { 
       localStorage.getItem("token") ?
-      <Grid container style={{ height: '100vh' }} >
+      <Grid container style={{ height: '100vh'}} >
         <NavBar/>
         <Grid item xs={12} sm={12} lg={12} style={{ backgroundColor: '#ECF6FF', overflow:"hidden" }}>
           <Switch>
