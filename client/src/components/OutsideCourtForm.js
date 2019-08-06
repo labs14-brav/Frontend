@@ -122,7 +122,8 @@ const OutsideCourtForm = (props) => {
     const InputProps = {
       classes: {
 
-                root: classes.outlinedRoot,
+        root: classes.outlinedRoot,
+        color: classes.multilineColor,
         notchedOutline: classes.notchedOutline,
         focused: classes.focused
      
