@@ -62,6 +62,9 @@ const useStyles = makeStyles(theme => ({
   },
   notchedOutline: {},
   focused: {},
+  multilineColor: {
+    color: '#598EBF'
+  }
 }));
 
 /**
@@ -173,6 +176,7 @@ const OutsideCourtForm = (props) => {
               onChange={handleChange("parties_involved")}
               value={form.parties_involved}  
               InputProps = {InputProps}
+              multilineColor
               />
 
               <TextField 

@@ -32,7 +32,7 @@ function Settings() {
       <div container style={{paddingTop:"5%",overflowX:"hidden",overflowY:"hidden"}} >
         <HeaderH1>My Settings</HeaderH1>
 
-          <Grid container spacing={9} justify="center" style={{display:"flex",flexDirection:"column", alignItems:"center"}} >
+          <Grid container spacing={9} justify="center" style={{display:"flex",flexDirection:"column", alignItems:'center'}} >
             <Grid item xs={6}>
               <HeaderH3>Contact Info</HeaderH3>
               <Typography>Name: </Typography>
