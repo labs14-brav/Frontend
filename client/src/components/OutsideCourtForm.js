@@ -2,12 +2,9 @@
  * Dependencies
  */
 
-import React, { useState, Component } from 'react';
+import React, { useState } from 'react';
 import axioswithAuth from '../helpers/axioswithAuth';
 import SimpleDialog from './modals/SimpleDialog';
-
-// maerial-ui imports
-
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -50,7 +47,6 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: "#476e91"
     }
   },
-
 }));
 
 /**
@@ -59,17 +55,17 @@ const useStyles = makeStyles(theme => ({
 
 const OutsideCourtForm = (props) => {
     const classes = useStyles();
-  
     const [form, setValues] = useState({
       "court_case": false,
-      "parties_involved":"",
-      "parties_contact_info":"",
+      "parties_involved": "",
+      "parties_contact_info": "",
       "description": "",
       "dispute_category": "",
       "dispute_amount": null,
-      "case_notes":""
+      "case_notes": ""
     });
     const [open, setOpen] = useState(false);
+    const [errorOpen, setErrorOpen] = useState(false);
     /**
      * Dialog Methods
      */
@@ -77,34 +73,42 @@ const OutsideCourtForm = (props) => {
      function handleOpen() {
        setOpen(true);
      }
+     function handleErrorOpen() {
+       setErrorOpen(true);
+     }
      function handleClose() {
        setOpen(false);
      }
+     function handleErrorClose() {
+       setErrorOpen(false);
+     }
+    /**
+     * Form methods
+     */
      
-      const handleChange = name => event => {
-        setValues({ ...form, [name]: event.target.value });
-      };
+    const handleChange = name => event => {
+      setValues({ ...form, [name]: event.target.value });
+    }
       
-      const onSubmitHandler = async e =>{
-        e.preventDefault();
-        let posted = await axioswithAuth().post(`/cases`, form)
-            .then(res => {
-            console.log("add new case: ", res.data)
-            handleOpen();
-            })
-            .catch(err => {
-            console.error(err.response)
-            })
-        }
+    const onSubmitHandler = async (e) => {
+      e.preventDefault();
+
+      let posted = await axioswithAuth().post(`/cases`, form)
+        .then(res => {
+          console.log("add new case: ", res.data)
+          handleOpen();
+        })
+        .catch(err => {
+          console.error(err.response)
+          handleErrorOpen();
+        })
+    }
 
     return (
-
       <div style={{maxWidth:"1100px",margin:"0 auto",padding:"100px 30px"}}>
-
           <h1 style={{textAlign:"center"}}>Outside Court Form</h1>
     
           <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>
-
             <TextField
               className={classes.textField}
               select
@@ -114,7 +118,7 @@ const OutsideCourtForm = (props) => {
               onChange={handleChange("dispute_category")}
               SelectProps={{
                 MenuProps: {
-                className: classes.menu,
+                  className: classes.menu,
                 }
               }}
               >
@@ -173,17 +177,30 @@ const OutsideCourtForm = (props) => {
               <Button className={classes.button} onClick={onSubmitHandler} variant="contained">submit</Button>
 
           </form>
+
           <SimpleDialog
-        open={open}
-        onClose={handleClose}
-        titleText={'Case created'}
-        bodyText={''}
-        redirect={'/cases'}
-        redirectText={'Cases'}
-      />
+          open={open}
+          onClose={handleClose}
+          titleText={'Case created'}
+          bodyText={''}
+          redirect={'/cases'}
+          redirectText={'Cases'}
+          />
+
+          <SimpleDialog
+          open={errorOpen}
+          onClose={handleErrorClose}
+          titleText={'Error creating case'}
+          bodyText={'Please try again'}
+          redirect={''}
+          redirectText={''}
+          />
       </div>
     )
 }
 
+/**
+ * Export component
+ */
 
 export default OutsideCourtForm;

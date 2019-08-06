@@ -108,6 +108,7 @@ const CourtForm = (props) => {
     })
     .catch(err => {
       console.error(err.response)
+      handleErrorOpen();
     })
    
   }

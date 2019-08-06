@@ -31,15 +31,15 @@ const useStyles = makeStyles(theme => ({
     primarybutton: {
         margin: theme.spacing(1),
         color: '#5C90C1',
-            borderColor: '#5C90C1',
-            "&:hover": {
-              borderColor: "#517EA8",
-              color: "#517EA8",
-            },
-            "&:active": {
-              borderColor: "#476e91",
-              color: "#517EA8",
-            }
+        borderColor: '#5C90C1',
+        "&:hover": {
+            borderColor: "#517EA8",
+            color: "#517EA8",
+        },
+        "&:active": {
+            borderColor: "#476e91",
+            color: "#517EA8",
+        }
     },
     secondarybutton: {
         margin: theme.spacing(1)
@@ -138,7 +138,7 @@ const UserCaseCard = (props) => {
                         <h6 id="case-label">Description</h6>
                         <h5 id="case-description">{props.case.description}</h5>
                     </CardContent>
-                    <CardActions>
+                    <CardActions style={{display:"flex", border:"1px solid red"}}>
                         <Button variant="outlined" color="primary" className={classes.primarybutton}>
                             <Link style={{textDecoration:'none', color:'inherit'}} 
                             to= {{
@@ -158,7 +158,6 @@ const UserCaseCard = (props) => {
                     </CardActions>
                 </Card>
             </Grid>
-
         <Dialog
         className={classes.modal}
         open={open}
