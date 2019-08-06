@@ -26,7 +26,7 @@ const UserCaseList = (props) => {
         direction="row"
         justify="space-evenly">
             {cases.map(ele => {
-                return <UserCaseCard case={ele} key={ele.id}/>
+                return <UserCaseCard numCases={cases.length} case={ele} key={ele.id}/>
             })}
         </Grid>
         </div>

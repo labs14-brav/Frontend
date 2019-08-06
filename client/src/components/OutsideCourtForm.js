@@ -5,11 +5,16 @@
 import React, { useState } from 'react';
 import axioswithAuth from '../helpers/axioswithAuth';
 import SimpleDialog from './modals/SimpleDialog';
+
+/**
+ * Material-UI
+ */
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
+import Typography from '@material-ui/core/Typography';
 
 /**
  *  Define styles
@@ -106,7 +111,8 @@ const OutsideCourtForm = (props) => {
 
     return (
       <div style={{maxWidth:"1100px",margin:"0 auto",padding:"100px 30px"}}>
-          <h1 style={{textAlign:"center"}}>Outside Court Form</h1>
+          <Typography style={{textAlign:"center"}} variant="h3">Case Form</Typography>
+          <Typography style={{textAlign:"center"}} variant="subtitle2">This form is intended for cases outside of the Court system.</Typography>
     
           <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>
             <TextField
@@ -153,7 +159,7 @@ const OutsideCourtForm = (props) => {
 
               <TextField 
               className={classes.textField}
-              label="Dispute Amount"
+              label="Dispute Amount - $"
               helperText="if applicable"
               value={form.dispute_amount}
               name="dispute_amount"

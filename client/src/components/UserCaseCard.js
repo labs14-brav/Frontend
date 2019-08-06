@@ -47,6 +47,11 @@ const useStyles = makeStyles(theme => ({
     submitbutton: {
         justifyContent: 'center',
     },
+    deletebutton: {
+        color: '#E55557',
+        borderColor: '#E55557',
+
+    },
     modal: {
         margin: '0 auto',
         width: '50%',
@@ -78,7 +83,6 @@ const UserCaseCard = (props) => {
     const [modalStyle] = useState(getModalStyle);
     const [textState, setText] = useState('');
     const classes = useStyles();
-
 
     /**
      * Modal functions
@@ -126,6 +130,17 @@ const UserCaseCard = (props) => {
         setText(e.target.value);
     }
 
+    const handleDelete = e => {
+        e.preventDefault();
+        axioswithAuth().delete(`${process.env.REACT_APP_API_URL}/cases/${props.case.id}`)
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
+    console.log(props.numCases);
     return (
         <>
             <Grid item xs={12} sm={12} md={6} lg={6}>
@@ -138,7 +153,7 @@ const UserCaseCard = (props) => {
                         <h6 id="case-label">Description</h6>
                         <h5 id="case-description">{props.case.description}</h5>
                     </CardContent>
-                    <CardActions style={{display:"flex", border:"1px solid red"}}>
+                    <CardActions style={{display:"flex"}}>
                         <Button variant="outlined" color="primary" className={classes.primarybutton}>
                             <Link style={{textDecoration:'none', color:'inherit'}} 
                             to= {{
@@ -154,6 +169,9 @@ const UserCaseCard = (props) => {
                         </Button>
                         <Button className={classes.tertiarybutton} onClick={handlefullOpen} variant="outlined">
                             View Details
+                        </Button>
+                        <Button className={classes.deletebutton} onClick={handleDelete} variant="outlined">
+                            Delete Case
                         </Button>
                     </CardActions>
                 </Card>

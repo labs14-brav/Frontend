@@ -50,7 +50,7 @@ function SimpleDialog(props) {
             <div className={classes.paper}>
                 <Typography className={classes.title} variant="h6">{titleText}</Typography>
                 <Typography className={classes.body} variant ="subtitle2"> {bodyText}</Typography>
-                <Button onClick={handleClose}> Return to form </Button>
+                <Button onClick={handleClose} variant="outlined"> Return to form </Button>
             </div>
         </Dialog>
 
@@ -62,7 +62,7 @@ function SimpleDialog(props) {
             <div className={classes.paper}>
             <Typography className={classes.title} variant="h6">{titleText}</Typography>
             <Typography className={classes.body} variant ="subtitle2"> {bodyText}</Typography>
-            <Button onClick={handleClick}> Return to {redirectText} </Button>
+            <Button onClick={handleClick} variant="outlined"> Return to {redirectText} </Button>
             </div>
         </Dialog>
     )
