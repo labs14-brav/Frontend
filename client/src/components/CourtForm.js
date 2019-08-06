@@ -4,6 +4,8 @@
 
 import React, { useState, Component } from 'react';
 import axioswithAuth from '../helpers/axioswithAuth';
+import SimpleDialog from './modals/SimpleDialog.js';
+
 
 /**
  * Material-UI imports
@@ -13,6 +15,7 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select';
 
 /**
@@ -71,26 +74,51 @@ const CourtForm = (props) => {
     "court_filing_date": "",
     "case_notes": ""
   });
-      
+  const [open, setOpen] = useState(false);
+  const [errorOpen, setErrorOpen] = useState(false);
+  /**
+   * Dialog Methods
+   */
+
+   function handleOpen() {
+     setOpen(true);
+   }
+   function handleErrorOpen() {
+     setErrorOpen(true);
+   }
+   function handleClose() {
+     setOpen(false);
+   }
+   function handleErrorClose() {
+     setErrorOpen(false);
+   }
+   
+  /**
+   *  Form Methods
+  */
   const handleChange = name => event => {
     setValues({ ...form, [name]: event.target.value });
   };
       
-  const onSubmitHandler = async e => {
+  const onSubmitHandler = e => {
     e.preventDefault();
-    let created = await axioswithAuth().post(`/cases`, form)
+    axioswithAuth().post(`/cases`, form)
     .then(res => {
-      console.log(res.data)
+      console.log(res.data);
+      handleOpen();
     })
     .catch(err => {
       console.error(err.response)
+      handleErrorOpen();
     })
-    window.location='/cases';
+   
   }
+
 
   return (
     <div style={{maxWidth:"1100px",margin:"0 auto",padding:"100px 30px"}}>
-      <h1 style={{textAlign:"center"}}>Court Case Form</h1>
+      <Typography style={{textAlign:"center"}} variant="h3">Case Form</Typography>
+      <Typography style={{textAlign:"center"}} variant="subtitle2">This form is intended for cases referred by the Court system.</Typography>
 
       <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>               
         <TextField
@@ -100,6 +128,7 @@ const CourtForm = (props) => {
           value={form.dispute_category}
           helperText="required"
           onChange={handleChange("dispute_category")}
+          required
           SelectProps={{
             MenuProps: {
             className: classes.menu,
@@ -138,7 +167,7 @@ const CourtForm = (props) => {
 
         <TextField 
           className={classes.textField}
-          label="Dispute Amount"
+          label="Dispute Amount - $"
           name="dispute_amount"
           helperText="if applicable"
           value={form.dispute_amount}
@@ -209,6 +238,22 @@ const CourtForm = (props) => {
 
         <Button className={classes.button} onClick={onSubmitHandler} variant="contained">Submit</Button>
       </form>
+      <SimpleDialog
+        open={open}
+        onClose={handleClose}
+        titleText={'Case created'}
+        bodyText={''}
+        redirect={'/cases'}
+        redirectText={'Cases'}
+      />
+      <SimpleDialog
+        open={errorOpen}
+        onClose={handleErrorClose}
+        titleText={'Error creating case'}
+        bodyText={'Please try again'}
+        redirect={''}
+        redirectText={''}
+        />
     </div>
   )
 }

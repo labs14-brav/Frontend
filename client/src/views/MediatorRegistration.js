@@ -188,7 +188,7 @@ function MediatorRegistration(props) {
                 <FormControl>
 
                     </FormControl>
-
+                    <p> I attest that the information given in this form is true, complete and accurate. </p>
                 <Button onClick={() => handleSubmit()}>Submit</Button>
             </FormGroup>
             </Container>

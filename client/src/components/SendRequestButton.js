@@ -1,13 +1,48 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { axioswithAuth } from '../helpers/index';
 
+import SimpleDialog from './modals/SimpleDialog';
+
+/** 
+ * Material UI
+ */
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+
+const useStyles = makeStyles(theme => ({ 
+    primarybutton: {
+        margin: theme.spacing(1),
+        color: '#5C90C1',
+            borderColor: '#5C90C1',
+            "&:hover": {
+              borderColor: "#517EA8",
+              color: "#517EA8",
+            },
+            "&:active": {
+              borderColor: "#476e91",
+              color: "#517EA8",
+            }
+        }
+    }))
+
 function SendRequestButton(props) {
-    console.log('request props', props)
+    const [open, setOpen] = useState(false);
+    const classes = useStyles();
+
+    function handleClose() {
+        setOpen(false);
+      }
+      function handleOpen() {
+        setOpen(true);
+      }
+
     const handleRequest = () => {   
             let case_id = props.currentcase.id;
             axioswithAuth().post(`/mediators/${props.mediator.id}/cases`, {case_id})
             .then(res => {
-                console.log(res);
+                handleOpen();
             })
             .catch(err => {
                 console.error(err);
@@ -15,9 +50,17 @@ function SendRequestButton(props) {
     }
 
     return (
-        <button onClick={handleRequest}>
+        <>
+        <Button className={classes.primarybutton} onClick={handleRequest} variant="outlined">
             Send Request
-        </button>
+        </Button>
+        <SimpleDialog onClose={handleClose} 
+        open={open} 
+        titleText={'Your request has been sent'} 
+        bodyText={`to ${props.mediator.name}`}
+        redirect={'/cases'}
+        redirectText={'Cases'} />
+        </>
     )
 }
 

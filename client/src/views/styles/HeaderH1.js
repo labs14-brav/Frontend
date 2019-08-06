@@ -10,7 +10,7 @@ import { styled } from '@material-ui/styles';
 
 const HeaderH1 = styled('h1')({
   textAlign: 'center',
-  padding: '40px 0px',
+  padding: '40px 0px 0px 0px',
   margin: '0px',
 });
 

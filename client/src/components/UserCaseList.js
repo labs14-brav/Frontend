@@ -10,25 +10,29 @@ import axioswithAuth from '../helpers/axioswithAuth';
 const UserCaseList = (props) => {
     const [cases, setCases] = useState([]);
 
+    async function fetchCases() {
+        const res = await axioswithAuth().get(`${process.env.REACT_APP_API_URL}/cases`)
+        // endpoint needs to be updated to a specific user's cases.
+        setCases(res.data);
+    };
+
     useEffect(() => {
-        async function fetchCases() {
-            const res = await axioswithAuth().get(`${process.env.REACT_APP_API_URL}/cases`)
-            // endpoint needs to be updated to a specific user's cases.
-            setCases(res.data);
-        }
 
         fetchCases();
     }, []);
 
     return (
         <div className="list-container">
-        <Grid container spacing={3} 
-        direction="row"
-        justify="space-evenly">
-            {cases.map(ele => {
-                return <UserCaseCard case={ele} key={ele.id}/>
-            })}
-        </Grid>
+            {
+                cases.length < 1 ? <div>You have no open cases...</div> : 
+                <Grid container spacing={3} 
+                direction="row"
+                justify="space-evenly">
+                    {cases.map(ele => {
+                        return <UserCaseCard fetchCases={fetchCases} numCases={cases.length} case={ele} key={ele.id}/>
+                    })}
+                </Grid>
+            }
         </div>
     )
 }

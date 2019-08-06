@@ -2,16 +2,19 @@
  * Dependencies
  */
 
-import React, { useState, Component } from 'react';
+import React, { useState } from 'react';
 import axioswithAuth from '../helpers/axioswithAuth';
+import SimpleDialog from './modals/SimpleDialog';
 
-// maerial-ui imports
-
+/**
+ * Material-UI
+ */
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
+import Typography from '@material-ui/core/Typography';
 
 /**
  *  Define styles
@@ -29,6 +32,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: 400,
+    color: '#598EBF'
   },
   dense: {
     marginTop: 19,
@@ -49,7 +53,15 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: "#476e91"
     }
   },
-
+  outlinedRoot: {
+    '&$focused $notchedOutline': {
+      borderColor: '#598EBF',
+      borderWidth: 1,
+      color: '#598EBF'
+    }
+  },
+  notchedOutline: {},
+  focused: {},
 }));
 
 /**
@@ -58,42 +70,74 @@ const useStyles = makeStyles(theme => ({
 
 const OutsideCourtForm = (props) => {
     const classes = useStyles();
-  
     const [form, setValues] = useState({
       "court_case": false,
-      "parties_involved":"",
-      "parties_contact_info":"",
+      "parties_involved": "",
+      "parties_contact_info": "",
       "description": "",
       "dispute_category": "",
       "dispute_amount": null,
-      "case_notes":""
+      "case_notes": ""
     });
+    const [open, setOpen] = useState(false);
+    const [errorOpen, setErrorOpen] = useState(false);
+    /**
+     * Dialog Methods
+     */
+  
+     function handleOpen() {
+       setOpen(true);
+     }
+     function handleErrorOpen() {
+       setErrorOpen(true);
+     }
+     function handleClose() {
+       setOpen(false);
+     }
+     function handleErrorClose() {
+       setErrorOpen(false);
+     }
+    /**
+     * Form methods
+     */
+     
+    const handleChange = name => event => {
+      setValues({ ...form, [name]: event.target.value });
+    }
       
-      
-      const handleChange = name => event => {
-        setValues({ ...form, [name]: event.target.value });
-      };
-      
-      const onSubmitHandler = async e =>{
-        e.preventDefault();
-        let posted = await axioswithAuth().post(`/cases`, form)
-            .then(res => {
-            console.log("add new case: ", res.data)
-            })
-            .catch(err => {
-            console.error(err.response)
-            })
-            window.location = '/cases';
-        }
+    const onSubmitHandler = async (e) => {
+      e.preventDefault();
+
+      let posted = await axioswithAuth().post(`/cases`, form)
+        .then(res => {
+          console.log("add new case: ", res.data)
+          handleOpen();
+        })
+        .catch(err => {
+          console.error(err.response)
+          handleErrorOpen();
+        })
+    }
+
+    const InputProps = {
+      classes: {
+
+                root: classes.outlinedRoot,
+        notchedOutline: classes.notchedOutline,
+        focused: classes.focused
+     
+
+     }
+    }
+
+    
 
     return (
-
       <div style={{maxWidth:"1100px",margin:"0 auto",padding:"100px 30px"}}>
-
-          <h1 style={{textAlign:"center"}}>Outside Court Form</h1>
+          <Typography style={{textAlign:"center"}} variant="h3">Case Form</Typography>
+          <Typography style={{textAlign:"center"}} variant="subtitle2">This form is intended for cases outside of the Court system.</Typography>
     
           <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>
-
             <TextField
               className={classes.textField}
               select
@@ -103,9 +147,11 @@ const OutsideCourtForm = (props) => {
               onChange={handleChange("dispute_category")}
               SelectProps={{
                 MenuProps: {
-                className: classes.menu,
+                  className: classes.menu,
                 }
               }}
+              variant="outlined"
+              InputProps = {InputProps}
               >
                 <MenuItem value="Landlord/Tenant">Landlord/Tenant</MenuItem>
                 <MenuItem value="Eldercare">Eldercare</MenuItem>
@@ -125,6 +171,7 @@ const OutsideCourtForm = (props) => {
               variant="outlined"
               onChange={handleChange("parties_involved")}
               value={form.parties_involved}  
+              InputProps = {InputProps}
               />
 
               <TextField 
@@ -134,18 +181,20 @@ const OutsideCourtForm = (props) => {
               name="parties_contact_info"
               onChange={handleChange("parties_contact_info")}
               margin="normal"
-              variant="outlined"/>
+              variant="outlined"
+              InputProps = {InputProps}/>
 
               <TextField 
               className={classes.textField}
-              label="Dispute Amount"
+              label="Dispute Amount - $"
               helperText="if applicable"
               value={form.dispute_amount}
               name="dispute_amount"
               type="number"
               onChange={handleChange("dispute_amount")}
               margin="normal"
-              variant="outlined"/>
+              variant="outlined"
+              InputProps = {InputProps}/>
 
               <TextField
               className={classes.textField}
@@ -157,14 +206,36 @@ const OutsideCourtForm = (props) => {
               onChange={handleChange("description")}
               margin="normal"
               variant="outlined"
+              InputProps = {InputProps}
               />
 
-              <Button className={classes.button} onClick={onSubmitHandler} variant="contained">submit</Button>
+              <Button className={classes.button} onClick={onSubmitHandler} variant="contained" InputProps = {InputProps}>submit</Button>
 
           </form>
+
+          <SimpleDialog
+          open={open}
+          onClose={handleClose}
+          titleText={'Case created'}
+          bodyText={''}
+          redirect={'/cases'}
+          redirectText={'Cases'}
+          />
+
+          <SimpleDialog
+          open={errorOpen}
+          onClose={handleErrorClose}
+          titleText={'Error creating case'}
+          bodyText={'Please try again'}
+          redirect={''}
+          redirectText={''}
+          />
       </div>
     )
 }
 
+/**
+ * Export component
+ */
 
 export default OutsideCourtForm;
