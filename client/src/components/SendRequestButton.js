@@ -3,12 +3,13 @@ import { axioswithAuth } from '../helpers/index';
 
 function SendRequestButton(props) {
     console.log('request props', props)
-    function handleRequest() {    
-        axioswithAuth().post(`/mediators/${props.mediator.id}/cases`, props.currentcase.id)
+    const handleRequest = () => {   
+            let case_id = props.currentcase.id;
+            axioswithAuth().post(`/mediators/${props.mediator.id}/cases`, {case_id})
             .then(res => {
                 console.log(res);
             })
-            .error(err => {
+            .catch(err => {
                 console.error(err);
             })
     }

@@ -50,6 +50,7 @@ const useStyles = makeStyles(theme => ({
 
     const handleSubmitAccept = (id) => {
 
+        
             let yes = window.confirm('Are you sure?')
         
             if (yes) {
@@ -60,7 +61,7 @@ const useStyles = makeStyles(theme => ({
                 })
                 .catch((err) => {
                   console.log(err)
-                  props.history.push('/admin')
+                  
                 });
             }
 
@@ -77,7 +78,7 @@ const useStyles = makeStyles(theme => ({
                 })
                 .catch((err) => {
                 console.log(err)
-                props.history.push('/admin')
+                
                 });
             }
     };
@@ -90,7 +91,8 @@ const useStyles = makeStyles(theme => ({
     <Grid item xs={12} sm={12} md={6} lg={6}>
           <Card className={classes.paper}>
             <CardContent >
-                <h5 className='card-name'> {props.requests.email} </h5>
+                <h4 className='card-name'>{props.requests.name}</h4>
+                <h5 className='card-email'> {props.requests.email} </h5>
                 <p id="case-label">License:</p> 
                 <p className='card-info'>{props.requests.license}</p>
                 <p id="case-label">Experience:</p>

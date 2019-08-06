@@ -2,10 +2,8 @@
  * Dependencies
  */
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { MediatorFilter } from '../components/index';
-import Grid from '@material-ui/core/Grid';
 import { HeaderH1 } from './styles/index';
 
 /**
@@ -14,13 +12,14 @@ import { HeaderH1 } from './styles/index';
 
 function Search(props) {
   return (
-    <div style={{  paddingTop:"100px",
+    <div style={{ 
+        paddingTop:"100px",
         display:"flex",
         flexDirection:"column",
         justifyContent:"center",
         alignItems:"center",
-        padding:"40px",
-        }}>
+        padding:"40px" 
+    }}>
         <HeaderH1> Search for a Mediator</HeaderH1>
         <MediatorFilter currentcase={props.location.state.currentcase}/>
     </div>
