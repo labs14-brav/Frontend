@@ -64,7 +64,7 @@ function AreYouSureDialog(props) {
     return (
         <Dialog open={open} onClose={handleClose} className={classes.dialog}>
             <div className={classes.paper}>
-            <Typography className={classes.body} variant ="subtitle2"> Are you sure you want to delete this?</Typography>
+            <Typography className={classes.body} variant ="subtitle2">Are you sure you want to delete this?</Typography>
                 <div className={classes.buttondiv}>
                 <Button onClick={handleYes} variant="outlined"className={classes.yesbutton}> Yes </Button>
                 <Button onClick={handleNo} variant="outlined" className={classes.nobutton}> No </Button>

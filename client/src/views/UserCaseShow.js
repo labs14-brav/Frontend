@@ -2,12 +2,16 @@
  * Dependencies
  */
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { UserCaseList } from '../components/index';
 import Button from '@material-ui/core/Button';
 
-import './UserCaseShow.scss';
+/**
+ * Import styles
+ */
+
+ import './UserCaseShow.scss';
 
 /**
  * Define view
@@ -39,13 +43,13 @@ const UserCaseShow = props => {
 
   const buttonHandler = e => {
     e.preventDefault();
-    props.history.push('/cases/new/');
+    props.history.push('/cases/new');
   }
 
   return (
-    <div style={{padding:"100px"}} className="cases-container">
-       <Button className={classes.caseButton} variant="outlined" onClick={buttonHandler}>Create a Case</Button>
-        <UserCaseList />
+    <div style={{paddingTop:"100px"}} className="cases-container">
+      <Button className={classes.caseButton} variant="outlined" onClick={buttonHandler}>Create a Case</Button>
+      <UserCaseList />
     </div>
   )
 };

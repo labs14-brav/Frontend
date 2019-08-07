@@ -121,7 +121,7 @@ class CompleteCaseModal extends React.Component {
                         id="customized-dialog-title"
                         onClose={this.handleClose}
                     >
-                        Are you sure you?
+                        Are you sure?
                     </DialogTitle>
                         <Button onClick={() => this.handleClose(this.props.caseId)} color="primary">
                             Yes, Complete

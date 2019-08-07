@@ -8,7 +8,7 @@ import axioswithAuth from "../helpers/axioswithAuth";
 import '../views/MediatorCasesShow.scss';
 
 
-const MediatorAcceptedCaseList = props => {
+const MediatorActiveCaseList = props => {
     const [cases, setCases] = useState([]);
 
     async function fetchCases() {
@@ -33,4 +33,4 @@ const MediatorAcceptedCaseList = props => {
     );
 };
 
-export default MediatorAcceptedCaseList;
+export default MediatorActiveCaseList;
