@@ -26,10 +26,8 @@ const styles = theme => ({
         color: theme.palette.grey[500]
     },
     openButton: {
-        width: "100%",
-        height: "40px",
-        margin: "10px",
-        fontSize: "1.2rem"
+        color: '#E55557',
+        borderColor: '#E55557',
     }
 });
 
@@ -55,8 +53,7 @@ const OpenDialogueButton = withStyles(styles)(props => {
     const { classes, onOpen } = props;
     return (
         <Button
-            variant="contained"
-            color="primary"
+            variant="outlined"
             className={classes.openButton}
             onClick={onOpen}
         >

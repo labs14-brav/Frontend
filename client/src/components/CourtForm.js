@@ -3,9 +3,8 @@
  */
 
 import React, { useState, Component } from 'react';
-import axioswithAuth from '../helpers/axioswithAuth';
 import SimpleDialog from './modals/SimpleDialog.js';
-
+import { axioswithAuth, mixpanel } from "../helpers/index";
 
 /**
  * Material-UI imports
@@ -76,6 +75,7 @@ const CourtForm = (props) => {
   });
   const [open, setOpen] = useState(false);
   const [errorOpen, setErrorOpen] = useState(false);
+
   /**
    * Dialog Methods
    */
@@ -95,7 +95,8 @@ const CourtForm = (props) => {
    
   /**
    *  Form Methods
-  */
+   */
+
   const handleChange = name => event => {
     setValues({ ...form, [name]: event.target.value });
   };
@@ -104,16 +105,17 @@ const CourtForm = (props) => {
     e.preventDefault();
     axioswithAuth().post(`/cases`, form)
     .then(res => {
-      console.log(res.data);
+      console.log(res.data)
+      if (process.env.NODE_ENV === 'production') {
+        mixpanel.track('Create court case', { distinct_id: localStorage.getItem('id') })
+      }
       handleOpen();
     })
     .catch(err => {
       console.error(err.response)
       handleErrorOpen();
     })
-   
   }
-
 
   return (
     <div style={{maxWidth:"1100px",margin:"0 auto",padding:"100px 30px"}}>
@@ -258,5 +260,8 @@ const CourtForm = (props) => {
   )
 }
 
+/**
+ *  Export component
+ */
 
 export default CourtForm;

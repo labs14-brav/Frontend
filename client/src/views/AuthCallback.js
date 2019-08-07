@@ -5,6 +5,7 @@
 import React, { useEffect } from 'react';
 import firebase from 'firebase';
 import axios from 'axios';
+import { mixpanel } from '../helpers/index';
 
 /**
  * Define component
@@ -33,11 +34,23 @@ function AuthCallback(props) {
         localStorage.setItem('type', res.data.type);
         localStorage.setItem('id', res.data.id);
 
-        if(res.data.type === 'mediator') {
+        if (res.data.type === 'mediator') {
+          if (process.env.NODE_ENV === 'production') {
+            mixpanel.track('Mediator sign in', { distinct_id: localStorage.getItem('id') })
+          }
+          
           window.location = '/mediator-cases'
-        } else if(res.data.type === 'admin'){
+        } else if (res.data.type === 'admin') {
+          if (process.env.NODE_ENV === 'production') {
+            mixpanel.track('Admin sign in', { distinct_id: localStorage.getItem('id') })
+          }
+
           window.location = '/admin'
-        }else{
+        } else {
+          if (process.env.NODE_ENV === 'production') {
+            mixpanel.track('User sign in', { distinct_id: localStorage.getItem('id') })
+          }
+
           window.location = '/cases'
         }
       }).catch(err => {
@@ -52,7 +65,6 @@ function AuthCallback(props) {
 
   return (
     <div className="login">
-      
     </div>
   )
 };

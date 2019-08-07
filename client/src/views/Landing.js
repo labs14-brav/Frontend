@@ -4,7 +4,6 @@
 
 import React from "react";
 import { NavBar, MediatorCasesShow } from "../components/index";
-import { mixpanel } from "../helpers/index";
 import { Link } from "react-router-dom";
 import { Button, makeStyles } from "@material-ui/core";
 
@@ -29,7 +28,6 @@ const useStyles = makeStyles(theme => ({
 
 function Landing(props) {
     const classes = useStyles();
-    mixpanel.track("Visited landing page");
 
     return (
         <>

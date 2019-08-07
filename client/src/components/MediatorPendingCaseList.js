@@ -3,6 +3,10 @@ import MediatorCaseCard from "./MediatorCaseCard";
 
 import axioswithAuth from "../helpers/axioswithAuth";
 
+
+// styling 
+import '../views/MediatorCasesShow.scss';
+
 const MediatorCaseList = props => {
     const [cases, setCases] = useState([]);
 

@@ -5,6 +5,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
+import './MediatorCasesShow.scss';
+
+/**
+ * Material UI Imports
+ */
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { Button, Card, Container } from '@material-ui/core';
@@ -110,21 +116,18 @@ export default function MediatorCasesShow() {
 
     return (
         <MediatorCasesShowStyle>
-            <NavTabs value={value} onChange={handleChange} aria-label="mediator-cases-navtabs">
+            <NavTabs value={value} onChange={handleChange} aria-label="mediator-cases-navtabs" centered>
                 <NavTab label="Pending" />
                 <NavTab label="Accepted" />
                 <NavTab label="Completed" />
             </NavTabs>
-            { selectedTab === "pending" ? <div>
-                <h1>Pending</h1>
+            { selectedTab === "pending" ? <div id="selected-list">
                 <MediatorPendingCaseList />
             </div> : null }
-            { selectedTab === "accepted" ? <div>
-            <h1>Accepted</h1>
+            { selectedTab === "accepted" ? <div id="selected-list">
             <MediatorAcceptedCaseList />
             </div> : null}
-            { selectedTab === "completed" ? <div>
-                <h1>Completed</h1>
+            { selectedTab === "completed" ? <div id="selected-list">
                 <MediatorCompletedCaseList />
             </div> : null}
         </MediatorCasesShowStyle>

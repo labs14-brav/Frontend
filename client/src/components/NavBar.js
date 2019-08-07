@@ -18,6 +18,7 @@ import {
   BecomeMediatorLink,
   EditUserLink,
 } from '../views/styles/index'
+import Icon from '@material-ui/core/Icon';
 
 /**
  * Constants
