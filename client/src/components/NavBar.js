@@ -6,21 +6,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
-import grey from '@material-ui/core/colors/grey';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import { SignOutIcon } from '../icons/index';
 
 /**
  *  Import styles
  */
 
 import './UserCaseCard.scss';
-import { mergeClasses } from '@material-ui/styles';
-
-/**
- * Constants
- */
-
-const bg_grey = grey[900];
 
 /**
  * Define component
@@ -35,7 +29,7 @@ function NavBar(props) {
   function checkType() {
     let type = localStorage.getItem("type");
     if (type === 'mediator') {
-     return '/mediator-cases';
+      return '/mediator-cases';
     } else {
       return '/cases';
     }
@@ -75,8 +69,13 @@ function NavBar(props) {
                 Cases
               </Button></NavLink>
               <NavLink activeClassName="activeNavButton" to="/users/settings" style={{textDecoration:"none",fontWeight: 500, color: '#5C90C1' }}><Button>Settings</Button></NavLink>
-              <Button onClick={logout}>Sign Out</Button>
 
+              <Box display={{ xs: 'block', sm: 'none' }}>
+                <Button onClick={logout}><SignOutIcon /></Button>
+              </Box>
+              <Box display={{ xs: 'none', sm: 'block' }}>
+                <Button onClick={logout}>Sign Out</Button>
+              </Box>
             </Toolbar>
           </nav>
         </Grid>

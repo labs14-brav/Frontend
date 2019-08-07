@@ -21,6 +21,7 @@ import Dialog from '@material-ui/core/Dialog';
 import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import CloseIcon from '@material-ui/icons/Close';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 /**
@@ -44,7 +45,10 @@ const useStyles = makeStyles(theme => ({
         }
     },
     secondarybutton: {
-        margin: theme.spacing(1)
+        margin: theme.spacing(1),
+        [theme.breakpoints.up('lg')]: {
+            margin: theme.spacing(1),
+        }
     },
     submitbutton: {
         margin: theme.spacing(1),
@@ -72,6 +76,10 @@ const useStyles = makeStyles(theme => ({
         flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "center",
+        [theme.breakpoints.down('md')]: {
+            width: '100%',
+            height: '100%',
+        },
         [theme.breakpoints.down('sm')]: {
             padding: theme.spacing(1,2,2),
             width:'100%',
@@ -165,8 +173,8 @@ const UserCaseCard = (props) => {
             <Grid 
                 item xs={11} 
                 sm={11} 
-                md={props.numCases === 1 ? 12 : 6} 
-                lg={props.numCases === 1 ? 12 : 5}>
+                md={props.numCases === 1 ? 12 : 5} 
+                lg={props.numCases === 1 ? 12 : 5.5}>
                 <Card className={classes.paper}> 
                     <CardContent style={{width:'100%'}}>
                         <h6 id="case-label">Type</h6>
@@ -194,7 +202,7 @@ const UserCaseCard = (props) => {
                             View Details
                         </Button>
                         <Button className={classes.deletebutton} onClick={handleSureOpen} variant="outlined">
-                            Delete Case
+                            <DeleteIcon />
                         </Button>
                     </CardActions>
                 </Card>

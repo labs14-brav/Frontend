@@ -31,7 +31,8 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 400,
+    width: '75%',
+    maxWidth:400,
     color: '#598EBF'
   },
   dense: {
@@ -42,7 +43,8 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     margin: theme.spacing(1),
-    width: 400,
+    width: '75%',
+    maxWidth: 400,
     height: 60,
     color: 'white',
     backgroundColor: '#5C90C1',

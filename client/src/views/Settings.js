@@ -5,7 +5,7 @@
 import React from 'react';
 import { DeactivateAccountButton } from '../components/index';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Card } from '@material-ui/core';
 import { BecomeMediatorLink } from './styles/index';
 
 /**
@@ -26,7 +26,7 @@ const useStyles = makeStyles(() => ({
   linkContainer: {
     display: "flex",
     justifyContent: "space-around",
-    marginTop: "20px"
+    marginTop: "20px",
   }
 }))
 
@@ -40,12 +40,12 @@ function Settings() {
   return (
       <div className={classes.container} container style={{paddingTop:"5%",overflowX:"hidden",overflowY:"hidden"}} >
         <div className={classes.linkContainer}>
-          <Link style={{textDecoration:"none"}} to="/users/mediator-registration">
-            <BecomeMediatorLink>  
-            Become a Mediator
-            </BecomeMediatorLink>
-          </Link>
-          
+            
+            <Link style={{textDecoration:"none"}} to="/users/mediator-registration">
+              <BecomeMediatorLink>  
+              Become a Mediator
+              </BecomeMediatorLink>
+            </Link>
           <DeactivateAccountButton />
         </div>
     </div>

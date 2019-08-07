@@ -32,11 +32,13 @@ const useStyles = makeStyles(theme => ({
     flexDirection:'column',
     justifyContent:'center',
     alignItems:'center',
+    
   },
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: '50%',
+    width: '75%',
+    maxWidth:400,
   },
   dense: {
     marginTop: 19,
@@ -46,7 +48,8 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     margin: theme.spacing(1),
-    width: 400,
+    width: '75%',
+    maxWidth: 400,
     height: 60,
     color: 'white',
     backgroundColor: '#5C90C1',
