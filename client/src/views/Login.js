@@ -5,32 +5,36 @@
 import React,{useEffect} from 'react';
 import { Redirect } from 'react-router-dom';
 import { firebase } from '../helpers/index';
+import Card from '@material-ui/core/Card';
+import { makeStyles } from '@material-ui/core/styles';
 
+/**
+ * Define styles
+ */
+
+const useStyles = makeStyles(() => ({
+  card: {
+    paddingTop: "50px",
+  }
+}))
 
 /**
  * Define view
  */
 
-function Login(props) {
-
-  
+ function Login(props) {
+  const classes = useStyles();
 
   useEffect(()=>{
     firebase();
-  
   },[]);
-  
+
   return (
-    <div className="App">
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <h1>Login</h1>
-            <div id='firebaseui-auth-container'></div>
-            <div id='loader'></div>
-          </div>
-        </div>
-      </div>
+    <div className="login">
+      <Card className={classes.card}>
+        <div id='firebaseui-auth-container'></div>
+        <div id='loader'></div>
+      </Card>
     </div>
   )
 };

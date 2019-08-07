@@ -2,33 +2,65 @@
  * Dependencies
  */
 
-import React from 'react';
-import { NavBar } from '../components/index';
-import { mixpanel } from '../helpers/index';
-import {Link} from 'react-router-dom';
+import React from "react";
+import { NavBar, MediatorCasesShow } from "../components/index";
+import { Link } from "react-router-dom";
+import { Button, makeStyles } from "@material-ui/core";
 
 /**
  * Define view
  */
 
+const useStyles = makeStyles(theme => ({
+    button: {
+        margin: theme.spacing(1),
+        width: 100,
+        color: 'white',
+        backgroundColor: '#5C90C1',
+        "&:hover": {
+          backgroundColor: "#517EA8"
+        },
+        "&:active": {
+          backgroundColor: "#476e91"
+        }
+      }
+}));
+
 function Landing(props) {
-  mixpanel.track('Visited landing page');
+    const classes = useStyles();
 
-  return (
-    <div className="App">
-      <NavBar login={''} />
+    return (
+        <>
+            <div className="landingNav">
+                <Link to="/auth" style={{textDecoration:"none"}}>
+                    <Button
+                        className={classes.button}
+                        variant="contained"
+                        color="primary"
+                    >
+                        signup
+                    </Button>
+                </Link>
 
-      <div className="container">
-        <div className="row">
-          <div className="col-12 py-3">
-            <h1>Brāv</h1>
-            <Link to='/users/login'>login/signup</Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-};
+                <Link to="/auth" style={{textDecoration:"none"}}>
+                    <Button
+                        className={classes.button}
+                        variant="contained"
+                        color="primary"
+                    >
+                        login
+                    </Button>
+                </Link>
+            </div>
+            <div className="landing">
+                <img
+                    className="brav-logo"
+                    src="https://www.brav.org/img/brav-logo.png"
+                />
+            </div>
+        </>
+    );
+}
 
 /**
  * Export view
