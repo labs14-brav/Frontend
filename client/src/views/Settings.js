@@ -38,6 +38,7 @@ const useStyles = makeStyles(() => ({
   linkContainer: {
     display: "flex",
     justifyContent: "space-around",
+    marginTop: "20px"
   }
 }))
 
