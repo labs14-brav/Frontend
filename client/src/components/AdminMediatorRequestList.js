@@ -1,75 +1,43 @@
-import React, { useEffect,useState } from 'react'
-import { Link } from 'react-router-dom';
+/**
+ * Dependencies
+ */
+
+import React, { useEffect, useState } from 'react';
 import axioswithAuth from '../helpers/axioswithAuth';
 import AdminRequestCard from './AdminRequestCard';
 import Grid from '@material-ui/core/Grid';
 
-import {
-    Button, 
-    Card,
-    makeStyles,
-    Container,
-   } from "@material-ui/core";
+/**
+ * Define view
+ */
+
+const AdminMediatorRequestList = (props) => {
+  const [requests, setRequests]= useState([])
   
-   const useStyles = makeStyles({
-    card: {
-      maxWidth: 345,
-      borderColor: "black"
+  useEffect(() => {
+    async function fetchRequests() {
+      const res = await axioswithAuth().get('/mediators/pending');
+      setRequests(res.data);
     }
-  });
 
+    fetchRequests()
+  }, []);
 
-
- const  AdminMediatorRequestList = (props)=>{
-
-    const classes = useStyles();
-
-    const [requests,setRequests]= useState([])
-  
-    useEffect(() => {
-
-
-        async function fetchRequests() {
-          
-          const res = await axioswithAuth().get('/mediators/pending');
-          console.log(res,"response")
-          setRequests(res.data);
-        }
-        fetchRequests()
-      },[requests]);
-
-
-
-
-      if (requests.length === 0) {
-        return(
-            <>
-            
-            <h3 style={{textAlign:"center"}}> There are no pending Mediator requests. </h3>
-            
-            </>
-        )
-    }else{
-
+  if (requests.length === 0) {
     return (
-      
-        
-            <Grid container spacing={4} >
-              
-                {requests.map(requests => {
-             
-
-                    return (
-                      
-                      <AdminRequestCard requests={requests} key={requests.uid}/>
-                      
-                    );
-
-                
-                })}
-            </Grid>
-         
+      <h3 style={{textAlign:"center"}}> There are no pending Mediator requests. </h3>
     )
-              }
+  } else {
+    return (
+      <Grid container spacing={4} >
+        {requests.map(requests => <AdminRequestCard requests={requests} key={requests.uid}/>)}
+      </Grid>
+    )
   }
-  export default AdminMediatorRequestList
+}
+
+/**
+ * Export view
+ */
+
+ export default AdminMediatorRequestList

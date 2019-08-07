@@ -3,8 +3,8 @@
  */
 
 import React, { useState } from 'react';
-import axioswithAuth from '../helpers/axioswithAuth';
 import SimpleDialog from './modals/SimpleDialog';
+import { axioswithAuth, mixpanel } from "../helpers/index";
 
 /**
  * Material-UI
@@ -114,6 +114,9 @@ const OutsideCourtForm = (props) => {
       let posted = await axioswithAuth().post(`/cases`, form)
         .then(res => {
           console.log("add new case: ", res.data)
+          if (process.env.NODE_ENV === 'production') {
+            mixpanel.track('Create non-court case', { distinct_id: localStorage.getItem('id') })
+          }
           handleOpen();
         })
         .catch(err => {
@@ -124,17 +127,12 @@ const OutsideCourtForm = (props) => {
 
     const InputProps = {
       classes: {
-
         root: classes.outlinedRoot,
         color: classes.multilineColor,
         notchedOutline: classes.notchedOutline,
         focused: classes.focused
-     
-
      }
     }
-
-    
 
     return (
       <div style={{maxWidth:"1100px",margin:"0 auto",padding:"100px 30px"}}>
@@ -176,7 +174,6 @@ const OutsideCourtForm = (props) => {
               onChange={handleChange("parties_involved")}
               value={form.parties_involved}  
               InputProps = {InputProps}
-              multilineColor
               />
 
               <TextField 

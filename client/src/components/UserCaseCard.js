@@ -61,15 +61,18 @@ const useStyles = makeStyles(theme => ({
         width: '50%',
         [theme.breakpoints.down('sm')]: {
             width: '90%',
-          }
+        }
     },
     paper: {
-        height: '370px',
+        height: '400px',
         backgroundColor: theme.palette.background.paper,
-        border: '1px solid #000',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 4),
         outline: 'none',
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "center"
       },
 }))
 
@@ -156,7 +159,7 @@ const UserCaseCard = (props) => {
     return (
         <>
             <Grid 
-                item xs={12} 
+                item xs={8} 
                 sm={12} 
                 md={props.numCases === 1 ? 12 : 6} 
                 lg={props.numCases === 1 ? 12 : 6}>

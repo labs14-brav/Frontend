@@ -26,10 +26,16 @@ const styles = theme => ({
         color: theme.palette.grey[500]
     },
     openButton: {
-        width: "100%",
-        height: "40px",
-        margin: "10px",
-        fontSize: "1.2rem"
+        color: '#5C90C1',
+        borderColor: '#5C90C1',
+        "&:hover": {
+            borderColor: "#517EA8",
+            color: "#517EA8",
+        },
+        "&:active": {
+            borderColor: "#476e91",
+            color: "#517EA8",
+        }
     }
 });
 
@@ -55,7 +61,7 @@ const OpenDialogueButton = withStyles(styles)(props => {
     const { classes, onOpen } = props;
     return (
         <Button
-            variant="contained"
+            variant="outlined"
             color="primary"
             className={classes.openButton}
             onClick={onOpen}
@@ -89,9 +95,10 @@ class CompleteCaseModal extends React.Component {
         });
     };
     
-    handleClose = () => {
+    handleClose = (caseId) => {
+        console.log('Case id', caseId);
         axioswithAuth()
-        .put(`/cases/${this.props.caseId}/case-request-completed`)
+        .put(`/cases/${caseId}/case-request-completed`)
         .then((res) => {
             this.setState({ open: false });
             this.props.fetchCases();
@@ -116,7 +123,7 @@ class CompleteCaseModal extends React.Component {
                     >
                         Are you sure you?
                     </DialogTitle>
-                        <Button onClick={this.handleClose} color="primary">
+                        <Button onClick={() => this.handleClose(this.props.caseId)} color="primary">
                             Yes, Complete
                         </Button>
                     <DialogActions>
