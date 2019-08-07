@@ -71,7 +71,7 @@ function NavBar(props) {
               <NavLink activeClassName="activeNavButton" to="/users/settings" style={{textDecoration:"none",fontWeight: 500, color: '#5C90C1' }}><Button>Settings</Button></NavLink>
 
               <Box display={{ xs: 'block', sm: 'none' }}>
-                <Button onClick={logout}><SignOutIcon /></Button>
+                <Button onClick={logout} style={{minWidth: 0}}><SignOutIcon /></Button>
               </Box>
               <Box display={{ xs: 'none', sm: 'block' }}>
                 <Button onClick={logout}>Sign Out</Button>
