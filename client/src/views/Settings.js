@@ -42,8 +42,6 @@ const useStyles = makeStyles(() => ({
   }
 }))
 
-
-
 function Settings() {
   const classes = useStyles();
   return (
