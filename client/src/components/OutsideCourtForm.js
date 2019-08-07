@@ -135,7 +135,7 @@ const OutsideCourtForm = (props) => {
     }
 
     return (
-      <div style={{maxWidth:"1100px",margin:"0 auto",padding:"100px 30px"}}>
+      <div style={{paddingTop:"100px"}}>
           <Typography style={{textAlign:"center"}} variant="h3">Case Form</Typography>
           <Typography style={{textAlign:"center"}} variant="subtitle2">This form is intended for cases outside of the Court system.</Typography>
     

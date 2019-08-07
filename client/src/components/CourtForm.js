@@ -16,6 +16,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select';
+import {
+  FormGroup,
+} from "@material-ui/core";
 
 /**
  * Global Component Styles
@@ -118,11 +121,11 @@ const CourtForm = (props) => {
   }
 
   return (
-    <div style={{maxWidth:"1100px",margin:"0 auto",padding:"100px 30px"}}>
+    <div style={{marginTop:"100px"}}>
       <Typography style={{textAlign:"center"}} variant="h3">Case Form</Typography>
       <Typography style={{textAlign:"center"}} variant="subtitle2">This form is intended for cases referred by the Court system.</Typography>
 
-      <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>               
+      <FormGroup className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>               
         <TextField
           className={classes.textField}
           select
@@ -239,7 +242,7 @@ const CourtForm = (props) => {
           />
 
         <Button className={classes.button} onClick={onSubmitHandler} variant="contained">Submit</Button>
-      </form>
+      </FormGroup>
       <SimpleDialog
         open={open}
         onClose={handleClose}
