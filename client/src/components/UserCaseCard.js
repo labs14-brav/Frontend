@@ -73,7 +73,9 @@ const useStyles = makeStyles(theme => ({
         justifyContent: "space-between",
         alignItems: "center",
         [theme.breakpoints.down('sm')]: {
+            padding: theme.spacing(1,2,2),
             width:'100%',
+            height: '100%',
         },
       },
 }))

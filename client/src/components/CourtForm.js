@@ -17,7 +17,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select';
 import {
-  FormGroup,
+  Container,
+  FormGroup
 } from "@material-ui/core";
 
 /**
@@ -27,7 +28,7 @@ import {
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
-    flexWrap: 'wrap',
+    // flexWrap: 'wrap',
     flexDirection:'column',
     justifyContent:'center',
     alignItems:'center',
@@ -35,7 +36,7 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 400,
+    width: '50%',
   },
   dense: {
     marginTop: 19,
@@ -121,11 +122,13 @@ const CourtForm = (props) => {
   }
 
   return (
+
     <div style={{marginTop:"100px"}}>
+
       <Typography style={{textAlign:"center"}} variant="h3">Case Form</Typography>
       <Typography style={{textAlign:"center"}} variant="subtitle2">This form is intended for cases referred by the Court system.</Typography>
 
-      <FormGroup className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>               
+      <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>               
         <TextField
           className={classes.textField}
           select
@@ -242,7 +245,7 @@ const CourtForm = (props) => {
           />
 
         <Button className={classes.button} onClick={onSubmitHandler} variant="contained">Submit</Button>
-      </FormGroup>
+      </form>
       <SimpleDialog
         open={open}
         onClose={handleClose}
@@ -260,6 +263,7 @@ const CourtForm = (props) => {
         redirectText={''}
         />
     </div>
+    
   )
 }
 
