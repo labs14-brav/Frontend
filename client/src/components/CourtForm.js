@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection:'column',
     justifyContent:'center',
     alignItems:'center',
-    
+
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -99,7 +99,7 @@ const CourtForm = (props) => {
    function handleErrorClose() {
      setErrorOpen(false);
    }
-   
+
   /**
    *  Form Methods
    */
@@ -107,7 +107,7 @@ const CourtForm = (props) => {
   const handleChange = name => event => {
     setValues({ ...form, [name]: event.target.value });
   };
-      
+
   const onSubmitHandler = e => {
     e.preventDefault();
     axioswithAuth().post(`/cases`, form)
@@ -131,7 +131,7 @@ const CourtForm = (props) => {
       <Typography style={{textAlign:"center"}} variant="h3">Case Form</Typography>
       <Typography style={{textAlign:"center"}} variant="subtitle2">This form is intended for cases referred by the Court system.</Typography>
 
-      <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>               
+      <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>
         <TextField
           className={classes.textField}
           select
@@ -164,10 +164,10 @@ const CourtForm = (props) => {
           margin="normal"
           variant="outlined"
           onChange={handleChange("parties_involved")}
-          value={form.parties_involved}  
+          value={form.parties_involved}
           />
 
-        <TextField 
+        <TextField
           className={classes.textField}
           label="Participant Contact Info"
           name="parties_contact_info"
@@ -176,7 +176,7 @@ const CourtForm = (props) => {
           margin="normal"
           variant="outlined"/>
 
-        <TextField 
+        <TextField
           className={classes.textField}
           label="Dispute Amount - $"
           name="dispute_amount"
@@ -266,7 +266,7 @@ const CourtForm = (props) => {
         redirectText={''}
         />
     </div>
-    
+
   )
 }
 

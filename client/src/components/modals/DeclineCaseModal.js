@@ -4,7 +4,7 @@ import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import CloseIcon from "@material-ui/icons/Close";
-import axioswithAuth from "../../helpers/axioswithAuth";
+import { axioswithAuth, mixpanel } from "../../helpers/index";
 import {
     Button,
     Dialog,
@@ -85,11 +85,14 @@ class AcceptCaseModal extends React.Component {
             open: true
         });
     };
-    
+
     handleClose = () => {
         axioswithAuth()
         .put(`/cases/${this.props.caseId}/case-request-declined`)
         .then((res) => {
+            if (process.env.NODE_ENV === 'production') {
+              mixpanel.track('Decline case as mediator', { distinct_id: localStorage.getItem('id') })
+            }
             this.setState({ open: false });
             this.props.fetchCases();
         })
