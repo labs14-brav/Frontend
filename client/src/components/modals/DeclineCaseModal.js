@@ -85,11 +85,14 @@ class AcceptCaseModal extends React.Component {
             open: true
         });
     };
-    
+
     handleClose = () => {
         axioswithAuth()
         .put(`/cases/${this.props.caseId}/case-request-declined`)
         .then((res) => {
+            if (process.env.NODE_ENV === 'production') {
+              mixpanel.track('Decline case as mediator', { distinct_id: localStorage.getItem('id') })
+            }
             this.setState({ open: false });
             this.props.fetchCases();
         })

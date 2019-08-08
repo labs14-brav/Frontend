@@ -93,11 +93,14 @@ class AcceptCaseModal extends React.Component {
             open: true
         });
     };
-    
+
     handleClose = () => {
         axioswithAuth()
         .put(`/cases/${this.props.caseId}/case-request-accepted`)
         .then((res) => {
+            if (process.env.NODE_ENV === 'production') {
+              mixpanel.track('Accept case as mediator', { distinct_id: localStorage.getItem('id') })
+            }
             this.setState({ open: false });
             this.props.fetchCases();
         })
