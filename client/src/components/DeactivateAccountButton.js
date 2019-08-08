@@ -6,7 +6,7 @@ import React, { useEffect,useState } from 'react'
 import { styled } from '@material-ui/styles';
 import { Button } from '@material-ui/core';
 import axios from 'axios';
-import { axioswithAuth } from '../helpers/index';
+import { axioswithAuth, mixpanel } from "../helpers/index";
 
 /**
  * Define style
@@ -39,6 +39,9 @@ function DeactivateAccountButton(props) {
 
     if (yes) {
       axioswithAuth().put('/users/deactivate')
+      if (process.env.NODE_ENV === 'production') {
+        mixpanel.track('Deactivated account', { distinct_id: localStorage.getItem('id') })
+      }
       localStorage.clear()
       window.location = '/'
     }

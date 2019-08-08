@@ -3,7 +3,7 @@
  */
 
 import React, { useState } from 'react';
-import { axioswithAuth } from '../helpers/index';
+import { axioswithAuth, mixpanel } from "../helpers/index";
 import SimpleDialog from './modals/SimpleDialog';
 
 /**
