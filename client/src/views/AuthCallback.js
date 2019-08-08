@@ -2,27 +2,19 @@
  * Dependencies
  */
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import firebase from 'firebase';
 import axios from 'axios';
 import { mixpanel } from '../helpers/index';
 
 /**
- * Define component
+ * Define view
  */
 
 function AuthCallback(props) {
   firebase.auth().onAuthStateChanged(async (user) => {
     // User is signed in.
     if (user) {
-      let displayName = user.displayName;
-      let email = user.email;
-      let emailVerified = user.emailVerified;
-      let photoURL = user.photoURL;
-      let isAnonymous = user.isAnonymous;
-      let uid = user.uid;
-      let providerData = user.providerData;
-
       let token = await user.getIdToken();
 
       localStorage.setItem('token', token);

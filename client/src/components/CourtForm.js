@@ -16,6 +16,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select';
+import {
+  Container,
+  FormGroup
+} from "@material-ui/core";
 
 /**
  * Global Component Styles
@@ -24,15 +28,17 @@ import Select from '@material-ui/core/Select';
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
-    flexWrap: 'wrap',
+    // flexWrap: 'wrap',
     flexDirection:'column',
     justifyContent:'center',
     alignItems:'center',
+    
   },
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 400,
+    width: '75%',
+    maxWidth:400,
   },
   dense: {
     marginTop: 19,
@@ -42,7 +48,8 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     margin: theme.spacing(1),
-    width: 400,
+    width: '75%',
+    maxWidth: 400,
     height: 60,
     color: 'white',
     backgroundColor: '#5C90C1',
@@ -118,7 +125,9 @@ const CourtForm = (props) => {
   }
 
   return (
-    <div style={{maxWidth:"1100px",margin:"0 auto",padding:"100px 30px"}}>
+
+    <div style={{marginTop:"100px"}}>
+
       <Typography style={{textAlign:"center"}} variant="h3">Case Form</Typography>
       <Typography style={{textAlign:"center"}} variant="subtitle2">This form is intended for cases referred by the Court system.</Typography>
 
@@ -257,6 +266,7 @@ const CourtForm = (props) => {
         redirectText={''}
         />
     </div>
+    
   )
 }
 

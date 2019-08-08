@@ -74,8 +74,8 @@ function MediatorFilter(props) {
     }
 
     return (
-        <div className={classes.container}>
-            <Grid container spacing={4} className="mb-4">
+        <div className={classes.container} style={{margin:"10px"}}>
+            <Grid container spacing={4} className="mb-4" >
                 <Grid item xs={6}>
                     <TextField
                     className={classes.textField}
@@ -125,7 +125,7 @@ function MediatorFilter(props) {
                 </Grid>
             </Grid>
 
-            <Grid container spacing={4} className="mb-4">
+            <Grid container spacing={4} className="mb-4"  >
                 <Grid item xs={6}>
                     <TextField
                         className={classes.textField}

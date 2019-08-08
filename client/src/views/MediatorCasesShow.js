@@ -22,7 +22,7 @@ import {
     NavBar,
     SideNavBlock,
     MediatorPendingCaseList,
-    MediatorAcceptedCaseList,
+    MediatorActiveCaseList,
     MediatorCompletedCaseList
 } from '../components';
 
@@ -110,7 +110,7 @@ export default function MediatorCasesShow() {
     function handleChange(event, newValue) {
         setValue(newValue)
         if (newValue === 0) setSelectedTab("pending")
-        if (newValue === 1) setSelectedTab("accepted")
+        if (newValue === 1) setSelectedTab("active")
         if (newValue === 2) setSelectedTab("completed")
     }
 
@@ -118,14 +118,14 @@ export default function MediatorCasesShow() {
         <MediatorCasesShowStyle>
             <NavTabs value={value} onChange={handleChange} aria-label="mediator-cases-navtabs" centered>
                 <NavTab label="Pending" />
-                <NavTab label="Accepted" />
+                <NavTab label="Active" />
                 <NavTab label="Completed" />
             </NavTabs>
             { selectedTab === "pending" ? <div id="selected-list">
                 <MediatorPendingCaseList />
             </div> : null }
-            { selectedTab === "accepted" ? <div id="selected-list">
-            <MediatorAcceptedCaseList />
+            { selectedTab === "active" ? <div id="selected-list">
+            <MediatorActiveCaseList />
             </div> : null}
             { selectedTab === "completed" ? <div id="selected-list">
                 <MediatorCompletedCaseList />

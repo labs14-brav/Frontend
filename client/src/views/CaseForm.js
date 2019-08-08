@@ -2,19 +2,12 @@
  * Dependencies
  */
 
-import React, { useState, Component } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import Grid from "@material-ui/core/Grid";
 
 /**
- * React component import
- */
-
-import { OutsideCourtForm, CourtForm } from '../components/index'
-
-/**
- *  Import view styles
+ *  Import styles
  */
 
 import './CaseForm.scss';

@@ -28,7 +28,7 @@ function AddendumsList(props) {
                 <>
                 <ul id="addendums-list">
                 {addendums.map(adden => {
-                    return <li><Addendum text={adden.description}/></li>
+                    return <li><Addendum text={adden.description} timestamp={adden.created_at}/></li>
                 })}
              </ul>
              </>

@@ -21,6 +21,7 @@ import Dialog from '@material-ui/core/Dialog';
 import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import CloseIcon from '@material-ui/icons/Close';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 /**
@@ -44,7 +45,10 @@ const useStyles = makeStyles(theme => ({
         }
     },
     secondarybutton: {
-        margin: theme.spacing(1)
+        margin: theme.spacing(1),
+        [theme.breakpoints.up('lg')]: {
+            margin: theme.spacing(1),
+        }
     },
     submitbutton: {
         margin: theme.spacing(1),
@@ -54,7 +58,6 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(1),
         color: '#E55557',
         borderColor: '#E55557',
-
     },
     modal: {
         margin: '0 auto',
@@ -72,7 +75,16 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        alignItems: "center"
+        alignItems: "center",
+        [theme.breakpoints.down('md')]: {
+            width: '100%',
+            height: '100%',
+        },
+        [theme.breakpoints.down('sm')]: {
+            padding: theme.spacing(1,2,2),
+            width:'100%',
+            height: '100%',
+        },
       },
 }))
 
@@ -159,20 +171,20 @@ const UserCaseCard = (props) => {
     return (
         <>
             <Grid 
-                item xs={8} 
-                sm={12} 
-                md={props.numCases === 1 ? 12 : 6} 
-                lg={props.numCases === 1 ? 12 : 6}>
+                item xs={11} 
+                sm={11} 
+                md={props.numCases === 1 ? 12 : 5} 
+                lg={props.numCases === 1 ? 12 : 5.5}>
                 <Card className={classes.paper}> 
-                    <CardContent>
+                    <CardContent style={{width:'100%'}}>
                         <h6 id="case-label">Type</h6>
                         <h5 id="case-dispute">{props.case.dispute_category}</h5>
                         <h6 id="case-label">Involves</h6>
-                        <h5 id="case-parties">{props.case.parties_involved}</h5>
+                        <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
                         <h6 id="case-label">Description</h6>
-                        <h5 id="case-description">{props.case.description}</h5>
+                        <h5 id="case-description">{props.case.description.length > 0 ? props.case.description : 'No information provided'}</h5>
                     </CardContent>
-                    <CardActions style={{display:"flex"}}>
+                    <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
                         <Button variant="outlined" color="primary" className={classes.primarybutton}>
                             <Link style={{textDecoration:'none', color:'inherit'}} 
                             to= {{
@@ -186,14 +198,17 @@ const UserCaseCard = (props) => {
                         <Button className={classes.secondarybutton} onClick={handleOpen} variant="outlined">
                             Add Information
                         </Button>
-                        <Button className={classes.tertiarybutton} onClick={handlefullOpen} variant="outlined">
+                        <Button className={classes.secondarybutton} onClick={handlefullOpen} variant="outlined">
                             View Details
                         </Button>
                         <Button className={classes.deletebutton} onClick={handleSureOpen} variant="outlined">
-                            Delete Case
+                            <DeleteIcon />
                         </Button>
                     </CardActions>
                 </Card>
+
+
+                
             </Grid>
 
 

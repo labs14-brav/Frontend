@@ -1,7 +1,9 @@
+/**
+ * Dependencies
+ */
+
 import React, { useState } from "react";
-import axios from "axios";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/core/styles";
 import {
     FormGroup,
     Container,
@@ -180,6 +182,8 @@ function MediatorRegistration(props) {
                         type="number"
                         label="Price"
                         value={values.price}
+                        min={0}
+                        step={1}
                         onChange={handleChange("price")}
                         className={classes.PriceInput}
                         margin="dense"

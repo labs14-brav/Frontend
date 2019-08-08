@@ -3,7 +3,6 @@
  */
 
 import React from "react";
-import { NavBar, MediatorCasesShow } from "../components/index";
 import { Link } from "react-router-dom";
 import { Button, makeStyles } from "@material-ui/core";
 
@@ -18,15 +17,15 @@ const useStyles = makeStyles(theme => ({
         color: 'white',
         backgroundColor: '#5C90C1',
         "&:hover": {
-          backgroundColor: "#517EA8"
+            backgroundColor: "#517EA8"
         },
         "&:active": {
-          backgroundColor: "#476e91"
+            backgroundColor: "#476e91"
         }
-      }
+    }
 }));
 
-function Landing(props) {
+function Landing() {
     const classes = useStyles();
 
     return (
@@ -56,6 +55,7 @@ function Landing(props) {
                 <img
                     className="brav-logo"
                     src="https://www.brav.org/img/brav-logo.png"
+                    alt="Brav Logo"
                 />
             </div>
         </>

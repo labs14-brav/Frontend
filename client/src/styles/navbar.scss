@@ -16,3 +16,11 @@
     align-items: center;
     justify-content: center;
 }
+
+
+.bravLogo {
+    @media (max-width: '600px') {
+        display: none;
+    }
+}
+

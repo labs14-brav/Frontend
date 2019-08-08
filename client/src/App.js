@@ -6,7 +6,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { RootRouter, UsersRouter, TestRouter, NoMatchRouter, CasesRouter } from './routes/index';
 import { Grid } from '@material-ui/core';
-import { NavBar, SideNavBlock } from './components';
+import { NavBar } from './components';
 import { Landing, Login, ErrorBoundary, AuthCallback } from './views';
 import uuid from 'uuid';
 import { PrivateRoute } from "./routes/helpers/index";

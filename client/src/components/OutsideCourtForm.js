@@ -31,7 +31,8 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 400,
+    width: '75%',
+    maxWidth:400,
     color: '#598EBF'
   },
   dense: {
@@ -42,7 +43,8 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     margin: theme.spacing(1),
-    width: 400,
+    width: '75%',
+    maxWidth: 400,
     height: 60,
     color: 'white',
     backgroundColor: '#5C90C1',
@@ -135,7 +137,7 @@ const OutsideCourtForm = (props) => {
     }
 
     return (
-      <div style={{maxWidth:"1100px",margin:"0 auto",padding:"100px 30px"}}>
+      <div style={{paddingTop:"100px"}}>
           <Typography style={{textAlign:"center"}} variant="h3">Case Form</Typography>
           <Typography style={{textAlign:"center"}} variant="subtitle2">This form is intended for cases outside of the Court system.</Typography>
     
