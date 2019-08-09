@@ -5,6 +5,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, makeStyles } from "@material-ui/core";
+import StripeButton from "../components/StripeButton";
 
 /**
  * Define view
@@ -14,8 +15,8 @@ const useStyles = makeStyles(theme => ({
     button: {
         margin: theme.spacing(1),
         width: 100,
-        color: 'white',
-        backgroundColor: '#5C90C1',
+        color: "white",
+        backgroundColor: "#5C90C1",
         "&:hover": {
             backgroundColor: "#517EA8"
         },
@@ -31,7 +32,7 @@ function Landing() {
     return (
         <>
             <div className="landingNav">
-                <Link to="/auth" style={{textDecoration:"none"}}>
+                <Link to="/auth" style={{ textDecoration: "none" }}>
                     <Button
                         className={classes.button}
                         variant="contained"
@@ -41,7 +42,7 @@ function Landing() {
                     </Button>
                 </Link>
 
-                <Link to="/auth" style={{textDecoration:"none"}}>
+                <Link to="/auth" style={{ textDecoration: "none" }}>
                     <Button
                         className={classes.button}
                         variant="contained"
@@ -52,6 +53,7 @@ function Landing() {
                 </Link>
             </div>
             <div className="landing">
+                <StripeButton />
                 <img
                     className="brav-logo"
                     src="https://www.brav.org/img/brav-logo.png"
