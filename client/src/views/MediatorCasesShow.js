@@ -149,7 +149,7 @@ export default function MediatorCasesShow() {
             <MediatorCasesShowStyle>
                 <a
                     style={{ marginTop: "200px" }}
-                    href="https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_FapfMHhGMRX8cqibiDppj97yzbPNKByE"
+                    href="https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_FapfMHhGMRX8cqibiDppj97yzbPNKByE&redirect_uri=http://localhost:3000/stripe-callback"
                 >
                     Connect Bank Account
                 </a>
