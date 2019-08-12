@@ -116,6 +116,7 @@ function MediatorRegistration(props) {
         language: [],
         professional_bio: ""
     });
+    const [open, setOpen] = useState(false);
 
     const classes = useStyles();
     const languages = ["English", "Spanish", "Chinese"];
@@ -126,20 +127,34 @@ function MediatorRegistration(props) {
     };
 
     const handleSubmit = () => {
-        values.specialization = JSON.stringify(values.specialization);
-        values.language = JSON.stringify(values.language);
+        if (values.specialization.length > 0) {
+           values.specialization = JSON.stringify(values.specialization); 
+        }
+        if (values.language.length > 0) {
+            values.language = JSON.stringify(values.language);
+        }
         const id = localStorage.getItem("id");
         axioswithAuth()
             .put(`/users/${id}/mediator-upgrade`, values)
             .then(res => {
+                handleOpen();
                 console.log(res);
             })
             .catch(error => {
                 console.error(error);
             })
             //need to add some sort of confirmation message here
-        props.history.push('/users/settings')
+        // props.history.push('/users/settings')
     };
+
+    // dialog Methods
+    function handleOpen() {
+        setOpen(true);
+      }
+
+    function handleClose() {
+    setOpen(false);
+    }
 
     return (
         <>
@@ -255,10 +270,10 @@ function MediatorRegistration(props) {
             <SimpleDialog
             open={open}
             onClose={handleClose}
-            titleText={'Case created'}
-            bodyText={''}
-            redirect={'/cases'}
-            redirectText={'Cases'}
+            titleText={'Registration Completed'}
+            bodyText={'An admin will approve your request as soon as possible'}
+            redirect={'/users/settings'}
+            redirectText={'Settings'}
             />
 
         </>
