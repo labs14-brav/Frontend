@@ -15,7 +15,8 @@ import {
     FormControl,
     Input,
     Checkbox,
-    ListItemText
+    ListItemText,
+    Typography
 } from "@material-ui/core";
 import axioswithAuth from '../helpers/axioswithAuth';
 
@@ -32,9 +33,31 @@ const MenuProps = {
 };
 
 const useStyles = makeStyles(theme => ({
-    root: {
+    container: {
+        paddingTop: "15%",
         display: "flex",
-        flexWrap: "wrap"
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    textField: {
+        alignSelf: 'center',
+        marginTop: '10px',
+        marginBottom: '10px',
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        width: '75%',
+        maxWidth:400,
+        color: '#598EBF'
+    },
+    select: {
+        alignSelf: "center",
+        width: '75%',
+        maxWidth: 400,
+        marginTop: '10px',
+        marginBottom: '10px',
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
     },
     formControl: {
         // margin: theme.spacing(1),
@@ -80,7 +103,6 @@ function MediatorRegistration(props) {
     const handleSubmit = () => {
         values.specialization = JSON.stringify(values.specialization);
         values.language = JSON.stringify(values.language);
-        console.log(values,"values")
         const id = localStorage.getItem("id");
         axioswithAuth()
             .put(`/users/${id}/mediator-upgrade`, values)
@@ -95,29 +117,34 @@ function MediatorRegistration(props) {
     };
 
     return (
-
         <>
-            <Container maxWidth="sm" style={{paddingTop:"15%"}}>
-            <h1>Mediator Registration</h1>
+            <Container maxWidth="sm" className={classes.container}>
+            <Typography style={{textAlign:"center"}} variant="h3">Mediator Registration</Typography>
             <FormGroup>
             <TextField
+                    className={classes.textField}
                     label="Full Name"
                     value={values.name}
                     onChange={handleChange("name")}
+                    variant="outlined"
                 />
                 <TextField
+                    className={classes.textField}
                     label="General Details"
                     value={values.general_details}
                     onChange={handleChange("general_details")}
+                    variant="outlined"
                 />
                 <TextField
+                    className={classes.textField}   
                     label="License Number"
                     value={values.license}
                     onChange={handleChange("license")}
+                    variant= "outlined"
                 />
-                <FormControl>
+                <FormControl className={classes.select}>
                     <InputLabel htmlFor="age-simple">
-                        Years of Experience
+                        Experience
                     </InputLabel>
                     <Select
                         onChange={handleChange("experience")}
@@ -129,7 +156,7 @@ function MediatorRegistration(props) {
                     </Select>
                 </FormControl>
 
-                <FormControl className={classes.formControl}>
+                <FormControl  className={classes.select}>
                     <InputLabel htmlFor="select-multiple-checkbox">
                         Specializations
                     </InputLabel>
@@ -155,7 +182,7 @@ function MediatorRegistration(props) {
                     </Select>
                 </FormControl>
 
-                <FormControl className={classes.formControl}>
+                <FormControl  className={classes.select}>
                     <InputLabel htmlFor="select-multiple-checkbox">
                         Language
                     </InputLabel>
@@ -185,15 +212,12 @@ function MediatorRegistration(props) {
                         min={0}
                         step={1}
                         onChange={handleChange("price")}
-                        className={classes.PriceInput}
+                        className={classes.select}
                         margin="dense"
                         helperText="Dollars/Hour"
                     />
-                <FormControl>
-
-                    </FormControl>
-                    <p> I attest that the information given in this form is true, complete and accurate. </p>
-                <Button onClick={() => handleSubmit()}>Submit</Button>
+                    <Typography variant="subtitle2"> I attest that the information given in this form is true, complete and accurate. </Typography>
+                <Button onClick={() => handleSubmit()} variant="outlined">Submit</Button>
             </FormGroup>
             </Container>
         </>
