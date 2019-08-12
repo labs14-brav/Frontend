@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { axioswithAuth } from '../helpers/index';
 import MediatorCard from './MediatorCard';
 import Grid from '@material-ui/core/Grid';
+import Pagination from './Pagination';
 
 /**
  * Define component
@@ -15,7 +16,7 @@ const MediatorList = (props) => {
     const [mediators, setMediators] = useState([]);
     const [loading, setLoading]=useState(false);
     const [currentPage,setCurrentPage]=useState(1);
-    const [mediatorsPerPage, setMediatorsPerPage]=useState(2);
+    const [mediatorsPerPage, setMediatorsPerPage]=useState(1);
 
 
 
@@ -44,9 +45,13 @@ const MediatorList = (props) => {
 
     return (
         <Grid container spacing={4} justify="space-evenly">
+
+         <Pagination mediatorsPerPage={mediatorsPerPage} totalMediators={mediators.length}/>
             {currentMediators.map(mediator => {
                 return (
-                    <MediatorCard mediator={currentMediators}  numMediators={mediator.length} currentcase={props.currentcase} key={mediator.uid} />
+                    <>
+                    <MediatorCard mediator={mediator}  numMediators={mediator.length} currentcase={props.currentcase} key={mediator.uid} />
+                    </>
                  );
             })}
         </Grid>
