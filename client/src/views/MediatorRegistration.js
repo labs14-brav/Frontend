@@ -19,6 +19,7 @@ import {
     Typography
 } from "@material-ui/core";
 import axioswithAuth from '../helpers/axioswithAuth';
+import SimpleDialog from '../components/modals/SimpleDialog';
 
 // adds styles to select inputs
 const ITEM_HEIGHT = 48;
@@ -34,7 +35,7 @@ const MenuProps = {
 
 const useStyles = makeStyles(theme => ({
     container: {
-        paddingTop: "15%",
+        paddingTop: "10%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -76,6 +77,30 @@ const useStyles = makeStyles(theme => ({
     },
     PriceInput: { 
         width: 75,
+    },
+    button: {
+        alignSelf: "center",
+        margin: theme.spacing(1),
+        marginBottom: theme.spacing(5),
+        width: '75%',
+        maxWidth: 400,
+        height: 60,
+        color: 'white',
+        backgroundColor: '#5C90C1',
+        "&:hover": {
+          backgroundColor: "#517EA8"
+        },
+        "&:active": {
+          backgroundColor: "#476e91"
+        }
+    },
+    subtext: {
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(1),
+        alignSelf: 'center',
+        textAlign: 'center',
+        width: '75%',
+        maxWidth: 400,
     }
 }));
 
@@ -89,7 +114,7 @@ function MediatorRegistration(props) {
         price: 0,
         specialization: [],
         language: [],
-        general_details: ""
+        professional_bio: ""
     });
 
     const classes = useStyles();
@@ -119,7 +144,7 @@ function MediatorRegistration(props) {
     return (
         <>
             <Container maxWidth="sm" className={classes.container}>
-            <Typography style={{textAlign:"center"}} variant="h3">Mediator Registration</Typography>
+            <Typography style={{textAlign:"center", paddingBottom: '20px'}} variant="h3">Mediator Registration</Typography>
             <FormGroup>
             <TextField
                     className={classes.textField}
@@ -128,13 +153,7 @@ function MediatorRegistration(props) {
                     onChange={handleChange("name")}
                     variant="outlined"
                 />
-                <TextField
-                    className={classes.textField}
-                    label="General Details"
-                    value={values.general_details}
-                    onChange={handleChange("general_details")}
-                    variant="outlined"
-                />
+                
                 <TextField
                     className={classes.textField}   
                     label="License Number"
@@ -216,10 +235,32 @@ function MediatorRegistration(props) {
                         margin="dense"
                         helperText="Dollars/Hour"
                     />
-                    <Typography variant="subtitle2"> I attest that the information given in this form is true, complete and accurate. </Typography>
-                <Button onClick={() => handleSubmit()} variant="outlined">Submit</Button>
+
+                    <TextField
+                    className={classes.textField}
+                    label="Brief Personal Summary"
+                    value={values.general_details}
+                    multiline
+                    rows="8"
+                    onChange={handleChange("general_details")}
+                    variant="outlined"
+                />
+
+
+                <Typography className={classes.subtext} variant="subtitle2"> I attest that the information given in this form is true, complete and accurate. </Typography>
+                <Button className={classes.button} onClick={() => handleSubmit()} variant="outlined">Submit</Button>
             </FormGroup>
             </Container>
+
+            <SimpleDialog
+            open={open}
+            onClose={handleClose}
+            titleText={'Case created'}
+            bodyText={''}
+            redirect={'/cases'}
+            redirectText={'Cases'}
+            />
+
         </>
 
     );
