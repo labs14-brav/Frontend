@@ -85,7 +85,7 @@ In order for the app to function correctly, the user must set up their own envir
 
 ## Testing
 
-We are using the `react-testing-library` dependency for Frontend tests. Since that dependency is deprecated we'll be migrating that to `@testing-library/react`.
+We are using the `@testing-library/react` dependency for Frontend tests.
 
 ## Installation Instructions
 
