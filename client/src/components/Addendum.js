@@ -1,7 +1,6 @@
 import React from 'react';
 import './Addendum.scss';
 
-import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
 function Addendum(props) {

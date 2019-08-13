@@ -13,7 +13,7 @@ const Pagination = ({mediatorsPerPage,totalMediators,paginate}) => {
             {pageNumbers.map(number=>(
 
                 <li style={{display:"inline",}} key={number}>
-                    <a onClick={()=>paginate(number)} href="#">
+                    <a onClick={()=>paginate(number)} >
                     {number}
                     </a>
                 </li>

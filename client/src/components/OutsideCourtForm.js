@@ -10,10 +10,9 @@ import { axioswithAuth, mixpanel } from "../helpers/index";
  * Material-UI
  */
 import TextField from '@material-ui/core/TextField';
-import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
-import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 
 /**

@@ -51,9 +51,9 @@ const MediatorList = (props) => {
 
         <Grid container spacing={4} justify="space-evenly" style={{display:"flex",flexDirection:"column"}}>
 
-        <Pagination mediatorsPerPage={mediatorsPerPage} totalMediators={mediators.length} paginate={paginate} currentcase={props.currentcase}/>
+        <Pagination mediatorsPerPage={mediatorsPerPage} totalMediators={mediators.length} paginate={paginate} />
        
-            {mediators.map(mediator => {
+            {currentMediators.map(mediator => {
                 return (
                     <>
                     <MediatorCard mediator={mediator}  numMediators={mediator.length} currentcase={props.currentcase} key={mediator.uid} />
