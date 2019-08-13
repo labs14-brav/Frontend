@@ -13,37 +13,35 @@ import axios from 'axios';
  */
 
 const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path, exact }) => {
-  if (process.env.NODE_ENV !== 'testing') {
-    firebase.auth().onAuthStateChanged(async (user) => {
-      // User is signed in.
-      if (user) {
-        let displayName = user.displayName;
-        let email = user.email;
-        let emailVerified = user.emailVerified;
-        let photoURL = user.photoURL;
-        let isAnonymous = user.isAnonymous;
-        let uid = user.uid;
-        let providerData = user.providerData;
+  firebase.auth().onAuthStateChanged(async (user) => {
+    // User is signed in.
+    if (user) {
+      let displayName = user.displayName;
+      let email = user.email;
+      let emailVerified = user.emailVerified;
+      let photoURL = user.photoURL;
+      let isAnonymous = user.isAnonymous;
+      let uid = user.uid;
+      let providerData = user.providerData;
 
-        let token = await user.getIdToken();
+      let token = await user.getIdToken();
 
-        localStorage.setItem('token', token);
+      localStorage.setItem('token', token);
 
-        axios.post(`${process.env.REACT_APP_API_URL}/users/auth`, {
-          user: user,
-          token: token
-        }).then(res => {
-          localStorage.setItem('type', res.data.type);
-          localStorage.setItem('id', res.data.id);
-        }).catch(err => {
-          console.error(err)
-        })
-      } else {
-        // User is signed out.
-        // ...
-      }
-    });
-  }
+      axios.post(`${process.env.REACT_APP_API_URL}/users/auth`, {
+        user: user,
+        token: token
+      }).then(res => {
+        localStorage.setItem('type', res.data.type);
+        localStorage.setItem('id', res.data.id);
+      }).catch(err => {
+        console.error(err)
+      })
+    } else {
+      // User is signed out.
+      // ...
+    }
+  });
 
   if (exact) {
     return <Route key={uuid.v4()} exact path={path} render={props => (
