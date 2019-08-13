@@ -7,7 +7,7 @@ import TestRenderer from 'react-test-renderer';
 import { Router } from 'react-router-dom';
 import { cleanup, render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-import UserCaseShow from './UserCaseShow';
+import CaseForm from './CaseForm';
 
 /**
  * Hooks
@@ -34,9 +34,17 @@ function renderWithRouter(
  * Assertions
  */
 
-describe('UserCaseShow.js', () => {
+describe('CaseForm.js', () => {
   test('it renders without errors', () => {
+    const route = '/cases/new'
+    renderWithRouter(<CaseForm />, {route})
+  });
+
+  test('it has a link to a court and non-court case form', () => {
     const route = '/'
-    renderWithRouter(<UserCaseShow />, {route})
+    const { getByTestId } = renderWithRouter(<CaseForm />, {route})
+
+    expect(getByTestId('button-courtcase').textContent).toBe('Court Referral')
+    expect(getByTestId('button-non-courtcase').textContent).toBe('Non-Court Referral?')
   });
 });

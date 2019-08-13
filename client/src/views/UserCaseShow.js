@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
  * Import styles
  */
 
- import './UserCaseShow.scss';
+import './UserCaseShow.scss';
 
 /**
  * Define view

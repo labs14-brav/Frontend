@@ -40,7 +40,7 @@ describe('GenericError.js', () => {
     renderWithRouter(<GenericError />, {route})
   });
 
-  test('it has a signup/login button', () => {
+  test('it has a error message and back link', () => {
     const route = '/'
     const { getByTestId } = renderWithRouter(<GenericError />, {route})
 
