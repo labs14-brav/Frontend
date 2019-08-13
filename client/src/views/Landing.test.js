@@ -5,7 +5,7 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import { Router } from 'react-router-dom';
-import { render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import Landing from './Landing';
 
@@ -40,8 +40,14 @@ function renderWithRouter(
 describe('Landing.js', () => {
   test('it renders without errors', () => {
     const route = '/'
+    renderWithRouter(<Landing />, {route})
+  });
+
+  test('it has a signup/login button', () => {
+    const route = '/'
     const { getByTestId } = renderWithRouter(<Landing />, {route})
 
     expect(getByTestId('signup-button').textContent).toBe('signup')
+    expect(getByTestId('login-button').textContent).toBe('login')
   });
 });

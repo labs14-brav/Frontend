@@ -36,8 +36,7 @@ function Landing() {
                         className={classes.button}
                         variant="contained"
                         color="primary"
-                        data-testid="signup-button"
-                    >
+                        data-testid="signup-button">
                         signup
                     </Button>
                 </Link>
@@ -47,7 +46,7 @@ function Landing() {
                         className={classes.button}
                         variant="contained"
                         color="primary"
-                    >
+                        data-testid="login-button">
                         login
                     </Button>
                 </Link>
