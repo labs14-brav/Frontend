@@ -1,0 +1,31 @@
+.navBar{
+    margin-bottom:30px;
+
+    .unListNav{
+
+        display:flex;
+       justify-content: center;
+        flex-wrap: wrap;
+        overflow:auto;
+    
+
+        .liNav{
+           margin: 2px;
+
+
+            .anchorNum{
+                margin:10px;
+                font-size: 20px;
+                }   
+
+        }
+ 
+        
+    }
+    
+}
+.anchorNum:hover{
+    color:#5C90C1;
+    font-size:25px;
+    cursor: auto;
+}

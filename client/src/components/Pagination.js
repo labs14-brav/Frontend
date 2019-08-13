@@ -1,5 +1,8 @@
 import React from 'react'
 
+// styles
+import './Pagination.scss'
+
 const Pagination = ({mediatorsPerPage,totalMediators,paginate}) => {
     const pageNumbers=[];
     for(let i=1; i<=Math.ceil(totalMediators/mediatorsPerPage); i++){
@@ -8,18 +11,17 @@ const Pagination = ({mediatorsPerPage,totalMediators,paginate}) => {
 
 
     return (
-        <nav>
-            <ul>
+        <nav className="navBar">
+            <div className="unListNav">
             {pageNumbers.map(number=>(
-
-                <li style={{display:"inline",}} key={number}>
-                    <a onClick={()=>paginate(number)} >
+                <div className="liNav" key={number}  >
+                    <a className="anchorNum" onClick={()=>paginate(number)} >
                     {number}
                     </a>
-                </li>
+                 </div>
             ))}
 
-            </ul>
+            </div>
         </nav>
     )
 }

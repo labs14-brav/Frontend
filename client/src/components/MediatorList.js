@@ -49,9 +49,17 @@ const MediatorList = (props) => {
 
     return (
 
-        <Grid container spacing={4} justify="space-evenly" style={{display:"flex",flexDirection:"column"}}>
+       
+        
+        <Grid container spacing={4} justify="space-evenly" >
 
-        <Pagination mediatorsPerPage={mediatorsPerPage} totalMediators={mediators.length} paginate={paginate} />
+        <Grid 
+          item xs={11} 
+          sm={11} 
+          md={12} 
+          lg={12}>
+          <Pagination mediatorsPerPage={mediatorsPerPage} totalMediators={mediators.length} paginate={paginate} />
+          </Grid>
        
             {currentMediators.map(mediator => {
                 return (
@@ -61,7 +69,6 @@ const MediatorList = (props) => {
                  );
             })}
         </Grid>
-    
     );
 };
 
