@@ -36,16 +36,16 @@ const NavTabs = withStyles({
         borderBottom: "1px solid #e8e8e8"
     },
     indicator: {
-        backgroundColor: "#1890ff"
+        backgroundColor: "#5C90C1"
     }
 })(Tabs);
 
 const NavTab = withStyles(theme => ({
     root: {
         textTransform: "none",
-        minWidth: 72,
+        minWidth: 70,
         fontWeight: theme.typography.fontWeightRegular,
-        marginRight: theme.spacing(4),
+        marginRight: theme.spacing(0),
         fontFamily: [
             "-apple-system",
             "BlinkMacSystemFont",
@@ -59,15 +59,15 @@ const NavTab = withStyles(theme => ({
             '"Segoe UI Symbol"'
         ].join(","),
         "&:hover": {
-            color: "#40a9ff",
+            color: "#5C90C1",
             opacity: 1
         },
         "&$selected": {
-            color: "#1890ff",
+            color: "#5C90C1",
             fontWeight: theme.typography.fontWeightMedium
         },
         "&:focus": {
-            color: "#40a9ff"
+            color: "#5C90C1"
         }
     },
     selected: {}
@@ -114,7 +114,7 @@ export default function MediatorCasesShow() {
         if (newValue === 2) setSelectedTab("completed");
     }
 
-    if (false) {
+    if (true) {
         return (
             <MediatorCasesShowStyle>
                 <NavTabs
@@ -149,7 +149,7 @@ export default function MediatorCasesShow() {
             <MediatorCasesShowStyle>
                 <a
                     style={{ marginTop: "200px" }}
-                    href="https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_FapfMHhGMRX8cqibiDppj97yzbPNKByE"
+                    href="https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_FapfMHhGMRX8cqibiDppj97yzbPNKByE&redirect_uri=http://localhost:3000/stripe-callback"
                 >
                     Connect Bank Account
                 </a>
