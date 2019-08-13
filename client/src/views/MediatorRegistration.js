@@ -15,9 +15,11 @@ import {
     FormControl,
     Input,
     Checkbox,
-    ListItemText
+    ListItemText,
+    Typography
 } from "@material-ui/core";
 import axioswithAuth from '../helpers/axioswithAuth';
+import SimpleDialog from '../components/modals/SimpleDialog';
 
 // adds styles to select inputs
 const ITEM_HEIGHT = 48;
@@ -32,27 +34,60 @@ const MenuProps = {
 };
 
 const useStyles = makeStyles(theme => ({
-    root: {
+    container: {
+        paddingTop: "10%",
         display: "flex",
-        flexWrap: "wrap"
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    textField: {
+        alignSelf: 'center',
+        marginTop: '10px',
+        marginBottom: '10px',
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        width: '75%',
+        maxWidth:400,
+        color: '#598EBF'
+    },
+    select: {
+        alignSelf: "center",
+        width: '75%',
+        maxWidth: 400,
+        marginTop: '10px',
+        marginBottom: '10px',
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
     },
     formControl: {
-        // margin: theme.spacing(1),
-        // minWidth: 120,
-        // maxWidth: 300
-    },
-    chips: {
-        display: "flex",
-        flexWrap: "wrap"
-    },
-    chip: {
-        margin: 2
     },
     noLabel: {
         marginTop: theme.spacing(3)
     },
-    PriceInput: { 
-        width: 75,
+    button: {
+        alignSelf: "center",
+        margin: theme.spacing(1),
+        marginBottom: theme.spacing(5),
+        width: '75%',
+        maxWidth: 400,
+        height: 60,
+        color: 'white',
+        backgroundColor: '#5C90C1',
+        "&:hover": {
+          backgroundColor: "#517EA8"
+        },
+        "&:active": {
+          backgroundColor: "#476e91"
+        }
+    },
+    subtext: {
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(1),
+        alignSelf: 'center',
+        textAlign: 'center',
+        width: '75%',
+        maxWidth: 400,
     }
 }));
 
@@ -66,8 +101,10 @@ function MediatorRegistration(props) {
         price: 0,
         specialization: [],
         language: [],
-        general_details: ""
+        professional_bio: ""
     });
+    const [open, setOpen] = useState(false);
+    const [errorOpen, setErrorOpen] = useState(false);
 
     const classes = useStyles();
     const languages = ["English", "Spanish", "Chinese"];
@@ -78,46 +115,72 @@ function MediatorRegistration(props) {
     };
 
     const handleSubmit = () => {
-        values.specialization = JSON.stringify(values.specialization);
-        values.language = JSON.stringify(values.language);
-        console.log(values,"values")
+        let parcel = values;
+        if (parcel.specialization.length > 0) {
+           parcel.specialization = JSON.stringify(parcel.specialization); 
+        }
+        if (parcel.language.length > 0) {
+            parcel.language = JSON.stringify(parcel.language);
+        }
         const id = localStorage.getItem("id");
         axioswithAuth()
-            .put(`/users/${id}/mediator-upgrade`, values)
+            .put(`/users/${id}/mediator-upgrade`, parcel)
             .then(res => {
-                console.log(res);
+                handleOpen();
             })
             .catch(error => {
+                handleErrorOpen();
                 console.error(error);
-            })
-            //need to add some sort of confirmation message here
-        props.history.push('/users/settings')
+            })   
+
+            //resetting specialization and language to avoid .join errors with the stringified selected values
+            setValues({
+                specialization: [],
+                language: [],})
     };
 
-    return (
+    // dialog Methods
+    function handleOpen() {
+        setOpen(true);
+      }
 
+    function handleErrorOpen() {
+        setErrorOpen(true);
+    }
+
+    function handleClose() {
+        setOpen(false);
+    }
+
+    function handleErrorClose() {
+        setErrorOpen(false);
+    }
+
+    return (
         <>
-            <Container maxWidth="sm" style={{paddingTop:"15%"}}>
-            <h1>Mediator Registration</h1>
+            <Container maxWidth="sm" className={classes.container}>
+            <Typography style={{textAlign:"center", paddingBottom: '20px'}} variant="h3">Mediator Registration</Typography>
+            <Typography style={{textAlign:"center"}} variant="subtitle2">All fields are required for submission.</Typography>
             <FormGroup>
             <TextField
+                    className={classes.textField}
                     label="Full Name"
                     value={values.name}
                     onChange={handleChange("name")}
+                    variant="outlined"
                 />
+                
                 <TextField
-                    label="General Details"
-                    value={values.general_details}
-                    onChange={handleChange("general_details")}
-                />
-                <TextField
-                    label="License Number"
+                    className={classes.textField}   
+                    label="License"
+                    helperText="for more than one separate by comma"
                     value={values.license}
                     onChange={handleChange("license")}
+                    variant= "outlined"
                 />
-                <FormControl>
+                <FormControl className={classes.select}>
                     <InputLabel htmlFor="age-simple">
-                        Years of Experience
+                        Experience
                     </InputLabel>
                     <Select
                         onChange={handleChange("experience")}
@@ -129,7 +192,7 @@ function MediatorRegistration(props) {
                     </Select>
                 </FormControl>
 
-                <FormControl className={classes.formControl}>
+                <FormControl  className={classes.select}>
                     <InputLabel htmlFor="select-multiple-checkbox">
                         Specializations
                     </InputLabel>
@@ -138,8 +201,8 @@ function MediatorRegistration(props) {
                         value={values.specialization}
                         onChange={handleChange("specialization")}
                         input={<Input id="select-multiple-checkbox" />}
-                        // renderValue={selected => selected.join(", ")}
-                        renderValue={() => values.specialization.join(", ")}
+                        renderValue={selected => {
+                            return selected.join(", ")}}
                         MenuProps={MenuProps}
                     >
                         {specializations.map(name => (
@@ -155,7 +218,7 @@ function MediatorRegistration(props) {
                     </Select>
                 </FormControl>
 
-                <FormControl className={classes.formControl}>
+                <FormControl  className={classes.select}>
                     <InputLabel htmlFor="select-multiple-checkbox">
                         Language
                     </InputLabel>
@@ -164,7 +227,8 @@ function MediatorRegistration(props) {
                         value={values.language}
                         onChange={handleChange("language")}
                         input={<Input id="select-multiple-checkbox" />}
-                        renderValue={selected => selected.join(", ")}
+                        renderValue={selected => {
+                            return selected.join(", ")}}
                         MenuProps={MenuProps}
                     >
                         {languages.map(name => (
@@ -185,17 +249,45 @@ function MediatorRegistration(props) {
                         min={0}
                         step={1}
                         onChange={handleChange("price")}
-                        className={classes.PriceInput}
+                        className={classes.select}
                         margin="dense"
                         helperText="Dollars/Hour"
                     />
-                <FormControl>
 
-                    </FormControl>
-                    <p> I attest that the information given in this form is true, complete and accurate. </p>
-                <Button onClick={() => handleSubmit()}>Submit</Button>
+                    <TextField
+                    className={classes.textField}
+                    label="Brief Personal Summary"
+                    value={values.professional_bio}
+                    multiline
+                    rows="8"
+                    onChange={handleChange("professional_bio")}
+                    variant="outlined"
+                />
+
+
+                <Typography className={classes.subtext} variant="subtitle2"> I attest that the information given in this form is true, complete and accurate. </Typography>
+                <Button className={classes.button} onClick={() => handleSubmit()} variant="outlined">Submit</Button>
             </FormGroup>
             </Container>
+
+            <SimpleDialog
+            open={open}
+            onClose={handleClose}
+            titleText={'Registration Completed'}
+            bodyText={'An admin will approve your request as soon as possible'}
+            redirect={'/users/settings'}
+            redirectText={'Settings'}
+            />
+
+            <SimpleDialog
+            open={errorOpen}
+            onClose={handleErrorClose}
+            titleText={'Error submitting the form'}
+            bodyText={'Please make sure you complete all of the fields'}
+            redirect={''}
+            redirectText={''}
+            />
+
         </>
 
     );
