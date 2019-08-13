@@ -10,6 +10,7 @@ import Landing from './Landing';
 
 /**
  * Hooks
+ *   cleanup - Unmounts React trees that were mounted with render.
  */
 
 afterEach(cleanup);
