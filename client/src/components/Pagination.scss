@@ -1,0 +1,36 @@
+.navBar{
+
+    .unListNav{
+
+        display:flex;
+       justify-content: center;
+        flex-wrap: wrap;
+        overflow:auto;
+    
+        .liNav{
+           margin: 2px;
+
+            a{
+                margin:10px;
+                font-size: 20px;
+                color:#5C90C1;
+                font-weight: 900;
+                &.active{
+                    color: #E55557!important;
+                   }
+             } 
+    
+              
+        }
+ 
+    }
+    
+}
+
+a:hover{
+    color:black !important;
+}
+
+
+
+

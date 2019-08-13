@@ -4,10 +4,7 @@
 
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { PrivateRoute } from "./helpers/index";
 import {
-    ErrorBoundary,
-    AdminHome,
     Login,
     StripeCallback
 } from "../views/index";
