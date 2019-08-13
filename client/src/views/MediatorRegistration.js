@@ -61,22 +61,9 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(1),
     },
     formControl: {
-        // margin: theme.spacing(1),
-        // minWidth: 120,
-        // maxWidth: 300
-    },
-    chips: {
-        display: "flex",
-        flexWrap: "wrap"
-    },
-    chip: {
-        margin: 2
     },
     noLabel: {
         marginTop: theme.spacing(3)
-    },
-    PriceInput: { 
-        width: 75,
     },
     button: {
         alignSelf: "center",
@@ -117,6 +104,7 @@ function MediatorRegistration(props) {
         professional_bio: ""
     });
     const [open, setOpen] = useState(false);
+    const [errorOpen, setErrorOpen] = useState(false);
 
     const classes = useStyles();
     const languages = ["English", "Spanish", "Chinese"];
@@ -127,24 +115,32 @@ function MediatorRegistration(props) {
     };
 
     const handleSubmit = () => {
-        if (values.specialization.length > 0) {
-           values.specialization = JSON.stringify(values.specialization); 
+        let parcel = values;
+        if (parcel.specialization.length > 0) {
+           parcel.specialization = JSON.stringify(parcel.specialization); 
         }
-        if (values.language.length > 0) {
-            values.language = JSON.stringify(values.language);
+        if (parcel.language.length > 0) {
+            parcel.language = JSON.stringify(parcel.language);
         }
         const id = localStorage.getItem("id");
         axioswithAuth()
-            .put(`/users/${id}/mediator-upgrade`, values)
+            .put(`/users/${id}/mediator-upgrade`, parcel)
             .then(res => {
                 handleOpen();
-                console.log(res);
+                setValues({
+                    type: "user",
+                    name: "",
+                    license: "",
+                    experience: "",
+                    price: 0,
+                    specialization: [],
+                    language: [],
+                    professional_bio: ""});
             })
             .catch(error => {
+                handleErrorOpen();
                 console.error(error);
             })
-            //need to add some sort of confirmation message here
-        // props.history.push('/users/settings')
     };
 
     // dialog Methods
@@ -152,8 +148,16 @@ function MediatorRegistration(props) {
         setOpen(true);
       }
 
+    function handleErrorOpen() {
+        setErrorOpen(true);
+    }
+
     function handleClose() {
-    setOpen(false);
+        setOpen(false);
+    }
+
+    function handleErrorClose() {
+        setErrorOpen(false);
     }
 
     return (
@@ -171,7 +175,8 @@ function MediatorRegistration(props) {
                 
                 <TextField
                     className={classes.textField}   
-                    label="License Number"
+                    label="License"
+                    helperText="for more than one separate by comma"
                     value={values.license}
                     onChange={handleChange("license")}
                     variant= "outlined"
@@ -199,8 +204,12 @@ function MediatorRegistration(props) {
                         value={values.specialization}
                         onChange={handleChange("specialization")}
                         input={<Input id="select-multiple-checkbox" />}
-                        // renderValue={selected => selected.join(", ")}
-                        renderValue={() => values.specialization.join(", ")}
+                        renderValue={selected => {
+                            console.log(selected);
+                            if (selected.length === 0) {
+                                return '';
+                            } else {
+                            return selected.join(", ")}}}
                         MenuProps={MenuProps}
                     >
                         {specializations.map(name => (
@@ -225,7 +234,12 @@ function MediatorRegistration(props) {
                         value={values.language}
                         onChange={handleChange("language")}
                         input={<Input id="select-multiple-checkbox" />}
-                        renderValue={selected => selected.join(", ")}
+                        renderValue={selected => {
+                            console.log(selected);
+                            if (selected.length === 0) {
+                                return '';
+                            } else {
+                            return selected.join(", ")}}}
                         MenuProps={MenuProps}
                     >
                         {languages.map(name => (
@@ -254,10 +268,10 @@ function MediatorRegistration(props) {
                     <TextField
                     className={classes.textField}
                     label="Brief Personal Summary"
-                    value={values.general_details}
+                    value={values.professional_bio}
                     multiline
                     rows="8"
-                    onChange={handleChange("general_details")}
+                    onChange={handleChange("professional_bio")}
                     variant="outlined"
                 />
 
@@ -274,6 +288,15 @@ function MediatorRegistration(props) {
             bodyText={'An admin will approve your request as soon as possible'}
             redirect={'/users/settings'}
             redirectText={'Settings'}
+            />
+
+            <SimpleDialog
+            open={errorOpen}
+            onClose={handleErrorClose}
+            titleText={'Error submitting the form'}
+            bodyText={'Please make sure you complete all of the fields'}
+            redirect={''}
+            redirectText={''}
             />
 
         </>
