@@ -127,20 +127,16 @@ function MediatorRegistration(props) {
             .put(`/users/${id}/mediator-upgrade`, parcel)
             .then(res => {
                 handleOpen();
-                setValues({
-                    type: "user",
-                    name: "",
-                    license: "",
-                    experience: "",
-                    price: 0,
-                    specialization: [],
-                    language: [],
-                    professional_bio: ""});
             })
             .catch(error => {
                 handleErrorOpen();
                 console.error(error);
-            })
+            })   
+
+            //resetting specialization and language to avoid .join errors with the stringified selected values
+            setValues({
+                specialization: [],
+                language: [],})
     };
 
     // dialog Methods
@@ -164,6 +160,7 @@ function MediatorRegistration(props) {
         <>
             <Container maxWidth="sm" className={classes.container}>
             <Typography style={{textAlign:"center", paddingBottom: '20px'}} variant="h3">Mediator Registration</Typography>
+            <Typography style={{textAlign:"center"}} variant="subtitle2">All fields are required for submission.</Typography>
             <FormGroup>
             <TextField
                     className={classes.textField}
@@ -205,11 +202,7 @@ function MediatorRegistration(props) {
                         onChange={handleChange("specialization")}
                         input={<Input id="select-multiple-checkbox" />}
                         renderValue={selected => {
-                            console.log(selected);
-                            if (selected.length === 0) {
-                                return '';
-                            } else {
-                            return selected.join(", ")}}}
+                            return selected.join(", ")}}
                         MenuProps={MenuProps}
                     >
                         {specializations.map(name => (
@@ -235,11 +228,7 @@ function MediatorRegistration(props) {
                         onChange={handleChange("language")}
                         input={<Input id="select-multiple-checkbox" />}
                         renderValue={selected => {
-                            console.log(selected);
-                            if (selected.length === 0) {
-                                return '';
-                            } else {
-                            return selected.join(", ")}}}
+                            return selected.join(", ")}}
                         MenuProps={MenuProps}
                     >
                         {languages.map(name => (
