@@ -81,7 +81,6 @@ const useStyles = makeStyles(() => ({
 function Settings() {
     const classes = useStyles();
     const userType = localStorage.getItem("type");
-    console.log(userType);
 
     return (
         <div className={classes.container}>
