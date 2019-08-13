@@ -15,7 +15,8 @@ import Pagination from './Pagination';
 const MediatorList = (props) => {
     const [mediators, setMediators] = useState([]);
     const [currentPage,setCurrentPage]=useState(1);
-    const [mediatorsPerPage]=useState(2);
+    const [mediatorsPerPage,setMediatorsPerPage]=useState(4);
+    
 
 
 
@@ -42,10 +43,16 @@ const MediatorList = (props) => {
     const indexOfFirstMediatior=indexOfLastMediator-mediatorsPerPage;
     const currentMediators=mediators.slice(indexOfFirstMediatior,indexOfLastMediator);
 
-    const paginate=(pageNumber)=>{
 
-        setCurrentPage(pageNumber);
+
+    const paginate=(pageNumber)=>{
+        console.log(pageNumber,"pageNumber")
+        console.log(currentPage,"currentPage")
+       setCurrentPage(pageNumber)
+        
+        
     }
+        
 
     return (
 
@@ -58,7 +65,7 @@ const MediatorList = (props) => {
           sm={11} 
           md={12} 
           lg={12}>
-          <Pagination mediatorsPerPage={mediatorsPerPage} totalMediators={mediators.length} paginate={paginate} />
+          <Pagination mediatorsPerPage={mediatorsPerPage} totalMediators={mediators.length} paginate={paginate}  currentPage={currentPage}/>
           </Grid>
        
             {currentMediators.map(mediator => {
@@ -68,6 +75,14 @@ const MediatorList = (props) => {
                     </>
                  );
             })}
+
+            {/* <Grid 
+          item xs={11} 
+          sm={11} 
+          md={12} 
+          lg={12}>
+          <Pagination mediatorsPerPage={mediatorsPerPage} totalMediators={mediators.length} paginate={paginate} />
+          </Grid> */}
         </Grid>
     );
 };
