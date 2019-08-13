@@ -48,6 +48,8 @@ describe('Landing.js', () => {
     const { getByTestId } = renderWithRouter(<Landing />, {route})
 
     expect(getByTestId('signup-button').textContent).toBe('signup')
+    expect(getByTestId('signup-link').getAttribute('href')).toBe('/auth')
     expect(getByTestId('login-button').textContent).toBe('login')
+    expect(getByTestId('login-link').getAttribute('href')).toBe('/auth')
   });
 });
