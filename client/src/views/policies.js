@@ -41,61 +41,62 @@ Our charges for one time,  monthly or annual plans are posted on our Website and
 RIGHTS</p>
 <h3>13. Proprietary Rights Owned by Us</h3>
 <p>You will respect our proprietary rights in the Website and the software used to provide Brāv (proprietary rights include patents, trademarks, service marks, trade secrets, and copyrights). You may only use our brand assets according to our Brand Guidelines. Brāv does not accept unsolicited ideas or materials from outside the organization. Should ideas or materials be sent, they will become the sole property of Brāv.</p>
-14. Proprietary Rights Owned by You
-You represent and warrant that you either own or have permission to use all of the material in your conflict managements. You retain ownership of the materials that you upload to the Service. We may use or disclose your materials only as described in these Terms and our Privacy Policy. You agree that any and all services may be recorded and retrieved at any time. If any and all parties along with your particular Brāv One(s) agree, your session can be open and left for the public to watch live and/ or rewatch a recorded copy, including any and all materials that you upload to the Services.
-15. Privacy Policy
-We may use and disclose your information according to our Privacy Policy. Our Privacy Policy will be treated as part of these Terms.
-16. Right to Review conflict management Campaigns
+<h3>14. Proprietary Rights Owned by You</h3>
+<p>You represent and warrant that you either own or have permission to use all of the material in your conflict managements. You retain ownership of the materials that you upload to the Service. We may use or disclose your materials only as described in these Terms and our Privacy Policy. You agree that any and all services may be recorded and retrieved at any time. If any and all parties along with your particular Brāv One(s) agree, your session can be open and left for the public to watch live and/ or rewatch a recorded copy, including any and all materials that you upload to the Services.</p>
+<h3>15. Privacy Policy</h3>
+<p>We may use and disclose your information according to our Privacy Policy. Our Privacy Policy will be treated as part of these Terms</p>
 
-We may view, copy, and internally distribute content from your conflict managements and account to create algorithms and programs (“Tools”) that help us spot problem accounts. We use these Tools to find Members who violate these Terms or laws. For example, We study data internally to make our conflict management Genome Project smarter and create better experiences for senders and subscribers.
-RULES AND ABUSE
-17. General Rules
-You promise to follow these rules:
+<h3>16. Right to Review conflict management Campaigns</h3>
+
+<p>We may view, copy, and internally distribute content from your conflict managements and account to create algorithms and programs (“Tools”) that help us spot problem accounts. We use these Tools to find Members who violate these Terms or laws. For example, We study data internally to make our conflict management Genome Project smarter and create better experiences for senders and subscribers.</p>
+<h1>RULES AND ABUSE</h1>
+<h3>17. General Rules</h3>
+<p>You promise to follow these rules:
 You will not harass and/ or abuse others using the site as defined by U.S. Department of Security.
 You won’t send “spam,” using the definition on the Spamhaus website.
 You will not violate our Acceptable Use Policy, which is part of this Agreement.
 If you use our API, you’ll comply with our API Use Policy.
-If you violate any of these rules, then we may suspend or terminate your account without any possibility of a partial or whole refund.
-18. Reporting Abuse
-If you think anyone is violating any of these Terms, please notify us immediately. If you received spam you think came from a Brāv user, please report it to our abuse team. (The best way to tell whether an conflict management was sent through Brāv is that every Brāv campaign has an embedded Campaign Tracking ID in the header that makes it easy to report suspected spam.) If you think anyone has posted material that violates any copyrights, then you can notify us according to our Copyright Policy.
-19. Bandwidth Abuse/Throttling
-You may only use our bandwidth for your Brāv conflict managements. We provide image and data hosting only for your conflict management campaigns, so you may not host images on our servers for anything else (like a website). We may throttle your sending or connection through our API at our discretion.
-20. Compliance with Laws
-You represent and warrant that your use of Brāv will comply with all applicable laws and regulations. You’re responsible for determining whether our Services are suitable for you to use in light of any regulations like HIPAA, GLB, EU Data Privacy Laws, or other laws. If you’re subject to regulations (like HIPAA) and you use our Service, then we won’t be liable if our Service doesn’t meet those requirements. You may not use our Service for any unlawful or discriminatory activities, including acts prohibited by the Federal Trade Commission Act, Fair Credit Reporting Act, Equal Credit Opportunity Act, or other laws that apply to commerce.
-If you’re located in the European Economic Area (EEA) or send to anyone in the EEA, you represent and warrant that in training, seeking to have a conflict managed, sending communication via Brāv, and collecting information as a result of sending communication, you:
-Will clearly describe in writing how you plan to use any data collected, including for your use of Brāv. You’ll get express consent to transfer data to Brāv and be processed, and you’ll otherwise comply with whatever privacy policy you have posted.
-Have complied, and will comply, with all regulations, as well as data protection, electronic communication, and privacy laws that apply to the countries where you’re sending any form of communication through Brāv.
-Have collected, stored, used, and transferred all data relating to any individual in compliance with all data protection laws and regulations. You have the necessary permission to allow Brāv to receive and process data and send communications to that individual on your behalf.
-Agree to indemnify and hold us harmless from any losses, including attorney fees, that result from your breach of any part of these warranties.
-You agree to only use mediation or arbitration (preferably through the Brāv platform) to manage any and all conflicts and never through court of any jurisdiction. 
-Have signed our Data Processing Agreement.
-21. U.S. Export Controls
-The software that supports the Services (the “Software”) is subject to United States export controls. Export laws are set up by the government to keep certain goods and services from reaching other countries, usually because of security concerns or trade agreements. None of the Software may be downloaded or otherwise exported or re-exported in violation of United States export laws. You’re downloading and using the Software at your own risk.
-LIABILITY
-22. Limitation of Liability
-To the maximum extent permitted by law, you assume full responsibility for any loss that results from your use of the Website and the Services, including any downloads from the Website. We and our Team won’t be liable for any indirect, punitive, special, or consequential damages under any circumstances, even if they’re based on negligence or we’ve been advised of the possibility of those damages. Our total liability for all claims made about the Service in any month will be no more than what you paid us for the Service the month before.  
-23. No Warranties, No Guarantees
-To the maximum extent permitted by law, we provide the material on the Website and the Service as is. That means we don’t provide warranties of any kind, either express or implied, including but not limited to warranties of merchantability and fitness for a particular purpose. Since people use Brāv for a variety of reasons, we can’t guarantee that it will meet your specific needs.
-There are no guarantees of any particular outcome utilizing any aspect of our product and/ or Website. 
-24. Indemnity
-You agree to indemnify and hold us and our Team harmless from any losses, including attorney fees that result from any claims you make that aren’t allowed under these Terms due to a “Limitation of Liability” or other provision. (Indemnity is an agreement to compensate someone for a loss.) You also agree to indemnify and hold us harmless from any losses, including attorney fees, that result from third-party claims that you or someone using your password did something that, if true, would violate any of these Terms.
-25. Attorney Fees
-If we file an action against you claiming you breached these Terms and we prevail, we’re entitled to recover reasonable attorney fees and any damages or other relief we may be awarded.
-26. Equitable Relief
-If you violate these Terms then we may seek injunctive relief (meaning we may request a court order to stop you) or other equitable relief.
-27. Subpoena Fees
-If we have to provide information in response to a subpoena related to your account, then we may charge you for our costs. These fees may include attorney and employee time spent retrieving the records, preparing documents, and participating in a deposition.
-28. Disclaimers
-We and our Team aren’t responsible for the behavior of any advertisers, linked websites, or other Members.
-FINE PRINT
-29. Notice to Brāv End Users
-The Software and Website, including all documentation, are “Commercial Items,” as that term is defined at 48 C.F.R. §2.101, and consist of “Commercial Computer Software” and “Commercial Computer Software Documentation.” The Commercial Computer Software and Commercial Computer Software Documentation are licensed to Brāv  end users:
+If you violate any of these rules, then we may suspend or terminate your account without any possibility of a partial or whole refund.</p>
+<h3>18. Reporting Abuse</h3>
+<p>If you think anyone is violating any of these Terms, please notify us immediately. If you received spam you think came from a Brāv user, please report it to our abuse team. (The best way to tell whether an conflict management was sent through Brāv is that every Brāv campaign has an embedded Campaign Tracking ID in the header that makes it easy to report suspected spam.) If you think anyone has posted material that violates any copyrights, then you can notify us according to our Copyright Policy.</p>
+<h3>19. Bandwidth Abuse/Throttling</h3>
+<p>You may only use our bandwidth for your Brāv conflict managements. We provide image and data hosting only for your conflict management campaigns, so you may not host images on our servers for anything else (like a website). We may throttle your sending or connection through our API at our discretion.</p>
+<h3>20. Compliance with Laws</h3>
+<p>You represent and warrant that your use of Brāv will comply with all applicable laws and regulations. You’re responsible for determining whether our Services are suitable for you to use in light of any regulations like HIPAA, GLB, EU Data Privacy Laws, or other laws. If you’re subject to regulations (like HIPAA) and you use our Service, then we won’t be liable if our Service doesn’t meet those requirements. You may not use our Service for any unlawful or discriminatory activities, including acts prohibited by the Federal Trade Commission Act, Fair Credit Reporting Act, Equal Credit Opportunity Act, or other laws that apply to commerce.</p>
+<p>If you’re located in the European Economic Area (EEA) or send to anyone in the EEA, you represent and warrant that in training, seeking to have a conflict managed, sending communication via Brāv, and collecting information as a result of sending communication, you:
+Will clearly describe in writing how you plan to use any data collected, including for your use of Brāv. You’ll get express consent to transfer data to Brāv and be processed, and you’ll otherwise comply with whatever privacy policy you have posted.</p>
+<p>Have complied, and will comply, with all regulations, as well as data protection, electronic communication, and privacy laws that apply to the countries where you’re sending any form of communication through Brāv.</p>
+<p>Have collected, stored, used, and transferred all data relating to any individual in compliance with all data protection laws and regulations. You have the necessary permission to allow Brāv to receive and process data and send communications to that individual on your behalf.
+Agree to indemnify and hold us harmless from any losses, including attorney fees, that result from your breach of any part of these warranties.</p>
+<p>You agree to only use mediation or arbitration (preferably through the Brāv platform) to manage any and all conflicts and never through court of any jurisdiction. 
+Have signed our Data Processing Agreement.</p>
+<h3>21. U.S. Export Controls</h3>
+<p>The software that supports the Services (the “Software”) is subject to United States export controls. Export laws are set up by the government to keep certain goods and services from reaching other countries, usually because of security concerns or trade agreements. None of the Software may be downloaded or otherwise exported or re-exported in violation of United States export laws. You’re downloading and using the Software at your own risk.</p>
+<h1>LIABILITY</h1>
+<h3>22. Limitation of Liability</h3>
+<p>To the maximum extent permitted by law, you assume full responsibility for any loss that results from your use of the Website and the Services, including any downloads from the Website. We and our Team won’t be liable for any indirect, punitive, special, or consequential damages under any circumstances, even if they’re based on negligence or we’ve been advised of the possibility of those damages. Our total liability for all claims made about the Service in any month will be no more than what you paid us for the Service the month before.</p>  
+<h3>23. No Warranties, No Guarantees</h3>
+<p>To the maximum extent permitted by law, we provide the material on the Website and the Service as is. That means we don’t provide warranties of any kind, either express or implied, including but not limited to warranties of merchantability and fitness for a particular purpose. Since people use Brāv for a variety of reasons, we can’t guarantee that it will meet your specific needs.
+There are no guarantees of any particular outcome utilizing any aspect of our product and/ or Website.</p> 
+<h3>24. Indemnity</h3>
+<p>You agree to indemnify and hold us and our Team harmless from any losses, including attorney fees that result from any claims you make that aren’t allowed under these Terms due to a “Limitation of Liability” or other provision. (Indemnity is an agreement to compensate someone for a loss.) You also agree to indemnify and hold us harmless from any losses, including attorney fees, that result from third-party claims that you or someone using your password did something that, if true, would violate any of these Terms.</p>
+<h3>25. Attorney Fees</h3>
+<p>If we file an action against you claiming you breached these Terms and we prevail, we’re entitled to recover reasonable attorney fees and any damages or other relief we may be awarded.</p>
+<h3>26. Equitable Relief</h3>
+<p>If you violate these Terms then we may seek injunctive relief (meaning we may request a court order to stop you) or other equitable relief.</p>
+<h3>27. Subpoena Fees</h3>
+<p>If we have to provide information in response to a subpoena related to your account, then we may charge you for our costs. These fees may include attorney and employee time spent retrieving the records, preparing documents, and participating in a deposition.</p>
+<h3>28. Disclaimers</h3>
+<p>We and our Team aren’t responsible for the behavior of any advertisers, linked websites, or other Members.</p>
+<h1>FINE PRINT</h1>
+<h3>29. Notice to Brāv End Users</h3>
+<p>The Software and Website, including all documentation, are “Commercial Items,” as that term is defined at 48 C.F.R. §2.101, and consist of “Commercial Computer Software” and “Commercial Computer Software Documentation.” The Commercial Computer Software and Commercial Computer Software Documentation are licensed to Brāv  end users:
 only as Commercial Items,
 with the same rights as all other end users, and
 according to the Terms
-Published and Unpublished rights are reserved under the copyright laws of the United States. Manufacturer is NGM, LP, P.O. Box 36081, Grosse Pointe, Michigan 48236.
-30. Assignments
-You may not assign any of your rights under this agreement to anyone else. We may assign our rights to any other individual or entity at our discretion.
+Published and Unpublished rights are reserved under the copyright laws of the United States. Manufacturer is NGM, LP, P.O. Box 36081, Grosse Pointe, Michigan 48236.</p>
+<h3>30. Assignments</h3>
+<p>You may not assign any of your rights under this agreement to anyone else. We may assign our rights to any other individual or entity at our discretion.</p>
 31. Choice of Law
 In case of any disputes, you agree that Brāv reserves the right to choose the jurisdiction of Brāv’s choice. If otherwise not stated, the State of Michigan’s laws, except for conflict of laws rules, will apply to any dispute related to these Terms or the Service. Any dispute related to the Terms, the Privacy Policy, or the Service itself will be decided by the state and federal courts in Michigan, or wherever Brāv believes fit and each party will be subject to the jurisdiction of those courts.
 32. Force Majeure
