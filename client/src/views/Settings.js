@@ -18,7 +18,8 @@ const useStyles = makeStyles(() => ({
         paddingTop: "20px",
         maxWidth: "800px",
         margin: "0 auto",
-        color: "grey"
+        color: "grey",
+        width: "95%"
     },
     cardContainer: {
         maxWidth: "800px",
