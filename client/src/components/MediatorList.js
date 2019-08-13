@@ -14,16 +14,14 @@ import Pagination from './Pagination';
 
 const MediatorList = (props) => {
     const [mediators, setMediators] = useState([]);
-    const [loading, setLoading]=useState(false);
     const [currentPage,setCurrentPage]=useState(1);
-    const [mediatorsPerPage, setMediatorsPerPage]=useState(1);
+    const [mediatorsPerPage]=useState(2);
 
 
 
 
     useEffect(() => {
         async function fetchMediators() {
-            setLoading(true);
             const res = await axioswithAuth().get(`${process.env.REACT_APP_API_URL}/mediators`, {
                 params: {
                     language: props.filter.language,
@@ -32,22 +30,30 @@ const MediatorList = (props) => {
                     experience: props.filter.experience,
                 }
             });
-            setMediators(res.data);
-            setLoading(false);
+            setMediators(res.data);       
         }
         fetchMediators()
     }, [props.filter]);
+
+
 
 
     const indexOfLastMediator=currentPage*mediatorsPerPage;
     const indexOfFirstMediatior=indexOfLastMediator-mediatorsPerPage;
     const currentMediators=mediators.slice(indexOfFirstMediatior,indexOfLastMediator);
 
-    return (
-        <Grid container spacing={4} justify="space-evenly">
+    const paginate=(pageNumber)=>{
 
-         <Pagination mediatorsPerPage={mediatorsPerPage} totalMediators={mediators.length}/>
-            {currentMediators.map(mediator => {
+        setCurrentPage(pageNumber);
+    }
+
+    return (
+
+        <Grid container spacing={4} justify="space-evenly" style={{display:"flex",flexDirection:"column"}}>
+
+        <Pagination mediatorsPerPage={mediatorsPerPage} totalMediators={mediators.length} paginate={paginate} currentcase={props.currentcase}/>
+       
+            {mediators.map(mediator => {
                 return (
                     <>
                     <MediatorCard mediator={mediator}  numMediators={mediator.length} currentcase={props.currentcase} key={mediator.uid} />
@@ -55,6 +61,7 @@ const MediatorList = (props) => {
                  );
             })}
         </Grid>
+    
     );
 };
 

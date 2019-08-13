@@ -56,7 +56,9 @@ function MediatorFilter(props) {
         price: '',
         experience: '',
     })
-    
+   
+
+
     // Material ui styles
     const classes = useStyles();
 
@@ -72,6 +74,10 @@ function MediatorFilter(props) {
             [event.target.name] : event.target.value,
         })
     }
+
+
+  
+
 
     return (
         <div className={classes.container} style={{margin:"10px"}}>
@@ -170,6 +176,8 @@ function MediatorFilter(props) {
                     </TextField>
                 </Grid>
             </Grid>
+
+
 
             <MediatorList filter={filter} currentcase={props.currentcase}/>
          </div>

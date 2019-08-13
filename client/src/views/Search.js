@@ -25,7 +25,9 @@ function Search(props) {
       </Grid>
 
       <Grid item xs={12} md={9}>
-        <MediatorFilter currentcase={props.location.state.currentcase}/>
+        <MediatorFilter 
+        currentcase={props.location.state.currentcase}
+        />
       </Grid>
     </Grid>
   )
