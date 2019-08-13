@@ -5,6 +5,7 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
 import { render, fireEvent, cleanup } from '@testing-library/react';
+import { createMemoryHistory } from 'history';
 import Landing from './Landing';
 
 /**
@@ -17,8 +18,17 @@ afterEach(cleanup);
  * Helper
  */
 
-function renderWithRouter(ui) {
-  return render(<Router>{ui}</Router>)
+function renderWithRouter(
+  ui,
+  {route = '/', history = createMemoryHistory({initialEntries: [route]})} = {},
+) {
+  return {
+    ...render(<Router history={history}>{ui}</Router>),
+    // adding `history` to the returned utilities to allow us
+    // to reference it in our tests (just try to avoid using
+    // this to test implementation details).
+    history,
+  }
 }
 
 /**
@@ -27,6 +37,6 @@ function renderWithRouter(ui) {
 
 describe('Landing.js', () => {
   test('it renders without errors', () => {
-    // renderWithRouter(<Landing />)
+    const { container, getByText } = renderWithRouter(<Landing />);
   });
 });
