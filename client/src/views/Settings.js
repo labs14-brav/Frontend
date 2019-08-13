@@ -90,15 +90,16 @@ function Settings() {
                 {userType === "mediator" ? null : (
                     <Card className={classes.card}>
                         <div className={classes.cardTitle}>
-                            <strong>Become mediator</strong>
+                            <strong>Become a mediator</strong>
                             <div className={classes.divider}> </div>
                         </div>
                         <div className={classes.cardContent}>
                             <p className={classes.text}>
                                 Are you a certified mediator? Join the Brav
-                                platform to offer your services! Upon approval
-                                you will be able to receive mediation requests
-                                and get payed right from the app. Click below to
+                                platform! Upon approval by one of our admins,
+                                you will be able to market your services as a
+                                mediator directly to our users. You will be
+                                payed directly from the app! Click below to
                                 submit your application!
                             </p>
                             <Link
