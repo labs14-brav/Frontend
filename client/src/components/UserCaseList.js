@@ -19,7 +19,7 @@ const UserCaseList = (props) => {
     useEffect(() => {
 
         fetchCases();
-    }, []);
+    }, [cases]);
 
     return (
         <div className="list-container">

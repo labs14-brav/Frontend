@@ -134,12 +134,13 @@ function CaseOverviewDialog(props) {
                     <p>{props.case.court_case ? props.case.course_number : null}</p>
                     <h6>{props.case.court_case ? "Filing Date:" : null}</h6>
                     <p>{props.case.court_case ? props.case.court_filing_date : null}</p>
-                    <h6>{props.case.court_case ? "Case Notes:" : null}</h6>
-                    <p>{props.case.court_case ? props.case.case_notes : null}</p>
+                    
                 </div>
                 <div className="description"> 
                     <h6>Description</h6>  
                     <p>{props.case.description}</p>
+                    <h6>{props.case.court_case ? "Case Notes:" : null}</h6>
+                    <p>{props.case.court_case ? props.case.case_notes : null}</p>
                 </div>     
             </div>
             <AddendumInvoiceTabs case={props.case}/>

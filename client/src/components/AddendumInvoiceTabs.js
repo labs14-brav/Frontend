@@ -13,7 +13,7 @@ import Box from '@material-ui/core/Box';
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
 
-
+import './AddendumInvoiceTabs.scss';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -55,6 +55,16 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     alignSelf: 'center',
 },
+    modal: {
+        margin: '0 auto',
+        width: '50%',
+        [theme.breakpoints.down('sm')]: {
+            width: '90%',
+        }
+    },
+    tabs: {
+        color: '#5C90C1',
+    }
 }));
 
 export default function AddendumInvoiceTabs(props) {
@@ -105,8 +115,6 @@ export default function AddendumInvoiceTabs(props) {
           className={classes.tabs}
           value={value}
           onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
           centered                    
         >
           <Tab label="Addendums"  {...a11yProps(0)} />
@@ -129,11 +137,11 @@ export default function AddendumInvoiceTabs(props) {
         open={open}
         onClose={handleClose}>
             <div className={classes.paper}>
-                <form onSubmit={submitPost} className='modal-form'>
+                <form onSubmit={submitPost} id='modal-form'>
                     <textarea placeholder="Add Case Information..." 
                         onChange={handleChanges} 
                         value={textState}
-                        className="modal-text" 
+                        id="modal-text" 
                         cols='50'
                         rows='15'/>
                     <Button variant="outlined" color="primary" className={classes.submitbutton} onClick={submitPost}>

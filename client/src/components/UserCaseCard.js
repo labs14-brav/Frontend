@@ -117,13 +117,11 @@ const UserCaseCard = (props) => {
                 md={props.numCases === 1 ? 12 : 5} 
                 lg={props.numCases === 1 ? 12 : 5.5}>
                 <Card className={classes.paper}> 
-                    <CardContent style={{width:'100%'}}>
-                        <h6 id="case-label">Type</h6>
+                    <CardContent className={classes.words} style={{width:'100%'}}>
+                        <h6 id="case-label">Dispute Category</h6>
                         <h5 id="case-dispute">{props.case.dispute_category}</h5>
-                        <h6 id="case-label">Involves</h6>
+                        <h6 id="case-label">Dispute Participants</h6>
                         <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
-                        {/* <h6 id="case-label">Description</h6>
-                        <h5 id="case-description">{props.case.description.length > 0 ? props.case.description : 'No information provided'}</h5> */}
                     </CardContent>
                     <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
                         <Button variant="outlined" color="primary" className={classes.primarybutton}>
@@ -144,7 +142,7 @@ const UserCaseCard = (props) => {
             </Grid>
 
 
-        <CaseOverviewDialog case={props.case} open={fullopen} handleClose={handlefullClose} />
+        <CaseOverviewDialog case={props.case} open={fullopen} handleClose={handlefullClose} fetchCases={props.fetchCases}/>
         
         
     </>
@@ -156,15 +154,13 @@ const UserCaseCard = (props) => {
                     item xs={11} 
                     sm={11} 
                     md={props.numCases === 1 ? 12 : 5} 
-                    lg={props.numCases === 1 ? 12 : 5.5}>
+                    lg={props.numCases === 1 ? 12 : 5}>
                     <Card className={classes.paper}> 
                         <CardContent style={{width:'100%'}}>
-                            <h6 id="case-label">Type</h6>
+                            <h6 id="case-label">Dispute Category</h6>
                             <h5 id="case-dispute">{props.case.dispute_category}</h5>
-                            <h6 id="case-label">Involves</h6>
+                            <h6 id="case-label">Dispute Participants</h6>
                             <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
-                            {/* <h6 id="case-label">Description</h6>
-                            <h5 id="case-description">{props.case.description.length > 0 ? props.case.description : 'No information provided'}</h5> */}
                         </CardContent>
                         <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
                             <Button variant="outlined" color="primary" className={classes.primarybutton}>
@@ -184,10 +180,7 @@ const UserCaseCard = (props) => {
                     </Card>
                 </Grid>
     
-    
-            <CaseOverviewDialog case={props.case} open={fullopen} handleClose={handlefullClose} />
-            
-            
+            <CaseOverviewDialog case={props.case} open={fullopen} handleClose={handlefullClose} />  
         </>
         )
     }           
