@@ -37,8 +37,18 @@
 
 }
 .caseDetails{
-display:"flex";
-flex-direction: row;
-border:3px black;
-
+    display:flex;
+    flex-direction: row;
+    margin:30px;
+    border:3px black;
+    justify-content: space-evenly;
+    align-items: center;
+    .general{
+    align-self: center;
+    max-width:4000px;
+    }
+    .description{
+    align-self: center;
+    max-width:400px;
+    }
 }

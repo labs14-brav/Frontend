@@ -117,31 +117,35 @@ function CaseOverviewDialog(props) {
                     <DeleteIcon />
                 </Button>
             </Toolbar>
-            <div className="modalBox">
+            <div>
             <div className="caseDetails">
-                <Card className={classes.paper}>
-                <CardContent style={{width:'40%'}}>
+                <div className="general">
+                    <h6>Type:</h6>
                     <p>{props.case.dispute_category}</p>
+                    <h6>Parties Involved:</h6>
                     <p>{props.case.parties_involved}</p>
+                    <h6>Parties' Contact Info:</h6>
                     <p>{props.case.parties_contact_info}</p>
+                    <h6>Dispute Amount:</h6>
                     <p>{props.case.dispute_amount}</p>
+                    <h6>{props.case.court_case ? "Court Jurisdiction:" : null}</h6>
                     <p>{props.case.court_case ? props.case.court_jurisdiction : null}</p>
+                    <h6>{props.case.court_case ? "Course Number:" : null}</h6>
                     <p>{props.case.court_case ? props.case.course_number : null}</p>
+                    <h6>{props.case.court_case ? "Filing Date:" : null}</h6>
                     <p>{props.case.court_case ? props.case.court_filing_date : null}</p>
+                    <h6>{props.case.court_case ? "Case Notes:" : null}</h6>
                     <p>{props.case.court_case ? props.case.case_notes : null}</p>
-                </CardContent>
-                <CardContent style={{width:'40%'}}>   
+                </div>
+                <div className="description"> 
+                    <h6>Description</h6>  
                     <p>{props.case.description}</p>
-                </CardContent>     
-                </Card>
+                </div>     
             </div>
             <AddendumInvoiceTabs case={props.case}/>
             </div>
             
         </Dialog>
-
-        
-
 
         <AreYouSureDialog open={sureOpen} onClose={handleSureClose}/>
     </>

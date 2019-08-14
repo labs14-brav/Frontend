@@ -23,8 +23,8 @@ function TabPanel(props) {
       component="div"
       role="tabpanel"
       hidden={value !== index}
-      id={`scrollable-force-tabpanel-${index}`}
-      aria-labelledby={`scrollable-force-tab-${index}`}
+      id={`tabpanel-${index}`}
+      aria-labelledby={`tabpanel-${index}`}
       {...other}
     >
       <Box p={3}>{children}</Box>
@@ -51,6 +51,10 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     backgroundColor: theme.palette.background.paper,
   },
+  submitbutton: {
+    margin: theme.spacing(1),
+    alignSelf: 'center',
+},
 }));
 
 export default function AddendumInvoiceTabs(props) {
@@ -98,16 +102,15 @@ export default function AddendumInvoiceTabs(props) {
     <div className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
+          className={classes.tabs}
           value={value}
           onChange={handleChange}
-          variant="scrollable"
-          scrollButtons="on"
           indicatorColor="primary"
           textColor="primary"
-          aria-label="scrollable force tabs example"
+          centered                    
         >
-          <Tab label="Item One"  {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab label="Addendums"  {...a11yProps(0)} />
+          <Tab label="Invoices" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -117,7 +120,7 @@ export default function AddendumInvoiceTabs(props) {
         <AddendumsList case={props.case}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        Invoice View for User
       </TabPanel>
 
 
