@@ -17,4 +17,4 @@ export { default as AdminHome } from "./AdminHome";
 export { default as AuthCallback } from "./AuthCallback";
 export { default as StripeCallback } from "./StripeCallback";
 export { default as PrivacyPolicy } from "./PrivacyPolicy";
-export { default as TermsOfService } from "./TermsOfService";
+export { default as TermsOfService } from "./TOS";
