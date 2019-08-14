@@ -129,7 +129,7 @@ const CourtForm = (props) => {
 
     <div style={{marginTop:"100px"}}>
 
-      <Typography style={{textAlign:"center"}} variant="h3">Case Form</Typography>
+      <Typography style={{textAlign:"center"}} variant="h3" data-testid="heading-h3">Case Form</Typography>
       <Typography style={{textAlign:"center"}} variant="subtitle2">This form is intended for cases referred by the Court system.</Typography>
 
       <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>
@@ -140,6 +140,7 @@ const CourtForm = (props) => {
           value={form.dispute_category}
           helperText="required"
           onChange={handleChange("dispute_category")}
+          data-testid="input-dispute_category"
           required
           SelectProps={{
             MenuProps: {
@@ -164,6 +165,7 @@ const CourtForm = (props) => {
           autoComplete="email"
           margin="normal"
           variant="outlined"
+          data-testid="input-parties_involved"
           onChange={handleChange("parties_involved")}
           value={form.parties_involved}
           />
@@ -172,6 +174,7 @@ const CourtForm = (props) => {
           className={classes.textField}
           label="Participant Contact Info"
           name="parties_contact_info"
+          data-testid="input-parties_contact_info"
           value={form.parties_contact_info}
           onChange={handleChange("parties_contact_info")}
           margin="normal"
@@ -184,6 +187,7 @@ const CourtForm = (props) => {
           helperText="if applicable"
           value={form.dispute_amount}
           type="number"
+          data-testid="input-dispute_amount"
           onChange={handleChange("dispute_amount")}
           margin="normal"
           variant="outlined"/>
@@ -193,6 +197,7 @@ const CourtForm = (props) => {
           name="court_jurisdiction"
           label="Jurisdiction"
           helperText="or Court ID"
+          data-testid="input-court_jurisdiction"
           value={form.court_jurisdiction}
           onChange={handleChange("court_jurisdiction")}
           margin="normal"
@@ -204,6 +209,7 @@ const CourtForm = (props) => {
           name="court_number"
           label="Case Number"
           value={form.court_number}
+          data-testid="input-court_number"
           onChange={handleChange("court_number")}
           margin="normal"
           variant="outlined"
@@ -214,6 +220,7 @@ const CourtForm = (props) => {
           name="court_filing_date"
           label="Case Filing Date"
           value={form.court_filing_date}
+          data-testid="input-court_filing_date"
           onChange={handleChange("court_filing_date")}
           type="date"
           margin="normal"
@@ -231,6 +238,7 @@ const CourtForm = (props) => {
           multiline
           rows="8"
           value={form.case_notes}
+          data-testid="input-case_notes"
           onChange={handleChange("case_notes")}
           margin="normal"
           variant="outlined"
@@ -243,6 +251,7 @@ const CourtForm = (props) => {
           multiline
           rows="8"
           value={form.description}
+          data-testid="input-description"
           onChange={handleChange("description")}
           margin="normal"
           variant="outlined"
@@ -267,7 +276,6 @@ const CourtForm = (props) => {
         redirectText={''}
         />
     </div>
-
   )
 }
 
