@@ -39,4 +39,11 @@ describe('UserCaseShow.js', () => {
     const route = '/cases'
     renderWithRouter(<UserCaseShow />, {route})
   });
+
+  test('it has a button to create a case', () => {
+    const route = '/cases'
+    const { getByTestId } = renderWithRouter(<UserCaseShow />, {route})
+
+    expect(getByTestId('button-create-case').textContent).toBe('Create a Case')
+  });
 });

@@ -19,17 +19,24 @@ import {
 } from "@material-ui/core";
 import axioswithAuth from '../helpers/axioswithAuth';
 
-// adds styles to select inputs
+/**
+ * Constants
+ */
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
-    PaperProps: {
-        style: {
-            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-            width: 250
-        }
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250
     }
+  }
 };
+
+/**
+ * Define styles
+ */
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -51,10 +58,14 @@ const useStyles = makeStyles(theme => ({
     noLabel: {
         marginTop: theme.spacing(3)
     },
-    PriceInput: { 
+    PriceInput: {
         width: 75,
     }
 }));
+
+/**
+ * Define view
+ */
 
 function MediatorRegistration(props) {
     // this is the state of all the inputs in the form
@@ -95,25 +106,28 @@ function MediatorRegistration(props) {
     };
 
     return (
-
         <>
-            <Container maxWidth="sm" style={{paddingTop:"15%"}}>
-            <h1>Mediator Registration</h1>
+          <Container maxWidth="sm" style={{paddingTop:"15%"}}>
+            <h1 data-testid="heading-h1">Mediator Registration</h1>
+
             <FormGroup>
-            <TextField
+              <TextField
                     label="Full Name"
                     value={values.name}
                     onChange={handleChange("name")}
+                    data-testid="input-name"
                 />
                 <TextField
                     label="General Details"
                     value={values.general_details}
                     onChange={handleChange("general_details")}
+                    data-testid="input-general_details"
                 />
                 <TextField
                     label="License Number"
                     value={values.license}
                     onChange={handleChange("license")}
+                    data-testid="input-license"
                 />
                 <FormControl>
                     <InputLabel htmlFor="age-simple">
@@ -122,6 +136,7 @@ function MediatorRegistration(props) {
                     <Select
                         onChange={handleChange("experience")}
                         value={values.experience}
+                        data-testid="input-experience"
                     >
                         <MenuItem value={`<2 years`}>{`Less than 2 years`}</MenuItem>
                         <MenuItem value={`2-5 years`}>{`2-5 years`}</MenuItem>
@@ -138,6 +153,7 @@ function MediatorRegistration(props) {
                         value={values.specialization}
                         onChange={handleChange("specialization")}
                         input={<Input id="select-multiple-checkbox" />}
+                        data-testid="input-specialization"
                         // renderValue={selected => selected.join(", ")}
                         renderValue={() => values.specialization.join(", ")}
                         MenuProps={MenuProps}
@@ -165,6 +181,7 @@ function MediatorRegistration(props) {
                         onChange={handleChange("language")}
                         input={<Input id="select-multiple-checkbox" />}
                         renderValue={selected => selected.join(", ")}
+                        data-testid="input-language"
                         MenuProps={MenuProps}
                     >
                         {languages.map(name => (
@@ -186,6 +203,7 @@ function MediatorRegistration(props) {
                         step={1}
                         onChange={handleChange("price")}
                         className={classes.PriceInput}
+                        data-testid="input-price"
                         margin="dense"
                         helperText="Dollars/Hour"
                     />
@@ -197,8 +215,11 @@ function MediatorRegistration(props) {
             </FormGroup>
             </Container>
         </>
-
     );
 }
+
+/**
+ * Export view
+ */
 
 export default MediatorRegistration;
