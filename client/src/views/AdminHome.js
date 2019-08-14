@@ -3,15 +3,15 @@
  */
 
 import React from 'react';
-import { AdminMediatorRequestList } from '../components';
+import AdminMediatorRequestList from '../components/AdminMediatorRequestList';
 
 /**
  * Define view
  */
 
-function AdminHome(props){
+function AdminHome(props) {
   return (
-    <div container style={{paddingTop: "10%", margin: "20px 40px"}}>
+    <div container="true" style={{paddingTop: "10%", margin: "20px 40px"}}>
       <h1 style={{textAlign:"center"}}>Request List</h1>
       <AdminMediatorRequestList />
     </div>

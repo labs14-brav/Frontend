@@ -11,9 +11,9 @@ import Grid from '@material-ui/core/Grid';
  * Define view
  */
 
-const AdminMediatorRequestList = (props) => {
+const AdminMediatorRequestList = () => {
   const [requests, setRequests]= useState([])
-  
+
   useEffect(() => {
     async function fetchRequests() {
       const res = await axioswithAuth().get('/mediators/pending');
@@ -25,7 +25,7 @@ const AdminMediatorRequestList = (props) => {
 
   if (requests.length === 0) {
     return (
-      <h3 style={{textAlign:"center"}}> There are no pending Mediator requests. </h3>
+      <h3 style={{textAlign:"center"}}> There are no pending Mediator requests.</h3>
     )
   } else {
     return (
