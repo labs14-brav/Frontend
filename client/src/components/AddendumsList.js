@@ -15,7 +15,7 @@ function AddendumsList(props) {
         .catch (err => {
             console.error(err);
         })
-    }, [])
+    }, [addendums])
 
         if (addendums.length === 0) {
             return(

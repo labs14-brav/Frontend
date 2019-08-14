@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AddendumsList from '../AddendumsList'
 import AreYouSureDialog from './AreYouSureDialog';
 import axioswithAuth from '../../helpers/axioswithAuth';
+import AddendumInvoiceTabs from '../AddendumInvoiceTabs';
 
 /**
  * Material UI imports
@@ -13,6 +14,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import CloseIcon from '@material-ui/icons/Close';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 import '../UserCaseCard.scss';
 
@@ -79,8 +82,7 @@ function CaseOverviewDialog(props) {
     const [sureOpen, setSureOpen] = useState(false);
     const classes = useStyles();
 
-
-
+    //These are for the delete confirmation modal
     const handleSureOpen = () => {
         setSureOpen(true);
     }
@@ -91,7 +93,7 @@ function CaseOverviewDialog(props) {
             handleDelete();
         }
     }
-
+    //Delete handler upon clicking yes within delete confirmation modal
     function handleDelete() {
         axioswithAuth().delete(`${process.env.REACT_APP_API_URL}/cases/${props.case.id}`)
             .then(res => {
@@ -102,10 +104,10 @@ function CaseOverviewDialog(props) {
                 console.error(error);
             })
     }
-
     
     return(
         <>
+
         <Dialog fullScreen open={props.open} onClose={props.handleClose}>
             <Toolbar >
                 <IconButton edge="end" onClick={props.handleClose}>
@@ -115,8 +117,31 @@ function CaseOverviewDialog(props) {
                     <DeleteIcon />
                 </Button>
             </Toolbar>
-            <AddendumsList case={props.case}/>
+            <div className="modalBox">
+            <div className="caseDetails">
+                <Card className={classes.paper}>
+                <CardContent style={{width:'40%'}}>
+                    <p>{props.case.dispute_category}</p>
+                    <p>{props.case.parties_involved}</p>
+                    <p>{props.case.parties_contact_info}</p>
+                    <p>{props.case.dispute_amount}</p>
+                    <p>{props.case.court_case ? props.case.court_jurisdiction : null}</p>
+                    <p>{props.case.court_case ? props.case.course_number : null}</p>
+                    <p>{props.case.court_case ? props.case.court_filing_date : null}</p>
+                    <p>{props.case.court_case ? props.case.case_notes : null}</p>
+                </CardContent>
+                <CardContent style={{width:'40%'}}>   
+                    <p>{props.case.description}</p>
+                </CardContent>     
+                </Card>
+            </div>
+            <AddendumInvoiceTabs case={props.case}/>
+            </div>
+            
         </Dialog>
+
+        
+
 
         <AreYouSureDialog open={sureOpen} onClose={handleSureClose}/>
     </>

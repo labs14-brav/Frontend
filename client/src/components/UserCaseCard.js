@@ -89,9 +89,6 @@ const useStyles = makeStyles(theme => ({
       },
 }))
 
-function getModalStyle() {
-
-}
 
 /**
  *  Define component
@@ -99,59 +96,19 @@ function getModalStyle() {
 
 const UserCaseCard = (props) => {
     console.log(props.case);
-    const [open, setOpen] = useState(false);
     const [fullopen, setFullOpen] = useState(false);
-    // const [sureOpen, setSureOpen] = useState(false);
-    const [textState, setText] = useState('');
-    const [modalStyle] = useState(getModalStyle);
     const classes = useStyles();
 
     /**
      * Dialog functions
      */
-
-     const handleOpen = () => {
-        setOpen(true);
-    }
-    const handleClose = () => {
-        setOpen(false);
-    }
-
      const handlefullOpen = () => {
         setFullOpen(true);
     }
     const handlefullClose = () => {
         setFullOpen(false);
     }
-
-    
-
-    /**
-     These two functions are for the text input in the modal
-     */
-    const submitPost = e => {
-        e.preventDefault();
-        let request = {
-            description: textState
-        };
-        //need to update this with proper case ID coming in from props.
-        axioswithAuth().post(`${process.env.REACT_APP_API_URL}/cases/${props.case.id}/addendums`, request)
-            .then(res => {
-                console.log(res);
-            })
-            .catch(error => {
-                console.error(error);
-            })
-            //reset text state
-        setText('');
-        handleClose();
-    }
-    const handleChanges = e => {
-        setText(e.target.value);
-    }
-
-   
-    
+    if(props.case.court_case === 1) {
     return (
         <>
             <Grid 
@@ -179,9 +136,6 @@ const UserCaseCard = (props) => {
                             }}
                             > Find a Mediator </Link>
                         </Button>
-                        {/* <Button className={classes.secondarybutton} onClick={handleOpen} variant="outlined">
-                            Add Information
-                        </Button> */}
                         <Button className={classes.secondarybutton} onClick={handlefullOpen} variant="outlined">
                             View Details
                         </Button>
@@ -190,42 +144,53 @@ const UserCaseCard = (props) => {
             </Grid>
 
 
-
-
-        <Dialog
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}>
-            <div style={modalStyle} className={classes.paper}>
-                <form onSubmit={submitPost} className='modal-form'>
-                    <textarea placeholder="Add Case Information..." 
-                        onChange={handleChanges} 
-                        value={textState}
-                        className="modal-text" 
-                        cols='50'
-                        rows='15'/>
-                    <Button variant="outlined" color="primary" className={classes.submitbutton} onClick={submitPost}>
-                         Submit
-                    </Button>
-                </form>
-            </div>
-        </Dialog>
-
-
-        {/* <Dialog fullScreen open={fullopen} onClose={handlefullClose}>
-            <Toolbar >
-                <IconButton edge="end" onClick={handlefullClose}>
-                    <CloseIcon />
-                </IconButton>
-            </Toolbar>
-            <AddendumsList case={props.case}/>
-        </Dialog> */}
-
         <CaseOverviewDialog case={props.case} open={fullopen} handleClose={handlefullClose} />
         
         
     </>
     )
+    } else {
+        return (
+            <>
+                <Grid 
+                    item xs={11} 
+                    sm={11} 
+                    md={props.numCases === 1 ? 12 : 5} 
+                    lg={props.numCases === 1 ? 12 : 5.5}>
+                    <Card className={classes.paper}> 
+                        <CardContent style={{width:'100%'}}>
+                            <h6 id="case-label">Type</h6>
+                            <h5 id="case-dispute">{props.case.dispute_category}</h5>
+                            <h6 id="case-label">Involves</h6>
+                            <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
+                            {/* <h6 id="case-label">Description</h6>
+                            <h5 id="case-description">{props.case.description.length > 0 ? props.case.description : 'No information provided'}</h5> */}
+                        </CardContent>
+                        <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
+                            <Button variant="outlined" color="primary" className={classes.primarybutton}>
+                                <Link style={{textDecoration:'none', color:'inherit'}} 
+                                to= {{
+                                    pathname: `/cases/${props.case.id}/mediator-search`,
+                                    state: {
+                                        currentcase: props.case
+                                    }
+                                }}
+                                > Find a Mediator </Link>
+                            </Button>
+                            <Button className={classes.secondarybutton} onClick={handlefullOpen} variant="outlined">
+                                View Detail$
+                            </Button>
+                        </CardActions>
+                    </Card>
+                </Grid>
+    
+    
+            <CaseOverviewDialog case={props.case} open={fullopen} handleClose={handlefullClose} />
+            
+            
+        </>
+        )
+    }           
 }
 
 /**
