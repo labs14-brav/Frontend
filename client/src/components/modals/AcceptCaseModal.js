@@ -8,7 +8,8 @@ import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import CloseIcon from "@material-ui/icons/Close";
-import { axioswithAuth, mixpanel } from "../../helpers/index";
+import axioswithAuth from "../../helpers/axioswithAuth";
+import mixpanel from "../../helpers/mixpanel";
 import {
     Button,
     Dialog,

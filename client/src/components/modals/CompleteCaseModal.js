@@ -1,3 +1,7 @@
+/**
+ * Dependencies
+ */
+
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
@@ -12,6 +16,10 @@ import {
     TextField,
     Typography
 } from "@material-ui/core";
+
+/**
+ * Define styles
+ */
 
 const styles = theme => ({
     root: {
@@ -84,6 +92,10 @@ const DialogActions = withStyles(theme => ({
     }
 }))(MuiDialogActions);
 
+/**
+ * Define component
+ */
+
 class CompleteCaseModal extends React.Component {
     state = {
         open: false
@@ -94,7 +106,7 @@ class CompleteCaseModal extends React.Component {
             open: true
         });
     };
-    
+
     handleClose = (caseId) => {
         console.log('Case id', caseId);
         axioswithAuth()
@@ -133,5 +145,9 @@ class CompleteCaseModal extends React.Component {
         );
     }
 }
+
+/**
+ * Export component
+ */
 
 export default CompleteCaseModal;

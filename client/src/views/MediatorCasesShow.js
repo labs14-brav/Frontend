@@ -5,26 +5,24 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
-import './MediatorCasesShow.scss';
-
-/**
- * Material UI Imports
- */
-import Grid from '@material-ui/core/Grid';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { Button, Card, Container } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import { MediatorCasesShowStyle } from './styles/index';
-import {
-    NavBar,
-    SideNavBlock,
-    MediatorPendingCaseList,
-    MediatorActiveCaseList,
-    MediatorCompletedCaseList
-} from '../components';
+import MediatorCasesShowStyle from './styles/MediatorCasesShowStyle';
+import NavBar from '../components/NavBar';
+import SideNavBlock from '../components/SideNavBlock';
+import MediatorPendingCaseList from '../components/MediatorPendingCaseList';
+import MediatorActiveCaseList from '../components/MediatorActiveCaseList';
+import MediatorCompletedCaseList from '../components/MediatorCompletedCaseList';
+
+/**
+ * Import styles
+ */
+
+import './MediatorCasesShow.scss';
 
 /**
  * Define styles
@@ -84,7 +82,7 @@ const StyledTabs = withStyles({
       },
     },
 })(props => <Tabs {...props} TabIndicatorProps={{ children: <div /> }} />);
-  
+
 const StyledTab = withStyles(theme => ({
     root: {
       textTransform: 'none',
@@ -97,13 +95,12 @@ const StyledTab = withStyles(theme => ({
       },
     },
 }))(props => <Tab disableRipple {...props} />);
-  
 
 /**
- *  Export view
+ *  Define view
  */
 
-export default function MediatorCasesShow() {
+function MediatorCasesShow() {
     const [selectedTab, setSelectedTab] = useState("pending");
     const [value, setValue] = useState(0);
 
@@ -121,15 +118,15 @@ export default function MediatorCasesShow() {
                 <NavTab label="Active" />
                 <NavTab label="Completed" />
             </NavTabs>
-            { selectedTab === "pending" ? <div id="selected-list">
-                <MediatorPendingCaseList />
-            </div> : null }
-            { selectedTab === "active" ? <div id="selected-list">
-            <MediatorActiveCaseList />
-            </div> : null}
-            { selectedTab === "completed" ? <div id="selected-list">
-                <MediatorCompletedCaseList />
-            </div> : null}
+            { selectedTab === "pending" ? <div id="selected-list"><MediatorPendingCaseList /></div> : null }
+            { selectedTab === "active" ? <div id="selected-list"><MediatorActiveCaseList /></div> : null }
+            { selectedTab === "completed" ? <div id="selected-list"><MediatorCompletedCaseList /></div> : null }
         </MediatorCasesShowStyle>
     );
 }
+
+/**
+ *  Export view
+ */
+
+export default MediatorCasesShow
