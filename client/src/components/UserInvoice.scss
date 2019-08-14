@@ -1,0 +1,31 @@
+#content-div {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap;
+    width: 100%;
+
+    .mediator-info {
+        width: 40%;
+        padding: 10px;
+    }
+
+    #left {
+        .left-list {
+            width: 100%;
+            .left-list-item {
+                border-right: 1.5px solid #A3A2A2;
+                border-bottom: 1.5px solid #5C90C1;
+                padding: 10px;
+            }
+        }
+    }
+    #right {
+        .right-list-item {
+            width: 100%;
+            padding: 10px;
+            border-bottom: 1.5px solid #5C90C1;
+        }
+    }
+}
+
