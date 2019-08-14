@@ -11,8 +11,9 @@ import {
     CaseForm,
     UserCaseShow,
     MediatorCasesShow,
+    CourtForm,
+    OutsideCourtForm,
 } from "../views/index";
-import { CourtForm, OutsideCourtForm } from "../components/index";
 
 /**
  * Define router

@@ -3,15 +3,16 @@
  */
 
 import React, { useState, Component } from 'react';
-import SimpleDialog from './modals/SimpleDialog.js';
-import { axioswithAuth, mixpanel } from "../helpers/index";
+import SimpleDialog from '../components/modals/SimpleDialog.js';
+import axioswithAuth from "../helpers/axioswithAuth";
+import mixpanel from "../helpers/mixpanel";
 
 /**
  * Material-UI imports
  */
 
-import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
