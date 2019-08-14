@@ -39,9 +39,9 @@ var uiConfig = {
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
     ],
     // Terms of service url.
-    tosUrl: '/policies',
+    tosUrl: '/terms-of-service',
     // Privacy policy url.
-    privacyPolicyUrl: 'policies'
+    privacyPolicyUrl: '/privacy-policy'
   };
 
 

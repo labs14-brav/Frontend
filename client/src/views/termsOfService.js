@@ -1,6 +1,6 @@
 import React from 'react'
 
-const termsOfService = () => {
+const TermsOfService = () => {
     return(
         <div>
 <h1>Terms of Use></h1>
@@ -243,4 +243,4 @@ Contact Us  */}
     )
 }
 
-export default termsOfService
+export default TermsOfService
