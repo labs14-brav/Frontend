@@ -14,6 +14,7 @@ export {
     default as MediatorCompletedCaseList
 } from "./MediatorCompletedCaseList";
 export { default as OutsideCourtForm } from "./OutsideCourtForm";
+export { default as InvoiceForm } from "./InvoiceForm";
 export { default as CourtForm } from "./CourtForm";
 export {
     default as AdminMediatorRequestList

@@ -10,11 +10,12 @@ import Modal from "@material-ui/core/Modal";
 import AcceptCaseModal from "./modals/AcceptCaseModal";
 import DeclineCaseModal from "./modals/DeclineCaseModal";
 import CompleteCaseModal from "./modals/CompleteCaseModal";
-import Dialog from '@material-ui/core/Dialog';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
-import AddendumsList from './AddendumsList';
+import InvoiceCaseModal from "./modals/InvoiceCaseModal";
+import Dialog from "@material-ui/core/Dialog";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
+import AddendumsList from "./AddendumsList";
 
 //styles
 import "./UserCaseCard.scss";
@@ -43,13 +44,13 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         justifyContent: "center"
     },
-    actions : {
-        display: 'flex',
-        justifyContent: "center",
+    actions: {
+        display: "flex",
+        justifyContent: "center"
     },
     cardcontainer: {
-        marginBottom: '10px',
-        paddingBottom: '10px',
+        marginBottom: "10px",
+        paddingBottom: "10px"
     }
 }));
 
@@ -74,10 +75,10 @@ const MediatorCaseCard = props => {
 
     const handlefullOpen = () => {
         setFullOpen(true);
-    }
+    };
     const handlefullClose = () => {
         setFullOpen(false);
-    }
+    };
 
     /**
      These two functions are for the text input in the modal
@@ -95,16 +96,48 @@ const MediatorCaseCard = props => {
                     <h6>Type: {props.case.dispute_category} </h6>
                     <h6>Involves: {props.case.parties_involved} </h6>
                     <h5> {props.case.description}</h5>
-                    
                 </CardContent>
                 <CardActions className={classes.actions}>
-                    { props.case.case_declined_at === null && props.case.case_accepted_at === null && props.case.case_completed_at === null ?<AcceptCaseModal fetchCases={props.fetchCases} caseId={props.case.id} /> : null }
+                    {props.case.case_declined_at === null &&
+                    props.case.case_accepted_at === null &&
+                    props.case.case_completed_at === null ? (
+                        <AcceptCaseModal
+                            fetchCases={props.fetchCases}
+                            caseId={props.case.id}
+                        />
+                    ) : null}
 
-                    { props.case.case_declined_at === null && props.case.case_accepted_at === null && props.case.case_completed_at === null ?<DeclineCaseModal fetchCases={props.fetchCases} caseId={props.case.id} /> : null}
+                    {props.case.case_declined_at === null &&
+                    props.case.case_accepted_at === null &&
+                    props.case.case_completed_at === null ? (
+                        <DeclineCaseModal
+                            fetchCases={props.fetchCases}
+                            caseId={props.case.id}
+                        />
+                    ) : null}
 
-                    { props.case.case_accepted_at && props.case.case_declined_at === null && props.case.case_completed_at === null ?<CompleteCaseModal fetchCases={props.fetchCases} caseId={props.case.id} /> : null }
+                    {props.case.case_accepted_at &&
+                    props.case.case_declined_at === null &&
+                    props.case.case_completed_at === null ? (
+                        <CompleteCaseModal
+                            fetchCases={props.fetchCases}
+                            caseId={props.case.id}
+                        />
+                    ) : null}
 
-                    <Button onClick={handlefullOpen} variant="outlined"> Details </Button>
+                    {props.case.case_accepted_at &&
+                    props.case.case_declined_at === null &&
+                    props.case.case_completed_at === null ? (
+                        <InvoiceCaseModal
+                            fetchCases={props.fetchCases}
+                            caseId={props.case.id}
+                        />
+                    ) : null}
+
+                    <Button onClick={handlefullOpen} variant="outlined">
+                        {" "}
+                        Details{" "}
+                    </Button>
                 </CardActions>
             </Card>
 
@@ -130,16 +163,15 @@ const MediatorCaseCard = props => {
                     </form>
                 </div>
             </Modal>
- 
-             <Dialog fullScreen open={fullopen} onClose={handlefullClose}>
-             <Toolbar >
-                 <IconButton edge="end" onClick={handlefullClose}>
-                    <CloseIcon />
-                </IconButton>
-             </Toolbar>
-             <AddendumsList case={props.case}/>
-             </Dialog>
 
+            <Dialog fullScreen open={fullopen} onClose={handlefullClose}>
+                <Toolbar>
+                    <IconButton edge="end" onClick={handlefullClose}>
+                        <CloseIcon />
+                    </IconButton>
+                </Toolbar>
+                <AddendumsList case={props.case} />
+            </Dialog>
         </>
     );
 };
