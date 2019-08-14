@@ -3,14 +3,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
-import AddendumsList from './AddendumsList'
-import AreYouSureDialog from './modals/AreYouSureDialog';
-import axioswithAuth from '../helpers/axioswithAuth';
-
-/**
- * Material UI imports
- */
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -22,7 +15,9 @@ import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import CloseIcon from '@material-ui/icons/Close';
 import DeleteIcon from '@material-ui/icons/Delete';
-
+import AreYouSureDialog from './modals/AreYouSureDialog';
+import AddendumsList from './AddendumsList'
+import axioswithAuth from '../helpers/axioswithAuth';
 
 /**
  * Import styles
@@ -167,15 +162,15 @@ const UserCaseCard = (props) => {
                 console.error(error);
             })
     }
-    
+
     return (
         <>
-            <Grid 
-                item xs={11} 
-                sm={11} 
-                md={props.numCases === 1 ? 12 : 5} 
+            <Grid
+                item xs={11}
+                sm={11}
+                md={props.numCases === 1 ? 12 : 5}
                 lg={props.numCases === 1 ? 12 : 5.5}>
-                <Card className={classes.paper}> 
+                <Card className={classes.paper}>
                     <CardContent style={{width:'100%'}}>
                         <h6 id="case-label">Type</h6>
                         <h5 id="case-dispute">{props.case.dispute_category}</h5>
@@ -186,7 +181,7 @@ const UserCaseCard = (props) => {
                     </CardContent>
                     <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
                         <Button variant="outlined" color="primary" className={classes.primarybutton}>
-                            <Link style={{textDecoration:'none', color:'inherit'}} 
+                            <Link style={{textDecoration:'none', color:'inherit'}}
                             to= {{
                                 pathname: `/cases/${props.case.id}/mediator-search`,
                                 state: {
@@ -208,7 +203,7 @@ const UserCaseCard = (props) => {
                 </Card>
 
 
-                
+
             </Grid>
 
 
@@ -218,10 +213,10 @@ const UserCaseCard = (props) => {
         onClose={handleClose}>
             <div style={modalStyle} className={classes.paper}>
                 <form onSubmit={submitPost} className='modal-form'>
-                    <textarea placeholder="Add Case Information..." 
-                        onChange={handleChanges} 
+                    <textarea placeholder="Add Case Information..."
+                        onChange={handleChanges}
                         value={textState}
-                        className="modal-text" 
+                        className="modal-text"
                         cols='50'
                         rows='15'/>
                     <Button variant="outlined" color="primary" className={classes.submitbutton} onClick={submitPost}>

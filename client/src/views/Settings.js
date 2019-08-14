@@ -3,10 +3,10 @@
  */
 
 import React from 'react';
-import { DeactivateAccountButton } from '../components/index';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core';
-import { BecomeMediatorLink } from './styles/index';
+import DeactivateAccountButton from '../components/DeactivateAccountButton';
+import BecomeMediatorLink from './styles/BecomeMediatorLink';
 
 /**
  * Define view
@@ -38,14 +38,14 @@ function Settings() {
   const classes = useStyles();
 
   return (
-      <div className={classes.container} container style={{paddingTop:"5%",overflowX:"hidden",overflowY:"hidden"}} >
+      <div className={classes.container} container="true" style={{paddingTop:"5%",overflowX:"hidden",overflowY:"hidden"}} >
         <div className={classes.linkContainer}>
-            
-            <Link style={{textDecoration:"none"}} to="/users/mediator-registration">
-              <BecomeMediatorLink>  
-              Become a Mediator
-              </BecomeMediatorLink>
-            </Link>
+          <Link style={{textDecoration:"none"}} to="/users/mediator-registration" data-testid="link-mediator-registration">
+            <BecomeMediatorLink>
+            Become a Mediator
+            </BecomeMediatorLink>
+          </Link>
+
           <DeactivateAccountButton />
         </div>
     </div>

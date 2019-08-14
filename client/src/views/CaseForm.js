@@ -51,19 +51,22 @@ const CaseForm = (props) => {
   return (
     <div className="court-question-container" style={{ paddingTop:"15%" }}>
       <h3>Is your case a</h3>
-      <Button className={classes.button} onClick={courtFormHandler} variant="contained">
+      <Button className={classes.button} onClick={courtFormHandler}
+              variant="contained" data-testid="button-courtcase">
         Court Referral
       </Button>
-        <h3> or a </h3>
-      <Button className={classes.button} onClick={outsideCourtFormHandler} variant="contained">
+
+      <h3> or a </h3>
+      <Button className={classes.button} onClick={outsideCourtFormHandler}
+              variant="contained" data-testid="button-non-courtcase">
         Non-Court Referral?
       </Button>
     </div>
   )
 };
-  
+
 /**
  * Export view
  */
-  
+
 export default CaseForm;

@@ -1,23 +1,33 @@
+/**
+ * Dependencies
+ */
+
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
-import AcceptCaseModal from "./modals/AcceptCaseModal";
-import DeclineCaseModal from "./modals/DeclineCaseModal";
-import CompleteCaseModal from "./modals/CompleteCaseModal";
 import Dialog from '@material-ui/core/Dialog';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import AcceptCaseModal from "./modals/AcceptCaseModal";
+import DeclineCaseModal from "./modals/DeclineCaseModal";
+import CompleteCaseModal from "./modals/CompleteCaseModal";
 import AddendumsList from './AddendumsList';
 
-//styles
+/**
+ * Import styles
+ */
+
 import "./UserCaseCard.scss";
+
+/**
+ * Define styles
+ */
 
 const useStyles = makeStyles(theme => ({
     button: {
@@ -55,6 +65,10 @@ const useStyles = makeStyles(theme => ({
 
 function getModalStyle() {}
 
+/**
+ * Define component
+ */
+
 const MediatorCaseCard = props => {
     const [open, setOpen] = useState(false);
     const [modalStyle] = useState(getModalStyle);
@@ -65,6 +79,7 @@ const MediatorCaseCard = props => {
     /**
      * Modal functions
      */
+
     const handleOpen = () => {
         setOpen(true);
     };
@@ -80,14 +95,14 @@ const MediatorCaseCard = props => {
     }
 
     /**
-     These two functions are for the text input in the modal
+     * These two functions are for the text input in the modal
      */
 
     const handleChanges = e => {
         setText(e.target.value);
     };
 
-    //Need to update link in Mediator-Search link to the proper case ID when possible.
+    // Need to update link in Mediator-Search link to the proper case ID when possible.
     return (
         <>
             <Card className={classes.cardcontainer}>
@@ -95,7 +110,7 @@ const MediatorCaseCard = props => {
                     <h6>Type: {props.case.dispute_category} </h6>
                     <h6>Involves: {props.case.parties_involved} </h6>
                     <h5> {props.case.description}</h5>
-                    
+
                 </CardContent>
                 <CardActions className={classes.actions}>
                     { props.case.case_declined_at === null && props.case.case_accepted_at === null && props.case.case_completed_at === null ?<AcceptCaseModal fetchCases={props.fetchCases} caseId={props.case.id} /> : null }
@@ -130,18 +145,21 @@ const MediatorCaseCard = props => {
                     </form>
                 </div>
             </Modal>
- 
-             <Dialog fullScreen open={fullopen} onClose={handlefullClose}>
-             <Toolbar >
-                 <IconButton edge="end" onClick={handlefullClose}>
-                    <CloseIcon />
-                </IconButton>
-             </Toolbar>
-             <AddendumsList case={props.case}/>
-             </Dialog>
 
+             <Dialog fullScreen open={fullopen} onClose={handlefullClose}>
+               <Toolbar >
+                   <IconButton edge="end" onClick={handlefullClose}>
+                      <CloseIcon />
+                  </IconButton>
+               </Toolbar>
+               <AddendumsList case={props.case}/>
+             </Dialog>
         </>
     );
 };
+
+/**
+ * Export component
+ */
 
 export default MediatorCaseCard;

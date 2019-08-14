@@ -11,15 +11,15 @@ import {
     CaseForm,
     UserCaseShow,
     MediatorCasesShow,
+    CourtForm,
+    OutsideCourtForm,
 } from "../views/index";
-import { CourtForm, OutsideCourtForm } from "../components/index";
 
 /**
  * Define router
  */
 
 const RootRouter = [
-    
     <PrivateRoute
         key={uuid.v4()}
         exact
@@ -53,10 +53,10 @@ const RootRouter = [
         component={MediatorCasesShow}
         errorBoundary={ErrorBoundary}
     />,
-    <PrivateRoute 
-        key={uuid.v4()} 
+    <PrivateRoute
+        key={uuid.v4()}
         path="/cases/:id/mediator-search"
-        component={Search} 
+        component={Search}
         errorBoundary={ErrorBoundary} />,
 ];
 

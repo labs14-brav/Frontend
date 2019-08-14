@@ -6,7 +6,8 @@ import React, { useEffect,useState } from 'react'
 import { styled } from '@material-ui/styles';
 import { Button } from '@material-ui/core';
 import axios from 'axios';
-import { axioswithAuth, mixpanel } from "../helpers/index";
+import axioswithAuth from "../helpers/axioswithAuth";
+import mixpanel from "../helpers/mixpanel";
 
 /**
  * Define style
@@ -48,7 +49,7 @@ function DeactivateAccountButton(props) {
   }
 
   return (
-    <DeactivateButton variant="contained" onClick={handleDeactivation}>
+    <DeactivateButton variant="contained" onClick={handleDeactivation} data-testid="button-deactivate-account">
       Deactivate Account
     </DeactivateButton>
   )

@@ -4,14 +4,14 @@
 
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { UserCaseList } from '../components/index';
 import Button from '@material-ui/core/Button';
+import UserCaseList from '../components/UserCaseList';
 
 /**
  * Import styles
  */
 
- import './UserCaseShow.scss';
+import './UserCaseShow.scss';
 
 /**
  * Define view
@@ -48,7 +48,8 @@ const UserCaseShow = props => {
 
   return (
     <div style={{paddingTop:"100px"}} className="cases-container">
-      <Button className={classes.caseButton} variant="outlined" onClick={buttonHandler}>Create a Case</Button>
+      <Button className={classes.caseButton} variant="outlined" onClick={buttonHandler}
+              data-testid="button-create-case">Create a Case</Button>
       <UserCaseList />
     </div>
   )
