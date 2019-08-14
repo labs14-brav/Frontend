@@ -36,7 +36,7 @@ import './UserCaseCard.scss';
  */
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHandshake, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faHandshake, faUsers, faSearch, faChalkboardTeacher } from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = makeStyles(theme => ({
     primarybutton: {
@@ -94,6 +94,9 @@ const useStyles = makeStyles(theme => ({
             height: '100%',
         },
       },
+    label: {
+        display: "inline-flex",
+    }
 }))
 
 
@@ -102,7 +105,7 @@ const useStyles = makeStyles(theme => ({
  */
 
 const UserCaseCard = (props) => {
-    console.log(props.case);
+    console.log(props);
     const [fullopen, setFullOpen] = useState(false);
     const classes = useStyles();
 
@@ -124,11 +127,11 @@ const UserCaseCard = (props) => {
                 md={props.numCases === 1 ? 12 : 5} 
                 lg={props.numCases === 1 ? 12 : 5.5}>
                 <Card className={classes.paper}> 
-                    <CardContent className={classes.words} style={{width:'100%'}}>
-                        <h6 id="case-label">Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
-                        <h5 id="case-dispute">{props.case.dispute_category}</h5>
-                        <h6 id="case-label">Dispute <FontAwesomeIcon icon={faUsers} /> Participants</h6>
-                        <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
+                    <CardContent style={{width:'100%'}}>
+                            <h6 id="case-label">Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
+                            <h5 id="case-dispute">{props.case.dispute_category}</h5>
+                            <h6 id="case-label">Dispute <FontAwesomeIcon icon={faUsers} /> Participants</h6>
+                            <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
                     </CardContent>
                     <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
                         <Button variant="outlined" color="primary" className={classes.primarybutton}>
@@ -139,11 +142,10 @@ const UserCaseCard = (props) => {
                                     currentcase: props.case
                                 }
                             }}
-                            > Find a Mediator </Link>
+                            ><FontAwesomeIcon icon={faSearch} />  Find a Mediator</Link>
                         </Button>
                         <Button className={classes.secondarybutton} onClick={handlefullOpen} variant="outlined">
-                            View Details
-                        </Button>
+                        <FontAwesomeIcon icon={faChalkboardTeacher} style={{marginRight: '5px'}} />                        View Details </Button>
                     </CardActions>
                 </Card>
             </Grid>
@@ -181,13 +183,13 @@ const UserCaseCard = (props) => {
                                 > Find a Mediator </Link>
                             </Button>
                             <Button className={classes.secondarybutton} onClick={handlefullOpen} variant="outlined">
-                                View Detail$
+                                View Details
                             </Button>
                         </CardActions>
                     </Card>
                 </Grid>
     
-            <CaseOverviewDialog case={props.case} open={fullopen} handleClose={handlefullClose} />  
+            <CaseOverviewDialog case={props.case} open={fullopen} handleClose={handlefullClose} fetchCases={props.fetchCases}/>  
         </>
         )
     }           

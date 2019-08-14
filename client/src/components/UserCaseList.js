@@ -11,7 +11,7 @@ const UserCaseList = (props) => {
     const [cases, setCases] = useState([]);
 
     async function fetchCases() {
-        const res = await axioswithAuth().get(`${process.env.REACT_APP_API_URL}/cases`)
+        const res = await axioswithAuth().get(`/cases`)
         // endpoint needs to be updated to a specific user's cases.
         setCases(res.data);
     };
@@ -19,7 +19,7 @@ const UserCaseList = (props) => {
     useEffect(() => {
 
         fetchCases();
-    }, [cases]);
+    }, []);
 
     return (
         <div className="list-container">

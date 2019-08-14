@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import axioswithAuth from '../helpers/axioswithAuth';
 import AddendumsList from './AddendumsList';
+import UserInvoiceList from './UserInvoiceList';
 
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -128,7 +129,7 @@ export default function AddendumInvoiceTabs(props) {
         <AddendumsList case={props.case}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Invoice View for User
+            <UserInvoiceList />
       </TabPanel>
 
 

@@ -17,7 +17,7 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faIdCardAlt } from '@fortawesome/free-solid-svg-icons';
+import { faIdCardAlt,faUserFriends,faClipboard,faBookOpen,faWallet,faLandmark,faFolder,faBalanceScale,faCalendarDay } from '@fortawesome/free-solid-svg-icons';
 
 import '../UserCaseCard.scss';
 
@@ -50,6 +50,8 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(1),
         color: '#E55557',
         borderColor: '#E55557',
+        alignSelf:'flexEnd',
+
     },
     modal: {
         margin: '0 auto',
@@ -101,6 +103,7 @@ function CaseOverviewDialog(props) {
             .then(res => {
                 console.log(res.data);
                 props.fetchCases();
+                window.location.reload();
             })
             .catch(error => {
                 console.error(error);
@@ -112,38 +115,39 @@ function CaseOverviewDialog(props) {
 
         <Dialog fullScreen open={props.open} onClose={props.handleClose}>
             <Toolbar >
+              
                 <IconButton edge="end" onClick={props.handleClose}>
                     <CloseIcon /> 
                 </IconButton>
-                <Button className={classes.deletebutton} onClick={handleSureOpen} variant="outlined">
+                <Button id="trashButton" className={classes.deletebutton} onClick={handleSureOpen} variant="outlined">
                     <DeleteIcon />
                 </Button>
+          
             </Toolbar>
             <div>
             <div className="caseDetails">
                 <div className="general">
-                    <h4>Type:</h4>
+                    <h5><FontAwesomeIcon icon={faFolder} /> Type</h5>
                     <p>{props.case.dispute_category}</p>
-                    <h4>Parties Involved:</h4>
+                    <h5><FontAwesomeIcon icon={faUserFriends} /> Parties Involved</h5>
                     <p>{props.case.parties_involved}</p>
-                    <h4><FontAwesomeIcon icon={faIdCardAlt} /> Parties' Contact Info:</h4>
+                    <h5><FontAwesomeIcon icon={faIdCardAlt} /> Parties' Contact Info</h5>
                     <p>{props.case.parties_contact_info}</p>
-                    <h4>Dispute Amount:</h4>
+                    <h5><FontAwesomeIcon icon={faWallet} /> Dispute Amount</h5>
                     <p>{props.case.dispute_amount}</p>
-                    <h4>{props.case.court_case ? "Court Jurisdiction:" : null}</h4>
+                    <h5>{props.case.court_case ? <FontAwesomeIcon icon={faLandmark} />:null}{props.case.court_case ? " Court Jurisdiction" : null}</h5>
                     <p>{props.case.court_case ? props.case.court_jurisdiction : null}</p>
-                    <h4>{props.case.court_case ? "Course Number:" : null}</h4>
-                    <p>{props.case.court_case ? props.case.course_number : null}</p>
-                    <h4>{props.case.court_case ? "Filing Date:" : null}</h4>
+                    <h5>{props.case.court_case ? <FontAwesomeIcon icon={faBalanceScale} />:null}{props.case.court_case ? " Court Number" : null}</h5>
+                    <p>{props.case.court_case ? props.case.court_number : null}</p>
+                    <h5>{props.case.court_case ? <FontAwesomeIcon icon={faCalendarDay} />:null}{props.case.court_case ? " Filing Date" : null}</h5>
                     <p>{props.case.court_case ? props.case.court_filing_date : null}</p>
-                    
+ 
                 </div>
                 <div className="description"> 
-                    <h4>Description</h4>  
+                    <h5><FontAwesomeIcon icon={faBookOpen} /> Description</h5>  
                     <p>{props.case.description}</p>
-                    <h4>{props.case.court_case ? "Case Notes:" : null}</h4>
-                    <p>{props.case.court_case ? props.case.case_notes : null}
-                    gjkfjfjkhfkfk  f ffj f jfj kkfjkfvjfhjvfvjkvfjfjfjfjjkkvjjkjvhjvhvjkvjkvjvjkvjvkjvvjvvjrhterterhterhtehrterthehrthterhterehrtethrehrtvvhthvtvhhtvhvhvhthtvhththrthrtehrthrthrthtrehrthrthrtehrehrtehrthtertvvhthtvhtvhrthreevhrvrvhvrtrthrthrterhrtrthertegjkfjfjkhfkfk f ffj f jfj kkfjkfvjfhjvfvjkvfjfjfjfjjkkvjjkjvhjvhvjkvjkvjvjkvjvkjvvjvvjrhterterhterhtehrterthehrthterhterehrtethrehrtvvhthvtvhhtvhvhvhthtvhththrthrtehrthrthrthtrehrthrthrtehrehrtehrthtertvvhthtvhtvhrthreevhrvrvhvrtrthrthrterhrtrthertegjkfjfjkhfkfk f ffj f jfj kkfjkfvjfhjvfvjkvfjfjfjfjjkkvjjkjvhjvhvjkvjkvjvjkvjvkjvvjvvjrhterterhterhtehrterthehrthterhterehrtethrehrtvvhthvtvhhtvhvhvhthtvhththrthrtehrthrthrthtrehrthrthrtehrehrtehrthtertvvhthtvhtvhrthreevhrvrvhvrtrthrthrterhrtrthertegjkfjfjkhfkfk f ffj f jfj kkfjkfvjfhjvfvjkvfjfjfjfjjkkvjjkjvhjvhvjkvjkvjvjkvjvkjvvjvvjrhterterhterhtehrterthehrthterhterehrtethrehrtvvhthvtvhhtvhvhvhthtvhththrthrtehrthrthrthtrehrthrthrtehrehrtehrthtertvvhthtvhtvhrthreevhrvrvhvrtrthrthrterhrtrthertegjkfjfjkhfkfk f ffj f jfj kkfjkfvjfhjvfvjkvfjfjfjfjjkkvjjkjvhjvhvjkvjkvjvjkvjvkjvvjvvjrhterterhterhtehrterthehrthterhterehrtethrehrtvvhthvtvhhtvhvhvhthtvhththrthrtehrthrthrthtrehrthrthrtehrehrtehrthtertvvhthtvhtvhrthreevhrvrvhvrtrthrthrterhrtrthertegjkfjfjkhfkfk f ffj f jfj kkfjkfvjfhjvfvjkvfjfjfjfjjkkvjjkjvhjvhvjkvjkvjvjkvjvkjvvjvvj</p>
+                    <h5>{props.case.court_case ? <FontAwesomeIcon icon={faClipboard} />:null}{props.case.court_case ?   " Case Notes" : null}</h5>
+                    <p>{props.case.court_case ? props.case.case_notes : null}</p>
                 </div>     
             </div>
             <AddendumInvoiceTabs case={props.case}/>
