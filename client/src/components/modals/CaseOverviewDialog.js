@@ -16,6 +16,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faIdCardAlt } from '@fortawesome/free-solid-svg-icons';
 
 import '../UserCaseCard.scss';
 
@@ -120,27 +122,28 @@ function CaseOverviewDialog(props) {
             <div>
             <div className="caseDetails">
                 <div className="general">
-                    <h6>Type:</h6>
+                    <h4>Type:</h4>
                     <p>{props.case.dispute_category}</p>
-                    <h6>Parties Involved:</h6>
+                    <h4>Parties Involved:</h4>
                     <p>{props.case.parties_involved}</p>
-                    <h6>Parties' Contact Info:</h6>
+                    <h4><FontAwesomeIcon icon={faIdCardAlt} /> Parties' Contact Info:</h4>
                     <p>{props.case.parties_contact_info}</p>
-                    <h6>Dispute Amount:</h6>
+                    <h4>Dispute Amount:</h4>
                     <p>{props.case.dispute_amount}</p>
-                    <h6>{props.case.court_case ? "Court Jurisdiction:" : null}</h6>
+                    <h4>{props.case.court_case ? "Court Jurisdiction:" : null}</h4>
                     <p>{props.case.court_case ? props.case.court_jurisdiction : null}</p>
-                    <h6>{props.case.court_case ? "Course Number:" : null}</h6>
+                    <h4>{props.case.court_case ? "Course Number:" : null}</h4>
                     <p>{props.case.court_case ? props.case.course_number : null}</p>
-                    <h6>{props.case.court_case ? "Filing Date:" : null}</h6>
+                    <h4>{props.case.court_case ? "Filing Date:" : null}</h4>
                     <p>{props.case.court_case ? props.case.court_filing_date : null}</p>
                     
                 </div>
                 <div className="description"> 
-                    <h6>Description</h6>  
+                    <h4>Description</h4>  
                     <p>{props.case.description}</p>
-                    <h6>{props.case.court_case ? "Case Notes:" : null}</h6>
-                    <p>{props.case.court_case ? props.case.case_notes : null}</p>
+                    <h4>{props.case.court_case ? "Case Notes:" : null}</h4>
+                    <p>{props.case.court_case ? props.case.case_notes : null}
+                    gjkfjfjkhfkfk  f ffj f jfj kkfjkfvjfhjvfvjkvfjfjfjfjjkkvjjkjvhjvhvjkvjkvjvjkvjvkjvvjvvjrhterterhterhtehrterthehrthterhterehrtethrehrtvvhthvtvhhtvhvhvhthtvhththrthrtehrthrthrthtrehrthrthrtehrehrtehrthtertvvhthtvhtvhrthreevhrvrvhvrtrthrthrterhrtrthertegjkfjfjkhfkfk f ffj f jfj kkfjkfvjfhjvfvjkvfjfjfjfjjkkvjjkjvhjvhvjkvjkvjvjkvjvkjvvjvvjrhterterhterhtehrterthehrthterhterehrtethrehrtvvhthvtvhhtvhvhvhthtvhththrthrtehrthrthrthtrehrthrthrtehrehrtehrthtertvvhthtvhtvhrthreevhrvrvhvrtrthrthrterhrtrthertegjkfjfjkhfkfk f ffj f jfj kkfjkfvjfhjvfvjkvfjfjfjfjjkkvjjkjvhjvhvjkvjkvjvjkvjvkjvvjvvjrhterterhterhtehrterthehrthterhterehrtethrehrtvvhthvtvhhtvhvhvhthtvhththrthrtehrthrthrthtrehrthrthrtehrehrtehrthtertvvhthtvhtvhrthreevhrvrvhvrtrthrthrterhrtrthertegjkfjfjkhfkfk f ffj f jfj kkfjkfvjfhjvfvjkvfjfjfjfjjkkvjjkjvhjvhvjkvjkvjvjkvjvkjvvjvvjrhterterhterhtehrterthehrthterhterehrtethrehrtvvhthvtvhhtvhvhvhthtvhththrthrtehrthrthrthtrehrthrthrtehrehrtehrthtertvvhthtvhtvhrthreevhrvrvhvrtrthrthrterhrtrthertegjkfjfjkhfkfk f ffj f jfj kkfjkfvjfhjvfvjkvfjfjfjfjjkkvjjkjvhjvhvjkvjkvjvjkvjvkjvvjvvjrhterterhterhtehrterthehrthterhterehrtethrehrtvvhthvtvhhtvhvhvhthtvhththrthrtehrthrthrthtrehrthrthrtehrehrtehrthtertvvhthtvhtvhrthreevhrvrvhvrtrthrthrterhrtrthertegjkfjfjkhfkfk f ffj f jfj kkfjkfvjfhjvfvjkvfjfjfjfjjkkvjjkjvhjvhvjkvjkvjvjkvjvkjvvjvvj</p>
                 </div>     
             </div>
             <AddendumInvoiceTabs case={props.case}/>

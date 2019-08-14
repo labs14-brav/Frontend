@@ -31,6 +31,13 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 import './UserCaseCard.scss';
 
+/**
+ * Import Font Awesome
+ */
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHandshake, faUsers } from '@fortawesome/free-solid-svg-icons';
+
 const useStyles = makeStyles(theme => ({
     primarybutton: {
         margin: theme.spacing(1),
@@ -118,9 +125,9 @@ const UserCaseCard = (props) => {
                 lg={props.numCases === 1 ? 12 : 5.5}>
                 <Card className={classes.paper}> 
                     <CardContent className={classes.words} style={{width:'100%'}}>
-                        <h6 id="case-label">Dispute Category</h6>
+                        <h6 id="case-label">Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
                         <h5 id="case-dispute">{props.case.dispute_category}</h5>
-                        <h6 id="case-label">Dispute Participants</h6>
+                        <h6 id="case-label">Dispute <FontAwesomeIcon icon={faUsers} /> Participants</h6>
                         <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
                     </CardContent>
                     <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
