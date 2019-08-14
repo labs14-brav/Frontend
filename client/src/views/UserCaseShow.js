@@ -47,7 +47,7 @@ const UserCaseShow = props => {
   }
 
   return (
-    <div style={{paddingTop:"100px"}} className="cases-container">
+    <div style={{paddingTop:"100px",overflowX:"hidden",overflowY:"hidden",paddingBottom:"10px"}} className="cases-container">
       <Button className={classes.caseButton} variant="outlined" onClick={buttonHandler}>Create a Case</Button>
       <UserCaseList />
     </div>
