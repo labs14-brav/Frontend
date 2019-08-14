@@ -5,7 +5,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, makeStyles } from "@material-ui/core";
-import StripeButton from "../components/StripeButton";
 
 /**
  * Define view
@@ -53,7 +52,6 @@ function Landing() {
                 </Link>
             </div>
             <div className="landing">
-                <StripeButton />
                 <img
                     className="brav-logo"
                     src="https://www.brav.org/img/brav-logo.png"
