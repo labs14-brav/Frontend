@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import AddendumsList from './AddendumsList'
 import AreYouSureDialog from './modals/AreYouSureDialog';
+import CaseOverviewDialog from './modals/CaseOverviewDialog';
 import axioswithAuth from '../helpers/axioswithAuth';
 
 /**
@@ -97,11 +98,12 @@ function getModalStyle() {
  */
 
 const UserCaseCard = (props) => {
+    console.log(props.case);
     const [open, setOpen] = useState(false);
     const [fullopen, setFullOpen] = useState(false);
-    const [sureOpen, setSureOpen] = useState(false);
-    const [modalStyle] = useState(getModalStyle);
+    // const [sureOpen, setSureOpen] = useState(false);
     const [textState, setText] = useState('');
+    const [modalStyle] = useState(getModalStyle);
     const classes = useStyles();
 
     /**
@@ -122,16 +124,7 @@ const UserCaseCard = (props) => {
         setFullOpen(false);
     }
 
-    const handleSureOpen = () => {
-        setSureOpen(true);
-    }
-
-    const handleSureClose = value => {
-        setSureOpen(false);
-        if (value === true) {
-            handleDelete();
-        }
-    }
+    
 
     /**
      These two functions are for the text input in the modal
@@ -157,16 +150,7 @@ const UserCaseCard = (props) => {
         setText(e.target.value);
     }
 
-    function handleDelete() {
-        axioswithAuth().delete(`${process.env.REACT_APP_API_URL}/cases/${props.case.id}`)
-            .then(res => {
-                console.log(res.data);
-                props.fetchCases();
-            })
-            .catch(error => {
-                console.error(error);
-            })
-    }
+   
     
     return (
         <>
@@ -181,8 +165,8 @@ const UserCaseCard = (props) => {
                         <h5 id="case-dispute">{props.case.dispute_category}</h5>
                         <h6 id="case-label">Involves</h6>
                         <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
-                        <h6 id="case-label">Description</h6>
-                        <h5 id="case-description">{props.case.description.length > 0 ? props.case.description : 'No information provided'}</h5>
+                        {/* <h6 id="case-label">Description</h6>
+                        <h5 id="case-description">{props.case.description.length > 0 ? props.case.description : 'No information provided'}</h5> */}
                     </CardContent>
                     <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
                         <Button variant="outlined" color="primary" className={classes.primarybutton}>
@@ -195,21 +179,17 @@ const UserCaseCard = (props) => {
                             }}
                             > Find a Mediator </Link>
                         </Button>
-                        <Button className={classes.secondarybutton} onClick={handleOpen} variant="outlined">
+                        {/* <Button className={classes.secondarybutton} onClick={handleOpen} variant="outlined">
                             Add Information
-                        </Button>
+                        </Button> */}
                         <Button className={classes.secondarybutton} onClick={handlefullOpen} variant="outlined">
                             View Details
                         </Button>
-                        <Button className={classes.deletebutton} onClick={handleSureOpen} variant="outlined">
-                            <DeleteIcon />
-                        </Button>
                     </CardActions>
                 </Card>
-
-
-                
             </Grid>
+
+
 
 
         <Dialog
@@ -232,16 +212,18 @@ const UserCaseCard = (props) => {
         </Dialog>
 
 
-        <Dialog fullScreen open={fullopen} onClose={handlefullClose}>
+        {/* <Dialog fullScreen open={fullopen} onClose={handlefullClose}>
             <Toolbar >
                 <IconButton edge="end" onClick={handlefullClose}>
                     <CloseIcon />
                 </IconButton>
             </Toolbar>
             <AddendumsList case={props.case}/>
-        </Dialog>
+        </Dialog> */}
 
-        <AreYouSureDialog open={sureOpen} onClose={handleSureClose}/>
+        <CaseOverviewDialog case={props.case} open={fullopen} handleClose={handlefullClose} />
+        
+        
     </>
     )
 }
