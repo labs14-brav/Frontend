@@ -1,9 +1,11 @@
 import React from 'react'
 
+import './PrivacyPolicy.scss';
+
 
 const PrivacyPolicy = () => {
     return(
-<div>
+<div className='privacy'>
 <h1>Privacy Policy</h1>
 
 <p>NGM, LP. (“Brāv”, “our”, “us” or “we”) provides this Privacy Policy to inform you of our policies and procedures regarding the collection, use and disclosure of personal information we receive from users of our Brāv offering, which we make available (i) on our website, accessible at www.brav.org (this “Site”); and (ii) via our online platforms, which are accessible through the Site (together with the Site, the “Service”). This Privacy Policy applies only to information that you provide to us through the Service. This Privacy Policy may be updated from time to time. We will notify you of any material changes by posting the new Privacy Policy via the Service. You are advised to consult this policy regularly for any changes. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our BrāvTerms of Service, accessible at modria.com/terms. 

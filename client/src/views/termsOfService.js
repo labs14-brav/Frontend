@@ -1,9 +1,11 @@
 import React from 'react'
 
+import './TermsOfService.scss';
+
 const TermsOfService = () => {
     return(
-        <div>
-<h1>Terms of Use></h1>
+        <div className='service'>
+<h1>Terms of Use</h1>
 <h3>Thanks for using Brāv.</h3>
 <p>Please read these Terms carefully. By using Brāv or signing up for an account, you’re agreeing to these Terms. This is a legal agreement. We’ll start with the basics, including a few definitions that should help you understand this agreement. Brāv (“Brāv” or the “Service”) is an conflict managing service offered through the URL www.brav.org (aka “Website”) that allows you to among others, train, manage, and vote on various conflicts of yours or other individuals. Brāv is owned and operated by NGM, LP d/b/a Brāv, a Michigan limited partnership (“Brāv,” “we,” or “us”). Brāv has employees, independent contractors, interns, volunteers and representatives (“our Team”). As a customer of the Service or a representative of an entity that’s a customer of the Service, you’re a “Member” according to this agreement (or “you”).
 These Terms of Use (“Terms,” including our Privacy Policy, Acceptable Use Policy, API Guidelines, Copyright Policy and Brand Guidelines) define the terms and conditions under which you’re allowed to use Brāv, and how we’ll treat your account while you’re a Member. If you have any questions about our terms, feel free to contact us.
@@ -210,7 +212,7 @@ Dispute Resolution </p>
 <h3>Fees</h3>
 <p>You agree to be charged fees to extend the use of Brāv service(s) if the deadline expires or time lapses. This may occur for any Brāv service, including but not limited to Brāv training, Brāv sessions(s), Brāv voting, etc.</p>
 <h3>Arbitration Rules and Governing Law </h3>
-<p>The arbitration will be administered by the International Institute for Conflict Prevention and Resolution (“CPR”) in accordance with the Commercial ADR Rules then in effect, except as modified by this “Dispute Resolution” section. (The ADR Rules are available at http://cpradr.org/Resources/ADRTools/ADRRulesEthicsCodes.aspx or by calling CPR at 212-849-6490.) The Federal Arbitration Act will govern the interpretation and enforcement of this Section.</p> 
+<p>The arbitration will be administered by the International Institute for Conflict Prevention and Resolution (“CPR”) in accordance with the Commercial ADR Rules then in effect, except as modified by this “Dispute Resolution” section. (The ADR Rules are available <a href='http://cpradr.org/Resources/ADRTools/ADRRulesEthicsCodes.aspx'>here</a> or by calling CPR at 212-849-6490.) The Federal Arbitration Act will govern the interpretation and enforcement of this Section.</p> 
 <h3>Arbitration Process </h3>
 <p>A party who desires to initiate arbitration must provide the other party with a notice of arbitration as specified in the CPR Rules. The arbitrator will be either a retired judge or an attorney licensed to practice law in the state of Brāv's choice of law and will be selected by the parties from the CPR’s roster of consumer dispute arbitrators. If the parties are unable to agree upon an arbitrator within seven (7) days of delivery of the notice of arbitration, then the CPR will appoint the arbitrator in accordance with the CPR Rules.</p> 
 <h3>Arbitration Location and Procedure</h3> 
@@ -223,7 +225,7 @@ Dispute Resolution </p>
 <p>Notwithstanding the provisions of the “Modification” section above, if Brāv changes this “Dispute Resolution” section after the date you first accepted these Terms (or accepted any subsequent changes to these Terms), you may reject any such change by sending us written notice (including by email to info@brav.org) within 30 days of the date such change became effective, as indicated in the “Last Updated Date” above or in the date of Brāv’s email to you notifying you of such change. By rejecting any change, you are agreeing that you will arbitrate any Dispute between you and Brāv in accordance with the provisions of this “Dispute Resolution” section as of the date you first accepted these Terms (or accepted any subsequent changes to these Terms).</p> 
 <h3>General</h3> 
 <p>The failure of Brāv to enforce any right or provision of these Terms will not constitute a waiver of future enforcement of that right or provision. The waiver of any such right or provision will be effective only if in writing and signed by a duly authorized representative of Brāv. Except as expressly set forth in these Terms, the exercise by either party of any of its remedies under these Terms will be without prejudice to its other remedies under these Terms or otherwise. If for any reason a court of competent jurisdiction finds any provision of these Terms invalid or unenforceable, that provision will be enforced to the maximum extent permissible and the other provisions of these Terms will remain in full force and effect.</p> 
-<h3>>Contacting Us</h3> 
+<h3>Contacting Us</h3> 
 <a href='info@brav.org'>Brav</a>
 {/* Twitter Facebook LinkedIn YouTube 
 Product 
