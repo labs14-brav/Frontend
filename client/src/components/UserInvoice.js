@@ -26,6 +26,11 @@ const useStyles = makeStyles(theme => ({
     },
     info: { 
         fontSize: '16px',
+    },
+    paybutton: {
+        marginLeft: '10px',
+        padding: '10px',
+        color: '#5C90C1',
     }
     }))
 
@@ -38,6 +43,9 @@ function UserInvoice(props) {
         <Card className={classes.paper}>
             <CardContent className={classes.content}>
                 <div id="content-div">
+                    <div className="mediator-info">
+                        <Typography variant="h6"> Mediator Info Here </Typography>
+                    </div>
                     <div id="left">
                         <ul className="left-list">
                             <li className="left-list-item">
@@ -76,11 +84,11 @@ function UserInvoice(props) {
                             </li>
                         </ul>
                     </div>
+                    <Button variant="outlined" className={classes.paybutton}> 
+                        Pay Invoice 
+                    </Button>
                 </div>
             </CardContent>
-            {/* <CardActions>
-                <Button> Pay me! </Button>
-            </CardActions> */}
         </Card>
     )
 }

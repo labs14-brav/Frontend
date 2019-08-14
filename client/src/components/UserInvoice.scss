@@ -4,6 +4,12 @@
     justify-content: flex-start !important;
     flex-wrap: nowrap;
     width: 100%;
+
+    .mediator-info {
+        width: 40%;
+        padding: 10px;
+    }
+
     #left {
         .left-list {
             width: 100%;
