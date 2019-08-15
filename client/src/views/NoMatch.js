@@ -132,7 +132,7 @@ function NoMatch() {
                         <Link
                             style={{ color: "white" }}
                             className={classes.link}
-                            to="/cases"
+                            to="/"
                         >
                             <p
                                 style={{
