@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect }from 'react';
 
 import PayInvoiceButton from './PayInvoiceButton';
+import axioswithAuth from '../helpers/axioswithAuth';
+import moment from 'moment';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -14,15 +16,24 @@ import './UserInvoice.scss';
 
 const useStyles = makeStyles(theme => ({
     paper: {
-        width: '50%',
+        width: '60%',
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 4),
         outline: 'none',
         marginBottom: theme.spacing(1),
+
+        [theme.breakpoints.down('md')]: {
+            width: '100%',
+            height: '100%',
+            },
         },
     content: { 
         width: '100%',
+        [theme.breakpoints.down('md')]: {
+            width: '100%',
+            height: '100%',
+        },
     },
     label: {   
         fontSize: '16px',
@@ -34,23 +45,26 @@ const useStyles = makeStyles(theme => ({
     }))
 
 function UserInvoice(props) {
-    console.log('Invoice Props', props);
     const classes = useStyles();
    
+    const timeStamp = moment(props.invoice.created_at, "YYYY-MM-DD").format(
+        "MM/DD/YYYY"
+      );
 
     return(
         <Card className={classes.paper}>
             <CardContent className={classes.content}>
                 <div id="content-div">
                     <div className="mediator-info">
-                        <Typography variant="h6"> Mediator Name Here </Typography>
+                        <Typography variant="h6"> {props.mediator.name} </Typography>
                         <Typography variant="overline">
-                            Mediator Email
+                            {props.mediator.email}
                         </Typography>
                         <Typography variant="overline">
-                            Mediator something
+                            {props.mediator.type}
                         </Typography>
                     </div>
+                    <div className="table">
                     <div id="left">
                         <ul className="left-list">
                             <li className="left-list-item">
@@ -74,7 +88,7 @@ function UserInvoice(props) {
                         <ul className="right-list">
                             <li className="right-list-item">
                                 <Typography variant="overline" className={classes.info}> 
-                                    {props.invoice.created_at}
+                                    {timeStamp}
                                 </Typography>
                             </li>
                             <li className="right-list-item">
@@ -89,7 +103,9 @@ function UserInvoice(props) {
                             </li>
                         </ul>
                     </div>
-                    <PayInvoiceButton />
+                    </div>
+                    
+                    <PayInvoiceButton invoice={props.invoice} />
                 </div>
             </CardContent>
         </Card>

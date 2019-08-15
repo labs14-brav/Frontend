@@ -12,6 +12,10 @@
         justify-content: center;
         flex-direction: column;
         align-items: center;
+        .caption {
+            align-self: end;
+            border: 1px solid red;
+        }
     }
 
     @media (max-width: '768px') {

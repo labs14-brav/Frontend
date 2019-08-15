@@ -1,6 +1,6 @@
 #case-label {
     // border-bottom: .5px solid #A3A2A2;
-    color: #A3A2A2;
+    color: #5C90C1;
     opacity: 50%;
 }
 #ribbon {
@@ -12,6 +12,11 @@
     position: relative;
     right: -39px;
     padding: 5px 0 5px 0;
+    letter-spacing: 0.6px;
+
+    @media (max-width: '812px') {
+        right: -20px;
+    }
 }
  
     #case-description {

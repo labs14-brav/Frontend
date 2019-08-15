@@ -5,12 +5,18 @@
     flex-wrap: nowrap;
     width: 100%;
 
+    @media (max-width: '768px') {
+        flex-direction: column !important;
+    }
     .mediator-info {
         width: 35%;
-        // padding-right: 10px;
+        @media (max-width: '768px') {
+            width: 100%;
+        }
     }
-
-    #left {
+    .table {
+        flex-direction: row;
+        #left {
             margin-left: 20px;
             border-left: 5px ridge #A3A2A2;
         .left-list {
@@ -22,6 +28,10 @@
 
                 &:first-child {
                     border-top: .5px solid #A3A2A2;
+                }
+
+                @media (max-width: '768px') {
+                    width: 100%;
                 }
             }
         }
@@ -39,5 +49,7 @@
             }
         }
     }
+}
+    
 }
 
