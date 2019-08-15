@@ -6,11 +6,13 @@
     width: 100%;
 
     .mediator-info {
-        width: 40%;
+        width: 35%;
         padding: 10px;
     }
 
     #left {
+            padding-left: 30px;
+            border-left: 5px ridge #A3A2A2;
         .left-list {
             width: 100%;
             .left-list-item {
@@ -21,6 +23,8 @@
         }
     }
     #right {
+            padding-right: 30px;
+            border-right: 5px groove #A3A2A2;
         .right-list-item {
             width: 100%;
             padding: 10px;

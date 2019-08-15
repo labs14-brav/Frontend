@@ -17,6 +17,7 @@ const useStyles = makeStyles(theme => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 4),
         outline: 'none',
+        marginBottom: theme.spacing(1),
         },
     content: { 
         width: '100%',
@@ -27,11 +28,6 @@ const useStyles = makeStyles(theme => ({
     info: { 
         fontSize: '16px',
     },
-    paybutton: {
-        marginLeft: '10px',
-        padding: '10px',
-        color: '#5C90C1',
-    }
     }))
 
 function UserInvoice(props) {
@@ -44,7 +40,13 @@ function UserInvoice(props) {
             <CardContent className={classes.content}>
                 <div id="content-div">
                     <div className="mediator-info">
-                        <Typography variant="h6"> Mediator Info Here </Typography>
+                        <Typography variant="h6"> Mediator Name Here </Typography>
+                        <Typography variant="overline">
+                            Mediator Email
+                        </Typography>
+                        <Typography variant="overline">
+                            Mediator something
+                        </Typography>
                     </div>
                     <div id="left">
                         <ul className="left-list">
@@ -69,7 +71,7 @@ function UserInvoice(props) {
                         <ul className="right-list">
                             <li className="right-list-item">
                                 <Typography variant="overline" className={classes.info}> 
-                                    Now
+                                    IDK
                                 </Typography>
                             </li>
                             <li className="right-list-item">
@@ -84,6 +86,7 @@ function UserInvoice(props) {
                             </li>
                         </ul>
                     </div>
+
                     <Button variant="outlined" className={classes.paybutton}> 
                         Pay Invoice 
                     </Button>

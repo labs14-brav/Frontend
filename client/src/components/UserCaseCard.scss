@@ -1,7 +1,11 @@
 #case-label {
-    border-bottom: .5px solid #A3A2A2;
+    // border-bottom: .5px solid #A3A2A2;
     color: #A3A2A2;
     opacity: 50%;
+}
+#ribbon {
+    display: flex;
+    justify-content: right;
 }
  
     #case-description {
