@@ -6,7 +6,6 @@ import './Addendum.scss';
 
 function AddendumsList(props) {
     const [addendums, setAddendums] = useState([]);
-
     useEffect(() => {
         axioswithAuth().get(`${process.env.REACT_APP_API_URL}/cases/${props.case.id}/addendums`)
         .then(res => {

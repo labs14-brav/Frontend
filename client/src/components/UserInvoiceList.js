@@ -5,7 +5,6 @@ import UserInvoice from './UserInvoice';
 
 function UserInvoiceList(props) {
     const [invoices, setInvoices] = useState([]);
-    console.log('UserInvoiceList');
 
     //grab invoices from server
     async function fetchInvoices() {
@@ -15,7 +14,6 @@ function UserInvoiceList(props) {
 
     useEffect(() => {
         fetchInvoices();
-        console.log('Invoice List useEffect');
     }, [])
 
     return(
