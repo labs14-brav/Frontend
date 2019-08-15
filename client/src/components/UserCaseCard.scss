@@ -4,8 +4,10 @@
     opacity: 50%;
 }
 #ribbon {
-    display: flex;
-    justify-content: right;
+    background-color: rgb(226, 223, 223);
+    border-radius: 3px;
+    text-align: end;
+    width: 50%;
 }
  
     #case-description {

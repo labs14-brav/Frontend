@@ -75,12 +75,12 @@ const useStyles = makeStyles(theme => ({
         }
     },
     paper: {
-        height: '400px',
+        height: '310px',
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 2),
         outline: 'none',
-        display: "flex",
+        // display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "center",
@@ -124,12 +124,12 @@ const UserCaseCard = (props) => {
                 md={props.numCases === 1 ? 12 : 5} 
                 lg={props.numCases === 1 ? 12 : 5.5}>
                 <Card className={classes.paper}> 
-                    <h5 id="ribbon">Court Case</h5>
+                    <h6 id="ribbon">Court Case</h6>
                     <CardContent style={{width:'100%'}}>
-                            <h6 id="case-label" style={{fontSize: "0.8rem"}}>Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
-                            <h5 id="case-dispute" style={{fontSize: "1rem", bottomMargin: "3px"}}>{props.case.dispute_category}</h5>
-                            <h6 id="case-label" style={{fontSize: "0.8rem", marginTop: "15px"}} >Dispute <FontAwesomeIcon icon={faUsers} /> Participants</h6>
-                            <h5 id="case-parties" style={{fontSize: "1rem"}}>{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
+                            <h6 id="case-label">Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
+                            <h5 id="case-dispute">{props.case.dispute_category}</h5>
+                            <h6 id="case-label" >Dispute <FontAwesomeIcon icon={faUsers} /> Participants</h6>
+                            <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
                     </CardContent>
                     <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
                         <Button variant="outlined" color="primary" className={classes.primarybutton}>

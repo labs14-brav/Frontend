@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PayInvoiceButton from './PayInvoiceButton';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -27,6 +29,7 @@ const useStyles = makeStyles(theme => ({
     },
     info: { 
         fontSize: '16px',
+        fontWeight: 500,
     },
     }))
 
@@ -71,25 +74,22 @@ function UserInvoice(props) {
                         <ul className="right-list">
                             <li className="right-list-item">
                                 <Typography variant="overline" className={classes.info}> 
-                                    IDK
+                                    12/25/2019
                                 </Typography>
                             </li>
                             <li className="right-list-item">
                                 <Typography variant="overline" className={classes.info}> 
-                                    Many
+                                    24
                                 </Typography>
                             </li>
                             <li className="right-list-item">
                                 <Typography variant="overline" className={classes.info}> 
-                                    Too Much
+                                    355
                                 </Typography>
                             </li>
                         </ul>
                     </div>
-
-                    <Button variant="outlined" className={classes.paybutton}> 
-                        Pay Invoice 
-                    </Button>
+                    <PayInvoiceButton />
                 </div>
             </CardContent>
         </Card>
