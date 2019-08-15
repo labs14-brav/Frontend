@@ -20,7 +20,7 @@ function AddendumsList(props) {
         if (addendums.length === 0) {
             return(
                 <>
-                <h3 id="addendums-blank"> This case has no additional details to view. </h3>
+                <h5 id="addendums-blank"> This case has no additional details to view. </h5>
                 </>
             )
         } else {

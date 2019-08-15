@@ -16,6 +16,9 @@
     }
     .table {
         flex-direction: row;
+        @media (max-width: '768px') {
+            padding-bottom: 20px;
+        }
         #left {
             margin-left: 20px;
             border-left: 5px ridge #A3A2A2;

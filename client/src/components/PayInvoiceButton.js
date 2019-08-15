@@ -1,6 +1,9 @@
 import React from 'react';
 import moment from 'moment';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faMoneyBill} from '@fortawesome/free-solid-svg-icons';
+
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -30,10 +33,10 @@ function PayInvoiceButton(props) {
       );
 
 //conditionally render button based on whether the invoice has been paid or not.
-    if(props.invoice.paid_at === null) {
+    if (props.invoice.paid_at === null) {
         return(
             <Button variant="outlined" className={classes.paybutton}>
-               Pay Invoice
+               Pay Invoice <FontAwesomeIcon icon={faMoneyBill} pull="right" size="2x"/>
            </Button>
             )
     } else {
@@ -41,6 +44,7 @@ function PayInvoiceButton(props) {
             <div className={classes.paidcontainer}>
             <Typography className={classes.paidtext} variant="h6"> Invoice paid </Typography>
             <Typography className={classes.paidtext} variant="overline">{timeStamp}</Typography>
+            <FontAwesomeIcon icon={faCheck} color='#73b816'/>
             </div>
         )
     }
