@@ -2,28 +2,154 @@
  * Dependencies
  */
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { DeactivateAccountButton } from "../components/index";
+import { Link } from "react-router-dom";
+import { makeStyles, Card } from "@material-ui/core";
+import { BecomeMediatorLink } from "./styles/index";
+
+/**
+ * Define view
+ */
+
+const useStyles = makeStyles(() => ({
+    container: {
+        marginTop: "70px",
+        paddingTop: "20px",
+        maxWidth: "800px",
+        margin: "0 auto",
+        color: "grey",
+        width: "95%"
+    },
+    cardContainer: {
+        maxWidth: "800px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        overflowX: "hidden",
+        overflowY: "hidden"
+    },
+    card: {
+        maxWidth: "800px",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "center",
+        minHeight: "200px",
+        margin: "10px",
+        padding: "30px"
+    },
+    title: {
+        color: "black"
+    },
+    cardTitle: {
+        display: "flex",
+        justifyContent: "flex-start",
+        width: "100%",
+        margin: "0",
+        flexDirection: "column"
+    },
+    divider: {
+        border: ".5px solid lightgrey",
+        width: "100%",
+        margin: "0px",
+        marginTop: "10px"
+    },
+    cardContent: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        width: "100%",
+        margin: "30px 0px",
+        color: "grey",
+        minHeight: "80px"
+    },
+    text: {
+        margin: "20px 0px"
+    },
+    link: {
+        color: "#FFF",
+        backgroundColor: "#5C90C1",
+        boxShadow:
+            "0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)",
+        padding: "2px 6px",
+        lineHeight: "1.75",
+        fontWeight: 500,
+        borderRadius: "4px",
+        width: "180px",
+        margin: "0 auto",
+        textAlign: "center",
+        height: "40px",
+        "&:hover": {
+            backgroundColor: "#507ca6",
+            color: "green"
+        },
+        "&:active": {
+            color: "white",
+            boxShadow:
+                "0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12)"
+        },
+        textDecoration: "none"
+    },
+    image: {
+        height: "350px",
+        width: "auto"
+    }
+}));
 
 /**
  * Define view
  */
 
 function NoMatch() {
-  return (
-    <div className="container">
-      <div className="row mx-auto">
-        <div className="col-12">
-          <div className="alert alert-danger my-4" role="alert">
-            Page Not Found
-          </div>
+    const classes = useStyles();
+    const userType = localStorage.getItem("type");
 
-          <Link to="/" className="btn btn-md btn-primary">Return to main page</Link>
+    return (
+        <div className={classes.container}>
+            {/* <h3 className={classes.title}>404 Page Not Found</h3>
+            <p>The requested page does not exist</p> */}
+            <section className={classes.cardContainer}>
+                {/* <h1>404 Page Not Found</h1>
+                <strong></strong> */}
+                <Card className={classes.card}>
+                    <div className={classes.cardTitle}>
+                        <h1>404 Page Not Found</h1>
+                        <div className={classes.divider}> </div>
+                    </div>
+                    <div className={classes.cardContent}>
+                        <img
+                            className={classes.image}
+                            src={require("../images/shutterstock_774749455.jpg")}
+                        />
+                        <p className={classes.text}>
+                            You are getting this message beacause the page you
+                            requested does not exist. Click the button below to
+                            get redirected to the home page.
+                        </p>
+                        <Link
+                            style={{ color: "white" }}
+                            className={classes.link}
+                            to="/"
+                        >
+                            <p
+                                style={{
+                                    color: "white",
+                                    textJustify: "center",
+                                    marginTop: "4px"
+                                }}
+                            >
+                                TAKE ME HOME
+                            </p>
+                        </Link>
+                    </div>
+                </Card>
+            </section>
         </div>
-      </div>
-    </div>
-  )
-};
+    );
+}
 
 /**
  * Export view
