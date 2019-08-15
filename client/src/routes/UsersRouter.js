@@ -5,7 +5,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { PrivateRoute } from './helpers/index';
-import { Settings, MediatorRegistration, ErrorBoundary, AdminHome  } from '../views/index';
+import { Settings, MediatorRegistration, ErrorBoundary, StripeCheckout, AdminHome } from '../views/index';
 import uuid from 'uuid';
 
 /**
@@ -16,7 +16,8 @@ const UsersRouter = [
   <Route key={uuid.v4()} exact path='/users' render={() => <Redirect to='/' />} />,
   <Route key={uuid.v4()}  path='/users/settings' render={(props) => <Settings {...props} />} />,
   <Route key={uuid.v4()}  path='/users/mediator-registration' render={(props) => <MediatorRegistration {...props} />} />,
-  <PrivateRoute key={uuid.v4()}   path='/admin' component={AdminHome} errorBoundary={ErrorBoundary} />,
+  <PrivateRoute key={uuid.v4()} path='/stripe/checkout/:id' component={StripeCheckout} errorBoundary={ErrorBoundary} />,
+  <PrivateRoute key={uuid.v4()} path='/admin' component={AdminHome} errorBoundary={ErrorBoundary} />,
 ];
 
 /**

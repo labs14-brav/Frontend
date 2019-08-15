@@ -12,7 +12,7 @@ import StripeButton from "../components/StripeButton";
 function Testing() {
   return (
     <div style={{marginTop: "100px"}}>
-      <StripeButton invoice_id={1} />
+      <StripeButton invoice_id={3} />
     </div>
   )
 }
