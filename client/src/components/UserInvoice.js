@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
         width: '60%',
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 4),
+        padding: theme.spacing(1, 2, 2),
         outline: 'none',
         marginBottom: theme.spacing(1),
 
@@ -65,44 +65,44 @@ function UserInvoice(props) {
                         </Typography>
                     </div>
                     <div className="table">
-                    <div id="left">
-                        <ul className="left-list">
-                            <li className="left-list-item">
-                            <Typography variant="overline" className={classes.label}>
-                                Date
-                            </Typography >
-                            </li>
-                            <li className="left-list-item">
-                            <Typography variant="overline" className={classes.label}>
-                                Hours
-                            </Typography>
-                            </li>
-                            <li className="left-list-item">
-                            <Typography variant="overline" className={classes.label}>
-                                Total
-                            </Typography>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="right"> 
-                        <ul className="right-list">
-                            <li className="right-list-item">
-                                <Typography variant="overline" className={classes.info}> 
-                                    {timeStamp}
+                        <div id="left">
+                            <ul className="left-list">
+                                <li className="left-list-item">
+                                <Typography variant="overline" className={classes.label}>
+                                    Date
+                                </Typography >
+                                </li>
+                                <li className="left-list-item">
+                                <Typography variant="overline" className={classes.label}>
+                                    Hours
                                 </Typography>
-                            </li>
-                            <li className="right-list-item">
-                                <Typography variant="overline" className={classes.info}> 
-                                    {props.invoice.hours}
+                                </li>
+                                <li className="left-list-item">
+                                <Typography variant="overline" className={classes.label}>
+                                    Total
                                 </Typography>
-                            </li>
-                            <li className="right-list-item">
-                                <Typography variant="overline" className={classes.info}> 
-                                    {props.invoice.amount * props.invoice.hours}
-                                </Typography>
-                            </li>
-                        </ul>
-                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="right"> 
+                            <ul className="right-list">
+                                <li className="right-list-item">
+                                    <Typography variant="overline" className={classes.info}> 
+                                        {timeStamp}
+                                    </Typography>
+                                </li>
+                                <li className="right-list-item">
+                                    <Typography variant="overline" className={classes.info}> 
+                                        {props.invoice.hours}
+                                    </Typography>
+                                </li>
+                                <li className="right-list-item">
+                                    <Typography variant="overline" className={classes.info}> 
+                                        {props.invoice.amount * props.invoice.hours}
+                                    </Typography>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <PayInvoiceButton invoice={props.invoice} />

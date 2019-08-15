@@ -125,10 +125,11 @@ const UserCaseCard = (props) => {
                 lg={props.numCases === 1 ? 12 : 5.5}>
                 <Card className={classes.paper}> 
                     <h6 id="ribbon">Court Case</h6>
+                    {/* Use <Typography variant="overline />" */}
                     <CardContent style={{width:'100%'}}>
-                            <h6 id="case-label" style={{marginBottom:'8px', color: '#5C90C1'}}>Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
+                            <h6 id="case-label" style={{marginBottom:'8px', color: '#5C90C1', fontWeight: 'bold'}}>Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
                             <h5 id="case-dispute">{props.case.dispute_category}</h5>
-                            <h6 id="case-label" style={{marginTop:'18px'}} >Dispute <FontAwesomeIcon icon={faUsers} /> Participants</h6>
+                            <h6 id="case-label" style={{marginTop:'18px', fontWeight: 'bold'}} >Dispute <FontAwesomeIcon icon={faUsers} /> Participants</h6>
                             <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
                     </CardContent>
                     <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
@@ -165,9 +166,9 @@ const UserCaseCard = (props) => {
             <Card className={classes.paper}> 
                 <h6 id="ribbon" style={{width: '50%'}}>Non-Court Case</h6>
                 <CardContent style={{width:'100%'}}>
-                        <h6 id="case-label" style={{marginBottom:'8px'}}>Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
+                        <h6 id="case-label" style={{marginBottom:'8px', fontWeight: 'bold'}}>Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
                         <h5 id="case-dispute">{props.case.dispute_category}</h5>
-                        <h6 id="case-label" style={{marginTop:'18px'}}>Dispute <FontAwesomeIcon icon={faUsers} /> Participants</h6>
+                        <h6 id="case-label" style={{marginTop:'18px', fontWeight: 'bold'}}>Dispute <FontAwesomeIcon icon={faUsers} /> Participants</h6>
                         <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
                 </CardContent>
                 <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>

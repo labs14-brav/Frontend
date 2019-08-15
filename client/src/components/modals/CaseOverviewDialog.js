@@ -60,7 +60,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     card: {
-        maxWidth: "800px",
+        maxWidth: "600px",
         width: "100%",
         display: "flex",
         flexDirection: "column",
@@ -69,7 +69,6 @@ const useStyles = makeStyles(theme => ({
         minHeight: "200px",
         margin: "0 auto",
         padding: "30px",
-        border: "1px solid red",
     },
     divider: {
         border: ".5px solid lightgrey",
@@ -86,8 +85,8 @@ const useStyles = makeStyles(theme => ({
     },
     listItem: {
         display: "flex",
-        border: "1px solid blue",
-        width: "100%"
+        width: "100%",
+        justifyContent: "space-between",
     },
     cardContainer: {
         maxWidth: "800px",
@@ -97,6 +96,15 @@ const useStyles = makeStyles(theme => ({
         alignItems: "center",
         overflowX: "hidden",
         overflowY: "hidden"
+    },
+    cardContent: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        width: "100%",
+        margin: "30px 0px",
+        color: "grey",
+        minHeight: "80px"
     },
 }))
 
@@ -145,10 +153,10 @@ function CaseOverviewDialog(props) {
             <div className={classes.card}>
                 
                 <div className={classes.cardTitle}>
-                <strong>Case details</strong>
-
+                    <strong>Case details</strong>
                     <div className={classes.divider}> </div>
                 </div>
+                <div className={classes.cardContent}>
                 <div className={classes.listItem}>
                     <h5><FontAwesomeIcon icon={faFolder} /> Type</h5>
                     <p>{props.case.dispute_category}</p>
@@ -165,26 +173,29 @@ function CaseOverviewDialog(props) {
                     <h5><FontAwesomeIcon icon={faWallet} /> Dispute Amount</h5>
                     <p>{props.case.dispute_amount}</p>
                 </div>
-                {/* <div className={classes.listItem}>
+                <div className={classes.listItem}>
                     <h5>{props.case.court_case ? <FontAwesomeIcon icon={faLandmark} />:null}{props.case.court_case ? " Court Jurisdiction" : null}</h5>
                     <p>{props.case.court_case ? props.case.court_jurisdiction : null}</p>
-                </div> */}
-                <h5>{props.case.court_case ? <FontAwesomeIcon icon={faBalanceScale} />:null}{props.case.court_case ? " Court Number" : null}</h5>
-                <p>{props.case.court_case ? props.case.court_number : null}</p>
-                <h5>{props.case.court_case ? <FontAwesomeIcon icon={faCalendarDay} />:null}{props.case.court_case ? " Filing Date" : null}</h5>
-                <p>{props.case.court_case ? props.case.court_filing_date : null}</p>
+                </div>
                 <div className={classes.listItem}>
-                    <h5><FontAwesomeIcon icon={faBookOpen} /> Description</h5>  
+                    <h5>{props.case.court_case ? <FontAwesomeIcon icon={faBalanceScale} />:null}{props.case.court_case ? " Court Number" : null}</h5>
+                    <p>{props.case.court_case ? props.case.court_number : null}</p>
+                </div>
+                <div className={classes.listItem}>
+                    <h5>{props.case.court_case ? <FontAwesomeIcon icon={faCalendarDay} />:null}{props.case.court_case ? " Filing Date" : null}</h5>
+                    <p>{props.case.court_case ? props.case.court_filing_date : null}</p>
+                </div>
+                <div className={classes.listItem}>
+                    <h5><FontAwesomeIcon icon={faBookOpen} /> Description</h5> 
                     <p>{props.case.description}</p>
                 </div>
                 <h5>{props.case.court_case ? <FontAwesomeIcon icon={faClipboard} />:null}{props.case.court_case ?   " Case Notes" : null}</h5>
                 <p>{props.case.court_case ? props.case.case_notes : null}</p> 
                 </div>
+                </div>
                 <AddendumInvoiceTabs case={props.case}/>
             </div>
-            
         </Dialog>
-
         <AreYouSureDialog open={sureOpen} onClose={handleSureClose}/>
     </>
     )

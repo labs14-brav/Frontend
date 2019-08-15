@@ -1,5 +1,7 @@
 import React from 'react';
 import moment from 'moment';
+import axioswithAuth from '../helpers/axioswithAuth';
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faMoneyBill} from '@fortawesome/free-solid-svg-icons';
@@ -8,16 +10,19 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
+
+const stripe = window.Stripe(process.env.REACT_APP_STRIPE_KEY);
+
 const useStyles = makeStyles(theme => ({
     paybutton: {
-        margin: '0 auto',
+        // margin: '0 auto',
         padding: '10px',
         color: '#5C90C1',
         width: '150px',
         borderColor: "#5C90C1",
     },
     paidtext: {
-        margin: '0 auto',
+        // margin: '0 auto',
     },
     paidcontainer: {
         margin: '0 auto',
@@ -28,6 +33,20 @@ const useStyles = makeStyles(theme => ({
 function PayInvoiceButton(props) {
     const classes = useStyles();
 
+    const clickHandler = () => {
+        axioswithAuth().get(
+          `${process.env.REACT_APP_API_URL}/invoices/${props.invoice.id}/session`
+        ).then((result) => {
+          if (result && result.data && result.data.session && result.data.session.id) {
+            return stripe.redirectToCheckout({
+              sessionId: result.data.session.id
+            })
+          }
+        }).catch((err) => {
+          console.error(err)
+        })
+      };
+
     const timeStamp = moment(props.invoice.paid_at, "YYYY-MM-DD").format(
         "MMMM Do YYYY"
       );
@@ -35,7 +54,7 @@ function PayInvoiceButton(props) {
 //conditionally render button based on whether the invoice has been paid or not.
     if (props.invoice.paid_at === null) {
         return(
-            <Button variant="outlined" className={classes.paybutton}>
+            <Button variant="outlined" className={classes.paybutton} onClick={clickHandler}>
                Pay Invoice <FontAwesomeIcon icon={faMoneyBill} pull="right" size="2x"/>
            </Button>
             )

@@ -1,7 +1,7 @@
 #content-div {
     display: flex;
     flex-direction: row !important;
-    justify-content: flex-start !important;
+    justify-content: space-evenly !important;
     flex-wrap: nowrap;
     width: 100%;
 
@@ -20,7 +20,7 @@
             padding-bottom: 20px;
         }
         #left {
-            margin-left: 20px;
+            // margin-left: 20px;
             border-left: 5px ridge #A3A2A2;
         .left-list {
             width: 100%;
@@ -40,7 +40,6 @@
         }
     }
     #right {
-            // padding-right: 30px;
             border-right: 5px groove #A3A2A2;
         .right-list-item {
             width: 100%;
