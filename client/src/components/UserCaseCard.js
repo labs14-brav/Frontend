@@ -75,12 +75,12 @@ const useStyles = makeStyles(theme => ({
         }
     },
     paper: {
-        height: '400px',
+        height: '101%',
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 4),
+        padding: theme.spacing(2, 4, 2),
         outline: 'none',
-        display: "flex",
+        // display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "center",
@@ -94,9 +94,6 @@ const useStyles = makeStyles(theme => ({
             height: '100%',
         },
       },
-    label: {
-        display: "inline-flex",
-    }
 }))
 
 
@@ -127,10 +124,12 @@ const UserCaseCard = (props) => {
                 md={props.numCases === 1 ? 12 : 5} 
                 lg={props.numCases === 1 ? 12 : 5.5}>
                 <Card className={classes.paper}> 
+                    <h6 id="ribbon">Court Case</h6>
+                    {/* Use <Typography variant="overline />" */}
                     <CardContent style={{width:'100%'}}>
-                            <h6 id="case-label">Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
+                            <h6 id="case-label" style={{marginBottom:'8px', color: '#5C90C1', fontWeight: 'bold'}}>Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
                             <h5 id="case-dispute">{props.case.dispute_category}</h5>
-                            <h6 id="case-label">Dispute <FontAwesomeIcon icon={faUsers} /> Participants</h6>
+                            <h6 id="case-label" style={{marginTop:'18px', fontWeight: 'bold'}} >Dispute <FontAwesomeIcon icon={faUsers} /> Participants</h6>
                             <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
                     </CardContent>
                     <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
@@ -158,40 +157,43 @@ const UserCaseCard = (props) => {
     )
     } else {
         return (
-            <>
-                <Grid 
-                    item xs={11} 
-                    sm={11} 
-                    md={props.numCases === 1 ? 12 : 5} 
-                    lg={props.numCases === 1 ? 12 : 5}>
-                    <Card className={classes.paper}> 
-                        <CardContent style={{width:'100%'}}>
-                            <h6 id="case-label">Dispute Category</h6>
-                            <h5 id="case-dispute">{props.case.dispute_category}</h5>
-                            <h6 id="case-label">Dispute Participants</h6>
-                            <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
-                        </CardContent>
-                        <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
-                            <Button variant="outlined" color="primary" className={classes.primarybutton}>
-                                <Link style={{textDecoration:'none', color:'inherit'}} 
-                                to= {{
-                                    pathname: `/cases/${props.case.id}/mediator-search`,
-                                    state: {
-                                        currentcase: props.case
-                                    }
-                                }}
-                                > Find a Mediator </Link>
-                            </Button>
-                            <Button className={classes.secondarybutton} onClick={handlefullOpen} variant="outlined">
-                                View Details
-                            </Button>
-                        </CardActions>
-                    </Card>
-                </Grid>
+        <>
+        <Grid 
+            item xs={11} 
+            sm={11} 
+            md={props.numCases === 1 ? 12 : 5} 
+            lg={props.numCases === 1 ? 12 : 5.5}>
+            <Card className={classes.paper}> 
+                <h6 id="ribbon" style={{width: '50%'}}>Non-Court Case</h6>
+                <CardContent style={{width:'100%'}}>
+                        <h6 id="case-label" style={{marginBottom:'8px', fontWeight: 'bold'}}>Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
+                        <h5 id="case-dispute">{props.case.dispute_category}</h5>
+                        <h6 id="case-label" style={{marginTop:'18px', fontWeight: 'bold'}}>Dispute <FontAwesomeIcon icon={faUsers} /> Participants</h6>
+                        <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
+                </CardContent>
+                <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
+                    <Button variant="outlined" color="primary" className={classes.primarybutton}>
+                        <Link style={{textDecoration:'none', color:'inherit'}} 
+                        to= {{
+                            pathname: `/cases/${props.case.id}/mediator-search`,
+                            state: {
+                                currentcase: props.case
+                            }
+                        }}
+                        ><FontAwesomeIcon icon={faSearch} />  Find a Mediator</Link>
+                    </Button>
+                    <Button className={classes.secondarybutton} onClick={handlefullOpen} variant="outlined">
+                    <FontAwesomeIcon icon={faChalkboardTeacher} style={{marginRight: '5px'}} />                        View Details </Button>
+                </CardActions>
+            </Card>
+        </Grid>
+
+
+    <CaseOverviewDialog case={props.case} open={fullopen} handleClose={handlefullClose} fetchCases={props.fetchCases}/>
     
-            <CaseOverviewDialog case={props.case} open={fullopen} handleClose={handlefullClose} fetchCases={props.fetchCases}/>  
-        </>
-        )
+    
+</>
+)
     }           
 }
 

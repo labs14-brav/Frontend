@@ -51,7 +51,6 @@ const useStyles = makeStyles(theme => ({
         color: '#E55557',
         borderColor: '#E55557',
         alignSelf:'flexEnd',
-
     },
     modal: {
         margin: '0 auto',
@@ -60,26 +59,53 @@ const useStyles = makeStyles(theme => ({
             width: '90%',
         }
     },
-    paper: {
-        height: '400px',
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 4),
-        outline: 'none',
+    card: {
+        maxWidth: "600px",
+        width: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "center",
-        [theme.breakpoints.down('md')]: {
-            width: '100%',
-            height: '100%',
-        },
-        [theme.breakpoints.down('sm')]: {
-            padding: theme.spacing(1,2,2),
-            width:'100%',
-            height: '100%',
-        },
-      },
+        minHeight: "200px",
+        margin: "0 auto",
+        padding: "30px",
+    },
+    divider: {
+        border: ".5px solid lightgrey",
+        width: "100%",
+        margin: "0px",
+        marginTop: "10px"
+    },
+    cardTitle: {
+        display: "flex",
+        justifyContent: "flex-start",
+        width: "100%",
+        margin: "0",
+        flexDirection: "column"
+    },
+    listItem: {
+        display: "flex",
+        width: "100%",
+        justifyContent: "space-between",
+    },
+    cardContainer: {
+        maxWidth: "800px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        overflowX: "hidden",
+        overflowY: "hidden"
+    },
+    cardContent: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        width: "100%",
+        margin: "30px 0px",
+        color: "grey",
+        minHeight: "80px"
+    },
 }))
 
 function CaseOverviewDialog(props) {
@@ -115,7 +141,6 @@ function CaseOverviewDialog(props) {
 
         <Dialog fullScreen open={props.open} onClose={props.handleClose}>
             <Toolbar >
-              
                 <IconButton edge="end" onClick={props.handleClose}>
                     <CloseIcon /> 
                 </IconButton>
@@ -125,36 +150,52 @@ function CaseOverviewDialog(props) {
           
             </Toolbar>
             <div>
-            <div className="caseDetails">
-                <div className="general">
+            <div className={classes.card}>
+                
+                <div className={classes.cardTitle}>
+                    <strong>Case details</strong>
+                    <div className={classes.divider}> </div>
+                </div>
+                <div className={classes.cardContent}>
+                <div className={classes.listItem}>
                     <h5><FontAwesomeIcon icon={faFolder} /> Type</h5>
                     <p>{props.case.dispute_category}</p>
+                </div>
+                <div className={classes.listItem}>
                     <h5><FontAwesomeIcon icon={faUserFriends} /> Parties Involved</h5>
                     <p>{props.case.parties_involved}</p>
+                </div>
+                <div className={classes.listItem}>
                     <h5><FontAwesomeIcon icon={faIdCardAlt} /> Parties' Contact Info</h5>
                     <p>{props.case.parties_contact_info}</p>
+                </div>
+                <div className={classes.listItem}>
                     <h5><FontAwesomeIcon icon={faWallet} /> Dispute Amount</h5>
                     <p>{props.case.dispute_amount}</p>
+                </div>
+                <div className={classes.listItem}>
                     <h5>{props.case.court_case ? <FontAwesomeIcon icon={faLandmark} />:null}{props.case.court_case ? " Court Jurisdiction" : null}</h5>
                     <p>{props.case.court_case ? props.case.court_jurisdiction : null}</p>
+                </div>
+                <div className={classes.listItem}>
                     <h5>{props.case.court_case ? <FontAwesomeIcon icon={faBalanceScale} />:null}{props.case.court_case ? " Court Number" : null}</h5>
                     <p>{props.case.court_case ? props.case.court_number : null}</p>
+                </div>
+                <div className={classes.listItem}>
                     <h5>{props.case.court_case ? <FontAwesomeIcon icon={faCalendarDay} />:null}{props.case.court_case ? " Filing Date" : null}</h5>
                     <p>{props.case.court_case ? props.case.court_filing_date : null}</p>
- 
                 </div>
-                <div className="description"> 
-                    <h5><FontAwesomeIcon icon={faBookOpen} /> Description</h5>  
+                <div className={classes.listItem}>
+                    <h5><FontAwesomeIcon icon={faBookOpen} /> Description</h5> 
                     <p>{props.case.description}</p>
-                    <h5>{props.case.court_case ? <FontAwesomeIcon icon={faClipboard} />:null}{props.case.court_case ?   " Case Notes" : null}</h5>
-                    <p>{props.case.court_case ? props.case.case_notes : null}</p>
-                </div>     
+                </div>
+                <h5>{props.case.court_case ? <FontAwesomeIcon icon={faClipboard} />:null}{props.case.court_case ?   " Case Notes" : null}</h5>
+                <p>{props.case.court_case ? props.case.case_notes : null}</p> 
+                </div>
+                </div>
+                <AddendumInvoiceTabs case={props.case}/>
             </div>
-            <AddendumInvoiceTabs case={props.case}/>
-            </div>
-            
         </Dialog>
-
         <AreYouSureDialog open={sureOpen} onClose={handleSureClose}/>
     </>
     )

@@ -6,7 +6,6 @@ import './Addendum.scss';
 
 function AddendumsList(props) {
     const [addendums, setAddendums] = useState([]);
-
     useEffect(() => {
         axioswithAuth().get(`${process.env.REACT_APP_API_URL}/cases/${props.case.id}/addendums`)
         .then(res => {
@@ -20,7 +19,7 @@ function AddendumsList(props) {
         if (addendums.length === 0) {
             return(
                 <>
-                <h3 id="addendums-blank"> This case has no additional details to view. </h3>
+                <h5 id="addendums-blank"> This case has no additional details to view. </h5>
                 </>
             )
         } else {

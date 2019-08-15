@@ -1,7 +1,25 @@
 #case-label {
-    border-bottom: .5px solid #A3A2A2;
-    color: #A3A2A2;
+    // border-bottom: .5px solid #A3A2A2;
+    color: #5C90C1;
     opacity: 50%;
+}
+#ribbon {
+    background-color: rgb(226, 223, 223);
+    border-radius: 8px;
+    text-align: center;
+    width: 40%;
+    margin-left: auto;
+    position: relative;
+    right: -39px;
+    padding: 5px 0 5px 0;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    font-weight: bolder;
+
+    @media (max-width: '812px') {
+        right: -20px;
+        font-size: 14px;
+    }
 }
  
     #case-description {

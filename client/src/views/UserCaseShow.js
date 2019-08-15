@@ -11,6 +11,8 @@ import Button from '@material-ui/core/Button';
  * Import styles
  */
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
  import './UserCaseShow.scss';
 
 /**
@@ -48,7 +50,7 @@ const UserCaseShow = props => {
 
   return (
     <div style={{paddingTop:"100px",overflowX:"hidden",overflowY:"hidden",paddingBottom:"10px"}} className="cases-container">
-      <Button className={classes.caseButton} variant="outlined" onClick={buttonHandler}>Create a Case</Button>
+      <Button className={classes.caseButton} variant="outlined" onClick={buttonHandler}><FontAwesomeIcon icon={faPlusSquare} size="2x" pull="left"/>  Create a Case</Button>
       <UserCaseList />
     </div>
   )
