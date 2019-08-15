@@ -1,30 +1,40 @@
-import React, { useEffect } from "react";
-// import { stripe } from "../helpers";
+/**
+ * Dependencies
+ */
+
+import React, { useEffect } from 'react';
+import axioswithAuth from '../helpers/axioswithAuth';
+
+/**
+ * Initialize stripe
+ */
 
 const stripe = window.Stripe(process.env.REACT_APP_STRIPE_KEY);
 
-export default function StripeButton() {
-    useEffect(() => {
-        // const stripe = Stripe(process.env.REACT_APP_STRIPE_KEY);
-        // export default stripe;
-    });
+/**
+ * Define component
+ */
 
-    const clickHandler = () => {
-        stripe
-            .redirectToCheckout({
-                sessionId:
-                    "cs_test_Fs9EUq0sWkkqeUU1o4VsC9aLNWkmzEeek1zRjUrjcPtAEPb5f8LgwyEF"
-            })
-            .then(function(result) {
-                // If `redirectToCheckout` fails due to a browser or network
-                // error, display the localized error message to your customer
-                // using `result.error.message`.
-                console.error("result", result);
-            })
-            .catch(function(err) {
-                console.error("err", err);
-            });
-    };
+function StripeButton(props) {
+  const clickHandler = () => {
+    axioswithAuth().get(
+      `${process.env.REACT_APP_API_URL}/invoices/${props.invoice_id}/session`
+    ).then((result) => {
+      if (result && result.data && result.data.session && result.data.session.id) {
+        return stripe.redirectToCheckout({
+          sessionId: result.data.session.id
+        })
+      }
+    }).catch((err) => {
+      console.error(err)
+    })
+  };
 
-    return <button onClick={clickHandler}>Checkout</button>;
+  return <button onClick={clickHandler}>Checkout</button>;
 }
+
+/**
+ * Export component
+ */
+
+export default StripeButton;

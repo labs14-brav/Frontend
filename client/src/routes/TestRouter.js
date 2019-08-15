@@ -3,16 +3,18 @@
  */
 
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { PrivateRoute } from './helpers/index';
-import { Search, ErrorBoundary } from '../views/index';
+import Testing from '../views/Testing';
 import uuid from 'uuid';
 
 /**
  * Define router
  */
 
-const TestRouter = [];
+const TestRouter = [
+  <Route key={uuid.v4()} exact path="/test" component={Testing} />
+];
 
 /**
  * Export router
