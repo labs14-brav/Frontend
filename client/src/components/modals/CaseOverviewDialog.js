@@ -51,7 +51,6 @@ const useStyles = makeStyles(theme => ({
         color: '#E55557',
         borderColor: '#E55557',
         alignSelf:'flexEnd',
-
     },
     modal: {
         margin: '0 auto',
@@ -115,7 +114,6 @@ function CaseOverviewDialog(props) {
 
         <Dialog fullScreen open={props.open} onClose={props.handleClose}>
             <Toolbar >
-              
                 <IconButton edge="end" onClick={props.handleClose}>
                     <CloseIcon /> 
                 </IconButton>

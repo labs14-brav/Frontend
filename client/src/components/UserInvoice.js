@@ -74,17 +74,17 @@ function UserInvoice(props) {
                         <ul className="right-list">
                             <li className="right-list-item">
                                 <Typography variant="overline" className={classes.info}> 
-                                    12/25/2019
+                                    {props.invoice.created_at}
                                 </Typography>
                             </li>
                             <li className="right-list-item">
                                 <Typography variant="overline" className={classes.info}> 
-                                    24
+                                    {props.invoice.hours}
                                 </Typography>
                             </li>
                             <li className="right-list-item">
                                 <Typography variant="overline" className={classes.info}> 
-                                    355
+                                    {props.invoice.amount * props.invoice.hours}
                                 </Typography>
                             </li>
                         </ul>

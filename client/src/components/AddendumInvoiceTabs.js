@@ -129,7 +129,7 @@ export default function AddendumInvoiceTabs(props) {
         <AddendumsList case={props.case}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-            <UserInvoiceList />
+            <UserInvoiceList case = {props.case}/>
       </TabPanel>
 
 

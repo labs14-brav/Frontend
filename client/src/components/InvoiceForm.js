@@ -112,7 +112,7 @@ const InvoiceForm = props => {
         e.preventDefault();
 
         let posted = await axioswithAuth()
-            .post(`/invoices/${props.caseId}/invoice`, form)
+            .post(`/invoices/case/${props.caseId}`, form)
             .then(res => {
                 console.log("add new case: ", res.data);
                 if (process.env.NODE_ENV === "production") {
@@ -147,7 +147,7 @@ const InvoiceForm = props => {
             >
                 <TextField
                     className={classes.textField}
-                    label="Hours"
+                    label="Hours Billed"
                     type="email"
                     name="hours"
                     margin="normal"
@@ -159,7 +159,7 @@ const InvoiceForm = props => {
 
                 <TextField
                     className={classes.textField}
-                    label="Rate"
+                    label="Total Amount Due"
                     value={form.amount}
                     name="amount"
                     onChange={handleChange("amount")}
@@ -181,16 +181,16 @@ const InvoiceForm = props => {
             <SimpleDialog
                 open={open}
                 onClose={handleClose}
-                titleText={"Case created"}
+                titleText={"Invoice created"}
                 bodyText={""}
-                redirect={"/cases"}
-                redirectText={"Cases"}
+                redirect={"/mediator-cases"}
+                redirectText={"Mediator Cases"}
             />
 
             <SimpleDialog
                 open={errorOpen}
                 onClose={handleErrorClose}
-                titleText={"Error creating case"}
+                titleText={"Error creating invoice"}
                 bodyText={"Please try again"}
                 redirect={""}
                 redirectText={""}

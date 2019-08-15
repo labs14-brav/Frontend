@@ -31,7 +31,7 @@ function PayInvoiceButton(props) {
         return(
             <div className={classes.paidcontainer}>
                <Typography className={classes.paidtext} variant="h6"> Invoice paid </Typography>
-               <Typography classname={classes.paidtext} variant="overline">Date</Typography>
+               <Typography className={classes.paidtext} variant="overline">Date</Typography>
             </div>
             )
     } else {
