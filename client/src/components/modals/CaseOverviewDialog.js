@@ -62,7 +62,7 @@ const useStyles = makeStyles(theme => ({
     },
     card: {
         width: "100%",
-        maxWidth: "1000px",
+        maxWidth: "1200px",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
@@ -113,7 +113,10 @@ const useStyles = makeStyles(theme => ({
         margin: "30px 0px",
         color: "grey",
         minHeight: "80px",
-        height: "100%"
+        height: "100%",
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: "column"
+        }
     },
     tags: {
         display: "flex",
@@ -143,17 +146,23 @@ const useStyles = makeStyles(theme => ({
     },
     description: {
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "start",
         alignItems: "center",
         flexDirection: "column",
-        width: "70%"
+        width: "60%",
+        [theme.breakpoints.down('sm')]: {
+            width: "100%"
+        }
     },
     cardSection: {
         display: "flex",
         flexDirection: "column",
-        width: "30%",
+        width: "40%",
         justifyContent: "center",
-        alignItems: "flex-start"
+        alignItems: "flex-start",
+        [theme.breakpoints.down('sm')]: {
+            width: "100%",
+        }
 
     },
     listItemDescription: {
@@ -161,7 +170,13 @@ const useStyles = makeStyles(theme => ({
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "0px 20px"
+        padding: "0px 20px",
+        [theme.breakpoints.down('sm')]: {
+            width: "100%",
+            padding: 0,
+            margin: "0 20px",
+
+        }
     }
 }))
 
@@ -220,7 +235,6 @@ function CaseOverviewDialog(props) {
                     <div className={classes.cardTitle}>
                         <div className={classes.tags}>
                             <p className={classes.timeStamp}>{timeStamp}</p>
-                            {/* <strong className={classes.tag}>{props.case.dispute_category}</strong> */}
                         </div>
                         <div className={classes.divider}> </div>
                     </div>
@@ -253,21 +267,27 @@ function CaseOverviewDialog(props) {
                                 <p>{props.case.dispute_amount}</p>
                             </div>
 
-                            <div className={classes.listItem}>
-                                {/* {props.case.court_case ? <FontAwesomeIcon icon={faLandmark} />:null} */}
-                                <strong>{props.case.court_case ? "Court Jurisdiction" : null}</strong>
-                                <p>{props.case.court_case ? props.case.court_jurisdiction : null}</p>
-                            </div>
-                            <div className={classes.listItemGrey}>
-                                {/* {props.case.court_case ? <FontAwesomeIcon icon={faBalanceScale} />:null} */}
-                                <strong>{props.case.court_case ? "Court Number" : null}</strong>
-                                <p>{props.case.court_case ? props.case.court_number : null}</p>
-                            </div>
-                            <div className={classes.listItem}>
-                                {/* {props.case.court_case ? <FontAwesomeIcon icon={faCalendarDay} />:null} */}
-                                <strong>{props.case.court_case ? "Filing Date" : null}</strong>
-                                <p>{props.case.court_case ? props.case.court_filing_date : null}</p>
-                            </div>
+                            {props.case.court_case ? 
+                                <>
+                                <div className={classes.listItem}>
+                                    {/* {props.case.court_case ? <FontAwesomeIcon icon={faLandmark} />:null} */}
+                                    <strong>Court Jurisdiction</strong>
+                                    <p>{props.case.court_case ? props.case.court_jurisdiction : null}</p>
+                                </div>
+                            
+                                <div className={classes.listItemGrey}>
+                                    {/* {props.case.court_case ? <FontAwesomeIcon icon={faBalanceScale} />:null} */}
+                                    <strong>Court Number</strong>
+                                    <p>{props.case.court_number}</p>
+                                </div>
+
+                                <div className={classes.listItem}>
+                                    {/* {props.case.court_case ? <FontAwesomeIcon icon={faCalendarDay} />:null} */}
+                                    <strong>{props.case.court_case ? "Filing Date" : null}</strong>
+                                    <p>{props.case.court_filing_date}</p>
+                                </div>
+                                </>
+                            : null}
                         </div>
                         
                         {/* <FontAwesomeIcon icon={faBookOpen} /> */}
@@ -280,11 +300,13 @@ function CaseOverviewDialog(props) {
                                 <strong> Description</strong> 
                                 <p>{props.case.description}</p>
                             </div>
-                            <div className={classes.listItemDescription}>
-                                {/* {props.case.court_case ? <FontAwesomeIcon icon={faClipboard} />:null} */}
-                                <strong>{props.case.court_case ?   "Case Notes" : null}</strong>
-                                <p>{props.case.court_case ? props.case.case_notes : null}</p> 
-                            </div>
+                            {props.case.court_case ?
+                                <div className={classes.listItemDescription}>
+                                    {/* {props.case.court_case ? <FontAwesomeIcon icon={faClipboard} />:null} */}
+                                    <strong>Case Notes</strong>
+                                    <p>{props.case.case_notes}</p> 
+                                </div>
+                            : null}
                         </div>
                     </div>
 
