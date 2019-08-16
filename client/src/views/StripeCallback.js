@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import axioswithAuth from "../helpers/axioswithAuth";
 import Loader from "react-loader-spinner";
 
-export default function StripeCallback() {
+export default function StripeCallback(props) {
     useEffect(() => {
         const getCode = new URLSearchParams(window.location.search);
         const code = getCode.get("code");
@@ -14,6 +14,7 @@ export default function StripeCallback() {
             .catch(err => {
                 console.error(err);
             });
+            window.location = '/mediator-cases'
     });
 
     return (

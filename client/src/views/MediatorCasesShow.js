@@ -5,6 +5,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import axioswithAuth from '../helpers/axioswithAuth';
 
 import "./MediatorCasesShow.scss";
 
@@ -114,7 +115,11 @@ export default function MediatorCasesShow() {
         if (newValue === 2) setSelectedTab("completed");
     }
 
-    if (true) {
+    useEffect(() => {
+       
+    }, [])
+
+    if (localStorage.getItem("is_stripe_connected") == true) {
         return (
             <MediatorCasesShowStyle>
                 <NavTabs

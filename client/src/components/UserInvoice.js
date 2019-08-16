@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
         width: '60%',
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
-        padding: theme.spacing(1, 2, 2),
+        padding: theme.spacing(2),
         outline: 'none',
         marginBottom: theme.spacing(1),
 
@@ -30,6 +30,7 @@ const useStyles = makeStyles(theme => ({
         },
     content: { 
         width: '100%',
+        //last child has 24px bottom padding instead of 16px 
         [theme.breakpoints.down('md')]: {
             width: '100%',
             height: '100%',
@@ -98,7 +99,7 @@ function UserInvoice(props) {
                                 </li>
                                 <li className="right-list-item">
                                     <Typography variant="overline" className={classes.info}> 
-                                        {props.invoice.amount * props.invoice.hours}
+                                        {props.invoice.amount}
                                     </Typography>
                                 </li>
                             </ul>

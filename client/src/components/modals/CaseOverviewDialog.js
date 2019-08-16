@@ -3,6 +3,7 @@ import AddendumsList from '../AddendumsList'
 import AreYouSureDialog from './AreYouSureDialog';
 import axioswithAuth from '../../helpers/axioswithAuth';
 import AddendumInvoiceTabs from '../AddendumInvoiceTabs';
+import moment from "moment";
 
 /**
  * Material UI imports
@@ -88,6 +89,9 @@ const useStyles = makeStyles(theme => ({
         width: "100%",
         justifyContent: "space-between",
     },
+    listItemGrey: {
+        backgroundColor: "lightgrey"
+    },
     cardContainer: {
         maxWidth: "800px",
         display: "flex",
@@ -106,11 +110,19 @@ const useStyles = makeStyles(theme => ({
         color: "grey",
         minHeight: "80px"
     },
+    tags: {
+        display: "flex",
+        width: "100%",
+        justifyContent: "space-between"
+    }
 }))
 
 function CaseOverviewDialog(props) {
     const [sureOpen, setSureOpen] = useState(false);
     const classes = useStyles();
+    const timeStamp = moment(props.case.created_at, "YYYY-MM-DD HH:mm:ss").format(
+        "MMMM Do YYYY, h:mma"
+      );
 
     //These are for the delete confirmation modal
     const handleSureOpen = () => {
@@ -135,32 +147,42 @@ function CaseOverviewDialog(props) {
                 console.error(error);
             })
     }
+
+    useEffect(() => {
+        console.log("case object", props.case);
+          console.log(timeStamp);
+    });
     
     return(
         <>
 
         <Dialog fullScreen open={props.open} onClose={props.handleClose}>
             <Toolbar >
-                <IconButton edge="end" onClick={props.handleClose}>
-                    <CloseIcon /> 
-                </IconButton>
+               
                 <Button id="trashButton" className={classes.deletebutton} onClick={handleSureOpen} variant="outlined">
                     <DeleteIcon />
                 </Button>
+                <IconButton id="exitButton" edge="end" onClick={props.handleClose}>
+                    <CloseIcon /> 
+                </IconButton>
           
             </Toolbar>
             <div>
-            <div className={classes.card}>
+            <Card className={classes.card}>
                 
                 <div className={classes.cardTitle}>
-                    <strong>Case details</strong>
+                    <div className={classes.tags}>
+                        <strong>Case details</strong>
+                        <p>{timeStamp}</p>
+                        <p>{props.case.dispute_category}</p>
+                    </div>
                     <div className={classes.divider}> </div>
                 </div>
                 <div className={classes.cardContent}>
-                <div className={classes.listItem}>
+                {/* <div className={classes.listItem}>
                     <h5><FontAwesomeIcon icon={faFolder} /> Type</h5>
                     <p>{props.case.dispute_category}</p>
-                </div>
+                </div> */}
                 <div className={classes.listItem}>
                     <h5><FontAwesomeIcon icon={faUserFriends} /> Parties Involved</h5>
                     <p>{props.case.parties_involved}</p>
@@ -192,7 +214,7 @@ function CaseOverviewDialog(props) {
                 <h5>{props.case.court_case ? <FontAwesomeIcon icon={faClipboard} />:null}{props.case.court_case ?   " Case Notes" : null}</h5>
                 <p>{props.case.court_case ? props.case.case_notes : null}</p> 
                 </div>
-                </div>
+                </Card>
                 <AddendumInvoiceTabs case={props.case}/>
             </div>
         </Dialog>

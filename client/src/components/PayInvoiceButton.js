@@ -15,17 +15,19 @@ const stripe = window.Stripe(process.env.REACT_APP_STRIPE_KEY);
 
 const useStyles = makeStyles(theme => ({
     paybutton: {
-        // margin: '0 auto',
+        margin: '0 auto',
         padding: '10px',
         color: '#5C90C1',
         width: '150px',
         borderColor: "#5C90C1",
     },
     paidtext: {
-        // margin: '0 auto',
+        margin: '0 auto',
     },
     paidcontainer: {
         margin: '0 auto',
+        padding: '30px',
+        backgroundColor: '#ECF6FF',
     }
 }))
 
@@ -47,7 +49,7 @@ function PayInvoiceButton(props) {
         })
       };
 
-    const timeStamp = moment(props.invoice.paid_at, "YYYY-MM-DD").format(
+    const timeStamp = moment(props.invoice.paid_at).format(
         "MMMM Do YYYY"
       );
 

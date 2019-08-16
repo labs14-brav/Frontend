@@ -17,6 +17,7 @@
     .table {
         flex-direction: row;
         @media (max-width: '768px') {
+            padding-top: 20px;
             padding-bottom: 20px;
         }
         #left {
