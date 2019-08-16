@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
- import './UserCaseShow.scss';
+import './UserCaseShow.scss';
 
 /**
  * Define view
