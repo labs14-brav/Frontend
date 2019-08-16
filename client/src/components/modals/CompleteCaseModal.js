@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
@@ -57,15 +57,15 @@ const DialogTitle = withStyles(styles)(props => {
 });
 
 const OpenDialogueButton = withStyles(styles)(props => {
-    const { classes, onOpen } = props;
+    console.log('dialogue button', props);
     return (
         <Button
             variant="outlined"
             color="primary"
-            className={classes.openButton}
-            onClick={onOpen}
+            // className={classes.openButton}
+            onClick={props.handlecompleteOpen}
         >
-            Complete
+            Complete Case
         </Button>
     );
 });
@@ -83,54 +83,42 @@ const DialogActions = withStyles(theme => ({
     }
 }))(MuiDialogActions);
 
-class CompleteCaseModal extends React.Component {
-    state = {
-        open: false
-    };
-
-    handleClickOpen = () => {
-        this.setState({
-            open: true
-        });
-    };
-    
-    handleClose = (caseId) => {
+function CompleteCaseModal (props){
+    console.log(props);
+   const handleSubmit = (caseId) => {
         console.log('Case id', caseId);
         axioswithAuth()
         .put(`/cases/${caseId}/case-request-completed`)
         .then((res) => {
-            this.setState({ open: false });
-            this.props.fetchCases();
+            console.log(res);
         })
         .catch((err) => {
             console.log(err);
        });
-    };
 
-    render() {
+    };
         return (
             <>
-                <OpenDialogueButton onOpen={this.handleClickOpen} />
+                <OpenDialogueButton handlecompleteOpen={props.handlecompleteOpen} />
                 <Dialog
-                    onClose={this.handleClose}
+                    onClose={props.handleClose}
                     aria-labelledby="customized-dialog-title"
-                    open={this.state.open}
+                    open={props.completeopen}
                 >
                     <DialogTitle
                         id="customized-dialog-title"
-                        onClose={this.handleClose}
+                        onClose={props.handleClose}
                     >
-                        Are you sure?
+                        Are you sure you want to complete this case?
                     </DialogTitle>
-                        <Button onClick={() => this.handleClose(this.props.caseId)} color="primary">
-                            Yes, Complete
+                        <Button onClick={() => this.handleSubmit(this.props.caseId)} color="primary">
+                            Yes, complete the case.
                         </Button>
                     <DialogActions>
                     </DialogActions>
                 </Dialog>
             </>
         );
-    }
 }
 
 export default CompleteCaseModal;

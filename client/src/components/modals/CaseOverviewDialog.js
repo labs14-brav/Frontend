@@ -62,13 +62,14 @@ const useStyles = makeStyles(theme => ({
     },
     card: {
         width: "100%",
+        maxWidth: "1000px",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
         minHeight: "200px",
         margin: "0 auto",
         padding: "30px",
-        border: "1px solid red"
+        flexDirection: "column"
     },
     divider: {
         border: ".5px solid lightgrey",
@@ -105,8 +106,7 @@ const useStyles = makeStyles(theme => ({
     },
     cardContent: {
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
+        justifyContent: "center",
         width: "100%",
         margin: "30px 0px",
         color: "grey",
@@ -115,7 +115,7 @@ const useStyles = makeStyles(theme => ({
     tags: {
         display: "flex",
         width: "100%",
-        justifyContent: "space-between",
+        justifyContent: "flex-end",
         alignItems: "center"
     },
     tag: {
@@ -143,7 +143,23 @@ const useStyles = makeStyles(theme => ({
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-    } 
+        width: "70%"
+    },
+    cardSection: {
+        display: "flex",
+        flexDirection: "column",
+        width: "30%",
+        justifyContent: "center",
+        alignItems: "flex-start"
+
+    },
+    listItemDescription: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "0px 20px"
+    }
 }))
 
 function CaseOverviewDialog(props) {
@@ -198,55 +214,77 @@ function CaseOverviewDialog(props) {
             </Toolbar>
             <div>
                 <div className={classes.card}>
+                    <div className={classes.cardTitle}>
+                        <div className={classes.tags}>
+                            <p className={classes.timeStamp}>{timeStamp}</p>
+                            {/* <strong className={classes.tag}>{props.case.dispute_category}</strong> */}
+                        </div>
+                        <div className={classes.divider}> </div>
+                    </div>
+
                     <div className={classes.cardContent}>
                         {/* <div className={classes.listItem}>
                             <h5><FontAwesomeIcon icon={faFolder} /> Type</h5>
                             <p>{props.case.dispute_category}</p>
                         </div> */}
-                        <div className={classes.cardTitle}>
-                            <div className={classes.tags}>
-                                <p className={classes.timeStamp}>{timeStamp}</p>
-                                <strong className={classes.tag}>{props.case.dispute_category}</strong>
+                       
+                        <div className={classes.cardSection}>
+                            <div className={classes.listItem}>
+                                {/* <FontAwesomeIcon icon={faUserFriends} />  */}
+                                <strong>Case Type</strong>
+                                <p>{props.case.dispute_category}</p>
                             </div>
-                            <div className={classes.divider}> </div>
-                        </div>
+                            <div className={classes.listItem}>
+                                {/* <FontAwesomeIcon icon={faUserFriends} />  */}
+                                <strong>Parties Involved</strong>
+                                <p>{props.case.parties_involved}</p>
+                            </div>
+                            <div className={classes.listItemGrey}>
+                                {/* <FontAwesomeIcon icon={faIdCardAlt} />  */}
+                                <strong>Parties' Contact Info</strong>
+                                <p>{props.case.parties_contact_info}</p>
+                            </div>
+                            <div className={classes.listItem}>
+                                {/* <FontAwesomeIcon icon={faWallet} /> */}
+                                <strong> Dispute Amount</strong>
+                                <p>{props.case.dispute_amount}</p>
+                            </div>
 
-                        <div className={classes.listItem}>
-                            {/* <FontAwesomeIcon icon={faUserFriends} />  */}
-                            <strong>Parties Involved</strong>
-                            <p>{props.case.parties_involved}</p>
+                            <div className={classes.listItem}>
+                                {/* {props.case.court_case ? <FontAwesomeIcon icon={faLandmark} />:null} */}
+                                <strong>{props.case.court_case ? "Court Jurisdiction" : null}</strong>
+                                <p>{props.case.court_case ? props.case.court_jurisdiction : null}</p>
+                            </div>
+                            <div className={classes.listItem}>
+                                {/* {props.case.court_case ? <FontAwesomeIcon icon={faBalanceScale} />:null} */}
+                                <strong>{props.case.court_case ? "Court Number" : null}</strong>
+                                <p>{props.case.court_case ? props.case.court_number : null}</p>
+                            </div>
+                            <div className={classes.listItem}>
+                                {/* {props.case.court_case ? <FontAwesomeIcon icon={faCalendarDay} />:null} */}
+                                <strong>{props.case.court_case ? "Filing Date" : null}</strong>
+                                <p>{props.case.court_case ? props.case.court_filing_date : null}</p>
+                            </div>
                         </div>
-                        <div className={classes.listItemGrey}>
-                            {/* <FontAwesomeIcon icon={faIdCardAlt} />  */}
-                            <strong>Parties' Contact Info</strong>
-                            <p>{props.case.parties_contact_info}</p>
-                        </div>
-                        <div className={classes.listItem}>
-                            {/* <FontAwesomeIcon icon={faWallet} /> */}
-                            <strong> Dispute Amount</strong>
-                            <p>{props.case.dispute_amount}</p>
-                        </div>
-                    </div>
-
-                    <div className={classes.cardContent}>
+                        
                         {/* <FontAwesomeIcon icon={faBookOpen} /> */}
-                        <h5> Description</h5> 
-                        <p>{props.case.description}</p>
+                        {/* <div className={classes.cardSection}>
+              
+                        </div> */}
+
+                        <div className={classes.description}>
+                            <div className={classes.listItemDescription}>
+                                <strong> Description</strong> 
+                                <p>{props.case.description}</p>
+                            </div>
+                            <div className={classes.listItemDescription}>
+                                {/* {props.case.court_case ? <FontAwesomeIcon icon={faClipboard} />:null} */}
+                                <strong>{props.case.court_case ?   "Case Notes" : null}</strong>
+                                <p>{props.case.court_case ? props.case.case_notes : null}</p> 
+                            </div>
+                        </div>
                     </div>
-                        <h5>{props.case.court_case ? <FontAwesomeIcon icon={faClipboard} />:null}{props.case.court_case ?   " Case Notes" : null}</h5>
-                        <p>{props.case.court_case ? props.case.case_notes : null}</p> 
-                    <div className={classes.listItem}>
-                        <h5>{props.case.court_case ? <FontAwesomeIcon icon={faLandmark} />:null}{props.case.court_case ? " Court Jurisdiction" : null}</h5>
-                        <p>{props.case.court_case ? props.case.court_jurisdiction : null}</p>
-                    </div>
-                    <div className={classes.listItem}>
-                        <h5>{props.case.court_case ? <FontAwesomeIcon icon={faBalanceScale} />:null}{props.case.court_case ? " Court Number" : null}</h5>
-                        <p>{props.case.court_case ? props.case.court_number : null}</p>
-                    </div>
-                    <div className={classes.listItem}>
-                        <h5>{props.case.court_case ? <FontAwesomeIcon icon={faCalendarDay} />:null}{props.case.court_case ? " Filing Date" : null}</h5>
-                        <p>{props.case.court_case ? props.case.court_filing_date : null}</p>
-                    </div>
+
                 </div>
                 
                 <AddendumInvoiceTabs case={props.case}/>

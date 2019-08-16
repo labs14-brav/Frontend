@@ -12,12 +12,10 @@ const UserCaseList = (props) => {
 
     async function fetchCases() {
         const res = await axioswithAuth().get(`/cases`)
-        // endpoint needs to be updated to a specific user's cases.
         setCases(res.data);
     };
 
     useEffect(() => {
-
         fetchCases();
     }, []);
 

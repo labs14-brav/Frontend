@@ -4,6 +4,7 @@
 
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
+import moment from 'moment';
 import AddendumsList from './AddendumsList'
 import AreYouSureDialog from './modals/AreYouSureDialog';
 import CaseOverviewDialog from './modals/CaseOverviewDialog';
@@ -102,7 +103,7 @@ const useStyles = makeStyles(theme => ({
  */
 
 const UserCaseCard = (props) => {
-    console.log("Case Props", props);
+    // console.log("Case Props", props);
     const [fullopen, setFullOpen] = useState(false);
     const classes = useStyles();
 
@@ -170,6 +171,8 @@ const UserCaseCard = (props) => {
                         <h5 id="case-dispute">{props.case.dispute_category}</h5>
                         <h6 id="case-label" style={{marginTop:'18px', fontWeight: 'bold'}}>Dispute <FontAwesomeIcon icon={faUsers} /> Participants</h6>
                         <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
+                        {props.case.case_completed_at ? <h6 id="case-label" style={{marginTop:'18px', fontWeight: 'bold'}}>Completed At</h6> : null}
+                        {props.case.case_completed_at ? <h5 id="case-case_completed_at">{props.case.case_completed_at}</h5> : null}
                 </CardContent>
                 <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
                     {props.case.case_accepted_at === null ? 

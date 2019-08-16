@@ -237,7 +237,8 @@ export default function MediatorCasesShow() {
                                         every year for forward-thinking businesses like our mediation site.  If you you are eager to start your business click the button in order to make sure you get registered 
                                         to recieve payments.For more information click the link 
                                         below.<br/>
-                                        <a href="https://stripe.com/about" target="_blank"
+                                        <a style={{ textDecoration:"none" }}
+                                        href="https://stripe.com/about" target="_blank"
                                         >
                                         Visit Stripe
                                         </a>
@@ -247,7 +248,7 @@ export default function MediatorCasesShow() {
                                         href="https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_FapfMHhGMRX8cqibiDppj97yzbPNKByE&redirect_uri=http://localhost:3000/stripe-callback"
                                     >
                                     <ConnectBankAccountLink>
-                                    <FontAwesomeIcon icon={faCreditCard}/> 
+                                    <FontAwesomeIcon icon={faCreditCard} style={{paddingRight:"10px",fontSize:"30px"}}/> 
                                         Connect Bank Account
                                     </ConnectBankAccountLink>
                                     </a>
