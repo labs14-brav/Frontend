@@ -19,7 +19,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import { MediatorCasesShowStyle } from "./styles/index";
-import { faArchive }  from '@fortawesome/free-solid-svg-icons';
+import { faCreditCard }  from '@fortawesome/free-solid-svg-icons';
 import { ConnectBankAccountLink } from "./styles/index";
 import {
     NavBar,
@@ -227,7 +227,7 @@ export default function MediatorCasesShow() {
                     <Card className={classes.card}>
                             <div className={classes.cardTitle}>
                                     <strong>Activate Stripe Account</strong>
-                                    <FontAwesomeIcon icon={faArchive}/>
+                                    
                                 <div className={classes.divider}> </div>
                             </div>
                             <div className={classes.cardContent}>
@@ -247,6 +247,7 @@ export default function MediatorCasesShow() {
                                         href="https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_FapfMHhGMRX8cqibiDppj97yzbPNKByE&redirect_uri=http://localhost:3000/stripe-callback"
                                     >
                                     <ConnectBankAccountLink>
+                                    <FontAwesomeIcon icon={faCreditCard}/> 
                                         Connect Bank Account
                                     </ConnectBankAccountLink>
                                     </a>

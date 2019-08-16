@@ -102,7 +102,7 @@ const useStyles = makeStyles(theme => ({
  */
 
 const UserCaseCard = (props) => {
-    console.log(props);
+    console.log("Case Props", props);
     const [fullopen, setFullOpen] = useState(false);
     const classes = useStyles();
 
@@ -172,16 +172,19 @@ const UserCaseCard = (props) => {
                         <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
                 </CardContent>
                 <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
+                    {props.case.case_accepted_at === null ? 
                     <Button variant="outlined" color="primary" className={classes.primarybutton}>
-                        <Link style={{textDecoration:'none', color:'inherit'}} 
-                        to= {{
-                            pathname: `/cases/${props.case.id}/mediator-search`,
-                            state: {
-                                currentcase: props.case
-                            }
-                        }}
-                        ><FontAwesomeIcon icon={faSearch} />  Find a Mediator</Link>
-                    </Button>
+                    <Link style={{textDecoration:'none', color:'inherit'}} 
+                    to= {{
+                        pathname: `/cases/${props.case.id}/mediator-search`,
+                        state: {
+                            currentcase: props.case
+                        }
+                    }}
+                    ><FontAwesomeIcon icon={faSearch} />  Find a Mediator</Link>
+                </Button> : <> </>    
+                }
+                    
                     <Button className={classes.secondarybutton} onClick={handlefullOpen} variant="outlined">
                     <FontAwesomeIcon icon={faChalkboardTeacher} style={{marginRight: '5px'}} />                        View Details </Button>
                 </CardActions>

@@ -9,7 +9,7 @@
         flex-direction: column !important;
     }
     .mediator-info {
-        width: 35%;
+        width: 40%;
         @media (max-width: '768px') {
             width: 100%;
         }
@@ -21,7 +21,6 @@
             padding-bottom: 20px;
         }
         #left {
-            // margin-left: 20px;
             border-left: 5px ridge #A3A2A2;
         .left-list {
             width: 100%;
