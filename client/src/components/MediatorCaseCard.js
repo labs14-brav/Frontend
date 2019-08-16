@@ -10,7 +10,6 @@ import Modal from "@material-ui/core/Modal";
 import AcceptCaseModal from "./modals/AcceptCaseModal";
 import DeclineCaseModal from "./modals/DeclineCaseModal";
 import CompleteCaseDialog from './modals/CompleteCaseDialog';
-// import CompleteCaseModal from "./modals/CompleteCaseModal";
 import InvoiceCaseModal from "./modals/InvoiceCaseModal";
 import Dialog from "@material-ui/core/Dialog";
 import Toolbar from "@material-ui/core/Toolbar";

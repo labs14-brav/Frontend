@@ -88,6 +88,8 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         width: "100%",
         justifyContent: "space-between",
+        height: "100%",
+        alignItems: "center"
     },
     listItemGrey: {
         display: "flex",
@@ -110,7 +112,8 @@ const useStyles = makeStyles(theme => ({
         width: "100%",
         margin: "30px 0px",
         color: "grey",
-        minHeight: "80px"
+        minHeight: "80px",
+        height: "100%"
     },
     tags: {
         display: "flex",
@@ -234,17 +237,17 @@ function CaseOverviewDialog(props) {
                                 <strong>Case Type</strong>
                                 <p>{props.case.dispute_category}</p>
                             </div>
-                            <div className={classes.listItem}>
+                            <div className={classes.listItemGrey}>
                                 {/* <FontAwesomeIcon icon={faUserFriends} />  */}
                                 <strong>Parties Involved</strong>
                                 <p>{props.case.parties_involved}</p>
                             </div>
-                            <div className={classes.listItemGrey}>
+                            <div className={classes.listItem}>
                                 {/* <FontAwesomeIcon icon={faIdCardAlt} />  */}
                                 <strong>Parties' Contact Info</strong>
                                 <p>{props.case.parties_contact_info}</p>
                             </div>
-                            <div className={classes.listItem}>
+                            <div className={classes.listItemGrey}>
                                 {/* <FontAwesomeIcon icon={faWallet} /> */}
                                 <strong> Dispute Amount</strong>
                                 <p>{props.case.dispute_amount}</p>
@@ -255,7 +258,7 @@ function CaseOverviewDialog(props) {
                                 <strong>{props.case.court_case ? "Court Jurisdiction" : null}</strong>
                                 <p>{props.case.court_case ? props.case.court_jurisdiction : null}</p>
                             </div>
-                            <div className={classes.listItem}>
+                            <div className={classes.listItemGrey}>
                                 {/* {props.case.court_case ? <FontAwesomeIcon icon={faBalanceScale} />:null} */}
                                 <strong>{props.case.court_case ? "Court Number" : null}</strong>
                                 <p>{props.case.court_case ? props.case.court_number : null}</p>
