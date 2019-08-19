@@ -16,7 +16,6 @@ const AuthRouter = [
   <Route key={uuid.v4()} exact path="/" component={Landing} />,
   <Route key={uuid.v4()} exact path='/auth' component={Login} />,
   <PrivateRoute key={uuid.v4()} exact path="/auth/callback" component={AuthCallback} errorBoundary={ErrorBoundary} />,
-  <Redirect to='/' />,
 ];
 
 /**

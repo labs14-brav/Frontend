@@ -46,9 +46,9 @@ function App() {
       </Grid>
         :
         <Switch>
-          {AuthRouter}
           <Route key={uuid.v4()} exact path="/terms-of-service" component={TermsOfService} />
           <Route key={uuid.v4()} exact path="/privacy-policy" component={PrivacyPolicy} />
+          {AuthRouter}
           <Redirect to='/' />
         </Switch>
       }
