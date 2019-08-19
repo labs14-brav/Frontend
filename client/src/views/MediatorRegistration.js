@@ -42,7 +42,6 @@ const MenuProps = {
 
 const useStyles = makeStyles(theme => ({
     container: {
-        paddingTop: "10%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -169,7 +168,7 @@ function MediatorRegistration(props) {
     return (
         <>
             <Container maxWidth="sm" className={classes.container}>
-            <Typography style={{textAlign:"center", paddingBottom: "20px",marginTop:"50px"}} variant="h3" data-testid="heading-h3">Mediator Registration</Typography>
+            <Typography style={{textAlign:"center", paddingBottom: "20px",marginTop:"100px"}} variant="h3" data-testid="heading-h3">Mediator Registration</Typography>
             <Typography style={{textAlign:"center"}} variant="subtitle2">All fields are required for submission.</Typography>
             <FormGroup>
             <TextField
@@ -186,6 +185,7 @@ function MediatorRegistration(props) {
                     value={values.general_details}
                     onChange={handleChange("general_details")}
                     data-testid="input-general_details"
+                    className={classes.textField}
                 />
                 <TextField
                     value={values.license}
