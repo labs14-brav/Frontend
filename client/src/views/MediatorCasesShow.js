@@ -172,7 +172,7 @@ function MediatorCasesShow() {
         if (newValue === 2) setSelectedTab("completed");
     }
 
-    if (localStorage.getItem("is_stripe_connected")) {
+    if (localStorage.getItem("is_stripe_connected") === true || localStorage.getItem("is_stripe_connected") === 1) {
         return (
             <MediatorCasesShowStyle>
                 <NavTabs
