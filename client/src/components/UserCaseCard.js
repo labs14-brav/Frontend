@@ -186,18 +186,19 @@ const UserCaseCard = (props) => {
                         {props.case.case_completed_at ? <h5 id="case-case_completed_at">{props.case.case_completed_at}</h5> : null}
                 </CardContent>
                 <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
-                    {props.case.case_accepted_at === null ? 
+                    {(props.case.case_completed_at || props.case.case_accepted_at) ? null : 
                     <Button variant="outlined" color="primary" className={classes.primarybutton}>
-                    <Link style={{textDecoration:'none', color:'inherit'}} 
-                    to= {{
-                        pathname: `/cases/${props.case.id}/mediator-search`,
-                        state: {
-                            currentcase: props.case
-                        }
-                    }}
-                    ><FontAwesomeIcon icon={faSearch} />  Find a Mediator</Link>
-                </Button> : <> </>    
-                }
+                        <Link style={{textDecoration:'none', color:'inherit'}} 
+                            to= {{
+                                pathname: `/cases/${props.case.id}/mediator-search`,
+                                state: {
+                                    currentcase: props.case
+                                }
+                            }}
+                        >
+                            <FontAwesomeIcon icon={faSearch} />Find a Mediator
+                        </Link>
+                    </Button>}
                     
                     <Button className={classes.secondarybutton} onClick={handlefullOpen} variant="outlined">
                     <FontAwesomeIcon icon={faChalkboardTeacher} style={{marginRight: '5px'}} />                        View Details </Button>
