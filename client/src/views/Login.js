@@ -3,7 +3,6 @@
  */
 
 import React,{useEffect} from 'react';
-import { Redirect } from 'react-router-dom';
 import { firebase } from '../helpers/index';
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';

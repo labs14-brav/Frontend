@@ -1,6 +1,3 @@
-/**
- * Dependencies
- */
 
 import { styled } from "@material-ui/styles";
 import { Button } from "@material-ui/core";
@@ -9,7 +6,7 @@ import { Button } from "@material-ui/core";
  * Define style
  */
 
-const BecomeMediatorLink = styled(Button)({
+const ConnectBankAccountLink = styled(Button)({
     color: "#FFF",
     backgroundColor: "#5C90C1",
     boxShadow:
@@ -32,4 +29,4 @@ const BecomeMediatorLink = styled(Button)({
  * Export style
  */
 
-export default BecomeMediatorLink;
+export default ConnectBankAccountLink;
