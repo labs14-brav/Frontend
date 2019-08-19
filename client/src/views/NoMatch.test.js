@@ -43,14 +43,14 @@ describe('NoMatch.js', () => {
     const route = '/nomatch'
     const { getByTestId } = renderWithRouter(<NoMatch />, {route})
 
-    expect(getByTestId('alert-pagenotfound').textContent).toBe('Page Not Found')
+    expect(getByTestId('alert-pagenotfound').textContent).toBe('404 Page Not Found')
   });
 
   test('it has a link to return to the main page', () => {
     const route = '/nomatch'
     const { getByTestId } = renderWithRouter(<NoMatch />, {route})
 
-    expect(getByTestId('link-returntomainpage').textContent).toBe('Return to main page')
+    expect(getByTestId('link-returntomainpage').textContent).toBe('TAKE ME HOME')
     expect(getByTestId('link-returntomainpage').getAttribute('href')).toBe('/')
   });
 });

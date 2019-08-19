@@ -43,14 +43,14 @@ describe('MediatorRegistration.js', () => {
     const route = '/users/mediator-registration'
     const { getByTestId } = renderWithRouter(<MediatorRegistration />, {route})
 
-    expect(getByTestId('heading-h1').textContent).toBe('Mediator Registration')
+    expect(getByTestId('heading-h3').textContent).toBe('Mediator Registration')
   });
 
   test('it has required form inputs', () => {
     const route = '/users/mediator-registration'
     const { getByTestId } = renderWithRouter(<MediatorRegistration />, {route})
 
-    expect(getByTestId('input-name').textContent).toBe('Full Name')
+    expect(getByTestId('input-name').textContent).toBe('Full Name​')
     expect(getByTestId('input-general_details').textContent).toBe('General Details')
     getByTestId('input-license')
     getByTestId('input-specialization')

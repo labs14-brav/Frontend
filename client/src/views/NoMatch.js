@@ -110,7 +110,7 @@ function NoMatch() {
             <section className={classes.cardContainer}>
                 <Card className={classes.card}>
                     <div className={classes.cardTitle}>
-                        <h1>404 Page Not Found</h1>
+                        <h1 data-testid="alert-pagenotfound">404 Page Not Found</h1>
                         <div className={classes.divider}> </div>
                     </div>
                     <div className={classes.cardContent}>
@@ -127,6 +127,7 @@ function NoMatch() {
                             style={{ color: "white" }}
                             className={classes.link}
                             to="/"
+                            data-testid="link-returntomainpage"
                         >
                             <p
                                 style={{

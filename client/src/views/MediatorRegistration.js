@@ -169,7 +169,7 @@ function MediatorRegistration(props) {
     return (
         <>
             <Container maxWidth="sm" className={classes.container}>
-            <Typography style={{textAlign:"center", paddingBottom: '20px'}} variant="h3">Mediator Registration</Typography>
+            <Typography style={{textAlign:"center", paddingBottom: '20px'}} variant="h3" data-testid="heading-h3">Mediator Registration</Typography>
             <Typography style={{textAlign:"center"}} variant="subtitle2">All fields are required for submission.</Typography>
             <FormGroup>
             <TextField
