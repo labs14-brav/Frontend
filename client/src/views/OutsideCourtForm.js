@@ -6,10 +6,6 @@ import React, { useState } from 'react';
 import SimpleDialog from '../components/modals/SimpleDialog';
 import axioswithAuth from "../helpers/axioswithAuth";
 import mixpanel from "../helpers/mixpanel";
-
-/**
- * Material-UI
- */
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -86,6 +82,7 @@ const OutsideCourtForm = (props) => {
     });
     const [open, setOpen] = useState(false);
     const [errorOpen, setErrorOpen] = useState(false);
+
     /**
      * Dialog Methods
      */
@@ -102,7 +99,8 @@ const OutsideCourtForm = (props) => {
      function handleErrorClose() {
        setErrorOpen(false);
      }
-    /**
+
+     /**
      * Form methods
      */
 

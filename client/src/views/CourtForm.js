@@ -2,25 +2,15 @@
  * Dependencies
  */
 
-import React, { useState, Component } from 'react';
+import React, { useState } from 'react';
 import SimpleDialog from '../components/modals/SimpleDialog.js';
 import axioswithAuth from "../helpers/axioswithAuth";
 import mixpanel from "../helpers/mixpanel";
-
-/**
- * Material-UI imports
- */
-
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Select from '@material-ui/core/Select';
-import {
-  Container,
-  FormGroup
-} from "@material-ui/core";
 
 /**
  * Global Component Styles
@@ -29,7 +19,6 @@ import {
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
-    // flexWrap: 'wrap',
     flexDirection:'column',
     justifyContent:'center',
     alignItems:'center',
@@ -126,9 +115,7 @@ const CourtForm = (props) => {
   }
 
   return (
-
     <div style={{marginTop:"100px"}}>
-
       <Typography style={{textAlign:"center"}} variant="h3" data-testid="heading-h3">Case Form</Typography>
       <Typography style={{textAlign:"center"}} variant="subtitle2">This form is intended for cases referred by the Court system.</Typography>
 

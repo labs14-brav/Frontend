@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { Card } from '@material-ui/core';
 import Tabs from '@material-ui/core/Tabs';
@@ -12,8 +12,8 @@ import MediatorPendingCaseList from '../components/MediatorPendingCaseList';
 import MediatorActiveCaseList from '../components/MediatorActiveCaseList';
 import MediatorCompletedCaseList from '../components/MediatorCompletedCaseList';
 import { faCreditCard }  from '@fortawesome/free-solid-svg-icons';
-import { ConnectBankAccountLink } from "./styles/index";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ConnectBankAccountLink } from "./styles/index";
 
 /**
  * Import styles
@@ -142,8 +142,6 @@ const useStyles = makeStyles(() => ({
         textDecoration: "none"
     }
 }));
-
-
 
 const StyledTab = withStyles(theme => ({
     root: {

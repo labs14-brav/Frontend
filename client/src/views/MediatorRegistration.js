@@ -144,13 +144,12 @@ function MediatorRegistration(props) {
                 console.error(error);
             })   
 
-            //resetting specialization and language to avoid .join errors with the stringified selected values
+            // Resetting specialization and language to avoid .join errors with the stringified selected values
             setValues({
                 specialization: [],
                 language: [],})
     };
 
-    // dialog Methods
     function handleOpen() {
         setOpen(true);
       }
@@ -308,7 +307,6 @@ function MediatorRegistration(props) {
             redirect={''}
             redirectText={''}
             />
-
         </>
     );
 }
