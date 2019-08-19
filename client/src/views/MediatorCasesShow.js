@@ -223,12 +223,12 @@ function MediatorCasesShow() {
                                         In order to access our  services an account with Stripe Services must be created. 
                                         Stripe is the best platform for running an internet business and handles billions of dollars 
                                         every year for forward-thinking businesses like our mediation site.  If you you are eager to start your business click the button in order to make sure you get registered 
-                                        to recieve payments.For more information click the link 
+                                        to recieve payments. For more information click the link 
                                         below.<br/>
                                         <a style={{ textDecoration:"none" }}
                                         href="https://stripe.com/about" target="_blank"
                                         >
-                                        Visit Stripe
+                                        VisitStripe
                                         </a>
                                     </p>
                                     <a
