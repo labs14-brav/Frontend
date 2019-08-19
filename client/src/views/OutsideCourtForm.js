@@ -3,12 +3,9 @@
  */
 
 import React, { useState } from 'react';
-import SimpleDialog from './modals/SimpleDialog';
-import { axioswithAuth, mixpanel } from "../helpers/index";
-
-/**
- * Material-UI
- */
+import SimpleDialog from '../components/modals/SimpleDialog';
+import axioswithAuth from "../helpers/axioswithAuth";
+import mixpanel from "../helpers/mixpanel";
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -85,10 +82,11 @@ const OutsideCourtForm = (props) => {
     });
     const [open, setOpen] = useState(false);
     const [errorOpen, setErrorOpen] = useState(false);
+
     /**
      * Dialog Methods
      */
-  
+
      function handleOpen() {
        setOpen(true);
      }
@@ -101,14 +99,15 @@ const OutsideCourtForm = (props) => {
      function handleErrorClose() {
        setErrorOpen(false);
      }
-    /**
+
+     /**
      * Form methods
      */
-     
+
     const handleChange = name => event => {
       setValues({ ...form, [name]: event.target.value });
     }
-      
+
     const onSubmitHandler = async (e) => {
       e.preventDefault();
 
@@ -137,9 +136,9 @@ const OutsideCourtForm = (props) => {
 
     return (
       <div style={{paddingTop:"100px"}}>
-          <Typography style={{textAlign:"center"}} variant="h3">Case Form</Typography>
+          <Typography style={{textAlign:"center"}} variant="h3" data-testid="heading-h3">Case Form</Typography>
           <Typography style={{textAlign:"center"}} variant="subtitle2">This form is intended for cases outside of the Court system.</Typography>
-    
+
           <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>
             <TextField
               className={classes.textField}
@@ -147,6 +146,7 @@ const OutsideCourtForm = (props) => {
               label="Dispute Type"
               value={form.dispute_category}
               helperText="required"
+              data-testid="input-dispute_category"
               onChange={handleChange("dispute_category")}
               SelectProps={{
                 MenuProps: {
@@ -172,25 +172,28 @@ const OutsideCourtForm = (props) => {
               autoComplete="email"
               margin="normal"
               variant="outlined"
+              data-testid="input-parties_involved"
               onChange={handleChange("parties_involved")}
-              value={form.parties_involved}  
+              value={form.parties_involved}
               InputProps = {InputProps}
               />
 
-              <TextField 
+              <TextField
               className={classes.textField}
               label="Participant Contact Info"
               value={form.parties_contact_info}
               name="parties_contact_info"
+              data-testid="input-parties_contact_info"
               onChange={handleChange("parties_contact_info")}
               margin="normal"
               variant="outlined"
               InputProps = {InputProps}/>
 
-              <TextField 
+              <TextField
               className={classes.textField}
               label="Dispute Amount - $"
               helperText="if applicable"
+              data-testid="input-dispute_amount"
               value={form.dispute_amount}
               name="dispute_amount"
               type="number"
@@ -203,6 +206,7 @@ const OutsideCourtForm = (props) => {
               className={classes.textField}
               name="description"
               label="Description of Conflict"
+              data-testid="input-description"
               multiline
               rows="8"
               value={form.description}

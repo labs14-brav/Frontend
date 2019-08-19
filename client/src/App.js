@@ -4,12 +4,18 @@
 
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { RootRouter, UsersRouter, TestRouter, NoMatchRouter, CasesRouter } from './routes/index';
 import { Grid } from '@material-ui/core';
 import { NavBar } from './components';
-import { Landing, Login, ErrorBoundary, AuthCallback , TermsOfService , PrivacyPolicy } from './views';
+import { TermsOfService , PrivacyPolicy } from './views';
 import uuid from 'uuid';
-import { PrivateRoute } from "./routes/helpers/index";
+import {
+  RootRouter,
+  UsersRouter,
+  TestRouter,
+  NoMatchRouter,
+  CasesRouter,
+  AuthRouter
+} from './routes/index';
 
 /**
  * Import global styles
@@ -24,7 +30,7 @@ import './App.scss';
 function App() {
   return (
     <BrowserRouter>
-      { 
+      {
       localStorage.getItem("token") ?
       <Grid container style={{ height: '100vh'}} >
         <NavBar/>
@@ -40,11 +46,9 @@ function App() {
       </Grid>
         :
         <Switch>
-          <Route key={uuid.v4()} exact path="/" component={Landing} />
           <Route key={uuid.v4()} exact path="/terms-of-service" component={TermsOfService} />
           <Route key={uuid.v4()} exact path="/privacy-policy" component={PrivacyPolicy} />
-          <Route key={uuid.v4()} exact path='/auth' component={Login} />
-          <PrivateRoute key={uuid.v4()} exact path="/auth/callback" component={AuthCallback} errorBoundary={ErrorBoundary} />
+          {AuthRouter}
           <Redirect to='/' />
         </Switch>
       }

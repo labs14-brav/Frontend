@@ -3,17 +3,16 @@
  */
 
 import React, { useState } from 'react';
-import { axioswithAuth } from '../helpers/index';
+import { axioswithAuth, mixpanel } from "../helpers/index";
 import SimpleDialog from './modals/SimpleDialog';
-
-/** 
- * Material UI
- */
-
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({ 
+/**
+ * Define styles
+ */
+
+const useStyles = makeStyles(theme => ({
     primarybutton: {
         margin: theme.spacing(1),
         color: '#5C90C1',
@@ -44,11 +43,14 @@ const useStyles = makeStyles(theme => ({
         setOpen(true);
       }
 
-    const handleRequest = () => {   
+    const handleRequest = () => {
         let case_id = props.currentcase.id;
 
         axioswithAuth().post(`/mediators/${props.mediator.id}/cases`, {case_id})
         .then(res => {
+            if (process.env.NODE_ENV === 'production') {
+              mixpanel.track('Send mediator request for case', { distinct_id: localStorage.getItem('id') })
+            }
             handleOpen();
         })
         .catch(err => {
@@ -61,9 +63,9 @@ const useStyles = makeStyles(theme => ({
             <Button className={classes.primarybutton} onClick={handleRequest} variant="outlined">
                 Send Request
             </Button>
-            <SimpleDialog onClose={handleClose} 
-                open={open} 
-                titleText={'Your request has been sent'} 
+            <SimpleDialog onClose={handleClose}
+                open={open}
+                titleText={'Your request has been sent'}
                 bodyText={`to ${props.mediator.name}`}
                 redirect={'/cases'}
                 redirectText={'Cases'} />

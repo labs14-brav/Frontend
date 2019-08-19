@@ -1,16 +1,18 @@
-import React, { useState, useEffect }from 'react';
+/**
+ * Dependencies
+ */
 
+import React from 'react';
 import PayInvoiceButton from './PayInvoiceButton';
-import axioswithAuth from '../helpers/axioswithAuth';
 import moment from 'moment';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
+
+/**
+ * Import styles
+ */
 
 import './UserInvoice.scss';
 
@@ -19,7 +21,7 @@ const useStyles = makeStyles(theme => ({
         width: '60%',
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
-        padding: theme.spacing(1, 2, 2),
+        padding: theme.spacing(2),
         outline: 'none',
         marginBottom: theme.spacing(1),
 
@@ -30,6 +32,7 @@ const useStyles = makeStyles(theme => ({
         },
     content: { 
         width: '100%',
+        //last child has 24px bottom padding instead of 16px 
         [theme.breakpoints.down('md')]: {
             width: '100%',
             height: '100%',
@@ -42,7 +45,11 @@ const useStyles = makeStyles(theme => ({
         fontSize: '16px',
         fontWeight: 500,
     },
-    }))
+}))
+
+/**
+ * Define component
+ */
 
 function UserInvoice(props) {
     const classes = useStyles();
@@ -98,7 +105,7 @@ function UserInvoice(props) {
                                 </li>
                                 <li className="right-list-item">
                                     <Typography variant="overline" className={classes.info}> 
-                                        {props.invoice.amount * props.invoice.hours}
+                                        {props.invoice.amount}
                                     </Typography>
                                 </li>
                             </ul>
@@ -111,5 +118,9 @@ function UserInvoice(props) {
         </Card>
     )
 }
+
+/**
+ * Export component
+ */
 
 export default UserInvoice;

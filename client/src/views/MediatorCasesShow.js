@@ -2,30 +2,24 @@
  * Dependencies
  */
 
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-
-import "./MediatorCasesShow.scss";
+import React, { useState } from 'react';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { Card } from '@material-ui/core';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import MediatorCasesShowStyle from './styles/MediatorCasesShowStyle';
+import MediatorPendingCaseList from '../components/MediatorPendingCaseList';
+import MediatorActiveCaseList from '../components/MediatorActiveCaseList';
+import MediatorCompletedCaseList from '../components/MediatorCompletedCaseList';
+import { faCreditCard }  from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ConnectBankAccountLink } from "./styles/index";
 
 /**
- * Material UI Imports
+ * Import styles
  */
-import Grid from "@material-ui/core/Grid";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import { Button, Card, Container } from "@material-ui/core";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
-import { MediatorCasesShowStyle } from "./styles/index";
-import {
-    NavBar,
-    SideNavBlock,
-    MediatorPendingCaseList,
-    MediatorActiveCaseList,
-    MediatorCompletedCaseList,
-    StripeButton
-} from "../components";
+
+import './MediatorCasesShow.scss';
 
 /**
  * Define styles
@@ -86,6 +80,69 @@ const StyledTabs = withStyles({
     }
 })(props => <Tabs {...props} TabIndicatorProps={{ children: <div /> }} />);
 
+
+const useStyles = makeStyles(() => ({
+    container: {
+        marginTop: "70px",
+        paddingTop: "20px",
+        maxWidth: "800px",
+        margin: "0 auto",
+        color: "grey",
+        width: "95%"
+    },
+    cardContainer: {
+        maxWidth: "800px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        overflowX: "hidden",
+        overflowY: "hidden"
+    },
+    card: {
+        maxWidth: "800px",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "center",
+        minHeight: "200px",
+        margin: "10px",
+        padding: "30px"
+    },
+    title: {
+        color: "black"
+    },
+    cardTitle: {
+        display: "flex",
+        justifyContent: "flex-start",
+        width: "100%",
+        margin: "0",
+        flexDirection: "column"
+    },
+    divider: {
+        border: ".5px solid lightgrey",
+        width: "100%",
+        margin: "0px",
+        marginTop: "10px"
+    },
+    cardContent: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        width: "100%",
+        margin: "30px 0px",
+        color: "grey",
+        minHeight: "80px"
+    },
+    text: {
+        margin: "20px 0px"
+    },
+    link: {
+        textDecoration: "none"
+    }
+}));
+
 const StyledTab = withStyles(theme => ({
     root: {
         textTransform: "none",
@@ -100,12 +157,13 @@ const StyledTab = withStyles(theme => ({
 }))(props => <Tab disableRipple {...props} />);
 
 /**
- *  Export view
+ *  Define view
  */
 
-export default function MediatorCasesShow() {
+function MediatorCasesShow() {
     const [selectedTab, setSelectedTab] = useState("pending");
     const [value, setValue] = useState(0);
+    const classes = useStyles();
 
     function handleChange(event, newValue) {
         setValue(newValue);
@@ -114,7 +172,7 @@ export default function MediatorCasesShow() {
         if (newValue === 2) setSelectedTab("completed");
     }
 
-    if (true) {
+    if (localStorage.getItem("is_stripe_connected") == true) {
         return (
             <MediatorCasesShowStyle>
                 <NavTabs
@@ -146,14 +204,47 @@ export default function MediatorCasesShow() {
         );
     } else {
         return (
-            <MediatorCasesShowStyle>
-                <a
-                    style={{ marginTop: "200px" }}
-                    href="https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_FapfMHhGMRX8cqibiDppj97yzbPNKByE&redirect_uri=http://localhost:3000/stripe-callback"
-                >
-                    Connect Bank Account
-                </a>
-            </MediatorCasesShowStyle>
+            <div className={classes.container}>
+                        <h3 className={classes.title}>Mediator</h3>
+                <section className={classes.cardContainer}>
+                    <Card className={classes.card}>
+                            <div className={classes.cardTitle}>
+                                    <strong>Activate Stripe Account</strong>
+                                    
+                                <div className={classes.divider}> </div>
+                            </div>
+                            <div className={classes.cardContent}>
+                                    <p className={classes.text}>
+                                        In order to access our  services an account with Stripe Services must be created. 
+                                        Stripe is the best platform for running an internet business and handles billions of dollars 
+                                        every year for forward-thinking businesses like our mediation site.  If you you are eager to start your business click the button in order to make sure you get registered 
+                                        to recieve payments.For more information click the link 
+                                        below.<br/>
+                                        <a style={{ textDecoration:"none" }}
+                                        href="https://stripe.com/about" target="_blank"
+                                        >
+                                        Visit Stripe
+                                        </a>
+                                    </p>
+                                    <a
+                                        style={{ textDecoration:"none" }}
+                                        href="https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_FapfMHhGMRX8cqibiDppj97yzbPNKByE&redirect_uri=http://localhost:3000/stripe-callback"
+                                    >
+                                    <ConnectBankAccountLink>
+                                    <FontAwesomeIcon icon={faCreditCard} style={{paddingRight:"10px",fontSize:"30px"}}/> 
+                                        Connect Bank Account
+                                    </ConnectBankAccountLink>
+                                    </a>
+                            </div>
+                    </Card>
+                </section>
+            </div>
         );
     }
 }
+
+/**
+ *  Export view
+ */
+
+export default MediatorCasesShow

@@ -3,10 +3,8 @@
  */
 
 import React from "react";
-import { DeactivateAccountButton } from "../components/index";
 import { Link } from "react-router-dom";
 import { makeStyles, Card } from "@material-ui/core";
-import { BecomeMediatorLink } from "./styles/index";
 
 /**
  * Define view
@@ -109,14 +107,10 @@ function NoMatch() {
 
     return (
         <div className={classes.container}>
-            {/* <h3 className={classes.title}>404 Page Not Found</h3>
-            <p>The requested page does not exist</p> */}
             <section className={classes.cardContainer}>
-                {/* <h1>404 Page Not Found</h1>
-                <strong></strong> */}
                 <Card className={classes.card}>
                     <div className={classes.cardTitle}>
-                        <h1>404 Page Not Found</h1>
+                        <h1 data-testid="alert-pagenotfound">404 Page Not Found</h1>
                         <div className={classes.divider}> </div>
                     </div>
                     <div className={classes.cardContent}>
@@ -133,6 +127,7 @@ function NoMatch() {
                             style={{ color: "white" }}
                             className={classes.link}
                             to="/"
+                            data-testid="link-returntomainpage"
                         >
                             <p
                                 style={{

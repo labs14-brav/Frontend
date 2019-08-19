@@ -2,8 +2,8 @@
  * Dependencies
  */
 
-import React, { useState, useEffect, useContext } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React from 'react';
+import { Route } from 'react-router-dom';
 import firebase from 'firebase';
 import uuid from 'uuid';
 import axios from 'axios';
@@ -34,6 +34,7 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
       }).then(res => {
         localStorage.setItem('type', res.data.type);
         localStorage.setItem('id', res.data.id);
+        localStorage.setItem('is_stripe_connected', res.data.is_stripe_connected);
       }).catch(err => {
         console.error(err)
       })

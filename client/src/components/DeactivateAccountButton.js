@@ -2,11 +2,11 @@
  * Dependencies
  */
 
-import React, { useEffect, useState } from "react";
-import { styled } from "@material-ui/styles";
-import { Button } from "@material-ui/core";
-import axios from "axios";
-import { axioswithAuth } from "../helpers/index";
+import React from 'react';
+import { styled } from '@material-ui/styles';
+import { Button } from '@material-ui/core';
+import axioswithAuth from "../helpers/axioswithAuth";
+import mixpanel from "../helpers/mixpanel";
 
 /**
  * Define style
@@ -37,21 +37,25 @@ const DeactivateButton = styled(Button)({
  */
 
 function DeactivateAccountButton(props) {
-    function handleDeactivation() {
-        let yes = window.confirm("Are you sure?");
+  function handleDeactivation() {
+    let yes = window.confirm('Are you sure?')
 
-        if (yes) {
-            axioswithAuth().put("/users/deactivate");
-            localStorage.clear();
-            window.location = "/";
-        }
+    if (yes) {
+      axioswithAuth().put('/users/deactivate')
+      if (process.env.NODE_ENV === 'production') {
+        mixpanel.track('Deactivated account', { distinct_id: localStorage.getItem('id') })
+      }
+      localStorage.clear()
+      window.location = '/'
+
     }
+  }
 
-    return (
-        <DeactivateButton variant="contained" onClick={handleDeactivation}>
-            Deactivate Account
-        </DeactivateButton>
-    );
+  return (
+    <DeactivateButton variant="contained" onClick={handleDeactivation} data-testid="button-deactivate-account">
+      Deactivate Account
+    </DeactivateButton>
+  )
 }
 
 /**

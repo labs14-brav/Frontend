@@ -31,24 +31,24 @@ function Landing() {
     return (
         <>
             <div className="landingNav">
-                <Link to="/auth" style={{ textDecoration: "none" }}>
+                <Link to="/auth" style={{textDecoration:"none"}} data-testid="signup-link">
+
                     <Button
                         className={classes.button}
                         variant="contained"
                         color="primary"
-                        data-testid="button-signup"
-                    >
+                        data-testid="signup-button">
                         signup
                     </Button>
                 </Link>
 
-                <Link to="/auth" style={{ textDecoration: "none" }}>
+                <Link to="/auth" style={{textDecoration:"none"}} data-testid="login-link">
+
                     <Button
                         className={classes.button}
                         variant="contained"
                         color="primary"
-                        data-testid="button-login"
-                    >
+                        data-testid="login-button">
                         login
                     </Button>
                 </Link>

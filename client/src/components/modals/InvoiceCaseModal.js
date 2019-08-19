@@ -1,18 +1,24 @@
+/**
+ * Dependencies
+ */
+
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import CloseIcon from "@material-ui/icons/Close";
-import axioswithAuth from "../../helpers/axioswithAuth";
 import InvoiceForm from "../InvoiceForm";
 import {
     Button,
     Dialog,
     IconButton,
-    TextField,
     Typography
 } from "@material-ui/core";
+
+/**
+ * Define styles
+ */
 
 const styles = theme => ({
     root: {
@@ -85,6 +91,10 @@ const DialogActions = withStyles(theme => ({
     }
 }))(MuiDialogActions);
 
+/**
+ * Define component
+ */
+
 class InvoiceCaseModal extends React.Component {
     state = {
         open: false
@@ -97,15 +107,6 @@ class InvoiceCaseModal extends React.Component {
     };
 
     handleClose = caseId => {
-        console.log("Case id", caseId);
-        // axioswithAuth()
-        //     .put(`/cases/${caseId}/case-request-completed`)
-        //     .then(res => {
-        //         this.props.fetchCases();
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //     });
         this.setState({ open: false });
     };
 

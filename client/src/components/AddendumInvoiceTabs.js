@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+/**
+ * Dependencies
+ */
 
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import axioswithAuth from '../helpers/axioswithAuth';
 import AddendumsList from './AddendumsList';
 import UserInvoiceList from './UserInvoiceList';
-
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -14,7 +16,15 @@ import Box from '@material-ui/core/Box';
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
 
-import './AddendumInvoiceTabs.scss';
+/**
+ * Import styles
+ */
+
+ import './AddendumInvoiceTabs.scss';
+
+ /**
+  * Define component
+  */
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -67,6 +77,10 @@ const useStyles = makeStyles(theme => ({
         color: '#5C90C1',
     }
 }));
+
+ /**
+  * Define component
+  */
 
 export default function AddendumInvoiceTabs(props) {
   const classes = useStyles();

@@ -10,9 +10,10 @@ import {
     ErrorBoundary,
     NewCase,
     UserCaseShow,
-    MediatorCasesShow
+    MediatorCasesShow,
+    CourtForm,
+    OutsideCourtForm,
 } from "../views/index";
-import { CourtForm, OutsideCourtForm } from "../components/index";
 
 /**
  * Define router
@@ -56,8 +57,9 @@ const RootRouter = [
         key={uuid.v4()}
         path="/cases/:id/mediator-search"
         component={Search}
-        errorBoundary={ErrorBoundary}
-    />
+        errorBoundary={ErrorBoundary} 
+    />,
+
 ];
 
 /**

@@ -116,20 +116,20 @@
     }
 }
 
-.description:hover {
+.description:hover,.general:hover  {
     box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
     transform: translate3d(0px, -1px, 0px);
   
   }
-.general:hover {
-    box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
-    transform: translate3d(0px, -1px, 0px);
 
-  }
-
-
-#trashButton{
+#trashButton
+{
     margin-left:auto !important; 
+    margin-right:0 !important;
+    border:none !important;
+}
+#exitButton{
+    margin-left:0 !important; 
     margin-right:0 !important;
 }
 

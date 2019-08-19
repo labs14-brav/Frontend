@@ -4,7 +4,6 @@
 
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { PrivateRoute } from './helpers/index';
 import Testing from '../views/Testing';
 import uuid from 'uuid';
 

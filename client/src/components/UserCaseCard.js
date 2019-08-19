@@ -2,17 +2,10 @@
  * Dependencies
  */
 
-import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
-import AddendumsList from './AddendumsList'
-import AreYouSureDialog from './modals/AreYouSureDialog';
-import CaseOverviewDialog from './modals/CaseOverviewDialog';
-import axioswithAuth from '../helpers/axioswithAuth';
-
-/**
- * Material UI imports
- */
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import CaseOverviewDialog from './modals/CaseOverviewDialog';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -22,8 +15,7 @@ import Dialog from '@material-ui/core/Dialog';
 import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import CloseIcon from '@material-ui/icons/Close';
-import DeleteIcon from '@material-ui/icons/Delete';
-
+import AddendumsList from './AddendumsList'
 
 /**
  * Import styles
@@ -102,7 +94,7 @@ const useStyles = makeStyles(theme => ({
  */
 
 const UserCaseCard = (props) => {
-    console.log(props);
+    // console.log("Case Props", props);
     const [fullopen, setFullOpen] = useState(false);
     const classes = useStyles();
 
@@ -115,17 +107,21 @@ const UserCaseCard = (props) => {
     const handlefullClose = () => {
         setFullOpen(false);
     }
+
+
     if(props.case.court_case === 1) {
+
     return (
         <>
-            <Grid 
-                item xs={11} 
-                sm={11} 
-                md={props.numCases === 1 ? 12 : 5} 
+            <Grid
+                item xs={11}
+                sm={11}
+                md={props.numCases === 1 ? 12 : 5}
                 lg={props.numCases === 1 ? 12 : 5.5}>
                 <Card className={classes.paper}> 
                     <h6 id="ribbon">Court Case</h6>
                     {/* Use <Typography variant="overline />" */}
+
                     <CardContent style={{width:'100%'}}>
                             <h6 id="case-label" style={{marginBottom:'8px', color: '#5C90C1', fontWeight: 'bold'}}>Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
                             <h5 id="case-dispute">{props.case.dispute_category}</h5>
@@ -134,7 +130,7 @@ const UserCaseCard = (props) => {
                     </CardContent>
                     <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
                         <Button variant="outlined" color="primary" className={classes.primarybutton}>
-                            <Link style={{textDecoration:'none', color:'inherit'}} 
+                            <Link style={{textDecoration:'none', color:'inherit'}}
                             to= {{
                                 pathname: `/cases/${props.case.id}/mediator-search`,
                                 state: {
@@ -144,15 +140,31 @@ const UserCaseCard = (props) => {
                             ><FontAwesomeIcon icon={faSearch} />  Find a Mediator</Link>
                         </Button>
                         <Button className={classes.secondarybutton} onClick={handlefullOpen} variant="outlined">
-                        <FontAwesomeIcon icon={faChalkboardTeacher} style={{marginRight: '5px'}} />                        View Details </Button>
+                        <FontAwesomeIcon icon={faChalkboardTeacher} style={{marginRight: '5px'}} /> 
+                        View Details </Button>
                     </CardActions>
                 </Card>
+
+
+
+
+        <Dialog fullScreen open={fullopen} onClose={handlefullClose}>
+            <Toolbar >
+                <IconButton edge="end" onClick={handlefullClose}>
+                    <CloseIcon />
+                </IconButton>
+            </Toolbar>
+            <AddendumsList case={props.case}/>
+        </Dialog>
+
+       
+
             </Grid>
 
 
         <CaseOverviewDialog case={props.case} open={fullopen} handleClose={handlefullClose} fetchCases={props.fetchCases}/>
         
-        
+
     </>
     )
     } else {
@@ -170,18 +182,24 @@ const UserCaseCard = (props) => {
                         <h5 id="case-dispute">{props.case.dispute_category}</h5>
                         <h6 id="case-label" style={{marginTop:'18px', fontWeight: 'bold'}}>Dispute <FontAwesomeIcon icon={faUsers} /> Participants</h6>
                         <h5 id="case-parties">{props.case.parties_involved.length > 0 ? props.case.parties_involved : 'No information provided'}</h5>
+                        {props.case.case_completed_at ? <h6 id="case-label" style={{marginTop:'18px', fontWeight: 'bold'}}>Completed At</h6> : null}
+                        {props.case.case_completed_at ? <h5 id="case-case_completed_at">{props.case.case_completed_at}</h5> : null}
                 </CardContent>
                 <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
+                    {(props.case.case_completed_at || props.case.case_accepted_at) ? null : 
                     <Button variant="outlined" color="primary" className={classes.primarybutton}>
                         <Link style={{textDecoration:'none', color:'inherit'}} 
-                        to= {{
-                            pathname: `/cases/${props.case.id}/mediator-search`,
-                            state: {
-                                currentcase: props.case
-                            }
-                        }}
-                        ><FontAwesomeIcon icon={faSearch} />  Find a Mediator</Link>
-                    </Button>
+                            to= {{
+                                pathname: `/cases/${props.case.id}/mediator-search`,
+                                state: {
+                                    currentcase: props.case
+                                }
+                            }}
+                        >
+                            <FontAwesomeIcon icon={faSearch} />Find a Mediator
+                        </Link>
+                    </Button>}
+                    
                     <Button className={classes.secondarybutton} onClick={handlefullOpen} variant="outlined">
                     <FontAwesomeIcon icon={faChalkboardTeacher} style={{marginRight: '5px'}} />                        View Details </Button>
                 </CardActions>

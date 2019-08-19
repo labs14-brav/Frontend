@@ -1,8 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { axioswithAuth } from '../helpers/index';
+/**
+ * Dependencies
+ */
 
+import React, { useState, useEffect } from 'react';
+import axioswithAuth from '../helpers/axioswithAuth';
 import Addendum from './Addendum';
+
+/**
+ * Import styles
+ */
+
 import './Addendum.scss';
+
+/**
+ * Define component
+ */
 
 function AddendumsList(props) {
     const [addendums, setAddendums] = useState([]);
@@ -34,5 +46,9 @@ function AddendumsList(props) {
              )
         }
 }
+
+/**
+ * Export component
+ */
 
 export default AddendumsList;

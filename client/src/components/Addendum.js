@@ -1,16 +1,27 @@
-import React from "react";
+/**
+ * Dependencies
+ */
+
+import React from 'react';
 import moment from "moment";
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
-import "./Addendum.scss";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+/**
+ * Import styles
+ */
 
+import './Addendum.scss';
 const useStyles = makeStyles(theme => ({
   timestamp: {
     marginLeft: "auto",
     marginRight: "0"
   }
 }));
+
+/**
+ * Define component
+ */
 
 function Addendum(props) {
   const classes = useStyles();
@@ -28,5 +39,9 @@ function Addendum(props) {
     </li>
   );
 }
+
+/**
+ *  Export component
+ */
 
 export default Addendum;

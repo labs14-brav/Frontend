@@ -3,12 +3,11 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { MediatorList } from './index';
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import { MediatorList } from './index';
 
 /**
  * Material UI Styles
