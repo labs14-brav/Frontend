@@ -4,11 +4,11 @@
 
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import uuid from "uuid";
 import {
     Login,
     StripeCallback
 } from "../views/index";
-import uuid from "uuid";
 
 /**
  * Define router

@@ -3,7 +3,6 @@
  */
 
 import React from 'react';
-import TestRenderer from 'react-test-renderer';
 import { Router } from 'react-router-dom';
 import { cleanup, render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';

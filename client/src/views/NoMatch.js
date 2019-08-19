@@ -3,10 +3,8 @@
  */
 
 import React from "react";
-import { DeactivateAccountButton } from "../components/index";
 import { Link } from "react-router-dom";
 import { makeStyles, Card } from "@material-ui/core";
-import { BecomeMediatorLink } from "./styles/index";
 
 /**
  * Define view

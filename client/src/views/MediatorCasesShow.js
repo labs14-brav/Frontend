@@ -3,25 +3,17 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { Button, Card, Container } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
+import { Card } from '@material-ui/core';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
 import MediatorCasesShowStyle from './styles/MediatorCasesShowStyle';
-import NavBar from '../components/NavBar';
-import SideNavBlock from '../components/SideNavBlock';
 import MediatorPendingCaseList from '../components/MediatorPendingCaseList';
 import MediatorActiveCaseList from '../components/MediatorActiveCaseList';
 import MediatorCompletedCaseList from '../components/MediatorCompletedCaseList';
 import { faCreditCard }  from '@fortawesome/free-solid-svg-icons';
-import axioswithAuth from '../helpers/axioswithAuth';
 import { ConnectBankAccountLink } from "./styles/index";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { StripeButton } from "../components";
 
 /**
  * Import styles

@@ -33,7 +33,6 @@ function Landing() {
             <div className="landingNav">
                 <Link to="/auth" style={{textDecoration:"none"}} data-testid="signup-link">
 
-
                     <Button
                         className={classes.button}
                         variant="contained"
