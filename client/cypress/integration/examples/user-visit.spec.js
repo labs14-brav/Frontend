@@ -6,7 +6,7 @@ context('User Visit', () => {
   })
 
   it('has a greeting on Landing page', () => {
-    cy.get('[data-testid="button-signup"]').contains('signup')
+    cy.get('[data-testid="signup-button"]').contains('signup')
 
     cy.get('[data-testid="login-button"]').contains('login')
   })

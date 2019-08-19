@@ -37,12 +37,7 @@ function Landing() {
                         className={classes.button}
                         variant="contained"
                         color="primary"
-<<<<<<< HEAD
                         data-testid="signup-button">
-=======
-                        data-testid="button-signup"
-                    >
->>>>>>> staging
                         signup
                     </Button>
                 </Link>
