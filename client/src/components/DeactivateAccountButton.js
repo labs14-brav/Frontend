@@ -2,10 +2,9 @@
  * Dependencies
  */
 
-import React, { useEffect,useState } from 'react'
+import React from 'react';
 import { styled } from '@material-ui/styles';
 import { Button } from '@material-ui/core';
-import axios from 'axios';
 import axioswithAuth from "../helpers/axioswithAuth";
 import mixpanel from "../helpers/mixpanel";
 

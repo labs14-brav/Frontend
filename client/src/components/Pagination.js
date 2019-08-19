@@ -1,46 +1,45 @@
+/**
+ *  Dependencies
+ */
+
 import React from 'react'
 
-// styles
+/**
+ * Import styles
+ */
+
 import './Pagination.scss'
 
-const Pagination = ({mediatorsPerPage,totalMediators,paginate,currentPage}) => {
-    const pageNumbers=[];
+/**
+ * Define component
+ */
 
+const Pagination = ({mediatorsPerPage, totalMediators, paginate, currentPage}) => {
+    const pageNumbers = [];
 
-    console.log(currentPage,"currentPag")
-
-    React.useEffect(() => {
-
-    },[currentPage]);
-
-
-    for(let i=1; i<=Math.ceil(totalMediators/mediatorsPerPage); i++){
-        pageNumbers.push(i);
+    for (let i = 1; i <= Math.ceil(totalMediators/mediatorsPerPage); i++) {
+      pageNumbers.push(i);
     }
-
-
-   console.log(currentPage,"currentPage")
 
     return (
         <nav className="navBar">
             <ul className="unListNav">
+                {pageNumbers.map(number => {
+                    return (
 
-            {pageNumbers.map(number=>{
-                console.log(number,"number")
-                 return (
-
-                <li className="liNav" key={number}  >
-                <a className={(currentPage === number ?'active':null)} onClick={()=>paginate(number)} >
-                    {number}
-                 </a>
-                 </li>
-            )})}
-
+                    <li className="liNav" key={number}  >
+                        <a className={(currentPage === number ?'active':null)} onClick={()=>paginate(number)} >
+                            {number}
+                        </a>
+                    </li>
+                )})}
             </ul>
         </nav>
     )
 }
 
+/**
+ * Export component
+ */
+
 export default Pagination
-
-

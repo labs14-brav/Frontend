@@ -14,12 +14,8 @@ import Pagination from './Pagination';
 
 const MediatorList = (props) => {
     const [mediators, setMediators] = useState([]);
-    const [currentPage,setCurrentPage]=useState(1);
-    const [mediatorsPerPage,setMediatorsPerPage]=useState(4);
-    
-
-
-
+    const [currentPage,setCurrentPage] = useState(1);
+    const [mediatorsPerPage, setMediatorsPerPage] = useState(4);
 
     useEffect(() => {
         async function fetchMediators() {
@@ -36,37 +32,20 @@ const MediatorList = (props) => {
         fetchMediators()
     }, [props.filter]);
 
-
-
-
     const indexOfLastMediator=currentPage*mediatorsPerPage;
     const indexOfFirstMediatior=indexOfLastMediator-mediatorsPerPage;
     const currentMediators=mediators.slice(indexOfFirstMediatior,indexOfLastMediator);
 
-
-
-    const paginate=(pageNumber)=>{
-        console.log(pageNumber,"pageNumber")
-        console.log(currentPage,"currentPage")
-       setCurrentPage(pageNumber)
-        
-        
+    const paginate = (pageNumber) => {
+      setCurrentPage(pageNumber)
     }
-        
 
     return (
-
-       
-        
         <Grid container spacing={4} justify="space-evenly" >
 
-        <Grid 
-          item xs={11} 
-          sm={11} 
-          md={12} 
-          lg={12}>
-          <Pagination mediatorsPerPage={mediatorsPerPage} totalMediators={mediators.length} paginate={paginate}  currentPage={currentPage}/>
-          </Grid>
+            <Grid item xs={11} sm={11} md={12} lg={12}>
+              <Pagination mediatorsPerPage={mediatorsPerPage} totalMediators={mediators.length} paginate={paginate}  currentPage={currentPage}/>
+            </Grid>
        
             {currentMediators.map(mediator => {
                 return (

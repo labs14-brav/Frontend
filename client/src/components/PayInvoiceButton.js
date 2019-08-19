@@ -1,17 +1,25 @@
+/**
+ * Dependencies
+ */
+
 import React from 'react';
 import moment from 'moment';
 import axioswithAuth from '../helpers/axioswithAuth';
-
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faMoneyBill} from '@fortawesome/free-solid-svg-icons';
-
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
+/**
+ * Constants
+ */
 
 const stripe = window.Stripe(process.env.REACT_APP_STRIPE_KEY);
+
+/**
+ * Define styles
+ */
 
 const useStyles = makeStyles(theme => ({
     paybutton: {
@@ -31,6 +39,9 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
+/**
+ * Define component
+ */
 
 function PayInvoiceButton(props) {
     const classes = useStyles();
@@ -53,7 +64,7 @@ function PayInvoiceButton(props) {
         "MMMM Do YYYY"
       );
 
-//conditionally render button based on whether the invoice has been paid or not.
+    //conditionally render button based on whether the invoice has been paid or not.
     if (props.invoice.paid_at === null) {
         return(
             <Button variant="outlined" className={classes.paybutton} onClick={clickHandler}>
@@ -71,5 +82,8 @@ function PayInvoiceButton(props) {
     }
 }
 
+/**
+ * Export component
+ */
 
 export default PayInvoiceButton;

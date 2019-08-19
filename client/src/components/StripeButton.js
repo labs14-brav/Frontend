@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import axioswithAuth from '../helpers/axioswithAuth';
 
 /**

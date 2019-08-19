@@ -1,16 +1,18 @@
-import React, { useState, useEffect }from 'react';
+/**
+ * Dependencies
+ */
 
+import React from 'react';
 import PayInvoiceButton from './PayInvoiceButton';
-import axioswithAuth from '../helpers/axioswithAuth';
 import moment from 'moment';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
+
+/**
+ * Import styles
+ */
 
 import './UserInvoice.scss';
 
@@ -43,7 +45,11 @@ const useStyles = makeStyles(theme => ({
         fontSize: '16px',
         fontWeight: 500,
     },
-    }))
+}))
+
+/**
+ * Define component
+ */
 
 function UserInvoice(props) {
     const classes = useStyles();
@@ -112,5 +118,9 @@ function UserInvoice(props) {
         </Card>
     )
 }
+
+/**
+ * Export component
+ */
 
 export default UserInvoice;
