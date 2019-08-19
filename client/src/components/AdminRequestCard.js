@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -27,15 +27,11 @@ const useStyles = makeStyles(theme => ({
       margin: '0 auto',
   },
   paper: {
-      // width: '25%',
-      // height: 300,
       backgroundColor: theme.palette.background.paper,
       border: '1px solid #000',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 4),
       outline: 'none',
-      // display: 'flex',
-      // justifyContent: 'center',
     },
 }))
 

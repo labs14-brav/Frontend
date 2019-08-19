@@ -55,10 +55,10 @@ function NavBar(props) {
     return (
       <Grid container style={{position: 'absolute', boxShadow:"5px 0px 8px #888888", overflow:"hidden"}} className="navBarTop">
         <Grid item xs={4} sm={3} lg={2} className="bg-brav-secondary">
-          <div style={{display:"flex", backgroundColor:"#5C90C1", justifyContent:"center", alignItems:'center', height:"100%"}}>
+          <NavLink to={checkType()} style={{display:"flex", backgroundColor:"#5C90C1", justifyContent:"center", alignItems:'center', height:"100%", textDecoration: 'none'}}>
           <img className="bravLogo" src="https://firebasestorage.googleapis.com/v0/b/brav-3077e.appspot.com/o/brav-lion-logo.png?alt=media&token=4a50279b-acdf-4f74-b2ce-2b8916721331" alt="brav logo" style={{maxWidth:"22.5%", backgroundColor:"#5C90C1", paddingRight:"10px"}}/>
           <h1 className="bravHeader">Brāv</h1>
-          </div>
+          </NavLink>
         </Grid>
 
         <Grid item xs={8} sm={9} lg={10}>

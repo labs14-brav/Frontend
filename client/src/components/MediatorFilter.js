@@ -3,17 +3,11 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { MediatorList } from './index';
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import {
-    Container,
-    FormGroup,
-    FormControl
-} from "@material-ui/core";
+import { MediatorList } from './index';
 
 /**
  * Material UI Styles
@@ -56,7 +50,9 @@ function MediatorFilter(props) {
         price: '',
         experience: '',
     })
-    
+   
+
+
     // Material ui styles
     const classes = useStyles();
 
@@ -72,6 +68,10 @@ function MediatorFilter(props) {
             [event.target.name] : event.target.value,
         })
     }
+
+
+  
+
 
     return (
         <div className={classes.container} style={{margin:"10px"}}>
@@ -170,6 +170,8 @@ function MediatorFilter(props) {
                     </TextField>
                 </Grid>
             </Grid>
+
+
 
             <MediatorList filter={filter} currentcase={props.currentcase}/>
          </div>

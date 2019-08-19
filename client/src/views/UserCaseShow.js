@@ -11,6 +11,8 @@ import UserCaseList from '../components/UserCaseList';
  * Import styles
  */
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import './UserCaseShow.scss';
 
 /**
@@ -47,9 +49,8 @@ const UserCaseShow = props => {
   }
 
   return (
-    <div style={{paddingTop:"100px"}} className="cases-container">
-      <Button className={classes.caseButton} variant="outlined" onClick={buttonHandler}
-              data-testid="button-create-case">Create a Case</Button>
+    <div style={{paddingTop:"100px",overflowX:"hidden",overflowY:"hidden",paddingBottom:"10px"}} className="cases-container">
+      <Button className={classes.caseButton} variant="outlined" onClick={buttonHandler}><FontAwesomeIcon icon={faPlusSquare} size="2x" pull="left"/>  Create a Case</Button>
       <UserCaseList />
     </div>
   )

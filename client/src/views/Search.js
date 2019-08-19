@@ -18,16 +18,20 @@ import './UserCaseShow.scss';
  */
 
 function Search(props) {
-  return (    
-    <Grid container spacing={9} justify="center" style={{paddingTop:"100px"}}>
-      <Grid item xs={12}>
-        <HeaderH1>Search for a Mediator</HeaderH1>
-      </Grid>
+  return (   
+    <div  container style={{paddingTop:"5%",overflowX:"hidden",overflowY:"hidden"}} >
+      <Grid container spacing={9} justify="center" style={{paddingTop:"100px"}}>
+        <Grid item xs={12} >
+          <HeaderH1 >Search for a Mediator</HeaderH1>
+        </Grid>
 
-      <Grid item xs={12} md={9}>
-        <MediatorFilter currentcase={props.location.state.currentcase}/>
+        <Grid item xs={12} md={9}  >
+          <MediatorFilter 
+          currentcase={props.location.state.currentcase}
+          />
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
   )
 };
 

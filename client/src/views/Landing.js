@@ -14,8 +14,8 @@ const useStyles = makeStyles(theme => ({
     button: {
         margin: theme.spacing(1),
         width: 100,
-        color: 'white',
-        backgroundColor: '#5C90C1',
+        color: "white",
+        backgroundColor: "#5C90C1",
         "&:hover": {
             backgroundColor: "#517EA8"
         },
@@ -32,6 +32,7 @@ function Landing() {
         <>
             <div className="landingNav">
                 <Link to="/auth" style={{textDecoration:"none"}} data-testid="signup-link">
+
                     <Button
                         className={classes.button}
                         variant="contained"
@@ -42,6 +43,7 @@ function Landing() {
                 </Link>
 
                 <Link to="/auth" style={{textDecoration:"none"}} data-testid="login-link">
+
                     <Button
                         className={classes.button}
                         variant="contained"

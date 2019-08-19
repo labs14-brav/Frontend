@@ -1,0 +1,22 @@
+#modal-form { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    #modal-text { 
+        resize: none;
+        margin: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    @media (max-width: '768px') {
+            width: 100%;
+    }
+}
+
+.MuiTabs-indicator {
+    background-color: #5C90C1 !important;
+}

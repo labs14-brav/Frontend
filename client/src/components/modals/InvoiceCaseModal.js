@@ -8,12 +8,11 @@ import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import CloseIcon from "@material-ui/icons/Close";
-import axioswithAuth from "../../helpers/axioswithAuth";
+import InvoiceForm from "../InvoiceForm";
 import {
     Button,
     Dialog,
     IconButton,
-    TextField,
     Typography
 } from "@material-ui/core";
 
@@ -34,15 +33,15 @@ const styles = theme => ({
         color: theme.palette.grey[500]
     },
     openButton: {
-        color: '#5C90C1',
-        borderColor: '#5C90C1',
+        color: "#5C90C1",
+        borderColor: "#5C90C1",
         "&:hover": {
             borderColor: "#517EA8",
-            color: "#517EA8",
+            color: "#517EA8"
         },
         "&:active": {
             borderColor: "#476e91",
-            color: "#517EA8",
+            color: "#517EA8"
         }
     }
 });
@@ -74,7 +73,7 @@ const OpenDialogueButton = withStyles(styles)(props => {
             className={classes.openButton}
             onClick={onOpen}
         >
-            Complete
+            Create Invoice
         </Button>
     );
 });
@@ -96,7 +95,7 @@ const DialogActions = withStyles(theme => ({
  * Define component
  */
 
-class CompleteCaseModal extends React.Component {
+class InvoiceCaseModal extends React.Component {
     state = {
         open: false
     };
@@ -107,17 +106,8 @@ class CompleteCaseModal extends React.Component {
         });
     };
 
-    handleClose = (caseId) => {
-        console.log('Case id', caseId);
-        axioswithAuth()
-        .put(`/cases/${caseId}/case-request-completed`)
-        .then((res) => {
-            this.setState({ open: false });
-            this.props.fetchCases();
-        })
-        .catch((err) => {
-            console.log(err);
-       });
+    handleClose = caseId => {
+        this.setState({ open: false });
     };
 
     render() {
@@ -133,21 +123,23 @@ class CompleteCaseModal extends React.Component {
                         id="customized-dialog-title"
                         onClose={this.handleClose}
                     >
-                        Are you sure?
+                        Invoice
                     </DialogTitle>
-                        <Button onClick={() => this.handleClose(this.props.caseId)} color="primary">
-                            Yes, Complete
-                        </Button>
-                    <DialogActions>
-                    </DialogActions>
+                    <DialogContent>
+                        <p>
+                            Fill out the hour and rate fields to generate an
+                            invoice for this case.
+                        </p>
+                    </DialogContent>
+                    <InvoiceForm
+                        caseId={this.props.caseId}
+                        handleClose={this.handleClose}
+                    />
+                    <DialogActions />
                 </Dialog>
             </>
         );
     }
 }
 
-/**
- * Export component
- */
-
-export default CompleteCaseModal;
+export default InvoiceCaseModal;

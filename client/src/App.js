@@ -6,9 +6,8 @@ import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import { NavBar } from './components';
-import { Landing, Login, ErrorBoundary, AuthCallback } from './views';
+import { TermsOfService , PrivacyPolicy } from './views';
 import uuid from 'uuid';
-import { PrivateRoute } from "./routes/helpers/index";
 import {
   RootRouter,
   UsersRouter,
@@ -47,7 +46,10 @@ function App() {
       </Grid>
         :
         <Switch>
+          <Route key={uuid.v4()} exact path="/terms-of-service" component={TermsOfService} />
+          <Route key={uuid.v4()} exact path="/privacy-policy" component={PrivacyPolicy} />
           {AuthRouter}
+          <Redirect to='/' />
         </Switch>
       }
     </BrowserRouter>

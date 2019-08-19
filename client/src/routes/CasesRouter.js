@@ -8,7 +8,7 @@ import { PrivateRoute } from "./helpers/index";
 import {
     Search,
     ErrorBoundary,
-    CaseForm,
+    NewCase,
     UserCaseShow,
     MediatorCasesShow,
     CourtForm,
@@ -23,7 +23,7 @@ const RootRouter = [
     <PrivateRoute
         key={uuid.v4()}
         exact
-         path="/cases"
+        path="/cases"
         component={UserCaseShow}
         errorBoundary={ErrorBoundary}
     />,
@@ -31,7 +31,7 @@ const RootRouter = [
         key={uuid.v4()}
         exact
         path="/cases/new"
-        component={CaseForm}
+        component={NewCase}
         errorBoundary={ErrorBoundary}
     />,
     <PrivateRoute
@@ -57,7 +57,9 @@ const RootRouter = [
         key={uuid.v4()}
         path="/cases/:id/mediator-search"
         component={Search}
-        errorBoundary={ErrorBoundary} />,
+        errorBoundary={ErrorBoundary} 
+    />,
+
 ];
 
 /**
