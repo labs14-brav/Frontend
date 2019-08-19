@@ -1,13 +1,12 @@
+/**
+ * Dependencies
+ */
+
 import React, { useState, useEffect } from 'react';
-import AddendumsList from '../AddendumsList'
 import AreYouSureDialog from './AreYouSureDialog';
 import axioswithAuth from '../../helpers/axioswithAuth';
 import AddendumInvoiceTabs from '../AddendumInvoiceTabs';
 import moment from "moment";
-
-/**
- * Material UI imports
- */
 import { makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import IconButton from '@material-ui/core/IconButton';
@@ -15,13 +14,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import CloseIcon from '@material-ui/icons/Close';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faIdCardAlt,faUserFriends,faClipboard,faBookOpen,faWallet,faLandmark,faFolder,faBalanceScale,faCalendarDay } from '@fortawesome/free-solid-svg-icons';
+
+/**
+ * Import styles
+ */
 
 import '../UserCaseCard.scss';
-
 
 const useStyles = makeStyles(theme => ({
     primarybutton: {
@@ -180,6 +178,10 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
+/**
+ * Define modal
+ */
+
 function CaseOverviewDialog(props) {
     const [sureOpen, setSureOpen] = useState(false);
     const classes = useStyles();
@@ -210,15 +212,9 @@ function CaseOverviewDialog(props) {
                 console.error(error);
             })
     }
-
-    useEffect(() => {
-        console.log("case object", props.case);
-          console.log(timeStamp);
-    });
     
     return(
         <>
-
         <Dialog fullScreen open={props.open} onClose={props.handleClose}>
             <Toolbar >
                
@@ -320,6 +316,8 @@ function CaseOverviewDialog(props) {
     )
 }
 
-
+/**
+ * Export modal
+ */
 
 export default CaseOverviewDialog;

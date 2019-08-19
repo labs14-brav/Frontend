@@ -1,13 +1,17 @@
+/**
+ * Dependencies
+ */
+
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import {
-    Button
-  } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import axioswithAuth from '../../helpers/axioswithAuth';
 
-
+/**
+ * Define styles
+ */
 
 const useStyles = makeStyles(theme => ({
     dialog: {
@@ -34,6 +38,9 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
+/**
+ * Define modal
+ */
 
 function CompleteCaseDialog(props) {
     const classes = useStyles();
@@ -57,16 +64,18 @@ function CompleteCaseDialog(props) {
        
     };
 
-
-        return (
+    return (
         <Dialog open={open} onClose={handleClose} className={classes.dialog}>
             <div className={classes.paper}>
                 <Typography className={classes.title} variant="h6">Are you sure you want to complete this case?</Typography>
                 <Button onClick={handleSubmit} variant="outlined"> Yes, complete the case. </Button>
             </div>
         </Dialog>
+    )
+}
 
-        )
-    }
+/**
+ * Export modal
+ */
 
-export default CompleteCaseDialog;
+ export default CompleteCaseDialog;

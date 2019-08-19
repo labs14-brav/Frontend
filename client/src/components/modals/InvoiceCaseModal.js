@@ -8,13 +8,11 @@ import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import CloseIcon from "@material-ui/icons/Close";
-import axioswithAuth from "../../helpers/axioswithAuth";
 import InvoiceForm from "../InvoiceForm";
 import {
     Button,
     Dialog,
     IconButton,
-    TextField,
     Typography
 } from "@material-ui/core";
 
