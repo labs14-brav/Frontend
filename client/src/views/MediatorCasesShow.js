@@ -228,7 +228,7 @@ function MediatorCasesShow() {
                                     </p>
                                     <a
                                         style={{ textDecoration:"none" }}
-                                        href={`https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_FapfMHhGMRX8cqibiDppj97yzbPNKByE&redirect_uri=${process.env.REACT_APP_API_URL}/stripe-callback`}
+                                        href={`https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_FapfMHhGMRX8cqibiDppj97yzbPNKByE&redirect_uri=${process.env.REACT_APP_URL}/stripe-callback`}
                                     >
                                     <ConnectBankAccountLink>
                                     <FontAwesomeIcon icon={faCreditCard} style={{paddingRight:"10px",fontSize:"30px"}}/> 
