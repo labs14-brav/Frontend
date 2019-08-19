@@ -35,7 +35,7 @@ const RootRouter = [
         errorBoundary={ErrorBoundary}
     />,
     <PrivateRoute
-        key={uuid.v4()}
+        key={uuid.v4()}     
         path="/cases/new/court"
         component={CourtForm}
         errorBoundary={ErrorBoundary}
