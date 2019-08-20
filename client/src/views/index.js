@@ -16,7 +16,7 @@ export { default as MediatorCasesShow } from './MediatorCasesShow';
 export { default as AdminHome } from './AdminHome';
 export { default as AuthCallback } from './AuthCallback';
 export { default as CourtForm } from './CourtForm';
-export { default as OutsideCourtForm } from './CourtForm';
+export { default as OutsideCourtForm } from './OutsideCourtForm';
 export { default as NewCase } from "./NewCase";
 export { default as StripeCallback } from "./StripeCallback";
 export { default as StripeCheckout } from "./StripeCheckout";
