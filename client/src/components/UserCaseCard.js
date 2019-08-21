@@ -94,7 +94,6 @@ const useStyles = makeStyles(theme => ({
  */
 
 const UserCaseCard = (props) => {
-    // console.log("Case Props", props);
     const [fullopen, setFullOpen] = useState(false);
     const classes = useStyles();
 
@@ -109,7 +108,7 @@ const UserCaseCard = (props) => {
     }
 
 
-    if(props.case.court_case === 1) {
+    if(props.case.court_case === 1 || props.case.court_case === true || props.case.court_case === 'true') {
 
     return (
         <>
