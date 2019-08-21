@@ -44,6 +44,7 @@ var uiConfig = {
     privacyPolicyUrl: '/privacy-policy'
   };
 
+var storage = firebase.storage();
 
 function wrappedStart() {
   ui.start('#firebaseui-auth-container', uiConfig);
