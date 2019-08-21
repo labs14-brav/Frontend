@@ -45,6 +45,8 @@ var uiConfig = {
   };
 
 var storage = firebase.storage();
+var storageRef = storage.ref();
+var documentRef = storageRef.child('documents');
 
 function wrappedStart() {
   ui.start('#firebaseui-auth-container', uiConfig);
