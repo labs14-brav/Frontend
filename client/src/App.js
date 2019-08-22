@@ -9,7 +9,6 @@ import { NavBar } from './components';
 import { NoMatch, TermsOfService , PrivacyPolicy } from './views';
 import uuid from 'uuid';
 import {
-  RootRouter,
   UsersRouter,
   CasesRouter,
   AuthRouter
@@ -34,7 +33,7 @@ function App() {
         <NavBar/>
         <Grid item xs={12} sm={12} lg={12} style={{ backgroundColor: '#ECF6FF'}}>
           <Switch>
-            {RootRouter}
+            <Route key={uuid.v4()} exact path='/' render={() => <Redirect to='/cases' />}/>,
             {UsersRouter}
             {CasesRouter}
             <Route key={uuid.v4()} component={NoMatch} />
