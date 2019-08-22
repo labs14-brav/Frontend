@@ -181,8 +181,8 @@ const OutsideCourtForm = (props) => {
 
               <TextField
               className={classes.textField}
-              label="Participant Contact Info"
-              helperText="Email or phone number"
+              label="Participant Contact Information"
+              helperText="Please provide an email or phone number for each participant listed above"
               value={form.parties_contact_info}
               name="parties_contact_info"
               data-testid="input-parties_contact_info"

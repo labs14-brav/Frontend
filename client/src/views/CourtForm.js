@@ -160,9 +160,9 @@ const CourtForm = (props) => {
 
         <TextField
           className={classes.textField}
-          label="Participant Contact Info"
+          label="Participant Contact Information"
           name="parties_contact_info"
-          helperText="Email or phone number"
+          helperText="Please provide an email or phone number for each participant listed above"
           data-testid="input-parties_contact_info"
           value={form.parties_contact_info}
           onChange={handleChange("parties_contact_info")}
