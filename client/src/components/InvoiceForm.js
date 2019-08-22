@@ -157,7 +157,7 @@ const InvoiceForm = props => {
 
                 <TextField
                     className={classes.textField}
-                    label="Total Amount Due"
+                    label="Total Amount Due -$"
                     value={form.amount}
                     name="amount"
                     onChange={handleChange("amount")}
