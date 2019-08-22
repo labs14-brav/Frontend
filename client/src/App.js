@@ -6,12 +6,11 @@ import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import { NavBar } from './components';
-import { TermsOfService , PrivacyPolicy } from './views';
+import { NoMatch, TermsOfService , PrivacyPolicy } from './views';
 import uuid from 'uuid';
 import {
   RootRouter,
   UsersRouter,
-  NoMatchRouter,
   CasesRouter,
   AuthRouter
 } from './routes/index';
@@ -38,7 +37,7 @@ function App() {
             {RootRouter}
             {UsersRouter}
             {CasesRouter}
-            {NoMatchRouter}
+            <Route key={uuid.v4()} component={NoMatch} />
           </Switch>
         </Grid>
       </Grid>
