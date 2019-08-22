@@ -2,17 +2,22 @@
  * Dependencies
  */
 
+import uuid from 'uuid';
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import { NavBar } from './components';
-import { NoMatch, TermsOfService , PrivacyPolicy } from './views';
-import uuid from 'uuid';
+import { PrivateRoute } from './routes/helpers/index';
+import { UsersRouter, CasesRouter } from './routes/index';
 import {
-  UsersRouter,
-  CasesRouter,
-  AuthRouter
-} from './routes/index';
+  Landing,
+  Login,
+  TermsOfService,
+  PrivacyPolicy,
+  ErrorBoundary,
+  AuthCallback,
+  NoMatch
+} from './views';
 
 /**
  * Import global styles
@@ -42,9 +47,11 @@ function App() {
       </Grid>
         :
         <Switch>
-          <Route key={uuid.v4()} exact path="/terms-of-service" component={TermsOfService} />
-          <Route key={uuid.v4()} exact path="/privacy-policy" component={PrivacyPolicy} />
-          {AuthRouter}
+          <Route key={uuid.v4()} exact path="/" component={Landing} />,
+          <Route key={uuid.v4()} exact path="/terms-of-service" component={TermsOfService} />,
+          <Route key={uuid.v4()} exact path="/privacy-policy" component={PrivacyPolicy} />,
+          <Route key={uuid.v4()} exact path='/auth' component={Login} />,
+          <PrivateRoute key={uuid.v4()} exact path="/auth/callback" component={AuthCallback} errorBoundary={ErrorBoundary} />,
           <Redirect to='/' />
         </Switch>
       }
