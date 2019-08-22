@@ -30,22 +30,25 @@ import './App.scss';
  */
 
 function App() {
-  return (
-    <BrowserRouter>
-      {
-      localStorage.getItem('token') ?
-      <Grid container style={{ height: '100vh'}} >
-        <NavBar/>
-        <Grid item xs={12} sm={12} lg={12} style={{ backgroundColor: '#ECF6FF'}}>
-          <Switch>
-            <Route key={uuid.v4()} exact path='/' render={() => <Redirect to='/cases' />}/>,
-            {UsersRouter}
-            {CasesRouter}
-            <Route key={uuid.v4()} component={NoMatch} />
-          </Switch>
+  if (localStorage.getItem('token')) {
+    return (
+      <BrowserRouter>
+        <Grid container style={{ height: '100vh'}} >
+          <NavBar/>
+          <Grid item xs={12} sm={12} lg={12} style={{ backgroundColor: '#ECF6FF'}}>
+            <Switch>
+              <Route key={uuid.v4()} exact path='/' render={() => <Redirect to='/cases' />}/>,
+              {UsersRouter}
+              {CasesRouter}
+              <Route key={uuid.v4()} component={NoMatch} />
+            </Switch>
+          </Grid>
         </Grid>
-      </Grid>
-        :
+      </BrowserRouter>
+    )
+  } else {
+    return (
+      <BrowserRouter>
         <Switch>
           <Route key={uuid.v4()} exact path='/' component={Landing} />,
           <Route key={uuid.v4()} exact path='/terms-of-service' component={TermsOfService} />,
@@ -54,9 +57,9 @@ function App() {
           <PrivateRoute key={uuid.v4()} exact path='/auth/callback' component={AuthCallback} errorBoundary={ErrorBoundary} />,
           <Redirect to='/' />
         </Switch>
-      }
-    </BrowserRouter>
-  );
+      </BrowserRouter>
+    )
+  }
 };
 
 /**
