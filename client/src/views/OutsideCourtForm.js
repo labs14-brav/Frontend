@@ -169,7 +169,7 @@ const OutsideCourtForm = (props) => {
               label="Dispute Participants"
               type="email"
               name="parties_involved"
-              helperText="Names of other parties involved in the conflict"
+              helperText="Please list the names of the other parties involved in your dispute"
               autoComplete="email"
               margin="normal"
               variant="outlined"
@@ -209,7 +209,7 @@ const OutsideCourtForm = (props) => {
               name="description"
               label="Description of Conflict"
               data-testid="input-description"
-              helperText="In your own words, what happened?"
+              helperText="In your own words, please describe what happened."
               multiline
               rows="8"
               value={form.description}
