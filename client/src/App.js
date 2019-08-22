@@ -33,7 +33,7 @@ function App() {
   return (
     <BrowserRouter>
       {
-      localStorage.getItem("token") ?
+      localStorage.getItem('token') ?
       <Grid container style={{ height: '100vh'}} >
         <NavBar/>
         <Grid item xs={12} sm={12} lg={12} style={{ backgroundColor: '#ECF6FF'}}>
@@ -47,11 +47,11 @@ function App() {
       </Grid>
         :
         <Switch>
-          <Route key={uuid.v4()} exact path="/" component={Landing} />,
-          <Route key={uuid.v4()} exact path="/terms-of-service" component={TermsOfService} />,
-          <Route key={uuid.v4()} exact path="/privacy-policy" component={PrivacyPolicy} />,
+          <Route key={uuid.v4()} exact path='/' component={Landing} />,
+          <Route key={uuid.v4()} exact path='/terms-of-service' component={TermsOfService} />,
+          <Route key={uuid.v4()} exact path='/privacy-policy' component={PrivacyPolicy} />,
           <Route key={uuid.v4()} exact path='/auth' component={Login} />,
-          <PrivateRoute key={uuid.v4()} exact path="/auth/callback" component={AuthCallback} errorBoundary={ErrorBoundary} />,
+          <PrivateRoute key={uuid.v4()} exact path='/auth/callback' component={AuthCallback} errorBoundary={ErrorBoundary} />,
           <Redirect to='/' />
         </Switch>
       }
