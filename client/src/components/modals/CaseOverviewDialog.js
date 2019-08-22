@@ -14,7 +14,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import CloseIcon from '@material-ui/icons/Close';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
-import { documentsRef } from '../../helpers/firebase';
 
 /**
  * Import styles
@@ -190,29 +189,6 @@ function CaseOverviewDialog(props) {
         "MMMM Do YYYY, h:mma"
     );
 
-    
-    function handleChangeUploader(e) {
-        e.preventDefault()
-        
-        // Get file
-        const file = e.target.files[0]
-
-        if (file.size > 1e8) {
-            alert("File is too large. Maximum limit is 100MB.")
-            e.target.value = ''
-        } else {
-            // Create file ref (Example: /documents/:case_id/:file_name)
-            const fileRef = documentsRef.child(`${props.case.id}/${file.name}`)
-
-            // Upload file
-            fileRef.put(file).then((snapshot) => {
-                console.log('Upload success!', snapshot.constructor, snapshot);
-            }).catch(err => {
-                console.error(err)
-            });
-        }
-    }
-
     //These are for the delete confirmation modal
     const handleSureOpen = () => {
         setSureOpen(true);
@@ -251,7 +227,6 @@ function CaseOverviewDialog(props) {
                 </Toolbar>
                 <div>
                     <div className={classes.card}>
-                        <input id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleChangeUploader}></input>
 
                         <div className={classes.cardTitle}>
                             <div className={classes.tags}>
