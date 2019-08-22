@@ -193,19 +193,24 @@ function CaseOverviewDialog(props) {
     
     function handleChangeUploader(e) {
         e.preventDefault()
-
+        
         // Get file
         const file = e.target.files[0]
 
-        // Create file ref (Example: /documents/:case_id/:file_name)
-        const fileRef = documentsRef.child(`${props.case.id}/${file.name}`)
+        if (file.size > 1e8) {
+            alert("File is too large. Maximum limit is 100MB.")
+            e.target.value = ''
+        } else {
+            // Create file ref (Example: /documents/:case_id/:file_name)
+            const fileRef = documentsRef.child(`${props.case.id}/${file.name}`)
 
-        // Upload file
-        fileRef.put(file).then((snapshot) => {
-            console.log('Upload success!', snapshot.constructor, snapshot);
-        }).catch(err => {
-            console.error(err)
-        });
+            // Upload file
+            fileRef.put(file).then((snapshot) => {
+                console.log('Upload success!', snapshot.constructor, snapshot);
+            }).catch(err => {
+                console.error(err)
+            });
+        }
     }
 
     //These are for the delete confirmation modal
@@ -231,7 +236,6 @@ function CaseOverviewDialog(props) {
                 console.error(error);
             })
     }
-
     return (
         <>
             <Dialog fullScreen open={props.open} onClose={props.handleClose}>
