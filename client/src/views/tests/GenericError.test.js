@@ -6,7 +6,7 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import { cleanup, render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-import AdminHome from './AdminHome';
+import GenericError from '../GenericError';
 
 /**
  * Hooks
@@ -33,16 +33,18 @@ function renderWithRouter(
  * Assertions
  */
 
-describe('AdminHome.js', () => {
+describe('GenericError.js', () => {
   test('it renders without errors', () => {
-    const route = '/admin'
-    renderWithRouter(<AdminHome />, {route})
+    const route = '/'
+    renderWithRouter(<GenericError />, {route})
   });
 
-  test('it has a heading', () => {
-    const route = '/admin'
-    const { getByTestId } = renderWithRouter(<AdminHome />, {route})
+  test('it has a error message and back link', () => {
+    const route = '/'
+    const { getByTestId } = renderWithRouter(<GenericError />, {route})
 
-    expect(getByTestId('heading-h1').textContent).toBe('Request List')
+    expect(getByTestId('error-alert').textContent).toBe('Oops, an error ocurred.')
+    expect(getByTestId('error-link').textContent).toBe('Return to main page')
+    expect(getByTestId('error-link').getAttribute('href')).toBe('/')
   });
 });

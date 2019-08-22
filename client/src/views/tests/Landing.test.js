@@ -6,7 +6,7 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import { cleanup, render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-// import UserCaseShow from './UserCaseShow';
+import Landing from '../Landing';
 
 /**
  * Hooks
@@ -33,16 +33,19 @@ function renderWithRouter(
  * Assertions
  */
 
-describe.skip('UserCaseShow.js', () => {
+describe('Landing.js', () => {
   test('it renders without errors', () => {
-    const route = '/cases'
-    renderWithRouter(<UserCaseShow />, {route})
+    const route = '/'
+    renderWithRouter(<Landing />, {route})
   });
 
-  test('it has a button to create a case', () => {
-    const route = '/cases'
-    const { getByTestId } = renderWithRouter(<UserCaseShow />, {route})
+  test('it has a signup/login button', () => {
+    const route = '/'
+    const { getByTestId } = renderWithRouter(<Landing />, {route})
 
-    expect(getByTestId('button-create-case').textContent).toBe('Create a Case')
+    expect(getByTestId('signup-button').textContent).toBe('signup')
+    expect(getByTestId('signup-link').getAttribute('href')).toBe('/auth')
+    expect(getByTestId('login-button').textContent).toBe('login')
+    expect(getByTestId('login-link').getAttribute('href')).toBe('/auth')
   });
 });
