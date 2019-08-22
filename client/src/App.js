@@ -11,7 +11,6 @@ import uuid from 'uuid';
 import {
   RootRouter,
   UsersRouter,
-  TestRouter,
   NoMatchRouter,
   CasesRouter,
   AuthRouter
@@ -39,7 +38,6 @@ function App() {
             {RootRouter}
             {UsersRouter}
             {CasesRouter}
-            {TestRouter}
             {NoMatchRouter}
           </Switch>
         </Grid>
