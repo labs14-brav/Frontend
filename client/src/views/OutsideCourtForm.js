@@ -169,6 +169,7 @@ const OutsideCourtForm = (props) => {
               label="Dispute Participants"
               type="email"
               name="parties_involved"
+              helperText="Names of other parties involved in the conflict"
               autoComplete="email"
               margin="normal"
               variant="outlined"
@@ -181,6 +182,7 @@ const OutsideCourtForm = (props) => {
               <TextField
               className={classes.textField}
               label="Participant Contact Info"
+              helperText="Email or phone number"
               value={form.parties_contact_info}
               name="parties_contact_info"
               data-testid="input-parties_contact_info"
@@ -207,6 +209,7 @@ const OutsideCourtForm = (props) => {
               name="description"
               label="Description of Conflict"
               data-testid="input-description"
+              helperText="In your own words, what happened?"
               multiline
               rows="8"
               value={form.description}

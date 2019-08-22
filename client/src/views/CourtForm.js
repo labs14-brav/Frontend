@@ -149,6 +149,7 @@ const CourtForm = (props) => {
           label="Dispute Participants"
           type="email"
           name="parties_involved"
+          helperText="Names of other parties involved in the conflict"
           autoComplete="email"
           margin="normal"
           variant="outlined"
@@ -161,6 +162,7 @@ const CourtForm = (props) => {
           className={classes.textField}
           label="Participant Contact Info"
           name="parties_contact_info"
+          helperText="Email or phone number"
           data-testid="input-parties_contact_info"
           value={form.parties_contact_info}
           onChange={handleChange("parties_contact_info")}
@@ -236,6 +238,7 @@ const CourtForm = (props) => {
           name="description"
           label="Description of Conflict"
           multiline
+          helperText="In your own words, what happened?"
           rows="8"
           value={form.description}
           data-testid="input-description"
