@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import CaseOverviewDialog from './modals/CaseOverviewDialog';
@@ -16,7 +16,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import CloseIcon from '@material-ui/icons/Close';
 import AddendumsList from './AddendumsList'
-
+import axioswithAuth from '../helpers/axioswithAuth';
 /**
  * Import styles
  */
@@ -97,6 +97,17 @@ const UserCaseCard = (props) => {
     // console.log("Case Props", props);
     const [fullopen, setFullOpen] = useState(false);
     const classes = useStyles();
+    const [invoices, setInvoices] = useState([]);
+
+    // Grab invoices from server
+    async function fetchInvoices() {
+        let res = await axioswithAuth().get(`invoices/case/${props.case.id}`)
+        setInvoices(res.data);
+    }
+
+    useEffect(() => {
+        fetchInvoices();
+    }, [])
 
     /**
      * Dialog functions
@@ -119,9 +130,9 @@ const UserCaseCard = (props) => {
                 md={props.numCases === 1 ? 12 : 5}
                 lg={props.numCases === 1 ? 12 : 5.5}>
                 <Card className={classes.paper}> 
+                {(invoices.length<1)?"invoice":null}
                     <h6 id="ribbon">Court Case</h6>
                     {/* Use <Typography variant="overline />" */}
-
                     <CardContent style={{width:'100%'}}>
                             <h6 id="case-label" style={{marginBottom:'8px', color: '#5C90C1', fontWeight: 'bold'}}>Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
                             <h5 id="case-dispute">{props.case.dispute_category}</h5>
@@ -176,6 +187,8 @@ const UserCaseCard = (props) => {
             md={props.numCases === 1 ? 12 : 5} 
             lg={props.numCases === 1 ? 12 : 5.5}>
             <Card className={classes.paper}> 
+
+
                 <h6 id="ribbon" style={{width: '50%'}}>Non-Court Case</h6>
                 <CardContent style={{width:'100%'}}>
                         <h6 id="case-label" style={{marginBottom:'8px', fontWeight: 'bold'}}>Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
