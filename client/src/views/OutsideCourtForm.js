@@ -72,6 +72,7 @@ const useStyles = makeStyles(theme => ({
 const OutsideCourtForm = props => {
     const classes = useStyles();
     const [form, setValues] = useState({
+        case_initiator: "",
         court_case: false,
         parties_involved: "",
         parties_contact_info: "",
@@ -110,13 +111,9 @@ const OutsideCourtForm = props => {
 
     const onSubmitHandler = async e => {
         e.preventDefault();
-        form.parties_involved = `${localStorage.getItem("user")}, ${
-            form.parties_involved
-        }`;
         let posted = await axioswithAuth()
             .post(`/cases`, form)
             .then(res => {
-                console.log("add new case: ", res.data);
                 if (process.env.NODE_ENV === "production") {
                     mixpanel.track("Create non-court case", {
                         distinct_id: localStorage.getItem("id")
@@ -181,6 +178,19 @@ const OutsideCourtForm = props => {
                     <MenuItem value="Workplace">Workplace</MenuItem>
                     <MenuItem value="Penal">Penal</MenuItem>
                 </TextField>
+
+                <TextField
+                    className={classes.textField}
+                    label="Your First and Last Name"
+                    type="email"
+                    name="case_initiator"
+                    margin="normal"
+                    variant="outlined"
+                    data-testid="input-case_initiator"
+                    onChange={handleChange("case_initiator")}
+                    value={form.case_initiator}
+                    InputProps={InputProps}
+                />
 
                 <TextField
                     className={classes.textField}

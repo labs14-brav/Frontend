@@ -16,7 +16,6 @@ function AuthCallback(props) {
         // User is signed in.
         if (user) {
             let token = await user.getIdToken();
-            localStorage.setItem("user", user.displayName);
             localStorage.setItem("token", token);
 
             axios

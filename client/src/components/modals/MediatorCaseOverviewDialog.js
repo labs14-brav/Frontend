@@ -180,7 +180,7 @@ const useStyles = makeStyles(theme => ({
  * Define modal
  */
 
-function CaseOverviewDialog(props) {
+function MediatorCaseOverviewDialog(props) {
     const [sureOpen, setSureOpen] = useState(false);
     const classes = useStyles();
     const timeStamp = moment(
@@ -300,7 +300,6 @@ function CaseOverviewDialog(props) {
                                     <div
                                         className={classes.listItemDescription}
                                     >
-                                        {/* {props.case.court_case ? <FontAwesomeIcon icon={faClipboard} />:null} */}
                                         <strong>Case Notes</strong>
                                         <p>{props.case.case_notes}</p>
                                     </div>
@@ -321,4 +320,4 @@ function CaseOverviewDialog(props) {
  * Export modal
  */
 
-export default CaseOverviewDialog;
+export default MediatorCaseOverviewDialog;

@@ -112,7 +112,7 @@ function UserInvoice(props) {
                         </div>
                     </div>
                     
-                    <PayInvoiceButton invoice={props.invoice} />
+                    {localStorage.getItem("type") === "mediator" ? null :<PayInvoiceButton invoice={props.invoice} /> }
                 </div>
             </CardContent>
         </Card>

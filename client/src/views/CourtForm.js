@@ -59,6 +59,7 @@ const CourtForm = props => {
     const classes = useStyles();
     const [form, setValues] = useState({
         court_case: true,
+        case_initiator: "",
         parties_involved: "",
         parties_contact_info: "",
         description: "",
@@ -100,9 +101,6 @@ const CourtForm = props => {
     const onSubmitHandler = e => {
         e.preventDefault();
         console.log("form", form);
-        form.parties_involved = `${localStorage.getItem("user")}, ${
-            form.parties_involved
-        }`;
         axioswithAuth()
             .post(`/cases`, form)
             .then(res => {
@@ -162,6 +160,18 @@ const CourtForm = props => {
                     <MenuItem value="Penal">Penal</MenuItem>
                     <MenuItem value="Other">Other</MenuItem>
                 </TextField>
+
+                <TextField
+                    className={classes.textField}
+                    label="Your First and Last Name"
+                    type="email"
+                    name="case_initiator"
+                    margin="normal"
+                    variant="outlined"
+                    data-testid="input-case_initiator"
+                    onChange={handleChange("case_initiator")}
+                    value={form.case_initiator}
+                />
 
                 <TextField
                     className={classes.textField}
