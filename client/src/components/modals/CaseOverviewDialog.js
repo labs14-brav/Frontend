@@ -19,7 +19,11 @@ import Button from '@material-ui/core/Button';
  * Import styles
  */
 
-import '../UserCaseCard.scss';
+import '../styles/UserCaseCard.scss';
+
+/**
+ * Define styles
+ */
 
 const useStyles = makeStyles(theme => ({
     primarybutton: {
@@ -212,19 +216,19 @@ function CaseOverviewDialog(props) {
                 console.error(error);
             })
     }
-    
+
     return(
         <>
         <Dialog fullScreen open={props.open} onClose={props.handleClose}>
             <Toolbar >
-               
+
                 <Button id="trashButton" className={classes.deletebutton} onClick={handleSureOpen} variant="outlined">
                     <DeleteIcon />
                 </Button>
                 <IconButton id="exitButton" edge="end" onClick={props.handleClose}>
-                    <CloseIcon /> 
+                    <CloseIcon />
                 </IconButton>
-          
+
             </Toolbar>
             <div>
                 <div className={classes.card}>
@@ -240,7 +244,7 @@ function CaseOverviewDialog(props) {
                             <h5><FontAwesomeIcon icon={faFolder} /> Type</h5>
                             <p>{props.case.dispute_category}</p>
                         </div> */}
-                       
+
                         <div className={classes.cardSection}>
                             <div className={classes.listItem}>
                                 {/* <FontAwesomeIcon icon={faUserFriends} />  */}
@@ -263,14 +267,14 @@ function CaseOverviewDialog(props) {
                                 <p>{props.case.dispute_amount}</p>
                             </div>
 
-                            {props.case.court_case ? 
+                            {props.case.court_case ?
                                 <>
                                 <div className={classes.listItem}>
                                     {/* {props.case.court_case ? <FontAwesomeIcon icon={faLandmark} />:null} */}
                                     <strong>Court Jurisdiction</strong>
                                     <p>{props.case.court_case ? props.case.court_jurisdiction : null}</p>
                                 </div>
-                            
+
                                 <div className={classes.listItemGrey}>
                                     {/* {props.case.court_case ? <FontAwesomeIcon icon={faBalanceScale} />:null} */}
                                     <strong>Court Number</strong>
@@ -285,29 +289,29 @@ function CaseOverviewDialog(props) {
                                 </>
                             : null}
                         </div>
-                        
+
                         {/* <FontAwesomeIcon icon={faBookOpen} /> */}
                         {/* <div className={classes.cardSection}>
-              
+
                         </div> */}
 
                         <div className={classes.description}>
                             <div className={classes.listItemDescription}>
-                                <strong> Description</strong> 
+                                <strong> Description</strong>
                                 <p>{props.case.description}</p>
                             </div>
                             {props.case.court_case ?
                                 <div className={classes.listItemDescription}>
                                     {/* {props.case.court_case ? <FontAwesomeIcon icon={faClipboard} />:null} */}
                                     <strong>Case Notes</strong>
-                                    <p>{props.case.case_notes}</p> 
+                                    <p>{props.case.case_notes}</p>
                                 </div>
                             : null}
                         </div>
                     </div>
 
                 </div>
-                
+
                 <AddendumInvoiceTabs case={props.case}/>
             </div>
         </Dialog>

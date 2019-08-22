@@ -10,7 +10,7 @@ import Addendum from './Addendum';
  * Import styles
  */
 
-import './Addendum.scss';
+import './styles/Addendum.scss';
 
 /**
  * Define component
@@ -22,7 +22,7 @@ function AddendumsList(props) {
         axioswithAuth().get(`${process.env.REACT_APP_API_URL}/cases/${props.case.id}/addendums`)
         .then(res => {
             setAddendums(res.data);
-        }) 
+        })
         .catch (err => {
             console.error(err);
         })
@@ -35,7 +35,7 @@ function AddendumsList(props) {
                 </>
             )
         } else {
-            return ( 
+            return (
                 <>
                 <ul id="addendums-list">
                 {addendums.map(adden => {

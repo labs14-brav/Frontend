@@ -14,7 +14,11 @@ import Typography from '@material-ui/core/Typography';
  * Import styles
  */
 
-import './UserInvoice.scss';
+import './styles/UserInvoice.scss';
+
+/**
+ * Define styles
+ */
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -30,18 +34,18 @@ const useStyles = makeStyles(theme => ({
             height: '100%',
             },
         },
-    content: { 
+    content: {
         width: '100%',
-        //last child has 24px bottom padding instead of 16px 
+        //last child has 24px bottom padding instead of 16px
         [theme.breakpoints.down('md')]: {
             width: '100%',
             height: '100%',
         },
     },
-    label: {   
+    label: {
         fontSize: '16px',
     },
-    info: { 
+    info: {
         fontSize: '16px',
         fontWeight: 500,
     },
@@ -53,7 +57,7 @@ const useStyles = makeStyles(theme => ({
 
 function UserInvoice(props) {
     const classes = useStyles();
-   
+
     const timeStamp = moment(props.invoice.created_at, "YYYY-MM-DD").format(
         "MM/DD/YYYY"
       );
@@ -91,27 +95,27 @@ function UserInvoice(props) {
                                 </li>
                             </ul>
                         </div>
-                        <div id="right"> 
+                        <div id="right">
                             <ul className="right-list">
                                 <li className="right-list-item">
-                                    <Typography variant="overline" className={classes.info}> 
+                                    <Typography variant="overline" className={classes.info}>
                                         {timeStamp}
                                     </Typography>
                                 </li>
                                 <li className="right-list-item">
-                                    <Typography variant="overline" className={classes.info}> 
+                                    <Typography variant="overline" className={classes.info}>
                                         {props.invoice.hours}
                                     </Typography>
                                 </li>
                                 <li className="right-list-item">
-                                    <Typography variant="overline" className={classes.info}> 
+                                    <Typography variant="overline" className={classes.info}>
                                         {props.invoice.amount}
                                     </Typography>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    
+
                     <PayInvoiceButton invoice={props.invoice} />
                 </div>
             </CardContent>
