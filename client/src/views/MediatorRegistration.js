@@ -263,7 +263,7 @@ function MediatorRegistration(props) {
                     <TextField
                         id="standard-dense"
                         type="number"
-                        label="Price"
+                        label="Price - $/hr"
                         value={values.price}
                         min={0}
                         step={1}
@@ -271,7 +271,7 @@ function MediatorRegistration(props) {
                         data-testid="input-price"
                         className={classes.select}
                         margin="dense"
-                        helperText="Dollars/Hour"
+                        helperText="This is not binding. You will be able to adjust your rate on a case-by-case basis."
                     />
 
                     <TextField
