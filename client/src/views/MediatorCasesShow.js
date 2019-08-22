@@ -177,7 +177,8 @@ function MediatorCasesShow() {
 
     if (is_stripe_connected === true || 
         is_stripe_connected === "true" ||
-        is_stripe_connected === 1) {
+        is_stripe_connected === 1||
+        is_stripe_connected === "1") {
         return (
             <MediatorCasesShowStyle>
                 <NavTabs
