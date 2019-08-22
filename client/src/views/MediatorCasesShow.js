@@ -19,7 +19,7 @@ import { ConnectBankAccountLink } from "./styles/index";
  * Import styles
  */
 
-import './MediatorCasesShow.scss';
+import './styles/MediatorCasesShow.scss';
 
 /**
  * Define styles
@@ -175,7 +175,7 @@ function MediatorCasesShow() {
     const is_stripe_connected = localStorage.getItem("is_stripe_connected")
     console.log('is_stripe_connected', is_stripe_connected, is_stripe_connected.constructor)
 
-    if (is_stripe_connected === true || 
+    if (is_stripe_connected === true ||
         is_stripe_connected === "true" ||
         is_stripe_connected === 1) {
         return (
@@ -215,15 +215,15 @@ function MediatorCasesShow() {
                     <Card className={classes.card}>
                             <div className={classes.cardTitle}>
                                     <strong>Activate Stripe Account</strong>
-                                    
+
                                 <div className={classes.divider}> </div>
                             </div>
                             <div className={classes.cardContent}>
                                     <p className={classes.text}>
-                                        In order to access our  services an account with Stripe Services must be created. 
-                                        Stripe is the best platform for running an internet business and handles billions of dollars 
-                                        every year for forward-thinking businesses like our mediation site.  If you you are eager to start your business click the button in order to make sure you get registered 
-                                        to recieve payments. For more information click the link 
+                                        In order to access our  services an account with Stripe Services must be created.
+                                        Stripe is the best platform for running an internet business and handles billions of dollars
+                                        every year for forward-thinking businesses like our mediation site.  If you you are eager to start your business click the button in order to make sure you get registered
+                                        to recieve payments. For more information click the link
                                         below.<br/>
                                         <a style={{ textDecoration:"none" }}
                                         href="https://stripe.com/about" target="_blank"
@@ -236,7 +236,7 @@ function MediatorCasesShow() {
                                         href={`https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_ABPUiwwNjwxtQ0OypoG43e6Pw4Z32vOp&redirect_uri=${process.env.REACT_APP_URL}/stripe-callback`}
                                     >
                                     <ConnectBankAccountLink>
-                                    <FontAwesomeIcon icon={faCreditCard} style={{paddingRight:"10px",fontSize:"30px"}}/> 
+                                    <FontAwesomeIcon icon={faCreditCard} style={{paddingRight:"10px",fontSize:"30px"}}/>
                                         Connect Bank Account
                                     </ConnectBankAccountLink>
                                     </a>

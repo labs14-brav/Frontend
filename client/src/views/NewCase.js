@@ -11,7 +11,7 @@ import Card from "@material-ui/core/Card";
  *  Import styles
  */
 
-import "./CaseForm.scss";
+import "./styles/CaseForm.scss";
 
 /**
  * Global Component Styles
