@@ -15,7 +15,7 @@ import DeclineCaseModal from "./modals/DeclineCaseModal";
 import CompleteCaseDialog from "./modals/CompleteCaseDialog";
 import InvoiceCaseModal from "./modals/InvoiceCaseModal";
 import Typography from "@material-ui/core/Typography";
-import MediatorCaseOverviewDialog from "./modals/MediatorCaseOverviewDialog";
+import CaseOverviewDialog from "./modals/CaseOverviewDialog";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faHandshake,
@@ -273,7 +273,7 @@ const MediatorCaseCard = props => {
                 caseId={props.case.id}
             />
 
-            <MediatorCaseOverviewDialog
+            <CaseOverviewDialog
                 case={props.case}
                 open={fullopen}
                 handleClose={handlefullClose}

@@ -47,9 +47,9 @@ const useStyles = makeStyles(theme => ({
     },
     deletebutton: {
         margin: theme.spacing(1),
-        color: "#E55557",
-        borderColor: "#E55557",
-        alignSelf: "flexEnd"
+        color: '#E55557',
+        borderColor: '#E55557',
+        alignSelf: 'flexEnd',
     },
     modal: {
         margin: "0 auto",
@@ -183,10 +183,9 @@ const useStyles = makeStyles(theme => ({
 function CaseOverviewDialog(props) {
     const [sureOpen, setSureOpen] = useState(false);
     const classes = useStyles();
-    const timeStamp = moment(
-        props.case.created_at,
-        "YYYY-MM-DD HH:mm:ss"
-    ).format("MMMM Do YYYY, h:mma");
+    const timeStamp = moment(props.case.created_at, "YYYY-MM-DD HH:mm:ss").format(
+        "MMMM Do YYYY, h:mma"
+    );
 
     //These are for the delete confirmation modal
     const handleSureOpen = () => {
@@ -296,17 +295,15 @@ function CaseOverviewDialog(props) {
                                     <strong> Description</strong>
                                     <p>{props.case.description}</p>
                                 </div>
-                                {props.case.court_case ? (
-                                    <div
-                                        className={classes.listItemDescription}
-                                    >
-                                        {/* {props.case.court_case ? <FontAwesomeIcon icon={faClipboard} />:null} */}
+                                {props.case.court_case ?
+                                    <div className={classes.listItemDescription}>
                                         <strong>Case Notes</strong>
                                         <p>{props.case.case_notes}</p>
                                     </div>
-                                ) : null}
+                                 : null}
                             </div>
                         </div>
+
                     </div>
 
                     <AddendumInvoiceTabs case={props.case} />
