@@ -49,4 +49,20 @@ function wrappedStart() {
   ui.start('#firebaseui-auth-container', uiConfig);
 }
 
+/**
+ * Define storage reference
+ */
+
+const storage = firebase.storage();
+const storageRef = storage.ref();
+const documentsRef = storageRef.child('documents');
+
+export {
+  documentsRef
+}
+
+/**
+ * Export
+ */
+
 export default wrappedStart;
