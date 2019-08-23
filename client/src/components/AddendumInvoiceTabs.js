@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import axioswithAuth from '../helpers/axioswithAuth';
 import AddendumsList from './AddendumsList';
 import UserInvoiceList from './UserInvoiceList';
+import CaseDocumentsList from './CaseDocumentsList';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -134,6 +135,7 @@ export default function AddendumInvoiceTabs(props) {
         >
           <Tab label="Addendums"  {...a11yProps(0)} />
           <Tab label="Invoices" {...a11yProps(1)} />
+          <Tab label="Documents" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -144,6 +146,9 @@ export default function AddendumInvoiceTabs(props) {
       </TabPanel>
       <TabPanel value={value} index={1}>
             <UserInvoiceList case = {props.case}/>
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+            <CaseDocumentsList case = {props.case}/>
       </TabPanel>
 
 

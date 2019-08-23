@@ -105,7 +105,7 @@ function UserInvoice(props) {
                                 </li>
                                 <li className="right-list-item">
                                     <Typography variant="overline" className={classes.info}> 
-                                        {props.invoice.amount}
+                                        ${props.invoice.amount}
                                     </Typography>
                                 </li>
                             </ul>
