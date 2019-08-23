@@ -7,6 +7,7 @@ import PayInvoiceButton from "./PayInvoiceButton";
 import moment from "moment";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
@@ -44,6 +45,18 @@ const useStyles = makeStyles(theme => ({
     info: {
         fontSize: "16px",
         fontWeight: 500
+    },
+    invoiceStatus: {
+        margin: '0 auto',
+        padding: '10px',
+        color: '#5C90C1',
+        borderColor: "#5C90C1",
+        minWidth: "150px",
+        border: "1px solid #5C90C1",
+        textAlign: "center",
+        "&:hover": {
+            backgroundColor: "#FFFFFF"
+        }
     }
 }));
 
@@ -134,15 +147,14 @@ function UserInvoice(props) {
                     </div>
 
                     {localStorage.getItem("type") === "mediator" ? (
-                        <strong>
-                            Status:{" "}
+                        <strong className={classes.invoiceStatus}>
                             {props.invoice.paid_at === null
-                                ? "Waiting for payment"
-                                : "Paid"}
+                                ? "WAITING FOR PAYMENT"
+                                : "PAID"}
                         </strong>
                     ) : (
-                        <PayInvoiceButton invoice={props.invoice} />
-                    )}
+                            <PayInvoiceButton invoice={props.invoice} />
+                        )}
                 </div>
             </CardContent>
         </Card>
