@@ -99,7 +99,7 @@ const UserCaseCard = (props) => {
     // console.log("Case Props", props);
     const [fullopen, setFullOpen] = useState(false);
     const classes = useStyles();
-    const [invoices, setInvoices] = useState([]);
+    const [invoices, setInvoices] = useState({mediator:{},invoice:[]});
 
     // Grab invoices from server
     async function fetchInvoices() {
@@ -121,11 +121,11 @@ const UserCaseCard = (props) => {
         setFullOpen(false);
     }
 
-   const paidAt = invoices.invoice.filter(function(element){
-       return element.paid_at !== null
+   const pendingInvoices = invoices.invoice.filter(function(element){
+       return element.paid_at === null
    })
    
-   console.log(invoices,"paidAt")
+ 
 
     if(props.case.court_case !== 1) {
 
@@ -138,9 +138,8 @@ const UserCaseCard = (props) => {
                 lg={props.numCases === 1 ? 12 : 5.5}>
                 <Card className={classes.paper}> 
 
-                {(invoices.length<1 || invoices.paid_at === null
-
-        ) ? null : [<FontAwesomeIcon icon={faMoneyCheckAlt} style={{color:"green",fontSize:"20px"}} />, " Pending-Invoice"]}
+                {( pendingInvoices.length>0
+        ) ?  [<FontAwesomeIcon icon={faMoneyCheckAlt} style={{color:"green",fontSize:"20px"}} />, " Pending-Invoice"] : null } */}
                     <h6 id="ribbon">Court Case</h6>
                     {/* Use <Typography variant="overline />" */}
                     <CardContent style={{width:'100%'}}>
@@ -198,10 +197,9 @@ const UserCaseCard = (props) => {
             lg={props.numCases === 1 ? 12 : 5.5}>
             <Card className={classes.paper}> 
 
-            {(invoices.length<1 || invoices.paid_at === null
-
-
-                ) ? null : [<FontAwesomeIcon icon={faMoneyCheckAlt} style={{color:"green",fontSize:"20px"}} />, " Pending-Invoice"]}
+         
+            {( pendingInvoices.length>0
+        ) ?  [<FontAwesomeIcon icon={faMoneyCheckAlt} style={{color:"green",fontSize:"20px"}} />, " Pending-Invoice"] : null }
 
                 <h6 id="ribbon" style={{width: '50%'}}>Non-Court Case</h6>
                 <CardContent style={{width:'100%'}}>
