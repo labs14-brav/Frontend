@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, isValidElement } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import CaseOverviewDialog from './modals/CaseOverviewDialog';
@@ -30,6 +30,7 @@ import './UserCaseCard.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandshake, faUsers, faSearch, faChalkboardTeacher,faMoneyCheckAlt } from '@fortawesome/free-solid-svg-icons';
 import { green } from '@material-ui/core/colors';
+import { element } from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
     primarybutton: {
@@ -108,7 +109,7 @@ const UserCaseCard = (props) => {
 
     useEffect(() => {
         fetchInvoices();
-    }, [])
+    },[])
 
     /**
      * Dialog functions
@@ -120,10 +121,13 @@ const UserCaseCard = (props) => {
         setFullOpen(false);
     }
 
+   const paidAt = invoices.invoice.filter(function(element){
+       return element.paid_at !== null
+   })
+   
+   console.log(invoices,"paidAt")
 
-
-
-    if(props.case.court_case === 1) {
+    if(props.case.court_case !== 1) {
 
     return (
         <>
@@ -133,7 +137,10 @@ const UserCaseCard = (props) => {
                 md={props.numCases === 1 ? 12 : 5}
                 lg={props.numCases === 1 ? 12 : 5.5}>
                 <Card className={classes.paper}> 
-                {(invoices.length<1 && invoices.paid_at!==null)? null:[<FontAwesomeIcon icon={faMoneyCheckAlt} style={{color:"green",fontSize:"20px"}} />, " Pending-Invoice"]}
+
+                {(invoices.length<1 || invoices.paid_at === null
+
+        ) ? null : [<FontAwesomeIcon icon={faMoneyCheckAlt} style={{color:"green",fontSize:"20px"}} />, " Pending-Invoice"]}
                     <h6 id="ribbon">Court Case</h6>
                     {/* Use <Typography variant="overline />" */}
                     <CardContent style={{width:'100%'}}>
@@ -191,6 +198,10 @@ const UserCaseCard = (props) => {
             lg={props.numCases === 1 ? 12 : 5.5}>
             <Card className={classes.paper}> 
 
+            {(invoices.length<1 || invoices.paid_at === null
+
+
+                ) ? null : [<FontAwesomeIcon icon={faMoneyCheckAlt} style={{color:"green",fontSize:"20px"}} />, " Pending-Invoice"]}
 
                 <h6 id="ribbon" style={{width: '50%'}}>Non-Court Case</h6>
                 <CardContent style={{width:'100%'}}>
