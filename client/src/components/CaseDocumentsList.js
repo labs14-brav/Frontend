@@ -22,8 +22,8 @@ function CaseDocumentsList(props) {
 
     async function fetchDocuments() {
         let doclist = await axioswithAuth().get(`cases/${props.case.id}/documents`)
-        console.log(doclist);
-        setDocuments(doclist);
+        console.log('full document list', doclist.data);
+        setDocuments(doclist.data);
         return doclist;
     }
 
@@ -50,6 +50,13 @@ function CaseDocumentsList(props) {
         // Upload file
         fileRef.put(file).then((snapshot) => {
             console.log('Upload success!', snapshot.constructor, snapshot);
+            axioswithAuth().post(`/cases/${props.case.id}/documents`, { file_name: file.name })
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(error => {
+                    console.error(error);
+                })
         }).catch(err => {
             console.error(err)
         });
@@ -61,6 +68,7 @@ function CaseDocumentsList(props) {
             <input required id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleSubmitUploader}></input>
             <ul>
                 {documents.map(doc => {
+                    console.log('inside map', doc);
                  return <li> {doc.file_name} </li>
                 })}
             </ul>
