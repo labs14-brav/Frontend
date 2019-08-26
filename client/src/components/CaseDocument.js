@@ -11,20 +11,10 @@ function CaseDocument(props) {
     const fileRef = documentsRef.child(`${props.case.id}/${props.document.file_name}`);
 
     useEffect(() => {
-        // console.log('Handling download for: ', props.document.file_name);
-        // fileRef.getDownloadURL()
-        // .then(res => {
-        //     console.log('getDownloadURL res', res)
-        //     setLink(res);
-        // })
-        // .catch(error => {
-        //     console.error(error);
-        // })
     }, [])
 
     function handleClick(e) {
         e.preventDefault();
-        console.log('Inside click');
 
         fileRef.getDownloadURL()
             .then(res => {
@@ -54,13 +44,7 @@ function CaseDocument(props) {
                         console.error('Something went wrong with the file download.');
                     }
                 };
-                // xhr.onload = function(event) {
-                //     console.log('On Load');
-                //     var blob = xhr.response;
-                //     console.log('Blob', blob);
-                // };
-                // console.log(res);
-                console.log(xhr);
+
                 xhr.open('GET', res);
                 xhr.onerror = function(error) {
                     console.error(error);
@@ -70,21 +54,12 @@ function CaseDocument(props) {
             .catch(err => {
                 console.error(err);
             })
-        // var xhr = new XMLHttpRequest();
-        // xhr.responseType = 'blob';
-        // xhr.onload = function(event) {
-        //     var blob = xhr.response;
-        // };
-        // console.log(link);
-        // xhr.open('GET', link);
-        // xhr.send();
     }
     return(
         <>
             <li>
                 <Typography>{props.document.file_name}</Typography>
-                <a href={link} download>Download file</a>
-                <Button onClick={handleClick}> Download button </Button>
+                <Button onClick={handleClick}> Download File </Button>
             </li>
         </>
     )
