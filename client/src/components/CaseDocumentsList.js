@@ -6,48 +6,76 @@ import React, { useEffect, useState } from 'react';
 import { documentsRef } from '../helpers/firebase';
 import axioswithAuth from '../helpers/axioswithAuth';
 
+import Typography from '@material-ui/core/Typography';
+
 /**
  * Define component
  */
 
 function CaseDocumentsList(props) {
     const [documents, setDocuments]= useState([]);
+    const [file, setFile]= useState({});
 
-
-
-    function useEffect(() => {
-
-    }, [])
+    useEffect(() => {
+        fetchDocuments();
+    }, []);
 
     async function fetchDocuments() {
-
+        let doclist = await axioswithAuth().get(`cases/${props.case.id}/documents`)
+        console.log(doclist);
+        setDocuments(doclist);
+        return doclist;
     }
 
-    function handleChangeUploader(e) {
-        e.preventDefault()
-
-        // Get file
+    function handleInputChanges(e) {
+        e.preventDefault();
         const file = e.target.files[0]
-
-        if (file.size > 1e8) {
+        console.log('file', file);
+        if (!file) {
+            return;
+        }
+        if (file && file.size > 1e8) {
             alert("File is too large. Maximum limit is 100MB.")
             e.target.value = ''
         } else {
-            // Create file ref (Example: /documents/:case_id/:file_name)
-            const fileRef = documentsRef.child(`${props.case.id}/${file.name}`)
-
-            // Upload file
-            fileRef.put(file).then((snapshot) => {
-                console.log('Upload success!', snapshot.constructor, snapshot);
-            }).catch(err => {
-                console.error(err)
-            });
+            setFile(file);
         }
+    } 
+    function handleSubmitUploader(e) {
+        e.preventDefault()
+        console.log('Inside Submit');
+        // Create file ref (Example: /documents/:case_id/:file_name)
+        const fileRef = documentsRef.child(`${props.case.id}/${file.name}`)
+
+        // Upload file
+        fileRef.put(file).then((snapshot) => {
+            console.log('Upload success!', snapshot.constructor, snapshot);
+        }).catch(err => {
+            console.error(err)
+        });
     }
 
+    if (documents.length > 0) {
+        return(
+            <>
+            <input required id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleSubmitUploader}></input>
+            <ul>
+                {documents.map(doc => {
+                 return <li> {doc.file_name} </li>
+                })}
+            </ul>
+        </>
+        )
+    } else {
     return(
-        <input id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleChangeUploader}></input>
-    )
+        <>
+            <Typography>There are no documents currently uploaded. Upload relevant case documents by clicking the button below.</Typography>
+            <form onSubmit={handleSubmitUploader}>
+            <input required id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleInputChanges}></input>
+            <button onClick={() => handleSubmitUploader}> Upload </button>
+                </form>
+        </>
+    )}
 }
 
 /**
