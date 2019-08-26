@@ -2,17 +2,30 @@
  * Dependencies
  */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { documentsRef } from '../helpers/firebase';
+import axioswithAuth from '../helpers/axioswithAuth';
 
 /**
  * Define component
  */
 
 function CaseDocumentsList(props) {
+    const [documents, setDocuments]= useState([]);
+
+
+
+    function useEffect(() => {
+
+    }, [])
+
+    async function fetchDocuments() {
+
+    }
+
     function handleChangeUploader(e) {
         e.preventDefault()
-        
+
         // Get file
         const file = e.target.files[0]
 
