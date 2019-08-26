@@ -36,7 +36,7 @@
     background-color: #598EBF;
     width: 100vw;
     position: fixed;
-    animation: 1s ease-out 0s 1 slideInFromLeft;
+    animation: 2s ease-out 0s 1 slideInFromLeft;
 }
 .cover2{
    display: flex;
@@ -60,9 +60,16 @@ h2{
    
 }
 .how{
-background: red;
-height: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .howContent{
+   
 
+}
+#sign-up{
+position: relative !important;
 }
