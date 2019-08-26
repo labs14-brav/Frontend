@@ -71,7 +71,7 @@ function CaseDocumentsList(props) {
             <ul>
                 {documents.map(doc => {
                     console.log('inside map', doc);
-                 return <CaseDocument key={doc.file_name} document={doc} /> 
+                 return <CaseDocument key={doc.file_name} document={doc} case={props.case} /> 
                 })}
             </ul>
         </>
