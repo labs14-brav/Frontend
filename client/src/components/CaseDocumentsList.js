@@ -23,7 +23,6 @@ function CaseDocumentsList(props) {
 
     async function fetchDocuments() {
         let doclist = await axioswithAuth().get(`cases/${props.case.id}/documents`)
-        console.log('full document list', doclist.data);
         setDocuments(doclist.data);
         return doclist;
     }
@@ -31,7 +30,6 @@ function CaseDocumentsList(props) {
     function handleInputChanges(e) {
         e.preventDefault();
         const file = e.target.files[0]
-        console.log('file', file);
         if (!file) {
             return;
         }
@@ -44,7 +42,6 @@ function CaseDocumentsList(props) {
     } 
     function handleSubmitUploader(e) {
         e.preventDefault()
-        console.log('Inside Submit');
         // Create file ref (Example: /documents/:case_id/:file_name)
         const fileRef = documentsRef.child(`${props.case.id}/${file.name}`)
 
@@ -70,7 +67,6 @@ function CaseDocumentsList(props) {
             <button onClick={handleSubmitUploader}> Upload </button>
             <ul>
                 {documents.map(doc => {
-                    console.log('inside map', doc);
                  return <CaseDocument key={doc.file_name} document={doc} case={props.case} /> 
                 })}
             </ul>

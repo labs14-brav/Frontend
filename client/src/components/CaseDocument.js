@@ -7,7 +7,6 @@ import Button from '@material-ui/core/Button';
 
 function CaseDocument(props) {
     const [link, setLink]= useState('');
-    console.log('Case Document Props', props);
     const fileRef = documentsRef.child(`${props.case.id}/${props.document.file_name}`);
 
     useEffect(() => {
@@ -59,7 +58,7 @@ function CaseDocument(props) {
         <>
             <li>
                 <Typography>{props.document.file_name}</Typography>
-                <Button onClick={handleClick}> Download File </Button>
+                <Button onClick={handleClick} variant="outlined"> Download File </Button>
             </li>
         </>
     )
