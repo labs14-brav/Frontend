@@ -2,8 +2,8 @@
  * Dependencies
  */
 
-import React, { useState, useEffect } from "react";
-import moment from 'moment';
+import React, { useState } from "react";
+import moment from "moment";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -12,16 +12,16 @@ import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
 import AcceptCaseModal from "./modals/AcceptCaseModal";
 import DeclineCaseModal from "./modals/DeclineCaseModal";
-import CompleteCaseDialog from './modals/CompleteCaseDialog';
+import CompleteCaseDialog from "./modals/CompleteCaseDialog";
 import InvoiceCaseModal from "./modals/InvoiceCaseModal";
-import Dialog from "@material-ui/core/Dialog";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
-import AddendumsList from "./AddendumsList";
 import Typography from "@material-ui/core/Typography";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHandshake, faUsers, faClock } from '@fortawesome/free-solid-svg-icons';
+import CaseOverviewDialog from "./modals/CaseOverviewDialog";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faHandshake,
+    faUsers,
+    faClock
+} from "@fortawesome/free-solid-svg-icons";
 
 /**
  * Import styles
@@ -65,25 +65,23 @@ const useStyles = makeStyles(theme => ({
         marginBottom: "10px",
         paddingBottom: "10px"
     },
-    content:{
-        display: 'flex',
-        justifyContent: "space-between",
+    content: {
+        display: "flex",
+        justifyContent: "space-between"
     },
-    court:{
-        display: 'block',
-        color: '#5C90C1',
+    court: {
+        display: "block",
+        color: "#5C90C1",
         fontWeight: 500,
-        paddingBottom: '35px',
+        paddingBottom: "35px"
     },
     label: {
-        color: "#5C90C1",
+        color: "#5C90C1"
     },
-    info: {
-
-    },
+    info: {},
     right: {
-        textAlign: 'end',
-    },
+        textAlign: "end"
+    }
 }));
 
 function getModalStyle() {}
@@ -93,7 +91,6 @@ function getModalStyle() {}
  */
 
 const MediatorCaseCard = props => {
-    console.log("Mediator Case Card", props)
     //created_at: "2019-08-16 16:42:15"
     //court_case: 0 or 1
 
@@ -124,11 +121,11 @@ const MediatorCaseCard = props => {
 
     const handlecompleteClose = () => {
         setCompleteOpen(false);
-    }
+    };
 
     const handlecompleteOpen = () => {
         setCompleteOpen(true);
-    }
+    };
     /**
      * These two functions are for the text input in the modal
      */
@@ -137,10 +134,10 @@ const MediatorCaseCard = props => {
         setText(e.target.value);
     };
 
-
-    const timeStamp = moment(props.case.created_at, "YYYY-MM-DD HH:mm:ss").format(
-        "MMMM Do YYYY"
-      );
+    const timeStamp = moment(
+        props.case.created_at,
+        "YYYY-MM-DD HH:mm:ss"
+    ).format("MMMM Do YYYY");
 
     //Need to update link in Mediator-Search link to the proper case ID when possible.
     return (
@@ -148,16 +145,60 @@ const MediatorCaseCard = props => {
             <Card className={classes.cardcontainer}>
                 <CardContent className={classes.content}>
                     <div className={classes.left}>
-                    <Typography className={classes.label} variant="overline"> Dispute <FontAwesomeIcon icon={faHandshake} /> Category:</Typography>
-                    <Typography className={classes.info}> {props.case.dispute_category} </Typography>
-                    <Typography className={classes.label} variant="overline">Dispute <FontAwesomeIcon icon={faUsers} /> Participants:</Typography>
-                    <Typography className={classes.info}> {props.case.parties_involved} </Typography>
+                        <Typography
+                            className={classes.label}
+                            variant="overline"
+                        >
+                            {" "}
+                            Dispute <FontAwesomeIcon icon={faHandshake} />{" "}
+                            Category:
+                        </Typography>
+                        <Typography className={classes.info}>
+                            {" "}
+                            {props.case.dispute_category}{" "}
+                        </Typography>
+                        <Typography
+                            className={classes.label}
+                            variant="overline"
+                        >
+                            Dispute <FontAwesomeIcon icon={faUsers} />{" "}
+                            Participants:
+                        </Typography>
+                        <Typography className={classes.info}>
+                            {" "}
+                            {`${props.case.case_initiator}, ${
+                                props.case.parties_involved
+                            }`}
+                        </Typography>
                     </div>
                     <div className={classes.right}>
-                    {props.case.court_case === 1 ? <Typography variant="overline" className={classes.court}> Court Case </Typography> : <Typography variant="overline" className={classes.court}> Non-Court Case </Typography>}
-                    <Typography className={classes.label} variant="overline"> Case <FontAwesomeIcon icon={faClock} /> Created:</Typography>
-                    <Typography className={classes.info}>{timeStamp}</Typography>
-                    
+                        {props.case.court_case === 1 ? (
+                            <Typography
+                                variant="overline"
+                                className={classes.court}
+                            >
+                                {" "}
+                                Court Case{" "}
+                            </Typography>
+                        ) : (
+                            <Typography
+                                variant="overline"
+                                className={classes.court}
+                            >
+                                {" "}
+                                Non-Court Case{" "}
+                            </Typography>
+                        )}
+                        <Typography
+                            className={classes.label}
+                            variant="overline"
+                        >
+                            {" "}
+                            Case <FontAwesomeIcon icon={faClock} /> Created:
+                        </Typography>
+                        <Typography className={classes.info}>
+                            {timeStamp}
+                        </Typography>
                     </div>
                 </CardContent>
                 <CardActions className={classes.actions}>
@@ -182,7 +223,7 @@ const MediatorCaseCard = props => {
                     {props.case.case_accepted_at &&
                     props.case.case_declined_at === null &&
                     props.case.case_completed_at === null ? (
-                        <Button onClick={handlecompleteOpen} >
+                        <Button onClick={handlecompleteOpen}>
                             Complete Case
                         </Button>
                     ) : null}
@@ -226,21 +267,18 @@ const MediatorCaseCard = props => {
                 </div>
             </Modal>
 
-
             <CompleteCaseDialog
                 open={completeopen}
                 onClose={handlecompleteClose}
-                caseId={props.case.id} />
+                caseId={props.case.id}
+            />
 
-            <Dialog fullScreen open={fullopen} onClose={handlefullClose}>
-                <Toolbar>
-                    <IconButton edge="end" onClick={handlefullClose}>
-                        <CloseIcon />
-                    </IconButton>
-                </Toolbar>
-                <AddendumsList case={props.case} />
-            </Dialog>
-
+            <CaseOverviewDialog
+                case={props.case}
+                open={fullopen}
+                handleClose={handlefullClose}
+                fetchCases={props.fetchCases}
+            />
         </>
     );
 };
