@@ -37,6 +37,7 @@
     width: 100vw;
     position: fixed;
     animation: 2s ease-out 0s 1 slideInFromLeft;
+    z-index: 10;
 }
 .cover2{
    display: flex;
@@ -44,32 +45,47 @@
    align-items: center;
    padding-top: 100px;
    flex-direction: column
+
+ 
+ 
+}
+h2{
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 3.5vw;
 }
 .cover{
     width:80%;
     text-align: center;
     animation: 1s ease-out 0s 1 slideInFromLeft;
 }
-h2{
-    // position: absolute;
-    color: white;
-    text-align: center;
-    padding-top: 20px;
-    font-size: 3.5vw;
 
-   
-}
 .how{
     height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-top: 40px;
+    margin-top: 20px;
+    
+   
+}
+h3{
+color: red;
+
+
 }
 .howContent{
    
 
 }
+
 #sign-up{
-position: relative !important;
+position: relative !important ; 
+}
+.stepper{
+max-width: 600px;
+min-width: 80%;
 }

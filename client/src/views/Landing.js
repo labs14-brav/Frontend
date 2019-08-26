@@ -57,7 +57,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     root: {
-        width: '100%',
+        minWidth: '100%',
       },
       button: {
         marginTop: theme.spacing(1),
@@ -92,8 +92,9 @@ function Landing() {
     return (
         <>
         <div className="landing">
-            <div className="landingNav">
 
+
+            <div className="landingNav">
             <div className="nav">
             <img
                     className="brav-logo"
@@ -114,9 +115,8 @@ function Landing() {
                     </Button>
                 </Link>
                 </div>
-
-        
                 </div>
+
 
                 <div className="cover2">
                 <h2>Online Mediation<br/>Anywhere In The World</h2>
@@ -126,7 +126,9 @@ function Landing() {
                     alt="Brav Logo"
                 />
 
+
         <Link to="/auth" style={{textDecoration:"none"}} data-testid="signup-link">
+
 
                     <Button
                         id="sign-up"
@@ -146,10 +148,12 @@ function Landing() {
 
 
 
-                <div className={classes.root}>
+                <div className="stepper">
                 <Stepper activeStep={activeStep} orientation="vertical">
                     {steps.map((label, index) => (
+                        
                     <Step key={label}>
+        
                         <StepLabel>{label}</StepLabel>
                         <StepContent>
                         <Typography>{getStepContent(index)}</Typography>
@@ -162,28 +166,30 @@ function Landing() {
                             >
                                 Back
                             </Button>
-                            <Button
+                            
+                            {activeStep === steps.length - 1 ? null : <Button
                                 variant="contained"
                                 color="primary"
                                 onClick={handleNext}
                                 className={classes.button}
-                            >
-                                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                            </Button>
+                            > 
+                            next
+                            </Button> }
+                               
+                          
+
                             </div>
                         </div>
+                       
                         </StepContent>
+                    
+                    
                     </Step>
+        
                     ))}
+                    
                 </Stepper>
-                {activeStep === steps.length && (
-                    <Paper square elevation={0} className={classes.resetContainer}>
-                    {/* <Typography>All steps completed - you&apos;re finished</Typography> */}
-                    <Button onClick={handleReset} className={classes.button}>
-                        Reset
-                    </Button>
-                    </Paper>
-                )}
+             
             </div>
                 
                 <section className="features">
