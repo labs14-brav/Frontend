@@ -28,13 +28,17 @@ Our world is plagued with conflict and devastating violence everywhere you look:
 ### Key Features
 
 1. On-boarding for new users will include sign-in, sign-up, and logout.
-2. User settings. A user will be able to change their password.
-3. Manage Cases. A user will be able to edit the details of a case.
+2. User settings. A user will be able to change their password, and deactivate their account.
+3. Creating cases. A user will be able to create a case based on it's type and relation to court systems. 
+3. Manage Cases. A user will be able to add details to a case.
 4. Search Mediators. A user will be able to filter mediators.
-5. Schedule sessions for conflict resolution discussion— assign Mediator, and email third party using SendGrid.
-6. Request to be mediator. The onboarding for mediators will involve a manual approval process that includes Stripe Connect.
-7. Chat with a mediator using in-app messaging.
-8. Admin Views for viewing mediators, cases, and schedules
+5. Selecting Mediators. A user will be able to select a mediator and a Sendgrid E-mail will be sent telling the Mediator. 
+5. Request to be Mediator. The onboarding for mediators will involve a manual approval process.
+6. Taking payment. A user will be able to pay for mediation services when they have connected with a mediator
+7. Receiving payment. A Mediator will be able to connect their bank account with Stripe, and will be able to recieve payment when a bill or invoice is paid.
+8. Uploading documents. A user will be able to upload documents related to a case.
+9. Downloading documents. A user and Mediator will be able to download documents that were uploaded about the case. 
+
 
 ## Tech Stack
 
@@ -92,6 +96,10 @@ SendGrid allows us to send secure emails. For example when a user forgets their 
 
 This API enables insights into users behavior. User behavior can be broken down into discrete actions and recorded using Mixpanel. The user analytics will help inform feature development.
 
+#### Intergration Testing API - Cypress
+
+This API enables end to end intergration testing. A fake web browser is set up, and Cypress runs the tests live while showing you what happens every step of the way. It can also take screen shots and recordings when unexpected behavior is found. 
+
 ## Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
@@ -124,6 +132,7 @@ npm install
     * build - creates a build of the application.
     * start - starts the production server after a build is created.
     * test - runs tests.
+    * cypress - runs cypress intergration tests
 
 # Contributing
 
