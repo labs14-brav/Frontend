@@ -44,7 +44,7 @@ Our world is plagued with conflict and devastating violence everywhere you look:
 
 ### Front end built using:
 
-#### React
+#### [React](https://reactjs.org/)
 
 We are using the React library to render the interface and Redux for state management. React is lightweight and unopinionated, so it's perfect for building an MVP.
 
@@ -80,23 +80,23 @@ We are using a PostgresSQL database deployed on Heroku. To access the database w
 
 ## APIs
 
-#### Authentication API - Firebase
+#### Authentication API - [Firebase](https://firebase.google.com/docs/auth)
 
 This API is used to authenticate the individuals, mediators and admin to log into the system using their email and password. It handles identity related tasks.
 
-#### Payment API - Stripe
+#### Payment API - [Stripe](https://stripe.com/docs/payments/checkout/connect)
 
-This API is connected to payments between users and mediators. It acts as a secure payment solution with multiple payment options. It will allow users to pay mediators for their time and services securely, and easily.
+This API is connected to payments between users and mediators. It acts as a secure payment solution with multiple payment options. It will allow users to pay mediators for their time and services securely, and easily. We used Chekout with connect to be able to take payments and route them directly to the Mediator
 
-#### Email API - SendGrid
+#### Email API - [SendGrid](https://sendgrid.com/docs/)
 
 SendGrid allows us to send secure emails. For example when a user forgets their password and needs to reset or when they need to receive email reminders or notifications.
 
-#### Analytics API - Mixpanel
+#### Analytics API - [Mixpanel](https://developer.mixpanel.com/docs)
 
 This API enables insights into users behavior. User behavior can be broken down into discrete actions and recorded using Mixpanel. The user analytics will help inform feature development.
 
-#### Intergration Testing API - Cypress
+#### Intergration Testing API - [Cypress](https://docs.cypress.io/guides/overview/why-cypress.html)
 
 This API enables end to end intergration testing. A fake web browser is set up, and Cypress runs the tests live while showing you what happens every step of the way. It can also take screen shots and recordings when unexpected behavior is found. 
 
@@ -105,6 +105,8 @@ This API enables end to end intergration testing. A fake web browser is set up, 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
     *  REACT_APP_API_URL - the Backend URL.
+    *  REACT_APP_URL - the url used to dynamically pass in callbacks, and redirects
+    *  REACT_APP_STRIPE_KEY - the key used to configure stripe. Can be found in stripe dashboard. 
 
 ## 5️⃣ Content Licenses
 
@@ -118,6 +120,7 @@ In order for the app to function correctly, the user must set up their own envir
 ## Testing
 
 We are using the `@testing-library/react` dependency for Frontend tests.
+We are also using Cypress IO for intergration testing.
 
 ## Installation Instructions
 
