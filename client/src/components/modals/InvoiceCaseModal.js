@@ -73,7 +73,7 @@ const OpenDialogueButton = withStyles(styles)(props => {
             className={classes.openButton}
             onClick={onOpen}
         >
-            Create Invoice
+            Request Payment
         </Button>
     );
 });
@@ -123,7 +123,7 @@ class InvoiceCaseModal extends React.Component {
                         id="customized-dialog-title"
                         onClose={this.handleClose}
                     >
-                        Invoice
+                        Request Payment
                     </DialogTitle>
                     <DialogContent>
                         <p>
