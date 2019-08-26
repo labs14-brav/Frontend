@@ -30,17 +30,17 @@ function Landing() {
 
     return (
         <>
+        <div className="landing">
             <div className="landingNav">
-                <Link to="/auth" style={{textDecoration:"none"}} data-testid="signup-link">
 
-                    <Button
-                        className={classes.button}
-                        variant="contained"
-                        color="primary"
-                        data-testid="signup-button">
-                        signup
-                    </Button>
-                </Link>
+            <div className="nav">
+            <img
+                    className="brav-logo"
+                    src="https://www.brav.org/img/brav-logo.png"
+                    alt="Brav Logo"
+                />
+                <div>
+                
 
                 <Link to="/auth" style={{textDecoration:"none"}} data-testid="login-link">
 
@@ -52,13 +52,40 @@ function Landing() {
                         login
                     </Button>
                 </Link>
-            </div>
-            <div className="landing">
+                </div>
+
+        
+                </div>
+
+                <div className="cover2">
+                <h2>Online Mediation<br/>Anywhere In The World</h2>
                 <img
-                    className="brav-logo"
-                    src="https://www.brav.org/img/brav-logo.png"
+                    className="cover"
+                    src={require("../images/cover.svg")}
                     alt="Brav Logo"
                 />
+
+        <Link to="/auth" style={{textDecoration:"none"}} data-testid="signup-link">
+
+                    <Button
+                        style={{width:"300px"}}
+                        className={classes.button}
+                        variant="contained"
+                        color="primary"
+                        data-testid="signup-button">
+                        signup
+                    </Button>
+                </Link>
+                </div>
+            <div className="how">
+                <h3>How Bráv Works</h3>
+                <div className="howContent">
+                
+
+                </div>
+            </div>
+        
+            </div>
             </div>
         </>
     );

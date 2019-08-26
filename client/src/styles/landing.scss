@@ -1,27 +1,68 @@
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+
 .landing {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:#598EBF;
-    height:100vh;
-    flex-direction: column;
+    z-index: -1;
+    background-image: url('./images/earth.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom-left;
+    background-size: cover;
+    height: 100vh;
 }
 .landingNav{
-    display:flex;
-    justify-content: flex-end;
-    width: 100%;
-    background-color: transparent;
-    z-index:10;
-    position: absolute;
+   
 }
 .brav-logo {
-    width: 60%;
+    width: 200px;
+    position: relative;
+    margin: auto 0;
 }
 .login {
+   
+}
+
+.nav{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
+    justify-content: space-around;
+    align-content: center;
+    padding: 20px;
     background-color: #598EBF;
+    width: 100vw;
+    position: fixed;
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+.cover2{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding-top: 100px;
+   flex-direction: column
+}
+.cover{
+    width:80%;
+    text-align: center;
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+h2{
+    // position: absolute;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 3.5vw;
+
+   
+}
+.how{
+background: red;
+height: 400px;
+}
+.howContent{
+
 }
