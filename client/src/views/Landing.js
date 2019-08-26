@@ -11,13 +11,20 @@ import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
+import SearchIcon from '@material-ui/icons/Search';
+import PaymentIcon from '@material-ui/icons/Payment';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
 
 /**
  * Define view
  */
 
 function getSteps() {
-    return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+    return ['Create Account', 'Create Case', 'Search For Mediator'];
   }
   
 
@@ -25,11 +32,9 @@ function getSteps() {
 function getStepContent(step) {
     switch (step) {
       case 0:
-        return `For each ad campaign that you create, you can control how much
-                you're willing to spend on clicks and conversions, which networks
-                and geographical locations you want your ads to show on, and more.`;
+        return `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`;
       case 1:
-        return 'An ad group contains one or more ads which target a shared set of keywords.';
+        return `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`;
       case 2:
         return `Try out different ad text to see what brings in the most customers,
                 and learn how to enhance your ads using features like ad extensions.
@@ -68,6 +73,13 @@ const useStyles = makeStyles(theme => ({
       },
       resetContainer: {
         padding: theme.spacing(3),
+      },
+      card: {
+        maxWidth: 345,
+      },
+      media: {
+        height: 140,
+
       },
 }));
 
@@ -192,24 +204,86 @@ function Landing() {
              
             </div>
                 
-                <section className="features">
-                    <h3>Features</h3>
-                    <div>
+
+                </div>
+                 
+            </div>
 
 
+            <div className="featuresSection">
+            <h3>Features</h3>
+            <section className="features">
+                    
+            
 
+                        <Card className={classes.card}>
+                    <CardActionArea>
+                    <AccountBalanceIcon className="icon"/>
+                        <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            Lizard
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                            across all continents except Antarctica
+                        </Typography>
+                        </CardContent>
+                        </CardActionArea>
+                        </Card>
+
+
+                        <Card className={classes.card}>
+                    <CardActionArea >
+                    <FileCopyIcon className="icon" />
+                        <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            Lizard
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                            across all continents except Antarctica
+                        </Typography>
+                        </CardContent>
+                        </CardActionArea>
+                        </Card>
+                        </section>
+
+                        <section className="features">
+                        <Card className={classes.card}>
+                    <CardActionArea>
+                    <SearchIcon className="icon" />
+                        <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            Lizard
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                            across all continents except Antarctica
+                        </Typography>
+                        </CardContent>
+                        </CardActionArea>
+                        </Card>
+
+
+                        <Card className={classes.card}>
+                    <CardActionArea>
+                    <PaymentIcon  className="icon" />
+                        <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            Lizard
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                            across all continents except Antarctica
+                        </Typography>
+                        </CardContent>
+                        </CardActionArea>
+                        </Card>
+                        </section>
                     </div>
 
 
-                </section>
-
-
-
-
-
-
-                </div>
-            </div>
+                
         
             </div>
             </div>

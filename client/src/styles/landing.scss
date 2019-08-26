@@ -9,7 +9,7 @@
 
 
 .landing {
-    z-index: -1;
+    z-index: 0;
     background-image: url('./images/earth.jpg');
     background-repeat: no-repeat;
     background-position: bottom-left;
@@ -58,7 +58,6 @@ h2{
 .cover{
     width:80%;
     text-align: center;
-    animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
 .how{
@@ -68,9 +67,8 @@ h2{
     align-items: center;
     flex-direction: column;
     padding-top: 40px;
-    margin-top: 20px;
+    margin-top: 50px;
     
-   
 }
 h3{
 color: red;
@@ -88,4 +86,23 @@ position: relative !important ;
 .stepper{
 max-width: 600px;
 min-width: 80%;
+}
+
+.featuresSection{
+    display: flex;
+    margin-top: 200px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.features{
+    display: flex;
+    flex-direction: row;
+
+    background-color: aqua;
+
+}
+.icon{
+    font-size: 90px !important;
 }
