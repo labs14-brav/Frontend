@@ -44,6 +44,30 @@ Our world is plagued with conflict and devastating violence everywhere you look:
 
 We are using the React library to render the interface and Redux for state management. React is lightweight and unopinionated, so it's perfect for building an MVP.
 
+#### Dependencies
+
+- [Axios](https://www.npmjs.com/package/axios): Promise based HTTP client for the browser and node.js used to send requests to our express backend
+- [Firebase](https://www.npmjs.com/package/firebase): Helper used to initalize our firebase authentication system
+- [Firebaseui](https://www.npmjs.com/package/firebaseui): Provides simple, customizable UI bindings on top of Firebase SDK to display login and signup forms
+- [FontAwesome](https://www.npmjs.com/package/font-awesome): Allows us to use sleek icons on our application
+- [History](https://www.npmjs.com/package/history): Easily manages session history anywhere JavaScript runs
+- [Material-Ui](https://www.npmjs.com/package/@material-ui/core): Implement Google's Material Design, allows us to style components with built in styles 
+- [Mixpanel-Browser](https://www.npmjs.com/package/mixpanel-browser): Helper used to work with our analytics tracking
+- [Moment](https://www.npmjs.com/package/moment): Lightweight JavaScript date library for parsing, validating, manipulating, and formatting dates, used to format timestamps
+- [Node-sass](https://www.npmjs.com/package/node-sass): Allows you to natively compile .scss files to css at incredible speed and automatically via a connect middleware
+- [React](https://www.npmjs.com/package/react): a JavaScript library for creating user interfaces, used to create the boiler-plate for our application
+- [React-dom](https://www.npmjs.com/package/react-dom):
+- [React-loader-spinner](https://www.npmjs.com/package/react-dom): Serves as the entry point to the DOM and server renderers for React
+- [React-redux](https://www.npmjs.com/package/react-redux): Advanced state management system for React
+- [React-router-dom](https://www.npmjs.com/package/react-router-dom): Collection of navigational components that compose declaratively with the application
+- [React-scripts](https://www.npmjs.com/package/react-scripts): Configures boiler-plated scripts for react applications
+- [React-test-renderer](https://www.npmjs.com/package/react-test-renderer): Provides an experimental React renderer that can be used to render React components to pure JavaScript 
+- [Redux](https://www.npmjs.com/package/redux): Redux is a predictable state container for JavaScript applications
+- [Redux-logger](https://www.npmjs.com/package/redux-logger): Logs information in the console about redux actions and reducers
+- [Redux-thunk](https://www.npmjs.com/package/redux-thunk): Allows us to write action creators that return a function instead of an action
+- [Uuid](https://www.npmjs.com/package/uuid): Simple, fast generation of RFC4122 UUIDS.
+
+
 #### Front end deployed to `Netlify`
 
 #### [Back end](https://github.com/labs14-brav/Backend) deployed to `Heroku`
