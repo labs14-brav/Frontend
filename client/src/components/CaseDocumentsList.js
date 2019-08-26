@@ -5,6 +5,7 @@
 import React, { useEffect, useState } from 'react';
 import { documentsRef } from '../helpers/firebase';
 import axioswithAuth from '../helpers/axioswithAuth';
+import CaseDocument from './CaseDocument';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -18,7 +19,7 @@ function CaseDocumentsList(props) {
 
     useEffect(() => {
         fetchDocuments();
-    }, []);
+    }, [file]);
 
     async function fetchDocuments() {
         let doclist = await axioswithAuth().get(`cases/${props.case.id}/documents`)
@@ -65,11 +66,12 @@ function CaseDocumentsList(props) {
     if (documents.length > 0) {
         return(
             <>
-            <input required id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleSubmitUploader}></input>
+            <input required id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleInputChanges}></input>
+            <button onClick={handleSubmitUploader}> Upload </button>
             <ul>
                 {documents.map(doc => {
                     console.log('inside map', doc);
-                 return <li> {doc.file_name} </li>
+                 return <CaseDocument key={doc.file_name} document={doc} /> 
                 })}
             </ul>
         </>
@@ -80,7 +82,7 @@ function CaseDocumentsList(props) {
             <Typography>There are no documents currently uploaded. Upload relevant case documents by clicking the button below.</Typography>
             <form onSubmit={handleSubmitUploader}>
             <input required id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleInputChanges}></input>
-            <button onClick={() => handleSubmitUploader}> Upload </button>
+            <button onClick={handleSubmitUploader}> Upload </button>
                 </form>
         </>
     )}
