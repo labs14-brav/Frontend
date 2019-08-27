@@ -45,9 +45,9 @@ function getStepContent(step) {
       case 0:
         return `Mediation can be a hassle; our website makes mediation easier for everyone through encompasing the whole process online. Once an account has been created you will have access to your cases anywhere. Individuals also have the oportunity to sign up as mediators with their credentials and get approved.`;
       case 1:
-        return `Once an account has been created you will have the option of creating a case. If the case was reffered by a court you will choose the court form and fill in all neccessary information. There is an also an option if your specific conflict in not court reffered `;
+        return `Once an account has been created you will have the option of inputting a case. If the case was reffered by a court you will choose the court form and fill in all neccessary information. There is an also an option if your specific conflict in not court reffered `;
       case 2:
-        return `After your case has been created you will search for a mediator you decide to handle your case. There are multiply criteria you can choose from, such as the mediators specialty and price. The chosen mediator will recieve all of your case information including external parties involved.`;
+        return `After your case has been created you will search for a mediator to handle your case. There are multiply criteria you can choose from, such as mediator specialty and price. The chosen mediator will recieve all of your case information including external parties involved.`;
     case 3:
         return `After a mediator has accepted your request the mediation between all parties can begin. This includes the ability to upload important documents, add addendums to existing cases and make payments.`;
       default:
@@ -57,24 +57,41 @@ function getStepContent(step) {
 
   const images = [
     {
-      label: '',
       imgPath:findMediator
     },
     {
-      label: '',
       imgPath:caseActivity,
     },
-    {
-      label: '',
+    {    
       imgPath:invoices,
     },
-    {
-      label: '',
+    { 
       imgPath:settingPage,
     },
    
   ];
 
+  const cards= [
+    {
+        
+    },
+    {
+        
+    }, 
+    {
+        
+    }, 
+    {
+        
+    }, 
+    {
+        
+    }, 
+    {
+        
+    }
+
+  ]
 
 const useStyles = makeStyles(theme => ({
     button: {
@@ -262,13 +279,12 @@ function Landing() {
                     <Card className={classes.card}>
                         <CardActionArea>
                         <AccountBalanceIcon className="icon"/>
-                        <CardContent>
+                        <CardContent style={{height:"160px"}}>
                         <Typography gutterBottom variant="h5" component="h2">
-                                        Lizard
+                                       Cases
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                        across all continents except Antarctica
+                                        Bráv gives the option of creating cases based on the type. The two forms available are court and non-court. 
                         </Typography>
                         </CardContent>
                         </CardActionArea>
@@ -279,13 +295,12 @@ function Landing() {
                     <Card className={classes.card}>
                         <CardActionArea >
                         <FileCopyIcon className="icon" />
-                        <CardContent>
+                        <CardContent style={{height:"160px"}}>
                         <Typography gutterBottom variant="h5" component="h2">
-                                        Lizard
+                                       Documents
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                        across all continents except Antarctica
+                                        Documents are an important part of mediation and Bráv gives the option of uploading documents that are viewable to the user and mediator.
                         </Typography>
                         </CardContent>
                         </CardActionArea>
@@ -296,13 +311,12 @@ function Landing() {
                     <Card className={classes.card}>
                         <CardActionArea>
                         <SearchIcon className="icon" />
-                        <CardContent>
+                        <CardContent style={{height:"160px"}}>
                         <Typography gutterBottom variant="h5" component="h2">
-                                        Lizard
+                                        Mediators
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                        across all continents except Antarctica
+                                    Bráv gives the ability to filter mediators based on criteria such as hourly rate, specialty or experience.
                         </Typography>
                         </CardContent>
                         </CardActionArea>
@@ -313,13 +327,12 @@ function Landing() {
                     <Card className={classes.card}>
                         <CardActionArea>
                         <PaymentIcon  className="icon" />
-                        <CardContent>
+                        <CardContent style={{height:"160px"}}>
                         <Typography gutterBottom variant="h5" component="h2">
-                                        Lizard
+                                        Payment
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                        across all continents except Antarctica
+                                        Payment is securely facilitated through our stripe api.
                         </Typography>
                         </CardContent>
                         </CardActionArea>
@@ -330,13 +343,12 @@ function Landing() {
                     <Card className={classes.card}>
                         <CardActionArea>
                             <LanguageIcon  className="icon" />
-                            <CardContent>
+                            <CardContent style={{height:"160px"}}>
                             <Typography gutterBottom variant="h5" component="h2">
-                                        Lizard
+                                        Accessability
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p">
-                                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                        across all continents except Antarctica
+                                        In addition to English Bráv includes additional search for mediation based on language. Cases are viewable on-the-go through our app.
                             </Typography>
                             </CardContent>
                         </CardActionArea>
@@ -349,13 +361,12 @@ function Landing() {
                     <Card className={classes.card}>
                         <CardActionArea>
                             <EmailIcon  className="icon" />
-                            <CardContent>
+                            <CardContent style={{height:"160px"}}>
                             <Typography gutterBottom variant="h5" component="h2">
-                                        Lizard
+                                        Notifications
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p">
-                                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                        across all continents except Antarctica
+                                        Never miss an update to your case or a payment invoice. Bráv sends notifications to your email.
                             </Typography>
                             </CardContent>
                         </CardActionArea>
