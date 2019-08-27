@@ -6,7 +6,7 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import { cleanup, render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-import NoMatch from './NoMatch';
+import NoMatch from '../NoMatch';
 
 /**
  * Hooks
@@ -51,6 +51,6 @@ describe('NoMatch.js', () => {
     const { getByTestId } = renderWithRouter(<NoMatch />, {route})
 
     expect(getByTestId('link-returntomainpage').textContent).toBe('TAKE ME HOME')
-    expect(getByTestId('link-returntomainpage').getAttribute('href')).toBe('/')
+    expect(getByTestId('link-returntomainpage').getAttribute('href')).toBe('/cases')
   });
 });

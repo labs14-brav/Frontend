@@ -21,7 +21,7 @@ import Button from '@material-ui/core/Button';
  * Import styles
  */
 
-import './AddendumInvoiceTabs.scss';
+import './styles/AddendumInvoiceTabs.scss';
 
 /**
  * Define component
@@ -100,7 +100,6 @@ export default function AddendumInvoiceTabs(props) {
   const handleClose = () => {
     setOpen(false);
   }
-
   const handleChanges = e => {
     setText(e.target.value);
   }
@@ -157,16 +156,16 @@ export default function AddendumInvoiceTabs(props) {
         open={open}
         onClose={handleClose}>
         <div className={classes.paper}>
-          <form onSubmit={submitPost} id='modal-form'>
-            <textarea placeholder="Add Case Information..."
-              onChange={handleChanges}
-              value={textState}
-              id="modal-text"
-              cols='50'
-              rows='15' />
-            <Button variant="outlined" color="primary" className={classes.submitbutton} onClick={submitPost}>
-              Submit
-                    </Button>
+            <form onSubmit={submitPost} id='modal-form'>
+                <textarea placeholder="Add Case Information..."
+                    onChange={handleChanges}
+                    value={textState}
+                    id="modal-text"
+                    cols='50'
+                    rows='15'/>
+                <Button variant="outlined" color="primary" className={classes.submitbutton} onClick={submitPost}>
+                     Submit
+                </Button>
           </form>
         </div>
       </Dialog>

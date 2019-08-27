@@ -6,7 +6,7 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import { cleanup, render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-import CourtForm from './CourtForm';
+import CourtForm from '../CourtForm';
 
 /**
  * Hooks

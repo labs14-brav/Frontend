@@ -19,7 +19,7 @@ import { ConnectBankAccountLink } from "./styles/index";
  * Import styles
  */
 
-import "./MediatorCasesShow.scss";
+import './styles/MediatorCasesShow.scss';
 
 /**
  * Define styles
@@ -173,12 +173,11 @@ function MediatorCasesShow() {
 
     const is_stripe_connected = localStorage.getItem("is_stripe_connected");
 
-    if (
-        is_stripe_connected === true ||
+    if (is_stripe_connected === true ||
         is_stripe_connected === "true" ||
         is_stripe_connected === 1 ||
         is_stripe_connected === "1"
-        
+
     ) {
         return (
             <MediatorCasesShowStyle>
@@ -232,23 +231,15 @@ function MediatorCasesShow() {
                                  If you are still unsure and would like more information regarding Stripe, click the link below.
                                 <br />
                             </p>
-                            <a
-                                style={{ textDecoration: "none" }}
-                                href={`https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_ABPUiwwNjwxtQ0OypoG43e6Pw4Z32vOp&redirect_uri=${
-                                    process.env.REACT_APP_URL
-                                }/stripe-callback`}
-                            >
-                                <ConnectBankAccountLink>
-                                    <FontAwesomeIcon
-                                        icon={faCreditCard}
-                                        style={{
-                                            paddingRight: "10px",
-                                            fontSize: "30px"
-                                        }}
-                                    />
-                                    Connect Bank Account
-                                </ConnectBankAccountLink>
-                            </a>
+
+                          <a style={{ textDecoration:"none" }}
+                              href={`https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_ABPUiwwNjwxtQ0OypoG43e6Pw4Z32vOp&redirect_uri=${process.env.REACT_APP_URL}/stripe-callback`}>
+                            <ConnectBankAccountLink>
+
+                            <FontAwesomeIcon icon={faCreditCard} style={{paddingRight:"10px",fontSize:"30px"}}/>
+                                Connect Bank Account
+                            </ConnectBankAccountLink>
+                          </a>
                         </div>
                         <a
                                     style={{ textDecoration: "none", alignSelf: 'flex-start'}}

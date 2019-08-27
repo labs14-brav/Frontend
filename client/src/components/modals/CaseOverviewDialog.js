@@ -19,7 +19,7 @@ import Button from "@material-ui/core/Button";
  * Import styles
  */
 
-import "../UserCaseCard.scss";
+import "../styles/UserCaseCard.scss";
 
 const useStyles = makeStyles(theme => ({
     primarybutton: {

@@ -116,7 +116,7 @@ function NoMatch() {
                     <div className={classes.cardContent}>
                         <img
                             className={classes.image}
-                            src={require("../images/shutterstock_774749455.jpg")}
+                            src="https://storage.googleapis.com/brav-3077e.appspot.com/not_found.jpg"
                         />
                         <p className={classes.text}>
                             You are getting this message beacause the page you
