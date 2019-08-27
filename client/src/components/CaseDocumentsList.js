@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { documentsRef } from '../helpers/firebase';
 import axioswithAuth from '../helpers/axioswithAuth';
+import mixpanel from '../helpers/mixpanel';
 import CaseDocument from './CaseDocument';
 
 /**
@@ -50,6 +51,9 @@ function CaseDocumentsList(props) {
             axioswithAuth().post(`/cases/${props.case.id}/documents`, { file_name: file.name })
                 .then(res => {
                     console.log(res);
+                    if (process.env.NODE_ENV === 'production') {
+                      mixpanel.track('Upload document', { distinct_id: localStorage.getItem('id') })
+                    }
                 })
                 .catch(error => {
                     console.error(error);
