@@ -211,33 +211,25 @@ function MediatorCasesShow() {
     } else {
         return (
             <div className={classes.container}>
-                <h3 className={classes.title}>Mediator</h3>
-
+                <h3 className={classes.title}>Mediator Payment Registration</h3>
                 <section className={classes.cardContainer}>
                     <Card className={classes.card}>
+                        <div className={classes.cardTitle}>
+                            <strong>Activate your Stripe Account</strong>
 
-                      <div className={classes.cardTitle}>
-                          <strong>Activate Stripe Account</strong>
-                          <div className={classes.divider}> </div>
-                      </div>
-
-                      <div className={classes.cardContent}>
-                          <p className={classes.text}>
-                              In order to access our services an account with
-                              Stripe Services must be created. Stripe is the
-                              best platform for running an internet business
-                              and handles billions of dollars every year for
-                              forward-thinking businesses like our mediation
-                              site. If you you are eager to start your
-                              business click the button in order to make sure
-                              you get registered to recieve payments. For more
-                              information click the link below.
-                              <br />
-                              <a style={{ textDecoration: "none" }}
-                                 href="https://stripe.com/about"
-                                 target="_blank">
-                                VisitStripe
-                              </a>
+                            <div className={classes.divider}> </div>
+                        </div>
+                        <div className={classes.cardContent}>
+                            <p className={classes.text}>
+                                In order to access our services, an account with
+                                Stripe Services must be created. Stripe is the
+                                best platform for running an internet business
+                                and handles billions of dollars every year for
+                                forward-thinking businesses like our mediation
+                                platform. If you you are eager to expand your
+                                business, please click the button below to register with Stripe in order to recieve payments.
+                                 If you are still unsure and would like more information regarding Stripe, click the link below.
+                                <br />
                             </p>
 
                           <a style={{ textDecoration:"none" }}
@@ -249,6 +241,13 @@ function MediatorCasesShow() {
                             </ConnectBankAccountLink>
                           </a>
                         </div>
+                        <a
+                                    style={{ textDecoration: "none", alignSelf: 'flex-start'}}
+                                    href="https://stripe.com/about"
+                                    target="_blank"
+                                >
+                                    Stripe Information
+                            </a>
                     </Card>
                 </section>
             </div>

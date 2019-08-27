@@ -193,7 +193,7 @@ function MediatorRegistration(props) {
                     data-testid="input-license"
                     className={classes.textField}
                     label="License"
-                    helperText="for more than one separate by comma"
+                    helperText="List any licenses related directly to your mediator qualifications. Separate multiple with commas."
                     variant= "outlined"
                 />
                 <FormControl className={classes.select}>
@@ -263,7 +263,7 @@ function MediatorRegistration(props) {
                     <TextField
                         id="standard-dense"
                         type="number"
-                        label="Price"
+                        label="Price - $/hr"
                         value={values.price}
                         min={0}
                         step={1}
@@ -271,12 +271,13 @@ function MediatorRegistration(props) {
                         data-testid="input-price"
                         className={classes.select}
                         margin="dense"
-                        helperText="Dollars/Hour"
+                        helperText="You will be able to adjust your rate on a case-by-case basis."
                     />
 
                     <TextField
                     className={classes.textField}
-                    label="Brief Personal Summary"
+                    label="Brief Professional Summary"
+                    helperText="Use this to distinguish yourself in a user's search for a mediator."
                     value={values.professional_bio}
                     multiline
                     rows="8"

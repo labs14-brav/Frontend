@@ -137,51 +137,39 @@ const OutsideCourtForm = props => {
     };
 
     return (
-        <div style={{ paddingTop: "100px" }}>
-            <Typography
-                style={{ textAlign: "center" }}
-                variant="h3"
-                data-testid="heading-h3"
-            >
-                Case Form
-            </Typography>
-            <Typography style={{ textAlign: "center" }} variant="subtitle2">
-                This form is intended for cases outside of the Court system.
-            </Typography>
+      <div style={{paddingTop:"100px"}}>
+          <Typography style={{textAlign:"center"}} variant="h3" data-testid="heading-h3">Case Form</Typography>
+          <Typography style={{textAlign:"center"}} variant="subtitle2">This form is intended for cases outside of the Court system.</Typography>
 
-            <form
-                className={classes.container}
-                noValidate
-                autoComplete="off"
-                onSubmit={onSubmitHandler}
-            >
-                <TextField
-                    className={classes.textField}
-                    select
-                    label="Dispute Type"
-                    value={form.dispute_category}
-                    helperText="required"
-                    data-testid="input-dispute_category"
-                    onChange={handleChange("dispute_category")}
-                    SelectProps={{
-                        MenuProps: {
-                            className: classes.menu
-                        }
-                    }}
-                    variant="outlined"
-                    InputProps={InputProps}
-                >
-                    <MenuItem value="Landlord/Tenant">Landlord/Tenant</MenuItem>
-                    <MenuItem value="Eldercare">Eldercare</MenuItem>
-                    <MenuItem value="Commercial">Commercial</MenuItem>
-                    <MenuItem value="Domestic">Domestic</MenuItem>
-                    <MenuItem value="Workplace">Workplace</MenuItem>
-                    <MenuItem value="Penal">Penal</MenuItem>
-                </TextField>
+          <form className={classes.container} noValidate autoComplete="off" onSubmit={onSubmitHandler}>
+            <TextField
+              className={classes.textField}
+              select
+              label="Dispute Type"
+              value={form.dispute_category}
+              helperText="required"
+              data-testid="input-dispute_category"
+              onChange={handleChange("dispute_category")}
+              SelectProps={{
+                MenuProps: {
+                  className: classes.menu,
+                }
+              }}
+              variant="outlined"
+              InputProps = {InputProps}
+              >
+                <MenuItem value="Landlord/Tenant">Landlord/Tenant</MenuItem>
+                <MenuItem value="Eldercare">Eldercare</MenuItem>
+                <MenuItem value="Commercial">Commercial</MenuItem>
+                <MenuItem value="Domestic">Domestic</MenuItem>
+                <MenuItem value="Workplace">Workplace</MenuItem>
+                <MenuItem value="Penal">Penal</MenuItem>
+            </TextField>
 
-                <TextField
+            <TextField
                     className={classes.textField}
-                    label="Your First and Last Name"
+                    label="Full Name"
+                    helperText="Please provide your first and last name."
                     type="email"
                     name="case_initiator"
                     margin="normal"
@@ -192,90 +180,85 @@ const OutsideCourtForm = props => {
                     InputProps={InputProps}
                 />
 
-                <TextField
-                    className={classes.textField}
-                    label="Dispute Participants"
-                    type="email"
-                    name="parties_involved"
-                    autoComplete="email"
-                    margin="normal"
-                    variant="outlined"
-                    data-testid="input-parties_involved"
-                    onChange={handleChange("parties_involved")}
-                    value={form.parties_involved}
-                    InputProps={InputProps}
-                />
+              <TextField
+              className={classes.textField}
+              label="Dispute Participants"
+              type="email"
+              name="parties_involved"
+              helperText="Please list the names of the other parties involved in your dispute"
+              autoComplete="email"
+              margin="normal"
+              variant="outlined"
+              data-testid="input-parties_involved"
+              onChange={handleChange("parties_involved")}
+              value={form.parties_involved}
+              InputProps = {InputProps}
+              />
 
-                <TextField
-                    className={classes.textField}
-                    label="Participant Contact Info"
-                    value={form.parties_contact_info}
-                    name="parties_contact_info"
-                    data-testid="input-parties_contact_info"
-                    onChange={handleChange("parties_contact_info")}
-                    margin="normal"
-                    variant="outlined"
-                    InputProps={InputProps}
-                />
+              <TextField
+              className={classes.textField}
+              label="Participant Contact Information"
+              helperText="Please provide an email or phone number for each participant listed above"
+              value={form.parties_contact_info}
+              name="parties_contact_info"
+              data-testid="input-parties_contact_info"
+              onChange={handleChange("parties_contact_info")}
+              margin="normal"
+              variant="outlined"
+              InputProps = {InputProps}/>
 
-                <TextField
-                    className={classes.textField}
-                    label="Dispute Amount - $"
-                    helperText="if applicable"
-                    data-testid="input-dispute_amount"
-                    value={form.dispute_amount}
-                    name="dispute_amount"
-                    type="number"
-                    onChange={handleChange("dispute_amount")}
-                    margin="normal"
-                    variant="outlined"
-                    InputProps={InputProps}
-                />
+              <TextField
+              className={classes.textField}
+              label="Dispute Amount - Dollars"
+              helperText="Please list the total monetary value of this dispute, if applicable."
+              data-testid="input-dispute_amount"
+              value={form.dispute_amount}
+              name="dispute_amount"
+              type="number"
+              onChange={handleChange("dispute_amount")}
+              margin="normal"
+              variant="outlined"
+              InputProps = {InputProps}/>
 
-                <TextField
-                    className={classes.textField}
-                    name="description"
-                    label="Description of Conflict"
-                    data-testid="input-description"
-                    multiline
-                    rows="8"
-                    value={form.description}
-                    onChange={handleChange("description")}
-                    margin="normal"
-                    variant="outlined"
-                    InputProps={InputProps}
-                />
+              <TextField
+              className={classes.textField}
+              name="description"
+              label="Description of Conflict"
+              data-testid="input-description"
+              helperText="In your own words, please describe what happened."
+              multiline
+              rows="8"
+              value={form.description}
+              onChange={handleChange("description")}
+              margin="normal"
+              variant="outlined"
+              InputProps = {InputProps}
+              />
 
-                <Button
-                    className={classes.button}
-                    onClick={onSubmitHandler}
-                    variant="contained"
-                    InputProps={InputProps}
-                >
-                    submit
-                </Button>
-            </form>
+              <Button className={classes.button} onClick={onSubmitHandler} variant="contained" InputProps = {InputProps}>submit</Button>
 
-            <SimpleDialog
-                open={open}
-                onClose={handleClose}
-                titleText={"Case created"}
-                bodyText={""}
-                redirect={"/cases"}
-                redirectText={"Cases"}
-            />
+          </form>
 
-            <SimpleDialog
-                open={errorOpen}
-                onClose={handleErrorClose}
-                titleText={"Error creating case"}
-                bodyText={"Please try again"}
-                redirect={""}
-                redirectText={""}
-            />
-        </div>
-    );
-};
+          <SimpleDialog
+          open={open}
+          onClose={handleClose}
+          titleText={'Case created'}
+          bodyText={''}
+          redirect={'/cases'}
+          redirectText={'Cases'}
+          />
+
+          <SimpleDialog
+          open={errorOpen}
+          onClose={handleErrorClose}
+          titleText={'Error creating case'}
+          bodyText={'Please try again'}
+          redirect={''}
+          redirectText={''}
+          />
+      </div>
+    )
+}
 
 /**
  * Export component
