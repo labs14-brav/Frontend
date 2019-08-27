@@ -318,7 +318,7 @@ function Landing() {
 
 {/* mobile app mock */}
 
-        <div className="appStore">
+        <div className="appStore" style={{textAlign:"center"}}>
             <h3>Check out our App</h3>
             <div className="smartphone">
 

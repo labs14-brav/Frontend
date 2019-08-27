@@ -8,18 +8,18 @@
   }
 
 
-h2{
-    color: white;
-    text-align: center;
-    font-size: 5vw;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-h3{
-    color: rgb(207, 204, 204);
-    text-align: center;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+// h2{
+//     color: white;
+//     text-align: center;
+//     font-size: 5vw;
+//     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+// }
+// h3{
+//     color: rgb(207, 204, 204);
+//     text-align: center;
+//     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     
-}
+// }
 
 .landing {
     z-index: 0;
@@ -92,6 +92,7 @@ h3{
     margin-top: 100px;
     background-color:rgb(212, 212, 211);
     
+    
     .stepper{
         max-width: 600px;
         min-width: 80%;
@@ -99,8 +100,6 @@ h3{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-       
-        
         
         #sign-up{
             position: relative !important ;
