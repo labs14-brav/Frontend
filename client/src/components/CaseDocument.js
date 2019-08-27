@@ -17,17 +17,23 @@ function CaseDocument(props) {
 
     function handleClick(e) {
         e.preventDefault();
+        console.log('fileRef', fileRef)
 
-        fileRef.getDownloadURL()
-            .then(url => {
-              console.log('getDownloadURL', url)
+        // fileRef.getMetadata().then(function(metadata) {
+        //   // Metadata now contains the metadata for 'images/forest.jpg'
+        // }).catch(function(error) {
+        //   console.error(err);
+        // });
 
-              let img = document.getElementById('document-image');
-              img.src = url;
-            })
-            .catch(err => {
-                console.error(err);
-            })
+        fileRef.getDownloadURL().then(url => {
+          console.log('getDownloadURL', url)
+
+          let img = document.getElementById('document-image');
+          img.src = url;
+        })
+        .catch(err => {
+          console.error(err);
+        })
     }
     return(
         <>

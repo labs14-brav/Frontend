@@ -75,7 +75,7 @@ function CaseDocumentsList(props) {
 
             <hr/>
 
-            <img id="document-image"></img>
+            <img id="document-image" width="100%"></img>
           </>
         )
     } else {
