@@ -126,7 +126,7 @@ function NoMatch() {
                         <Link
                             style={{ color: "white" }}
                             className={classes.link}
-                            to="/"
+                            to={localStorage.getItem("type") === "mediator" ? "/mediator-cases" : "/cases"}
                             data-testid="link-returntomainpage"
                         >
                             <p
