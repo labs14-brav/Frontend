@@ -39,7 +39,7 @@ function CaseDocumentsList(props) {
         } else {
             setFile(file);
         }
-    } 
+    }
     function handleSubmitUploader(e) {
         e.preventDefault()
         // Create file ref (Example: /documents/:case_id/:file_name)
@@ -67,7 +67,7 @@ function CaseDocumentsList(props) {
             <button onClick={handleSubmitUploader}> Upload </button>
             <ul>
                 {documents.map(doc => {
-                 return <CaseDocument key={doc.file_name} document={doc} case={props.case} /> 
+                 return <CaseDocument key={doc.file_name} document={doc} case={props.case} />
                 })}
             </ul>
         </>
@@ -76,10 +76,11 @@ function CaseDocumentsList(props) {
     return(
         <>
             <Typography>There are no documents currently uploaded. Upload relevant case documents by clicking the button below.</Typography>
+
             <form onSubmit={handleSubmitUploader}>
-            <input required id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleInputChanges}></input>
-            <button onClick={handleSubmitUploader}> Upload </button>
-                </form>
+              <input required id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleInputChanges}></input>
+              <button type="submit">Upload</button>
+            </form>
         </>
     )}
 }
