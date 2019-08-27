@@ -180,11 +180,12 @@ function Landing() {
                         login
                     </Button>
             </Link>
+            
             </div>
 
 
                 <div className="cover2">
-                <h2>Online Mediation<br/>Anywhere In The World</h2>
+                <h2>Mediation<br/>Anywhere</h2>
                 <img
                     className="cover"
                     src={require("../images/process.svg")}
@@ -243,7 +244,7 @@ function Landing() {
                     </Step>
         
                     ))}
-                    
+                   
                 </Stepper>
                 <Link to="/auth" style={{textDecoration:"none"}} data-testid="signup-link">
                     <Button
@@ -256,14 +257,16 @@ function Landing() {
                         signup
                     </Button>
                     </Link>
+               
             </div>
+            
                 </div>
-                 
+                
             </div>
-
+           
 
             <div className="featuresSection">
-            <h3>Features</h3>
+           
             <div className="featuresBox">
 
             <section className="features">
