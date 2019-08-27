@@ -24,6 +24,7 @@ h3{
 .landing {
     z-index: 0;
     background-color: #598EBF;
+    background-image: linear-gradient(#598EBF, rgb(194, 194, 196));
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: bottom left;
@@ -35,6 +36,7 @@ h3{
         width: 250px;
         margin: auto 0;
         animation: 3s ease-out 0s 1 slideInFromLeft;
+       
     }
     .nav{
         display: flex;
@@ -44,11 +46,15 @@ h3{
         justify-content: space-around;
         align-content: center;
         padding: 10px;
-        height: 100px;
-        background-color: rgba(75, 75, 216, 0.938) ;
+        height: 110px;
+        background-color: rgba(71, 71, 233, 0.849) ;
         width: 100vw;
         z-index: 99;
         margin-bottom: 50px;
+        &:hover {
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            }
+       
     }
     .cover2{
         display: flex;
@@ -141,17 +147,22 @@ h3{
 
 .appStore{
     margin-top: 100px;
+    margin-bottom: 100px;
+    
     .smartphone {
         position: relative;
         width: 250px;
         height: 450px;
         margin: auto;
-        border: 16px rgb(40, 40, 48) solid;
-        border-top-width: 40px;
-        border-bottom-width: 60px;
+        border: 5px rgb(40, 40, 48) solid;
+        border-top-width: 30px;
+        border-bottom-width: 30px;
         border-radius: 36px;
+        &:hover {
+            box-shadow: 0 24px 54px rgba(0,0,0,0.25), 0 20px 20px rgba(0,0,0,0.22);
+            }
         .content{
-            height: 500px;
+            height: 575px;
             z-index: -2;
            
           }
@@ -160,10 +171,11 @@ h3{
       #mobilebuttons{
         max-width: 200px;
         margin:0 auto;
-        background-color: #598EBF;
         border-radius: 5px;
-        margin-top: 10px;
-        margin-bottom: 20px;
+        background: none;
+        padding-bottom: 20px;
+        margin-top: -5px;
+       
   }
 }
 

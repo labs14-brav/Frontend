@@ -329,11 +329,7 @@ function Landing() {
                             src={images[activeStep].imgPath}
                             alt={images[activeStep].imgPath}
                         />
-                                                
-                </div>
-            </div>
-        </div>
-                <MobileStepper
+                        <MobileStepper
                     id="mobilebuttons"
                     steps={maxSteps}
                     position="static"
@@ -352,6 +348,11 @@ function Landing() {
                     </Button>
                     }
                     />
+                                                
+                </div>
+            </div>
+        </div>
+                
                 
 
                 </div>
