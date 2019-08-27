@@ -73,22 +73,34 @@ function getStepContent(step) {
 
   const cards= [
     {
-        
+        icon:AccountBalanceIcon,
+        label:"Cases",
+        text:"Bráv gives the option of creating cases based on the type. The two forms available are court and non-court. "
     },
     {
-        
+        icon:FileCopyIcon,
+        label:"Documents",
+        text:"Documents are an important part of mediation and Bráv gives the option of uploading documents that are viewable to the user and mediator."
     }, 
     {
-        
+        icon:SearchIcon,
+        label:"Mediators",
+        text:"Bráv gives the ability to filter mediators based on criteria such as hourly rate, specialty or experience."
     }, 
     {
-        
+        icon:PaymentIcon,
+        label:"Payment",
+        text:"Payment is securely facilitated through our stripe api."
     }, 
     {
-        
+        icon:LanguageIcon,
+        label:"Accessability",
+        text:"In addition to English Bráv includes additional search for mediation based on language. Cases are viewable on-the-go through our app."
     }, 
     {
-        
+        icon:EmailIcon,
+        label:"Notifications",
+        text:"Never miss an update to your case or a payment invoice. Bráv sends notifications to your email."
     }
 
   ]
@@ -162,11 +174,11 @@ function Landing() {
   
 
 
-
-
     return (
     <>
         <div className="landing">
+
+{/* navigation */}
 
             <div className="landingNav">
                 <div className="nav"  id="navbar">
@@ -214,7 +226,8 @@ function Landing() {
         </div>
 
 
-                            
+     {/* stepper */}
+
         <div className="how">
             <h3>How Bráv Works</h3>
             <div className="howContent">
@@ -272,110 +285,38 @@ function Landing() {
         </div>
                     
 
+{/* features sections */}
+
         <div className="featuresSection">
             <div className="featuresBox">
                     
-                <section className="features">
-                    <Card className={classes.card}>
-                        <CardActionArea>
-                        <AccountBalanceIcon className="icon"/>
-                        <CardContent style={{height:"160px"}}>
-                        <Typography gutterBottom variant="h5" component="h2">
-                                       Cases
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                                        Bráv gives the option of creating cases based on the type. The two forms available are court and non-court. 
-                        </Typography>
-                        </CardContent>
-                        </CardActionArea>
-                    </Card>
-                </section>
-
-                <section className="features">
-                    <Card className={classes.card}>
-                        <CardActionArea >
-                        <FileCopyIcon className="icon" />
-                        <CardContent style={{height:"160px"}}>
-                        <Typography gutterBottom variant="h5" component="h2">
-                                       Documents
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                                        Documents are an important part of mediation and Bráv gives the option of uploading documents that are viewable to the user and mediator.
-                        </Typography>
-                        </CardContent>
-                        </CardActionArea>
-                    </Card>
-                </section>
-
-                <section className="features">
-                    <Card className={classes.card}>
-                        <CardActionArea>
-                        <SearchIcon className="icon" />
-                        <CardContent style={{height:"160px"}}>
-                        <Typography gutterBottom variant="h5" component="h2">
-                                        Mediators
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                                    Bráv gives the ability to filter mediators based on criteria such as hourly rate, specialty or experience.
-                        </Typography>
-                        </CardContent>
-                        </CardActionArea>
-                        </Card>
-                </section>
-
-                <section className="features">
-                    <Card className={classes.card}>
-                        <CardActionArea>
-                        <PaymentIcon  className="icon" />
-                        <CardContent style={{height:"160px"}}>
-                        <Typography gutterBottom variant="h5" component="h2">
-                                        Payment
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                                        Payment is securely facilitated through our stripe api.
-                        </Typography>
-                        </CardContent>
-                        </CardActionArea>
-                    </Card>
-                </section>
-
-                <section className="features">
-                    <Card className={classes.card}>
-                        <CardActionArea>
-                            <LanguageIcon  className="icon" />
-                            <CardContent style={{height:"160px"}}>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                        Accessability
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                        In addition to English Bráv includes additional search for mediation based on language. Cases are viewable on-the-go through our app.
-                            </Typography>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
-                </section>
-
-
-
-                <section className="features">
-                    <Card className={classes.card}>
-                        <CardActionArea>
-                            <EmailIcon  className="icon" />
-                            <CardContent style={{height:"160px"}}>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                        Notifications
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                        Never miss an update to your case or a payment invoice. Bráv sends notifications to your email.
-                            </Typography>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
-                </section>
+                    {cards.map(element=>{
+                    return(
+                        <section className="features">
+                            <Card className={classes.card}>
+                                <CardActionArea>
+                                <element.icon className="icon"/>
+                                <CardContent style={{height:"160px"}}>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                               {element.label}
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                                {element.text} 
+                                </Typography>
+                                </CardContent>
+                                </CardActionArea>
+                            </Card>
+                        </section>
+                    )
+                    })
+                    }
                                     
                                 
             </div>
         </div>
+
+
+{/* mobile app mock */}
 
         <div className="appStore">
             <h3>Check out our App</h3>
@@ -392,26 +333,26 @@ function Landing() {
                 </div>
             </div>
         </div>
-            <MobileStepper
-                id="mobilebuttons"
-                steps={maxSteps}
-                position="static"
-                variant="text"
-                activeStep={activeStep}
-                nextButton={
-                <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
-                Next
-                {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-                </Button>
-                }
-                backButton={
-                <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-                {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-                Back
-                </Button>
-                }
-                />
-                {/* <button> go to app store</button> */}
+                <MobileStepper
+                    id="mobilebuttons"
+                    steps={maxSteps}
+                    position="static"
+                    variant="text"
+                    activeStep={activeStep}
+                    nextButton={
+                    <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+                    Next
+                    {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+                    </Button>
+                    }
+                    backButton={
+                    <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                    {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+                    Back
+                    </Button>
+                    }
+                    />
+                
 
                 </div>
             </div>
