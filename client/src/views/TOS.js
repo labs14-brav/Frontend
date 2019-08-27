@@ -238,7 +238,7 @@ const TermsOfService = () => {
             <h3>General</h3> 
             <p>The failure of Brāv to enforce any right or provision of these Terms will not constitute a waiver of future enforcement of that right or provision. The waiver of any such right or provision will be effective only if in writing and signed by a duly authorized representative of Brāv. Except as expressly set forth in these Terms, the exercise by either party of any of its remedies under these Terms will be without prejudice to its other remedies under these Terms or otherwise. If for any reason a court of competent jurisdiction finds any provision of these Terms invalid or unenforceable, that provision will be enforced to the maximum extent permissible and the other provisions of these Terms will remain in full force and effect.</p> 
             <h3>Contacting Us</h3> 
-            <a href='info@brav.org'>Brav</a>
+            <a href='info@brav.org'>Brāv</a>
             {/* Twitter Facebook LinkedIn YouTube 
             Product 
             Brāv Platform 

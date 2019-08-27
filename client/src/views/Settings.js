@@ -95,7 +95,7 @@ function Settings() {
                         </div>
                         <div className={classes.cardContent}>
                             <p className={classes.text}>
-                                Are you a certified mediator? Join the Brav
+                                Are you a certified mediator? Join the Brāv
                                 platform! Upon approval by one of our admins,
                                 you will be able to market your services as a
                                 mediator directly to our users. You will be
