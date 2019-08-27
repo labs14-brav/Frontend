@@ -109,8 +109,8 @@ const CaseForm = props => {
 
     return (
         <div className={classes.container}>
-            <h3 className={classes.title}>Open a new case</h3>
-            <p>Choose the type of case you are seeking mediation for</p>
+            <h3 className={classes.title}>Open a New Case</h3>
+            <p>What type of case you are seeking mediation for?</p>
             <section className={classes.cardContainer}>
                 <Card className={classes.card}>
                     <div className={classes.cardTitle}>
@@ -121,7 +121,7 @@ const CaseForm = props => {
                         <p className={classes.text}>
                             Choose court referral if you seek mediation in a
                             case that has already been brought up to court.
-                            After you open a case, you must select a mediator
+                            After you open a case, you can select a mediator
                             from our list of certified mediators and request to
                             have a session.
                         </p>
@@ -143,7 +143,7 @@ const CaseForm = props => {
                         <p className={classes.text}>
                             Choose non-court referral if you seek mediation in a
                             case that has not yet been brought up to court.
-                            After you open a case, you must select a mediator
+                            After you open a case, you can select a mediator
                             from our list of mediators and request to have a
                             session.
                         </p>
