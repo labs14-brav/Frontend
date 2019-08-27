@@ -17,34 +17,18 @@ import './styles/Addendum.scss';
  */
 
 function AddendumsList(props) {
-    const [addendums, setAddendums] = useState([]);
-    useEffect(() => {
-        axioswithAuth().get(`${process.env.REACT_APP_API_URL}/cases/${props.case.id}/addendums`)
-        .then(res => {
-            setAddendums(res.data);
-        })
-        .catch (err => {
-            console.error(err);
-        })
-    }, [addendums])
 
-        if (addendums.length === 0) {
-            return(
-                <>
-                <h5 id="addendums-blank"> This case has no additional details to view. </h5>
-                </>
-            )
-        } else {
-            return (
-                <>
-                <ul id="addendums-list">
-                {addendums.map(adden => {
-                    return <Addendum key={adden.id} text={adden.description} timestamp={adden.created_at}/>
-                })}
-             </ul>
-             </>
-             )
+    useEffect(() => {
+        if (props.addendums) {
+            props.fetchAddendums();
         }
+    }, []);
+
+    return (
+        props.addendums === undefined ? (<><h5 id="addendums-blank"> This case has no additional details to view. </h5></>)
+            :
+            (<><ul id="addendums-list"> {props.addendums.map(adden => { return <Addendum key={adden.id} text={adden.description} timestamp={adden.created_at} /> })}</ul></>)
+    )
 }
 
 /**
