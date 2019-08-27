@@ -241,7 +241,7 @@ function Landing() {
                     <Step  key={label}>
                     
                     <StepLabel id="step" >{label}</StepLabel>
-                <StepContent>
+                <StepContent >
                     <Typography>{getStepContent(index)}</Typography>
                     <div className={classes.actionsContainer}>
                     <div>
@@ -324,7 +324,7 @@ function Landing() {
 {/* mobile app mock */}
 
         <div className="appStore" style={{textAlign:"center"}}>
-            <h3>Check out our App</h3>
+            <h3>Check Out Our App</h3>
             <div className="smartphone">
 
                 <div className="content">

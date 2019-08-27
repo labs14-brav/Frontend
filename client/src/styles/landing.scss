@@ -93,6 +93,7 @@
     .stepper{
         max-width: 600px;
         min-width: 80%;
+        margin-bottom: 10px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -108,17 +109,12 @@
     .how{
         margin-top: 25px;
         background-color:rgb(212, 212, 211);
-        
     }
     #sign-up{
         margin-top: 40px;
-      
         }
 }
 
-// #step{
-//     color:#598EBF !important;
-//  }
      
 
 .featuresSection{
@@ -188,7 +184,7 @@
 .footer{
 background-color:rgb(158, 154, 156);
   width: 100%;
-  border-top: 3px solid black;
+  border-top: 2px solid black;
   padding: 15px;
 }
 
