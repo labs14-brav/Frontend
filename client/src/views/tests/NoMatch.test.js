@@ -51,6 +51,6 @@ describe('NoMatch.js', () => {
     const { getByTestId } = renderWithRouter(<NoMatch />, {route})
 
     expect(getByTestId('link-returntomainpage').textContent).toBe('TAKE ME HOME')
-    expect(getByTestId('link-returntomainpage').getAttribute('href')).toBe('/')
+    expect(getByTestId('link-returntomainpage').getAttribute('href')).toBe('/cases')
   });
 });
