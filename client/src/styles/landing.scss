@@ -8,62 +8,72 @@
   }
 
 
+h2{
+    color: white;
+    text-align: center;
+    font-size: 5vw;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+h3{
+    color: rgb(207, 204, 204);
+    text-align: center;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    
+}
+
 .landing {
     z-index: 0;
-    background-image: url('./images/earth.jpg');
+    background-color: #598EBF;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: bottom left;
     background-size: cover;
     overflow-x: hidden;
     overflow-y: hidden;
-}
-.landingNav{
-   
-}
-.brav-logo {
-    width: 300px;
-    margin: auto 0;
+    display: block;
+    .brav-logo {
+        width: 250px;
+        margin: auto 0;
+        animation: 3s ease-out 0s 1 slideInFromLeft;
+    }
+    .nav{
+        display: flex;
+        display: flex;
+        flex-direction: row;
+        align-items: center; 
+        justify-content: space-around;
+        align-content: center;
+        padding: 10px;
+        height: 100px;
+        background-color: rgba(75, 75, 216, 0.938) ;
+        width: 100vw;
+        z-index: 99;
+        margin-bottom: 50px;
+    }
+    .cover2{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .cover{
+            width:60%;
+            max-width: 600px;
+            text-align: center;
+            padding-bottom: 50px;
+        }
+      
+     }
 }
 
 
-.nav{
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-    padding: 20px;
-    height: 100px;
-    // background-color: #598EBF;
-    width: 100vw;
-    // position: fixed;
-    animation: 2s ease-out 0s 1 slideInFromLeft;
-    z-index: 99;
-    margin-bottom: 30px;
-}
-
-
-
-.cover2{
-   display: flex;
-   flex-direction: row;
-   justify-content: center;
-   align-items: center;
-  
-
- 
- 
-}
-h2{
-    color: white;
-    text-align: center;
-    font-size: 4vw;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-.cover{
-    width:60%;
-    max-width: 600px;
-    text-align: center;
-    padding-bottom: 50px;
+@media screen and (max-width: 500px){
+    .cover{
+        // display: none;
+        margin-bottom: 20px;
+    }
+    #navSignUp{
+        display: none;
+    }
 }
 
 .how{
@@ -73,83 +83,89 @@ h2{
     align-items: center;
     flex-direction: column;
     padding-top: 40px;
-    margin-top: 50px;
-    
+    margin-top: 100px;
+    background-color:rgb(212, 212, 211);
+
+    .stepper{
+        max-width: 600px;
+        min-width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        
+        #sign-up{
+            position: relative !important ;
+            margin-top: 60px;
+            
+            }
+        }
 }
-h3{
-color: #598EBF;
-text-align: center;
-text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-
-
+@media screen and (max-width: 400px){
+    .how{
+        margin-top: 220px;
+        background-color:#598EBF;
+        
+    }
+    #sign-up{
+       margin-bottom: 150px;
+        
+        }
 }
-.howContent{
-    // text-align: center;
-   
 
-}
-
-#sign-up{
-position: relative !important ;
-margin-top: 60px;
-
-}
-.stepper{
-max-width: 600px;
-min-width: 80%;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-
-}
 
 .featuresSection{
     display: flex;
     margin-top: 200px;
     flex-direction: column;
     text-align: center;
-    background-color: white;
+    background-color:rgb(212, 212, 211);
+    .featuresBox{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: space-evenly;
+        flex-wrap: wrap;
+        .features{
+        padding: 20px;
+            .icon{
+                font-size: 90px !important;
+                padding: 5px;
+                }
+        }
+    }
     
 }
-.featuresBox{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: space-evenly;
-    flex-wrap: wrap;
-    
-}
-.features{
-   padding: 20px;
 
-}
-.icon{
-    font-size: 90px !important;
-}
 
 .appStore{
     margin-top: 100px;
-}
-.smartphone {
-    position: relative;
-    width: 250px;
-    height: 450px;
-    margin: auto;
-    border: 16px black solid;
-    border-top-width: 40px;
-    border-bottom-width: 60px;
-    border-radius: 36px;
-  }
-  .content{
-    height: 500px;
-    z-index: -2;
-    
-  }
-  #mobilebuttons{
+    .smartphone {
+        position: relative;
+        width: 250px;
+        height: 450px;
+        margin: auto;
+        border: 16px rgb(40, 40, 48) solid;
+        border-top-width: 40px;
+        border-bottom-width: 60px;
+        border-radius: 36px;
+        .content{
+            height: 500px;
+            z-index: -2;
+           
+          }
+        
+      }
+      #mobilebuttons{
         max-width: 200px;
         margin:0 auto;
         background-color: #598EBF;
         border-radius: 5px;
         margin-top: 10px;
+        margin-bottom: 20px;
   }
+}
+
+ 
+  
 
