@@ -22,9 +22,12 @@ import CardContent from '@material-ui/core/CardContent';
 import LanguageIcon from '@material-ui/icons/Language';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-
-// import { autoPlay } from 'react-swipeable-views-utils';
 import MobileStepper from '@material-ui/core/MobileStepper';
+import EmailIcon from '@material-ui/icons/Email';
+import findMediator from '../images/findMediator.jpg';
+import caseActivity from '../images/caseActivity.jpg';
+import invoices from '../images/invoices.jpg';
+import settingPage from '../images/SettingPage.jpg';
 
 // const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -54,32 +57,24 @@ function getStepContent(step) {
     }
   }
 
-  const tutorialSteps = [
+  const images = [
     {
       label: 'San Francisco – Oakland Bay Bridge, United States',
-      imgPath:
-        'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+      imgPath:findMediator
     },
     {
       label: 'Bird',
-      imgPath:
-        'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+      imgPath:caseActivity,
     },
     {
       label: 'Bali, Indonesia',
-      imgPath:
-        'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80',
+      imgPath:invoices,
     },
     {
       label: 'NeONBRAND Digital Marketing, Las Vegas, United States',
-      imgPath:
-        'https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60',
+      imgPath:settingPage,
     },
-    {
-      label: 'Goč, Serbia',
-      imgPath:
-        'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
-    },
+   
   ];
 
 
@@ -124,7 +119,7 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.background.default,
       },
       img: {
-        height: 255,
+        height: 350,
         display: 'block',
         maxWidth: 400,
         overflow: 'hidden',
@@ -141,7 +136,7 @@ function Landing() {
     const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = getSteps();
-    const maxSteps = tutorialSteps.length;
+    const maxSteps = images.length;
   
     function handleNext() {
       setActiveStep(prevActiveStep => prevActiveStep + 1);
@@ -192,24 +187,12 @@ function Landing() {
                 <h2>Online Mediation<br/>Anywhere In The World</h2>
                 <img
                     className="cover"
-                    src={require("../images/cover.svg")}
+                    src={require("../images/process.svg")}
                     alt="Brav Logo"
                 />
 
 
-        <Link to="/auth" style={{textDecoration:"none"}} data-testid="signup-link">
-
-
-                    <Button
-                        id="sign-up"
-                        style={{width:"300px"}}
-                        className={classes.button}
-                        variant="contained"
-                        color="primary"
-                        data-testid="signup-button">
-                        signup
-                    </Button>
-                </Link>
+       
                 </div>
 
 
@@ -262,10 +245,18 @@ function Landing() {
                     ))}
                     
                 </Stepper>
-             
+                <Link to="/auth" style={{textDecoration:"none"}} data-testid="signup-link">
+                    <Button
+                        id="sign-up"
+                        style={{width:"300px"}}
+                        className={classes.button}
+                        variant="contained"
+                        color="primary"
+                        data-testid="signup-button">
+                        signup
+                    </Button>
+                    </Link>
             </div>
-                
-
                 </div>
                  
             </div>
@@ -362,26 +353,51 @@ function Landing() {
                         </section>
 
 
+
+                        <section className="features">
+                        <Card className={classes.card}>
+                    <CardActionArea>
+                    <EmailIcon  className="icon" />
+                        <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            Lizard
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                            across all continents except Antarctica
+                        </Typography>
+                        </CardContent>
+                        </CardActionArea>
+                        </Card>
+                        </section>
+                        
                        
                         </div>
                     </div>
 
                         <div className="appStore">
-                                <h1>Try our App</h1>
+                                <h3>Check out our App</h3>
                                 <div className="smartphone">
+
                                     <div className="content">
 
 
                                     <div className={classes.root}>
-                                        <Paper square elevation={0} className={classes.header}>
-                                            <Typography>{tutorialSteps[activeStep].label}</Typography>
-                                        </Paper>
                                         <img
                                             className={classes.img}
-                                            src={tutorialSteps[activeStep].imgPath}
-                                            alt={tutorialSteps[activeStep].label}
+                                            src={images[activeStep].imgPath}
+                                            alt={images[activeStep].imgPath}
                                         />
-                                        <MobileStepper
+                                       
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                                <MobileStepper
+                                        id="mobilebuttons"
                                             steps={maxSteps}
                                             position="static"
                                             variant="text"
@@ -399,14 +415,6 @@ function Landing() {
                                             </Button>
                                             }
                                         />
-                                        </div>
-
-
-                                    </div>
-
-
-                                </div>
-
                                 <button> go to app store</button>
 
 
