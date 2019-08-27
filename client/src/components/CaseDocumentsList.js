@@ -3,11 +3,10 @@
  */
 
 import React, { useEffect, useState } from 'react';
+import Typography from '@material-ui/core/Typography';
 import { documentsRef } from '../helpers/firebase';
 import axioswithAuth from '../helpers/axioswithAuth';
 import CaseDocument from './CaseDocument';
-
-import Typography from '@material-ui/core/Typography';
 
 /**
  * Define component
@@ -39,7 +38,7 @@ function CaseDocumentsList(props) {
         } else {
             setFile(file);
         }
-    } 
+    }
     function handleSubmitUploader(e) {
         e.preventDefault()
         // Create file ref (Example: /documents/:case_id/:file_name)
@@ -62,24 +61,33 @@ function CaseDocumentsList(props) {
 
     if (documents.length > 0) {
         return(
-            <>
-            <input required id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleInputChanges}></input>
-            <button onClick={handleSubmitUploader}> Upload </button>
-            <ul>
-                {documents.map(doc => {
-                 return <CaseDocument key={doc.file_name} document={doc} case={props.case} /> 
+          <>
+            <form onSubmit={handleSubmitUploader}>
+              <input required id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleInputChanges}></input>
+              <button type="submit">Upload</button>
+            </form>
+
+            <ul className="mt-2">
+                {documents.map((doc, index) => {
+                 return <CaseDocument key={index} document={doc} case={props.case} />
                 })}
             </ul>
-        </>
+
+            <hr/>
+
+            <div id="div-pdf"></div>
+            <img id="document-image" width="100%"></img>
+          </>
         )
     } else {
     return(
         <>
             <Typography>There are no documents currently uploaded. Upload relevant case documents by clicking the button below.</Typography>
+
             <form onSubmit={handleSubmitUploader}>
-            <input required id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleInputChanges}></input>
-            <button onClick={handleSubmitUploader}> Upload </button>
-                </form>
+              <input required id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleInputChanges}></input>
+              <button type="submit">Upload</button>
+            </form>
         </>
     )}
 }
