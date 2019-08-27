@@ -127,7 +127,7 @@ function MediatorRegistration(props) {
     const handleSubmit = () => {
         let parcel = values;
         if (parcel.specialization.length > 0) {
-           parcel.specialization = JSON.stringify(parcel.specialization); 
+           parcel.specialization = JSON.stringify(parcel.specialization);
         }
         if (parcel.language.length > 0) {
             parcel.language = JSON.stringify(parcel.language);
@@ -141,7 +141,7 @@ function MediatorRegistration(props) {
             .catch(error => {
                 handleErrorOpen();
                 console.error(error);
-            })   
+            })
 
             // Resetting specialization and language to avoid .join errors with the stringified selected values
             setValues({
@@ -179,7 +179,7 @@ function MediatorRegistration(props) {
                     variant="outlined"
                     data-testid="input-name"
                 />
-                
+
                 <TextField
                     label="General Details"
                     value={values.general_details}
@@ -212,14 +212,14 @@ function MediatorRegistration(props) {
                 </FormControl>
 
                 <FormControl  className={classes.select}>
-                    <InputLabel htmlFor="select-multiple-checkbox">
+                    <InputLabel htmlFor="select-specialization-checkbox">
                         Specializations
                     </InputLabel>
                     <Select
                         multiple
                         value={values.specialization}
                         onChange={handleChange("specialization")}
-                        input={<Input id="select-multiple-checkbox" />}
+                        input={<Input id="select-specialization-checkbox" />}
                         data-testid="input-specialization"
                         renderValue={() => values.specialization.join(", ")}
                         MenuProps={MenuProps}
@@ -238,14 +238,14 @@ function MediatorRegistration(props) {
                 </FormControl>
 
                 <FormControl  className={classes.select}>
-                    <InputLabel htmlFor="select-multiple-checkbox">
+                    <InputLabel htmlFor="select-language-checkbox">
                         Language
                     </InputLabel>
                     <Select
                         multiple
                         value={values.language}
                         onChange={handleChange("language")}
-                        input={<Input id="select-multiple-checkbox" />}
+                        input={<Input id="select-language-checkbox" />}
                         renderValue={selected => selected.join(", ")}
                         data-testid="input-language"
                         MenuProps={MenuProps}
