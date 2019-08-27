@@ -28,21 +28,49 @@ Our world is plagued with conflict and devastating violence everywhere you look:
 ### Key Features
 
 1. On-boarding for new users will include sign-in, sign-up, and logout.
-2. User settings. A user will be able to change their password.
-3. Manage Cases. A user will be able to edit the details of a case.
+2. User settings. A user will be able to change their password, and deactivate their account.
+3. Creating cases. A user will be able to create a case based on it's type and relation to court systems. 
+3. Manage Cases. A user will be able to add details to a case.
 4. Search Mediators. A user will be able to filter mediators.
-5. Schedule sessions for conflict resolution discussion— assign Mediator, and email third party using SendGrid.
-6. Request to be mediator. The onboarding for mediators will involve a manual approval process that includes Stripe Connect.
-7. Chat with a mediator using in-app messaging.
-8. Admin Views for viewing mediators, cases, and schedules
+5. Selecting Mediators. A user will be able to select a mediator and a Sendgrid E-mail will be sent telling the Mediator. 
+5. Request to be Mediator. The onboarding for mediators will involve a manual approval process.
+6. Taking payment. A user will be able to pay for mediation services when they have connected with a mediator
+7. Receiving payment. A Mediator will be able to connect their bank account with Stripe, and will be able to recieve payment when a bill or invoice is paid.
+8. Uploading documents. A user will be able to upload documents related to a case.
+9. Downloading documents. A user and Mediator will be able to download documents that were uploaded about the case. 
+
 
 ## Tech Stack
 
 ### Front end built using:
 
-#### React
+#### [React](https://reactjs.org/)
 
 We are using the React library to render the interface and Redux for state management. React is lightweight and unopinionated, so it's perfect for building an MVP.
+
+#### Dependencies
+
+- [Axios](https://www.npmjs.com/package/axios): Promise based HTTP client for the browser and node.js used to send requests to our express backend
+- [Firebase](https://www.npmjs.com/package/firebase): Helper used to initalize our firebase authentication system
+- [Firebaseui](https://www.npmjs.com/package/firebaseui): Provides simple, customizable UI bindings on top of Firebase SDK to display login and signup forms
+- [FontAwesome](https://www.npmjs.com/package/font-awesome): Allows us to use sleek icons on our application
+- [History](https://www.npmjs.com/package/history): Easily manages session history anywhere JavaScript runs
+- [Material-Ui](https://www.npmjs.com/package/@material-ui/core): Implement Google's Material Design, allows us to style components with built in styles 
+- [Mixpanel-Browser](https://www.npmjs.com/package/mixpanel-browser): Helper used to work with our analytics tracking
+- [Moment](https://www.npmjs.com/package/moment): Lightweight JavaScript date library for parsing, validating, manipulating, and formatting dates, used to format timestamps
+- [Node-sass](https://www.npmjs.com/package/node-sass): Allows you to natively compile .scss files to css at incredible speed and automatically via a connect middleware
+- [React](https://www.npmjs.com/package/react): a JavaScript library for creating user interfaces, used to create the boiler-plate for our application
+- [React-dom](https://www.npmjs.com/package/react-dom):
+- [React-loader-spinner](https://www.npmjs.com/package/react-dom): Serves as the entry point to the DOM and server renderers for React
+- [React-redux](https://www.npmjs.com/package/react-redux): Advanced state management system for React
+- [React-router-dom](https://www.npmjs.com/package/react-router-dom): Collection of navigational components that compose declaratively with the application
+- [React-scripts](https://www.npmjs.com/package/react-scripts): Configures boiler-plated scripts for react applications
+- [React-test-renderer](https://www.npmjs.com/package/react-test-renderer): Provides an experimental React renderer that can be used to render React components to pure JavaScript 
+- [Redux](https://www.npmjs.com/package/redux): Redux is a predictable state container for JavaScript applications
+- [Redux-logger](https://www.npmjs.com/package/redux-logger): Logs information in the console about redux actions and reducers
+- [Redux-thunk](https://www.npmjs.com/package/redux-thunk): Allows us to write action creators that return a function instead of an action
+- [Uuid](https://www.npmjs.com/package/uuid): Simple, fast generation of RFC4122 UUIDS.
+
 
 #### Front end deployed to `Netlify`
 
@@ -52,27 +80,33 @@ We are using a PostgresSQL database deployed on Heroku. To access the database w
 
 ## APIs
 
-#### Authentication API - Firebase
+#### Authentication API - [Firebase](https://firebase.google.com/docs/auth)
 
 This API is used to authenticate the individuals, mediators and admin to log into the system using their email and password. It handles identity related tasks.
 
-#### Payment API - Stripe
+#### Payment API - [Stripe](https://stripe.com/docs/payments/checkout/connect)
 
-This API is connected to payments between users and mediators. It acts as a secure payment solution with multiple payment options. It will allow users to pay mediators for their time and services securely, and easily.
+This API is connected to payments between users and mediators. It acts as a secure payment solution with multiple payment options. It will allow users to pay mediators for their time and services securely, and easily. We used Chekout with connect to be able to take payments and route them directly to the Mediator
 
-#### Email API - SendGrid
+#### Email API - [SendGrid](https://sendgrid.com/docs/)
 
 SendGrid allows us to send secure emails. For example when a user forgets their password and needs to reset or when they need to receive email reminders or notifications.
 
-#### Analytics API - Mixpanel
+#### Analytics API - [Mixpanel](https://developer.mixpanel.com/docs)
 
 This API enables insights into users behavior. User behavior can be broken down into discrete actions and recorded using Mixpanel. The user analytics will help inform feature development.
+
+#### Intergration Testing API - [Cypress](https://docs.cypress.io/guides/overview/why-cypress.html)
+
+This API enables end to end intergration testing. A fake web browser is set up, and Cypress runs the tests live while showing you what happens every step of the way. It can also take screen shots and recordings when unexpected behavior is found. 
 
 ## Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
     *  REACT_APP_API_URL - the Backend URL.
+    *  REACT_APP_URL - the url used to dynamically pass in callbacks, and redirects
+    *  REACT_APP_STRIPE_KEY - the key used to configure stripe. Can be found in stripe dashboard. 
 
 ## 5️⃣ Content Licenses
 
@@ -86,6 +120,7 @@ In order for the app to function correctly, the user must set up their own envir
 ## Testing
 
 We are using the `@testing-library/react` dependency for Frontend tests.
+We are also using Cypress IO for intergration testing.
 
 ## Installation Instructions
 
@@ -100,6 +135,7 @@ npm install
     * build - creates a build of the application.
     * start - starts the production server after a build is created.
     * test - runs tests.
+    * cypress - runs cypress intergration tests
 
 # Contributing
 
