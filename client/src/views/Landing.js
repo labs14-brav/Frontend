@@ -2,9 +2,10 @@
  * Dependencies
  */
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button, makeStyles } from "@material-ui/core";
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 /**
  * Define view
@@ -27,12 +28,18 @@ const useStyles = makeStyles(theme => ({
 
 function Landing() {
     const classes = useStyles();
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+      setIsLoading(false)
+    }, [])
+
+    if (isLoading) return <LinearProgress />
 
     return (
         <>
             <div className="landingNav">
                 <Link to="/auth" style={{textDecoration:"none"}} data-testid="signup-link">
-
                     <Button
                         className={classes.button}
                         variant="contained"
