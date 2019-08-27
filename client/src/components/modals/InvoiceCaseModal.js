@@ -128,7 +128,7 @@ class InvoiceCaseModal extends React.Component {
                     <DialogContent>
                         <p>
                             Fill out the hour and rate fields to generate an
-                            invoice for this case.
+                            payment request for this case.
                         </p>
                     </DialogContent>
                     <InvoiceForm
