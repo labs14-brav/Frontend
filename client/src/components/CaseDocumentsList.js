@@ -68,13 +68,14 @@ function CaseDocumentsList(props) {
             </form>
 
             <ul className="mt-2">
-                {documents.map(doc => {
-                 return <CaseDocument key={doc.file_name} document={doc} case={props.case} />
+                {documents.map((doc, index) => {
+                 return <CaseDocument key={index} document={doc} case={props.case} />
                 })}
             </ul>
 
             <hr/>
 
+            <div id="div-pdf"></div>
             <img id="document-image" width="100%"></img>
           </>
         )

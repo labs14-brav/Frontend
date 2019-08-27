@@ -17,32 +17,30 @@ function CaseDocument(props) {
 
     function handleClick(e) {
         e.preventDefault();
-        console.log('fileRef', fileRef)
 
         fileRef.getMetadata().then((metadata) => {
-          console.log('metadata', metadata)
-          // Metadata now contains the metadata for 'images/forest.jpg'
+          fileRef.getDownloadURL().then(url => {
+            let img = document.getElementById('document-image');
 
-          if (metadata.contentType === 'application/pdf') {
-          } else {
-            fileRef.getDownloadURL().then(url => {
-              console.log('getDownloadURL', url)
-
-              let img = document.getElementById('document-image');
+            if (metadata.contentType === 'application/pdf') {
+              img.src = '';
+              // TODO handle PDFs
+            } else {
               img.src = url;
-            })
-            .catch(err => {
-              console.error(err);
-            })
-          }
+            }
+          })
+          .catch(err => {
+            console.error(err);
+          })
         }).catch((err) => {
           console.error(err);
         });
     }
+
     return(
         <>
             <li>
-                <Button onClick={handleClick} variant="outlined" className="my-1">View</Button> {props.document.file_name}
+                <Button id="view-button" onClick={handleClick} variant="outlined" className="my-1">View</Button> {props.document.file_name}
             </li>
         </>
     )
