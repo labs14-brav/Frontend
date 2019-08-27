@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import axioswithAuth from '../helpers/axioswithAuth';
 import AddendumsList from './AddendumsList';
 import UserInvoiceList from './UserInvoiceList';
+import CaseDocumentsList from './CaseDocumentsList';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -20,11 +21,11 @@ import Button from '@material-ui/core/Button';
  * Import styles
  */
 
- import './AddendumInvoiceTabs.scss';
+import './AddendumInvoiceTabs.scss';
 
- /**
-  * Define component
-  */
+/**
+ * Define component
+ */
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -65,22 +66,22 @@ const useStyles = makeStyles(theme => ({
   submitbutton: {
     margin: theme.spacing(1),
     alignSelf: 'center',
-},
-    modal: {
-        margin: '0 auto',
-        width: '50%',
-        [theme.breakpoints.down('sm')]: {
-            width: '90%',
-        }
-    },
-    tabs: {
-        color: '#5C90C1',
+  },
+  modal: {
+    margin: '0 auto',
+    width: '50%',
+    [theme.breakpoints.down('sm')]: {
+      width: '90%',
     }
+  },
+  tabs: {
+    color: '#5C90C1',
+  }
 }));
 
- /**
-  * Define component
-  */
+/**
+ * Define component
+ */
 
 export default function AddendumInvoiceTabs(props) {
   const classes = useStyles();
@@ -93,35 +94,35 @@ export default function AddendumInvoiceTabs(props) {
   }
 
   //Adding addendums modal
-    const handleOpen = () => {
-        setOpen(true);
-    }
-    const handleClose = () => {
-        setOpen(false);
-    }
+  const handleOpen = () => {
+    setOpen(true);
+  }
+  const handleClose = () => {
+    setOpen(false);
+  }
 
-    const handleChanges = e => {
-        setText(e.target.value);
-    }
-    
+  const handleChanges = e => {
+    setText(e.target.value);
+  }
 
-    const submitPost = e => {
-        e.preventDefault();
-        let request = {
-            description: textState
-        };
-        //need to update this with proper case ID coming in from props.
-        axioswithAuth().post(`${process.env.REACT_APP_API_URL}/cases/${props.case.id}/addendums`, request)
-            .then(res => {
-                console.log(res);
-            })
-            .catch(error => {
-                console.error(error);
-            })
-            //reset text state
-        setText('');
-        handleClose();
-    }
+
+  const submitPost = e => {
+    e.preventDefault();
+    let request = {
+      description: textState
+    };
+    //need to update this with proper case ID coming in from props.
+    axioswithAuth().post(`${process.env.REACT_APP_API_URL}/cases/${props.case.id}/addendums`, request)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(error => {
+        console.error(error);
+      })
+    //reset text state
+    setText('');
+    handleClose();
+  }
 
   return (
     <div className={classes.root}>
@@ -130,20 +131,24 @@ export default function AddendumInvoiceTabs(props) {
           className={classes.tabs}
           value={value}
           onChange={handleChange}
-          centered                    
+          centered
         >
           <Tab label="Addendums"  {...a11yProps(0)} />
           <Tab label="Invoices" {...a11yProps(1)} />
+          <Tab label="Documents" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
         <Button className={classes.secondarybutton} onClick={handleOpen} variant="outlined">
-                                Add Information
+          Add Information
             </Button>
-        <AddendumsList case={props.case}/>
+        <AddendumsList case={props.case} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-            <UserInvoiceList case = {props.case}/>
+        <UserInvoiceList case={props.case} />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <CaseDocumentsList case={props.case} />
       </TabPanel>
 
 
@@ -151,20 +156,20 @@ export default function AddendumInvoiceTabs(props) {
         className={classes.modal}
         open={open}
         onClose={handleClose}>
-            <div className={classes.paper}>
-                <form onSubmit={submitPost} id='modal-form'>
-                    <textarea placeholder="Add Case Information..." 
-                        onChange={handleChanges} 
-                        value={textState}
-                        id="modal-text" 
-                        cols='50'
-                        rows='15'/>
-                    <Button variant="outlined" color="primary" className={classes.submitbutton} onClick={submitPost}>
-                         Submit
+        <div className={classes.paper}>
+          <form onSubmit={submitPost} id='modal-form'>
+            <textarea placeholder="Add Case Information..."
+              onChange={handleChanges}
+              value={textState}
+              id="modal-text"
+              cols='50'
+              rows='15' />
+            <Button variant="outlined" color="primary" className={classes.submitbutton} onClick={submitPost}>
+              Submit
                     </Button>
-                </form>
-            </div>
-        </Dialog>
+          </form>
+        </div>
+      </Dialog>
     </div>
   );
 }
