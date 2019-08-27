@@ -27,7 +27,7 @@ import {
  * Import styles
  */
 
-import "./UserCaseCard.scss";
+import "./styles/UserCaseCard.scss";
 
 /**
  * Define styles
@@ -172,33 +172,9 @@ const MediatorCaseCard = props => {
                         </Typography>
                     </div>
                     <div className={classes.right}>
-                        {props.case.court_case === 1 ? (
-                            <Typography
-                                variant="overline"
-                                className={classes.court}
-                            >
-                                {" "}
-                                Court Case{" "}
-                            </Typography>
-                        ) : (
-                            <Typography
-                                variant="overline"
-                                className={classes.court}
-                            >
-                                {" "}
-                                Non-Court Case{" "}
-                            </Typography>
-                        )}
-                        <Typography
-                            className={classes.label}
-                            variant="overline"
-                        >
-                            {" "}
-                            Case <FontAwesomeIcon icon={faClock} /> Created:
-                        </Typography>
-                        <Typography className={classes.info}>
-                            {timeStamp}
-                        </Typography>
+                      {props.case.court_case === 1 ? <Typography variant="overline" className={classes.court}> Court Case </Typography> : <Typography variant="overline" className={classes.court}> Non-Court Case </Typography>}
+                      <Typography className={classes.label} variant="overline"> Case <FontAwesomeIcon icon={faClock} /> Created:</Typography>
+                      <Typography className={classes.info}>{timeStamp}</Typography>
                     </div>
                 </CardContent>
                 <CardActions className={classes.actions}>

@@ -11,7 +11,12 @@ import Typography from '@material-ui/core/Typography';
  * Import styles
  */
 
-import './Addendum.scss';
+import './styles/Addendum.scss';
+
+/**
+ * Define styles
+ */
+
 const useStyles = makeStyles(theme => ({
   timestamp: {
     marginLeft: "auto",

@@ -3,16 +3,11 @@
  */
 
 import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 import SimpleDialog from "./modals/SimpleDialog";
 import { axioswithAuth, mixpanel } from "../helpers/index";
-
-/**
- * Material-UI
- */
-
-import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 
 /**
  *  Define styles
@@ -112,9 +107,9 @@ const InvoiceForm = props => {
         let posted = await axioswithAuth()
             .post(`/invoices/case/${props.caseId}`, form)
             .then(res => {
-                console.log("add new case: ", res.data);
+                console.log("create invoice: ", res.data);
                 if (process.env.NODE_ENV === "production") {
-                    mixpanel.track("creating invoice", {
+                    mixpanel.track("Create invoice", {
                         distinct_id: localStorage.getItem("id")
                     });
                 }
