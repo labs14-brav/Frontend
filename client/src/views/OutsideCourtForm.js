@@ -168,7 +168,8 @@ const OutsideCourtForm = props => {
 
             <TextField
                     className={classes.textField}
-                    label="Your First and Last Name"
+                    label="Full Name"
+                    helperText="Please provide your first and last name."
                     type="email"
                     name="case_initiator"
                     margin="normal"
@@ -208,8 +209,8 @@ const OutsideCourtForm = props => {
 
               <TextField
               className={classes.textField}
-              label="Dispute Amount - $"
-              helperText="if applicable"
+              label="Dispute Amount - Dollars"
+              helperText="Please list the total monetary value of this dispute, if applicable."
               data-testid="input-dispute_amount"
               value={form.dispute_amount}
               name="dispute_amount"

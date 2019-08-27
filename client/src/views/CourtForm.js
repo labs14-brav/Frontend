@@ -163,9 +163,10 @@ const CourtForm = props => {
 
                 <TextField
                     className={classes.textField}
-                    label="Your First and Last Name"
+                    label="Full Name"
                     type="email"
                     name="case_initiator"
+                    helperText="Please provide your first and last name."
                     margin="normal"
                     variant="outlined"
                     data-testid="input-case_initiator"
@@ -200,9 +201,9 @@ const CourtForm = props => {
 
                 <TextField
                     className={classes.textField}
-                    label="Dispute Amount - $"
+                    label="Dispute Amount - Dollars"
                     name="dispute_amount"
-                    helperText="if applicable"
+                    helperText="Please list the total monetary value of this dispute, if applicable."
                     value={form.dispute_amount}
                     type="number"
                     data-testid="input-dispute_amount"
@@ -215,7 +216,7 @@ const CourtForm = props => {
                     className={classes.textField}
                     name="court_jurisdiction"
                     label="Jurisdiction"
-                    helperText="or Court ID"
+                    helperText="Please list the Jurisdiction or Court ID of the Court where this case was filed."
                     data-testid="input-court_jurisdiction"
                     value={form.court_jurisdiction}
                     onChange={handleChange("court_jurisdiction")}
@@ -253,7 +254,7 @@ const CourtForm = props => {
                     className={classes.textField}
                     name="case_notes"
                     label="Case Notes"
-                    helperText="if applicable"
+                    helperText="Please provide any Case notes if any."
                     multiline
                     rows="8"
                     value={form.case_notes}
