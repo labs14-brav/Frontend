@@ -112,7 +112,8 @@ const useStyles = makeStyles(theme => ({
         color: "white",
         backgroundColor: "#5C90C1",
         "&:hover": {
-            backgroundColor: "#517EA8"
+            backgroundColor: "white",
+            color:"#598EBF",
         },
         "&:active": {
             backgroundColor: "#476e91"
@@ -203,6 +204,7 @@ function Landing() {
                 <Link to="/auth" style={{textDecoration:"none"}} data-testid="login-link">
 
                     <Button
+                    id="navLogin"
                     className={classes.button}
                     variant="contained"
                     color="primary"
@@ -220,38 +222,40 @@ function Landing() {
             <img
                 className="cover"
                 src={require("../images/process.svg")}
-                alt="Brav Logo"
+                alt="cover"
             />
 
         </div>
 
 
      {/* stepper */}
-
+     
         <div className="how">
-            <h3>How Bráv Works</h3>
+        <h3>How Bráv Works</h3>
             <div className="howContent">
 
             <div className="stepper">
-                <Stepper activeStep={activeStep} orientation="vertical">
+                <Stepper  activeStep={activeStep} orientation="vertical">
                     {steps.map((label, index) => (
                                     
-                    <Step key={label}>
+                    <Step  key={label}>
                     
-                    <StepLabel>{label}</StepLabel>
+                    <StepLabel id="step" >{label}</StepLabel>
                 <StepContent>
                     <Typography>{getStepContent(index)}</Typography>
                     <div className={classes.actionsContainer}>
                     <div>
-                        <Button
+                    {activeStep === 0 ? null : <Button
+                        style={{backgroundColor:"#598EBF",color:"white"}}
                         disabled={activeStep === 0}
                         onClick={handleBack}
                         className={classes.button}
                         >
                             Back
-                        </Button>
+                        </Button>}
                                         
                     {activeStep === steps.length - 1 ? null : <Button
+                    style={{backgroundColor:"#598EBF"}}
                         variant="contained"
                         color="primary"
                         onClick={handleNext}
@@ -268,20 +272,22 @@ function Landing() {
                 ))}
                 </Stepper>
 
-                <Link to="/auth" style={{textDecoration:"none"}} data-testid="signup-link">
+               
+            </div>
+           
+         </div>
+
+         <Link to="/auth" style={{textDecoration:"none"}} data-testid="signup-link">
                     <Button
                         id="sign-up"
-                        style={{width:"300px"}}
+                        style={{backgroundColor:"#598EBF",color:"white",width:"300px"}}
                         className={classes.button}
                         variant="contained"
                         color="primary"
                         data-testid="signup-button">
                         signup
                     </Button>
-                </Link> 
-            </div>
-         </div>
-                            
+                </Link>            
         </div>
                     
 
@@ -289,13 +295,13 @@ function Landing() {
 
         <div className="featuresSection">
             <div className="featuresBox">
-                    
+
                     {cards.map(element=>{
                     return(
                         <section className="features">
                             <Card className={classes.card}>
                                 <CardActionArea>
-                                <element.icon className="icon"/>
+                                <element.icon className="icon" style={{color:"#598EBF"}}/>
                                 <CardContent style={{height:"160px"}}>
                                 <Typography gutterBottom variant="h5" component="h2">
                                                {element.label}
@@ -310,8 +316,7 @@ function Landing() {
                     )
                     })
                     }
-                                    
-                                
+                              
             </div>
         </div>
 
@@ -350,13 +355,22 @@ function Landing() {
                     />
                                                 
                 </div>
+                <a href="#">
+                    <img
+                        className="playButton"
+                        src={require("../images/google-play-badge.png")}
+                        alt="googlePlayStore"
+                    />
+                </a>
             </div>
-        </div>
-                
-                
+           
+            </div>
+        </div>    
+    </div>
 
-                </div>
-            </div>
+    <footer className="footer" style={{textAlign:"center"}}>
+        <p>©2019 All Rights Reserved. Bráv.</p>
+    </footer>
         </div>
     </>
     );

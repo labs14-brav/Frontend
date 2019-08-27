@@ -8,23 +8,9 @@
   }
 
 
-// h2{
-//     color: white;
-//     text-align: center;
-//     font-size: 5vw;
-//     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-// }
-// h3{
-//     color: rgb(207, 204, 204);
-//     text-align: center;
-//     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    
-// }
-
 .landing {
     z-index: 0;
-    background-color: #598EBF;
-    background-image: linear-gradient(#598EBF, rgb(194, 194, 196));
+    background-color: rgb(211, 211, 211);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: bottom left;
@@ -47,15 +33,27 @@
         align-content: center;
         padding: 10px;
         height: 110px;
-        background-color: rgba(71, 71, 233, 0.849) ;
+        background-color: rgb(89, 142, 191) ;
         width: 100vw;
         z-index: 99;
         margin-bottom: 50px;
+
         &:hover {
             box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
             }
+        #navSignUp,#navLogin{
+            background-color: rgba(89, 142, 191,.9);
+            border: 1px;
+            &:hover {
+                box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+                color:#598EBF;
+                background-color: white;
+                }
+        }
+       
        
     }
+
     .cover2{
         display: flex;
         flex-direction: row;
@@ -72,6 +70,7 @@
 }
 
 
+
 @media screen and (max-width: 500px){
     .cover{
         // display: none;
@@ -83,16 +82,14 @@
 }
 
 .how{
-    height: 400px;
+    height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 40px;
     margin-top: 100px;
-    background-color:rgb(212, 212, 211);
-    
-    
+    background-color:rgb(158, 154, 156);
+       
     .stepper{
         max-width: 600px;
         min-width: 80%;
@@ -100,30 +97,33 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        
+       
         #sign-up{
             position: relative !important ;
-            margin-top: 60px;
-            
+            margin-top: 60px;   
             }
         }
 }
-@media screen and (max-width: 400px){
+@media screen and (max-width: 700px){
     .how{
-        margin-top: 220px;
-        background-color:#598EBF;
+        margin-top: 25px;
+        background-color:rgb(212, 212, 211);
         
     }
     #sign-up{
-       margin-bottom: 150px;
-        
+        margin-top: 40px;
+      
         }
 }
 
+// #step{
+//     color:#598EBF !important;
+//  }
+     
 
 .featuresSection{
     display: flex;
-    margin-top: 200px;
+    margin-top: 100px;
     flex-direction: column;
     text-align: center;
     background-color:rgb(212, 212, 211);
@@ -145,9 +145,10 @@
 
 
 .appStore{
-    margin-top: 100px;
-    margin-bottom: 100px;
-    
+    margin-top:100px;
+    background-color:#598EBF;
+    padding: 50px 0;
+    height: 670px;
     .smartphone {
         position: relative;
         width: 250px;
@@ -175,7 +176,20 @@
         padding-bottom: 20px;
         margin-top: -5px;
        
+       
   }
+  .playButton{
+    width: 200px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    
+}
+}
+.footer{
+background-color:rgb(158, 154, 156);
+  width: 100%;
+  border-top: 3px solid black;
+  padding: 15px;
 }
 
  
