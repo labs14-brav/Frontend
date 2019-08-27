@@ -215,7 +215,7 @@ function MediatorCasesShow() {
                 <section className={classes.cardContainer}>
                     <Card className={classes.card}>
                         <div className={classes.cardTitle}>
-                            <strong>Activate your Stripe Connection</strong>
+                            <strong>Activate your Stripe Account</strong>
 
                             <div className={classes.divider}> </div>
                         </div>
