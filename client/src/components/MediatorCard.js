@@ -42,28 +42,28 @@ const MediatorCard = (props) => {
 
   return (
     <>
-        <Grid 
-          item xs={11} 
-          sm={11} 
-          md={props.numMediators === 1 ? 12 : 6} 
+        <Grid
+          item xs={11}
+          sm={11}
+          md={props.numMediators === 1 ? 12 : 6}
           lg={props.numMediators === 1 ? 12 : 6}>
         <Card className={classes.paper}>
           <CardContent>
               <h5 className='card-name'> {props.mediator.name} </h5>
-              <p id="case-label">License:</p> 
+              <p className="case-label">License:</p> 
               <p className='card-info'>{props.mediator.license}</p>
-              <p id="case-label">Experience:</p>
+              <p className="case-label">Experience:</p>
               <p className='card-info'>{props.mediator.experience}</p>
-              <p id="case-label">Specialization:</p>
+              <p className="case-label">Specialization:</p>
               <p className='card-info'> {props.mediator.specialization}</p>
-              <p id="case-label">Language:</p>
+              <p className="case-label">Language:</p>
               <p className='card-info'>{props.mediator.language}</p>
-              <p id="case-label">Bio:</p>
+              <p className="case-label">Bio:</p>
               <p className='card-bio'>{props.mediator.professional_bio}</p>
-              <p id="case-label">Price: </p>
+              <p className="case-label">Price: </p>
               <p className='card-info'>{props.mediator.price}/hr</p>
           </CardContent>
-         
+
           <CardActions style={{display:"flex", justifyContent:'center'}}>
             <SendRequestButton mediator={props.mediator} currentcase={props.currentcase}/>
           </CardActions>

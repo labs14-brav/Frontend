@@ -1,4 +1,4 @@
-#case-label {
+.case-label {
     // border-bottom: .5px solid #A3A2A2;
     color: #5C90C1;
     opacity: 50%;
@@ -21,19 +21,19 @@
         font-size: 14px;
     }
 }
- 
+
     #case-description {
     height: 75px;
     overflow: hidden;
 }
 
 
-.modal-form { 
+.modal-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    .modal-text { 
+    .modal-text {
         resize: none;
         margin-top: 10px;
         margin-bottom: 10px;
@@ -67,7 +67,7 @@
        flex-direction: column;
        justify-content: space-between;
     }
-  
+
     .general{
         align-self: center;
         overflow-y: auto;
@@ -119,17 +119,17 @@
 .description:hover,.general:hover  {
     box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
     transform: translate3d(0px, -1px, 0px);
-  
+
   }
 
 #trashButton
 {
-    margin-left:auto !important; 
+    margin-left:auto !important;
     margin-right:0 !important;
     border:none !important;
 }
 #exitButton{
-    margin-left:0 !important; 
+    margin-left:0 !important;
     margin-right:0 !important;
 }
 
