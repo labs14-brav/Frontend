@@ -20,7 +20,10 @@ function CaseDocument(props) {
 
         fileRef.getDownloadURL()
             .then(url => {
-                console.log('getDownloadURL', url)
+              console.log('getDownloadURL', url)
+
+              let img = document.getElementById('document-image');
+              img.src = url;
             })
             .catch(err => {
                 console.error(err);
@@ -29,8 +32,7 @@ function CaseDocument(props) {
     return(
         <>
             <li>
-                <Typography>{props.document.file_name}</Typography>
-                <Button onClick={handleClick} variant="outlined"> Download File </Button>
+                <Button onClick={handleClick} variant="outlined" className="my-1">View</Button> {props.document.file_name}
             </li>
         </>
     )
