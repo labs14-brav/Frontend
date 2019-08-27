@@ -19,21 +19,25 @@ function CaseDocument(props) {
         e.preventDefault();
         console.log('fileRef', fileRef)
 
-        // fileRef.getMetadata().then(function(metadata) {
-        //   // Metadata now contains the metadata for 'images/forest.jpg'
-        // }).catch(function(error) {
-        //   console.error(err);
-        // });
+        fileRef.getMetadata().then((metadata) => {
+          console.log('metadata', metadata)
+          // Metadata now contains the metadata for 'images/forest.jpg'
 
-        fileRef.getDownloadURL().then(url => {
-          console.log('getDownloadURL', url)
+          if (metadata.contentType === 'application/pdf') {
+          } else {
+            fileRef.getDownloadURL().then(url => {
+              console.log('getDownloadURL', url)
 
-          let img = document.getElementById('document-image');
-          img.src = url;
-        })
-        .catch(err => {
+              let img = document.getElementById('document-image');
+              img.src = url;
+            })
+            .catch(err => {
+              console.error(err);
+            })
+          }
+        }).catch((err) => {
           console.error(err);
-        })
+        });
     }
     return(
         <>
