@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { documentsRef } from '../helpers/firebase';
+/**
+ * Dependencies
+ */
 
+import React, { useState } from 'react';
+import { documentsRef } from '../helpers/firebase';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
+/**
+ * Define component
+ */
 
 function CaseDocument(props) {
     const [link, setLink]= useState('');
     const fileRef = documentsRef.child(`${props.case.id}/${props.document.file_name}`);
-
-    useEffect(() => {
-    }, [])
 
     function handleClick(e) {
         e.preventDefault();
@@ -21,15 +24,15 @@ function CaseDocument(props) {
                 xhr.responseType = 'blob';
                 xhr.onload = function(e) {
                     if (this.status == 200) {
-                        // Create a new Blob object using the 
+                        // Create a new Blob object using the
                         //response data of the onload object
                         var blob = new Blob([xhr.response], {type: xhr.response.type});
-                        //Create a link element, hide it, direct 
+                        //Create a link element, hide it, direct
                         //it towards the blob, and then 'click' it programatically
                         let a = document.createElement("a");
                         a.style = "display: none";
                         document.body.appendChild(a);
-                        //Create a DOMString representing the blob 
+                        //Create a DOMString representing the blob
                         //and point the link element towards it
                         let url = window.URL.createObjectURL(blob);
                         a.href = url;
@@ -63,5 +66,9 @@ function CaseDocument(props) {
         </>
     )
 }
+
+/**
+ * Export component
+ */
 
 export default CaseDocument;
