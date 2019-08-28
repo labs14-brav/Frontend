@@ -51,9 +51,9 @@ describe('OutsideCourtForm.js', () => {
     const { getByTestId } = renderWithRouter(<OutsideCourtForm />, {route})
 
     expect(getByTestId('input-dispute_category').textContent).toBe('Dispute Type​​required')
-    expect(getByTestId('input-parties_involved').textContent).toBe('Dispute Participants​')
-    expect(getByTestId('input-parties_contact_info').textContent).toBe('Participant Contact Info​')
-    expect(getByTestId('input-dispute_amount').textContent).toBe('Dispute Amount - $​if applicable')
-    expect(getByTestId('input-description').textContent).toBe('Description of Conflict​')
+    expect(getByTestId('input-parties_involved').textContent).toBe('Dispute Participants​Please list the names of the other parties involved in your dispute')
+    expect(getByTestId('input-parties_contact_info').textContent).toBe('Participant Contact Information​Please provide an email or phone number for each participant listed above')
+    expect(getByTestId('input-dispute_amount').textContent).toBe('Dispute Amount - Dollars​Please list the total monetary value of this dispute, if applicable.')
+    expect(getByTestId('input-description').textContent).toBe('Description of Conflict​In your own words, please describe what happened.')
   });
 });
