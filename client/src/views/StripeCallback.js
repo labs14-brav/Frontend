@@ -19,11 +19,13 @@ export default function StripeCallback(props) {
             .post("/mediators/stripe-connect", { code: code })
             .then(res => {
                 console.log(res);
+                localStorage.setItem('is_stripe_connected',true)
             })
             .catch(err => {
                 console.error(err);
             });
-            window.location = '/mediator-cases'
+            setTimeout(function(){
+                window.location = '/mediator-cases'},4000)
     });
 
     return (
