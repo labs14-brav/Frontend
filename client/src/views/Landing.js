@@ -28,18 +28,20 @@ import invoices from '../images/invoices.jpg';
 import settingPage from '../images/SettingPage.jpg';
 
 
+
+
+
 /**
- * Define view
+ * Define Data for Mapping
  */
 
-
-
+//  for stepper
 function getSteps() {
     return ['Create Account', 'Create Case', 'Search For Mediator','Mediate'];
   }
   
 
-
+//   for stepper
 function getStepContent(step) {
     switch (step) {
       case 0:
@@ -55,6 +57,7 @@ function getStepContent(step) {
     }
   }
 
+//   for phone carousel
   const images = [
     {
       imgPath:findMediator
@@ -71,6 +74,7 @@ function getStepContent(step) {
    
   ];
 
+//   for info cards
   const cards= [
     {
         icon:AccountBalanceIcon,
@@ -104,6 +108,11 @@ function getStepContent(step) {
     }
 
   ]
+
+
+  /**
+ * Define view
+ */
 
 const useStyles = makeStyles(theme => ({
     button: {
@@ -301,6 +310,7 @@ function Landing() {
                         <section className="features">
                             <Card className={classes.card}>
                                 <CardActionArea>
+                                    {/* element.icon comes from the cards array. Is icons */}
                                 <element.icon className="icon" style={{color:"#598EBF"}}/>
                                 <CardContent style={{height:"160px"}}>
                                 <Typography gutterBottom variant="h5" component="h2">
@@ -335,28 +345,29 @@ function Landing() {
                             alt={images[activeStep].imgPath}
                         />
                         <MobileStepper
-                    id="mobilebuttons"
-                    steps={maxSteps}
-                    position="static"
-                    variant="text"
-                    activeStep={activeStep}
-                    nextButton={
-                    <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
-                    Next
-                    {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-                    </Button>
-                    }
-                    backButton={
-                    <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-                    {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-                    Back
-                    </Button>
+                                id="mobilebuttons"
+                                steps={maxSteps}
+                                position="static"
+                                variant="text"
+                                activeStep={activeStep}
+                                nextButton={
+                        <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+                            Next
+                            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+                        </Button>
+                            }
+                            backButton={
+                        <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+                            Back
+                        </Button>
                     }
                     />
                                                 
                 </div>
                 <a href="#">
                     <img
+                    // there is no link yet for the appstore; remove comment when inserted
                         className="playButton"
                         src={require("../images/google-play-badge.png")}
                         alt="googlePlayStore"
