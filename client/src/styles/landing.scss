@@ -83,6 +83,12 @@
     }
 }
 
+
+.stepper .MuiSvgIcon-root{
+    color:#598EBF !important;
+}
+
+
 .how{
     height: 600px;
     display: flex;
@@ -102,7 +108,8 @@
        
         #sign-up{
             position: relative !important ;
-            margin-top: 60px;   
+            margin-top: 60px; 
+            
             }
         }
 }
@@ -115,6 +122,13 @@
         margin-top: 40px;
         }
 }
+@media screen and (max-width: 500px){
+    
+    .stepper .MuiTypography-root{
+            font-size: 3vw;
+        }
+}
+
 
      
 
@@ -192,9 +206,6 @@
   padding: 15px;
 }
 
-.stepper .MuiSvgIcon-root{
-    color:#598EBF !important;
-}
- 
+
   
 

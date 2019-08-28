@@ -44,14 +44,16 @@ function getSteps() {
 //   for stepper
 function getStepContent(step) {
     switch (step) {
+
       case 0:
-        return `Mediation can be a hassle; our website makes mediation easier for everyone through encompasing the process online. Once an account has been created you will have access to your cases anywhere. Individuals also have the oportunity to sign up as mediators with their credentials.`;
+        return `Once you create an account by clicking the sign up button below, you will have access to create a case and find a mediator all within our application.
+        Qualified individuals will also have the opportunity to sign up as mediators using their credentials.`;
       case 1:
-        return `Once an account has been created you will have the option of inputting a case. If the case was reffered by a court you will choose the court form and fill in all neccessary information. There is an also an option if your conflict in not court reffered `;
+        return `Once your account has been created you will have the option of creating a case.`;
       case 2:
-        return `After your case has been created you will search for a mediator to handle your case. There are multiply criteria you can choose from, such as mediator specialty and price. The chosen mediator will recieve all of your case information including external parties involved.`;
+        return `After your case has been created you will search for a mediator to handle it. Use our search tool to find a mediator that suits your needs.`;
     case 3:
-        return `After a mediator has accepted your request the mediation between all parties can begin. This includes the ability to upload important documents, add addendums to existing cases and make payments.`;
+        return `After a mediator has accepted your case, the mediation process may begin.`;
       default:
         return 'Unknown step';
     }
@@ -79,32 +81,32 @@ function getStepContent(step) {
     {
         icon:AccountBalanceIcon,
         label:"Cases",
-        text:"Brāv gives the option of creating cases based on the type. The two forms available are court and non-court. "
+        text:"Create a case on our platform, whether it be court-related or not. "
     },
     {
         icon:FileCopyIcon,
         label:"Documents",
-        text:"Documents are an important part of mediation and Brāv gives the option of uploading documents that are viewable to the user and mediator."
+        text:"Share information with your mediator using our file upload and viewing system."
     }, 
     {
         icon:SearchIcon,
         label:"Mediators",
-        text:"Brāv gives the ability to filter mediators based on criteria such as hourly rate, specialty or experience."
+        text:"Filter our qualified mediators based on criteria such as hourly rate, specialty, language, or experience in the field."
     }, 
     {
         icon:PaymentIcon,
         label:"Payment",
-        text:"Payment is securely facilitated through our integrated stripe platform."
+        text:"Facilitate payments through our secure platform."
     }, 
     {
         icon:LanguageIcon,
-        label:"Accessability",
-        text:"In addition to English Brāv includes additional search for mediation based on language. Cases are viewable on-the-go through our app."
+        label:"Accessibility",
+        text:"Take your cases on-the-go through our mobile application, currently available on Android."
     }, 
     {
         icon:EmailIcon,
         label:"Notifications",
-        text:"Never miss an update to your case or a payment invoice. Brāv sends notifications to your email."
+        text:"Never miss an update to your case. Brāv sends notifications to your email directly."
     }
 
   ]
@@ -241,15 +243,16 @@ function Landing() {
      
         <div className="how">
         <h3>How Brāv Works</h3>
+        <p>Mediation is a great alternative to the formal judicial system. Our platform makes mediation even easier for users to solve conflict through the use of our online tools.</p>
             <div className="howContent">
 
             <div className="stepper">
                 <Stepper  activeStep={activeStep} orientation="vertical">
                     {steps.map((label, index) => (
                                     
-                    <Step  key={label}>
+                    <Step id="step" key={label}>
                     
-                    <StepLabel id="step" >{label}</StepLabel>
+                    <StepLabel  >{label}</StepLabel>
                 <StepContent >
                     <Typography>{getStepContent(index)}</Typography>
                     <div className={classes.actionsContainer}>
