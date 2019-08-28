@@ -243,7 +243,9 @@ function Landing() {
      
         <div className="how">
         <h3>How Brāv Works</h3>
-        <p>Mediation is a great alternative to the formal judicial system. Our platform makes mediation even easier for users to solve conflict through the use of our online tools.</p>
+        <div className="alternativeMediation">           
+             <h6>Mediation is a great alternative to the formal judicial system. Our platform makes mediation even easier for users to solve conflict through the use of our online tools.</h6>
+        </div>
             <div className="howContent">
 
             <div className="stepper">

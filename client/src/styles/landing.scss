@@ -70,9 +70,9 @@
 
 
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 600px){
     .cover{
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     }
     #navSignUp{
         display: none;
@@ -96,6 +96,11 @@
     align-items: center;
     flex-direction: column;
     margin-top: 50px;
+    .alternativeMediation{
+        max-width: 600px;
+        margin: 20px 5px;
+        text-align: center;
+    }
     
     .stepper{
         max-width: 600px;
@@ -117,6 +122,10 @@
     .how{
         margin-top: 60px;
         background-color:rgb(212, 212, 211);
+        .alternativeMediation{
+            margin: 20px 15px;
+            font-size: 3vw !important;
+        }
     }
     #sign-up{
         margin-top: 40px;
