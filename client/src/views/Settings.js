@@ -2,10 +2,11 @@
  * Dependencies
  */
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { DeactivateAccountButton } from "../components/index";
 import { Link } from "react-router-dom";
 import { makeStyles, Card } from "@material-ui/core";
+import LinearProgress from '@material-ui/core/LinearProgress';
 import { BecomeMediatorLink } from "./styles/index";
 
 /**
@@ -80,7 +81,14 @@ const useStyles = makeStyles(() => ({
 
 function Settings() {
     const classes = useStyles();
+    const [isLoading, setIsLoading] = useState(true);
     const userType = localStorage.getItem("type");
+
+    useEffect(() => {
+      setIsLoading(false);
+    }, []);
+
+    if (isLoading) return <LinearProgress />
 
     return (
         <div className={classes.container}>
