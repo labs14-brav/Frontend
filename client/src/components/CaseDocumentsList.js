@@ -38,6 +38,7 @@ function CaseDocumentsList(props) {
             e.target.value = ''
         } else {
             setFile(file);
+            console.log(file);
         }
     }
     function handleSubmitUploader(e) {

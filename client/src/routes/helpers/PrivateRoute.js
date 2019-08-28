@@ -34,6 +34,7 @@ const PrivateRoute = ({ component: Component, errorBoundary: ErrorBoundary, path
       }).then(res => {
         localStorage.setItem('type', res.data.type);
         localStorage.setItem('id', res.data.id);
+        localStorage.setitem('uid', res.data.uid);
         localStorage.setItem('is_stripe_connected', res.data.is_stripe_connected);
       }).catch(err => {
         console.error(err)
