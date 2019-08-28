@@ -22,7 +22,7 @@ const useStyles = makeStyles(() => ({
  * Define view
  */
 
- function Login(props) {
+function Login(props) {
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(true);
 
