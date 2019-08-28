@@ -43,9 +43,9 @@ function getSteps() {
 function getStepContent(step) {
     switch (step) {
       case 0:
-        return `Mediation can be a hassle; our website makes mediation easier for everyone through encompasing the whole process online. Once an account has been created you will have access to your cases anywhere. Individuals also have the oportunity to sign up as mediators with their credentials and get approved.`;
+        return `Mediation can be a hassle; our website makes mediation easier for everyone through encompasing the process online. Once an account has been created you will have access to your cases anywhere. Individuals also have the oportunity to sign up as mediators with their credentials.`;
       case 1:
-        return `Once an account has been created you will have the option of inputting a case. If the case was reffered by a court you will choose the court form and fill in all neccessary information. There is an also an option if your specific conflict in not court reffered `;
+        return `Once an account has been created you will have the option of inputting a case. If the case was reffered by a court you will choose the court form and fill in all neccessary information. There is an also an option if your conflict in not court reffered `;
       case 2:
         return `After your case has been created you will search for a mediator to handle your case. There are multiply criteria you can choose from, such as mediator specialty and price. The chosen mediator will recieve all of your case information including external parties involved.`;
     case 3:
@@ -75,32 +75,32 @@ function getStepContent(step) {
     {
         icon:AccountBalanceIcon,
         label:"Cases",
-        text:"Bráv gives the option of creating cases based on the type. The two forms available are court and non-court. "
+        text:"Brāv gives the option of creating cases based on the type. The two forms available are court and non-court. "
     },
     {
         icon:FileCopyIcon,
         label:"Documents",
-        text:"Documents are an important part of mediation and Bráv gives the option of uploading documents that are viewable to the user and mediator."
+        text:"Documents are an important part of mediation and Brāv gives the option of uploading documents that are viewable to the user and mediator."
     }, 
     {
         icon:SearchIcon,
         label:"Mediators",
-        text:"Bráv gives the ability to filter mediators based on criteria such as hourly rate, specialty or experience."
+        text:"Brāv gives the ability to filter mediators based on criteria such as hourly rate, specialty or experience."
     }, 
     {
         icon:PaymentIcon,
         label:"Payment",
-        text:"Payment is securely facilitated through our stripe api."
+        text:"Payment is securely facilitated through our integrated stripe platform."
     }, 
     {
         icon:LanguageIcon,
         label:"Accessability",
-        text:"In addition to English Bráv includes additional search for mediation based on language. Cases are viewable on-the-go through our app."
+        text:"In addition to English Brāv includes additional search for mediation based on language. Cases are viewable on-the-go through our app."
     }, 
     {
         icon:EmailIcon,
         label:"Notifications",
-        text:"Never miss an update to your case or a payment invoice. Bráv sends notifications to your email."
+        text:"Never miss an update to your case or a payment invoice. Brāv sends notifications to your email."
     }
 
   ]
@@ -187,7 +187,7 @@ function Landing() {
                         id="logo"
                         className="brav-logo"
                         src="https://www.brav.org/img/brav-logo.png"
-                        alt="Brav Logo"
+                        alt="Brāv Logo"
                     />
                 <div>
 
@@ -231,7 +231,7 @@ function Landing() {
      {/* stepper */}
      
         <div className="how">
-        <h3>How Bráv Works</h3>
+        <h3>How Brāv Works</h3>
             <div className="howContent">
 
             <div className="stepper">
@@ -369,7 +369,7 @@ function Landing() {
     </div>
 
     <footer className="footer" style={{textAlign:"center"}}>
-        <p>©2019 All Rights Reserved. Bráv.</p>
+        <p>©2019 All Rights Reserved. Brāv.</p>
     </footer>
         </div>
     </>
