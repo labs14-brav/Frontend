@@ -18,7 +18,9 @@ function CaseDocumentsList(props) {
     const [file, setFile]= useState({});
     const userUID = localStorage.getItem('uid');
     const userMeta = {
-        'user': userUID,
+        customMetadata: {
+            'user': userUID,
+        }
     }
 
     useEffect(() => {
@@ -56,6 +58,12 @@ function CaseDocumentsList(props) {
             axioswithAuth().post(`/cases/${props.case.id}/documents`, { file_name: file.name })
                 .then(res => {
                     console.log(res);
+                    fileRef.updateMetadata(userMeta).then((meta) => {
+                        console.log('Metadata updated', meta);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    })
                     if (process.env.NODE_ENV === 'production') {
                       mixpanel.track('Upload document', { distinct_id: localStorage.getItem('id') })
                     }
@@ -66,13 +74,6 @@ function CaseDocumentsList(props) {
         }).catch(err => {
             console.error(err)
         });
-
-        fileRef.updateMetadata(userMeta).then((meta) => {
-            console.log('Metadata updated', meta);
-        })
-        .catch(error => {
-            console.error(error);
-        })
     }
 
     if (documents.length > 0) {
