@@ -258,7 +258,7 @@ function MediatorCaseOverviewDialog(props) {
                                 </div>
                                 <div className={classes.listItemGrey}>
                                     <strong> Dispute Amount</strong>
-                                    <p>{props.case.dispute_amount}</p>
+                                    <p>${props.case.dispute_amount}</p>
                                 </div>
 
                                 {props.case.court_case ? (
