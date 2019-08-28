@@ -15,7 +15,11 @@ import Typography from "@material-ui/core/Typography";
  * Import styles
  */
 
-import "./UserInvoice.scss";
+import './styles/UserInvoice.scss';
+
+/**
+ * Define styles
+ */
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -119,27 +123,18 @@ function UserInvoice(props) {
                         <div id="right">
                             <ul className="right-list">
                                 <li className="right-list-item">
-                                    <Typography
-                                        variant="overline"
-                                        className={classes.info}
-                                    >
+                                    <Typography variant="overline" className={classes.info}>
                                         {timeStamp}
                                     </Typography>
                                 </li>
                                 <li className="right-list-item">
-                                    <Typography
-                                        variant="overline"
-                                        className={classes.info}
-                                    >
+                                    <Typography variant="overline" className={classes.info}>
                                         {props.invoice.hours}
                                     </Typography>
                                 </li>
                                 <li className="right-list-item">
-                                    <Typography
-                                        variant="overline"
-                                        className={classes.info}
-                                    >
-                                        ${props.invoice.amount}
+                                    <Typography variant="overline" className={classes.info}>
+                                        {props.invoice.amount}
                                     </Typography>
                                 </li>
                             </ul>

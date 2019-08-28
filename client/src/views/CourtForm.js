@@ -163,9 +163,10 @@ const CourtForm = props => {
 
                 <TextField
                     className={classes.textField}
-                    label="Your First and Last Name"
+                    label="Full Name"
                     type="email"
                     name="case_initiator"
+                    helperText="Please provide your first and last name."
                     margin="normal"
                     variant="outlined"
                     data-testid="input-case_initiator"
@@ -173,35 +174,36 @@ const CourtForm = props => {
                     value={form.case_initiator}
                 />
 
-                <TextField
-                    className={classes.textField}
-                    label="Dispute Participants"
-                    type="email"
-                    name="parties_involved"
-                    autoComplete="email"
-                    margin="normal"
-                    variant="outlined"
-                    data-testid="input-parties_involved"
-                    onChange={handleChange("parties_involved")}
-                    value={form.parties_involved}
-                />
+        <TextField
+          className={classes.textField}
+          label="Dispute Participants"
+          type="email"
+          name="parties_involved"
+          helperText="Please list the names of the other parties involved in your dispute"
+          autoComplete="email"
+          margin="normal"
+          variant="outlined"
+          data-testid="input-parties_involved"
+          onChange={handleChange("parties_involved")}
+          value={form.parties_involved}
+          />
+
+        <TextField
+          className={classes.textField}
+          label="Participant Contact Information"
+          name="parties_contact_info"
+          helperText="Please provide an email or phone number for each participant listed above"
+          data-testid="input-parties_contact_info"
+          value={form.parties_contact_info}
+          onChange={handleChange("parties_contact_info")}
+          margin="normal"
+          variant="outlined"/>
 
                 <TextField
                     className={classes.textField}
-                    label="Participant Contact Info"
-                    name="parties_contact_info"
-                    data-testid="input-parties_contact_info"
-                    value={form.parties_contact_info}
-                    onChange={handleChange("parties_contact_info")}
-                    margin="normal"
-                    variant="outlined"
-                />
-
-                <TextField
-                    className={classes.textField}
-                    label="Dispute Amount - $"
+                    label="Dispute Amount - Dollars"
                     name="dispute_amount"
-                    helperText="if applicable"
+                    helperText="Please list the total monetary value of this dispute, if applicable."
                     value={form.dispute_amount}
                     type="number"
                     data-testid="input-dispute_amount"
@@ -214,7 +216,7 @@ const CourtForm = props => {
                     className={classes.textField}
                     name="court_jurisdiction"
                     label="Jurisdiction"
-                    helperText="or Court ID"
+                    helperText="Please list the Jurisdiction or Court ID of the Court where this case was filed."
                     data-testid="input-court_jurisdiction"
                     value={form.court_jurisdiction}
                     onChange={handleChange("court_jurisdiction")}
@@ -252,7 +254,7 @@ const CourtForm = props => {
                     className={classes.textField}
                     name="case_notes"
                     label="Case Notes"
-                    helperText="if applicable"
+                    helperText="Please provide any Case notes if any."
                     multiline
                     rows="8"
                     value={form.case_notes}
@@ -262,18 +264,19 @@ const CourtForm = props => {
                     variant="outlined"
                 />
 
-                <TextField
-                    className={classes.textField}
-                    name="description"
-                    label="Description of Conflict"
-                    multiline
-                    rows="8"
-                    value={form.description}
-                    data-testid="input-description"
-                    onChange={handleChange("description")}
-                    margin="normal"
-                    variant="outlined"
-                />
+        <TextField
+          className={classes.textField}
+          name="description"
+          label="Description of Conflict"
+          multiline
+          helperText="In your own words, please describe what happened."
+          rows="8"
+          value={form.description}
+          data-testid="input-description"
+          onChange={handleChange("description")}
+          margin="normal"
+          variant="outlined"
+          />
 
                 <Button
                     className={classes.button}

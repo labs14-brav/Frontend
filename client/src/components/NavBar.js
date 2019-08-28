@@ -14,7 +14,7 @@ import SignOutIcon from '../icons/SignOutIcon';
  *  Import styles
  */
 
-import './UserCaseCard.scss';
+import './styles/UserCaseCard.scss';
 
 /**
  * Define component

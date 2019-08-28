@@ -19,7 +19,7 @@ import { ConnectBankAccountLink } from "./styles/index";
  * Import styles
  */
 
-import "./MediatorCasesShow.scss";
+import './styles/MediatorCasesShow.scss';
 
 /**
  * Define styles
@@ -173,12 +173,11 @@ function MediatorCasesShow() {
 
     const is_stripe_connected = localStorage.getItem("is_stripe_connected");
 
-    if (
-        is_stripe_connected === true ||
+    if (is_stripe_connected === true ||
         is_stripe_connected === "true" ||
         is_stripe_connected === 1 ||
         is_stripe_connected === "1"
-        
+
     ) {
         return (
             <MediatorCasesShowStyle>
@@ -212,52 +211,43 @@ function MediatorCasesShow() {
     } else {
         return (
             <div className={classes.container}>
-                <h3 className={classes.title}>Mediator</h3>
+                <h3 className={classes.title}>Mediator Payment Registration</h3>
                 <section className={classes.cardContainer}>
                     <Card className={classes.card}>
                         <div className={classes.cardTitle}>
-                            <strong>Activate Stripe Account</strong>
+                            <strong>Activate your Stripe Account</strong>
 
                             <div className={classes.divider}> </div>
                         </div>
                         <div className={classes.cardContent}>
                             <p className={classes.text}>
-                                In order to access our services an account with
+                                In order to access our services, an account with
                                 Stripe Services must be created. Stripe is the
                                 best platform for running an internet business
                                 and handles billions of dollars every year for
                                 forward-thinking businesses like our mediation
-                                site. If you you are eager to start your
-                                business click the button in order to make sure
-                                you get registered to recieve payments. For more
-                                information click the link below.
+                                platform. If you you are eager to expand your
+                                business, please click the button below to register with Stripe in order to recieve payments.
+                                 If you are still unsure and would like more information regarding Stripe, click the link below.
                                 <br />
-                                <a
-                                    style={{ textDecoration: "none" }}
+                            </p>
+
+                          <a style={{ textDecoration:"none" }}
+                              href={`https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_ABPUiwwNjwxtQ0OypoG43e6Pw4Z32vOp&redirect_uri=${process.env.REACT_APP_URL}/stripe-callback`}>
+                            <ConnectBankAccountLink>
+
+                            <FontAwesomeIcon icon={faCreditCard} style={{paddingRight:"10px",fontSize:"30px"}}/>
+                                Connect Bank Account
+                            </ConnectBankAccountLink>
+                          </a>
+                        </div>
+                        <a
+                                    style={{ textDecoration: "none", alignSelf: 'flex-start'}}
                                     href="https://stripe.com/about"
                                     target="_blank"
                                 >
-                                    VisitStripe
-                                </a>
-                            </p>
-                            <a
-                                style={{ textDecoration: "none" }}
-                                href={`https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_ABPUiwwNjwxtQ0OypoG43e6Pw4Z32vOp&redirect_uri=${
-                                    process.env.REACT_APP_URL
-                                }/stripe-callback`}
-                            >
-                                <ConnectBankAccountLink>
-                                    <FontAwesomeIcon
-                                        icon={faCreditCard}
-                                        style={{
-                                            paddingRight: "10px",
-                                            fontSize: "30px"
-                                        }}
-                                    />
-                                    Connect Bank Account
-                                </ConnectBankAccountLink>
+                                    Stripe Information
                             </a>
-                        </div>
                     </Card>
                 </section>
             </div>

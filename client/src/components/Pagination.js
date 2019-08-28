@@ -8,7 +8,7 @@ import React from 'react'
  * Import styles
  */
 
-import './Pagination.scss'
+import './styles/Pagination.scss'
 
 /**
  * Define component

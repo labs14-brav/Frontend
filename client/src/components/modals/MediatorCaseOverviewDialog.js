@@ -19,7 +19,7 @@ import Button from "@material-ui/core/Button";
  * Import styles
  */
 
-import "../UserCaseCard.scss";
+import "../styles/UserCaseCard.scss";
 
 const useStyles = makeStyles(theme => ({
     primarybutton: {
@@ -258,7 +258,7 @@ function MediatorCaseOverviewDialog(props) {
                                 </div>
                                 <div className={classes.listItemGrey}>
                                     <strong> Dispute Amount</strong>
-                                    <p>{props.case.dispute_amount}</p>
+                                    <p>${props.case.dispute_amount}</p>
                                 </div>
 
                                 {props.case.court_case ? (

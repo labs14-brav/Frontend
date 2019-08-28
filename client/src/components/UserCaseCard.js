@@ -21,7 +21,7 @@ import AddendumsList from './AddendumsList'
  * Import styles
  */
 
-import './UserCaseCard.scss';
+import './styles/UserCaseCard.scss';
 
 /**
  * Import Font Awesome
@@ -117,7 +117,7 @@ const UserCaseCard = (props) => {
                 sm={11}
                 md={props.numCases === 1 ? 12 : 5}
                 lg={props.numCases === 1 ? 12 : 5.5}>
-                <Card className={classes.paper}> 
+                <Card className={classes.paper}>
                     <h6 id="ribbon">Court Case</h6>
                     {/* Use <Typography variant="overline />" */}
 
@@ -139,7 +139,7 @@ const UserCaseCard = (props) => {
                             ><FontAwesomeIcon icon={faSearch} />  Find a Mediator</Link>
                         </Button>
                         <Button className={classes.secondarybutton} onClick={handlefullOpen} variant="outlined">
-                        <FontAwesomeIcon icon={faChalkboardTeacher} style={{marginRight: '5px'}} /> 
+                        <FontAwesomeIcon icon={faChalkboardTeacher} style={{marginRight: '5px'}} />
                         View Details </Button>
                     </CardActions>
                 </Card>
@@ -156,25 +156,25 @@ const UserCaseCard = (props) => {
             <AddendumsList case={props.case}/>
         </Dialog>
 
-       
+
 
             </Grid>
 
 
         <CaseOverviewDialog case={props.case} open={fullopen} handleClose={handlefullClose} fetchCases={props.fetchCases}/>
-        
+
 
     </>
     )
     } else {
         return (
         <>
-        <Grid 
-            item xs={11} 
-            sm={11} 
-            md={props.numCases === 1 ? 12 : 5} 
+        <Grid
+            item xs={11}
+            sm={11}
+            md={props.numCases === 1 ? 12 : 5}
             lg={props.numCases === 1 ? 12 : 5.5}>
-            <Card className={classes.paper}> 
+            <Card className={classes.paper}>
                 <h6 id="ribbon" style={{width: '50%'}}>Non-Court Case</h6>
                 <CardContent style={{width:'100%'}}>
                         <h6 id="case-label" style={{marginBottom:'8px', fontWeight: 'bold'}}>Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
@@ -185,9 +185,9 @@ const UserCaseCard = (props) => {
                         {props.case.case_completed_at ? <h5 id="case-case_completed_at">{props.case.case_completed_at}</h5> : null}
                 </CardContent>
                 <CardActions style={{display:"flex", flexWrap:"wrap", justifyContent:'center', alignItems:'flex-end'}}>
-                    {(props.case.case_completed_at || props.case.case_accepted_at) ? null : 
+                    {(props.case.case_completed_at || props.case.case_accepted_at) ? null :
                     <Button variant="outlined" color="primary" className={classes.primarybutton}>
-                        <Link style={{textDecoration:'none', color:'inherit'}} 
+                        <Link style={{textDecoration:'none', color:'inherit'}}
                             to= {{
                                 pathname: `/cases/${props.case.id}/mediator-search`,
                                 state: {
@@ -198,7 +198,7 @@ const UserCaseCard = (props) => {
                             <FontAwesomeIcon icon={faSearch} />Find a Mediator
                         </Link>
                     </Button>}
-                    
+
                     <Button className={classes.secondarybutton} onClick={handlefullOpen} variant="outlined">
                     <FontAwesomeIcon icon={faChalkboardTeacher} style={{marginRight: '5px'}} />                        View Details </Button>
                 </CardActions>
@@ -207,11 +207,11 @@ const UserCaseCard = (props) => {
 
 
     <CaseOverviewDialog case={props.case} open={fullopen} handleClose={handlefullClose} fetchCases={props.fetchCases}/>
-    
-    
+
+
 </>
 )
-    }           
+    }
 }
 
 /**

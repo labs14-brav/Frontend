@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
  *  Import styles
  */
 
-import './CaseForm.scss';
+import './styles/CaseForm.scss';
 
 /**
  * Global Component Styles
