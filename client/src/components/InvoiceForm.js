@@ -170,7 +170,7 @@ const InvoiceForm = props => {
                     InputProps={InputProps}
                 />
 
-                <h6 className = "fee" >A 30% application fee will be deducted from the total amount.</h6>
+                <h6 style={{ fontSize: '10px', color: "lightgrey" }} >A 30% application fee will be deducted from the total amount.</h6>
 
                 <Button
                     className={classes.button}
