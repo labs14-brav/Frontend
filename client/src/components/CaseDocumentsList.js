@@ -16,6 +16,10 @@ import CaseDocument from './CaseDocument';
 function CaseDocumentsList(props) {
     const [documents, setDocuments]= useState([]);
     const [file, setFile]= useState({});
+    const userUID = localStorage.getItem('uid');
+    const userMeta = {
+        'user': userUID,
+    }
 
     useEffect(() => {
         fetchDocuments();
@@ -62,6 +66,13 @@ function CaseDocumentsList(props) {
         }).catch(err => {
             console.error(err)
         });
+
+        fileRef.updateMetadata(userMeta).then((meta) => {
+            console.log('Metadata updated', meta);
+        })
+        .catch(error => {
+            console.error(error);
+        })
     }
 
     if (documents.length > 0) {
