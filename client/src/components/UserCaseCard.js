@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, isValidElement } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import CaseOverviewDialog from './modals/CaseOverviewDialog';
@@ -16,7 +16,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import CloseIcon from '@material-ui/icons/Close';
 import AddendumsList from './AddendumsList'
-
+import axioswithAuth from '../helpers/axioswithAuth';
 /**
  * Import styles
  */
@@ -28,7 +28,9 @@ import './styles/UserCaseCard.scss';
  */
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHandshake, faUsers, faSearch, faChalkboardTeacher } from '@fortawesome/free-solid-svg-icons';
+import { faHandshake, faUsers, faSearch, faChalkboardTeacher,faMoneyCheckAlt } from '@fortawesome/free-solid-svg-icons';
+import { green } from '@material-ui/core/colors';
+import { element } from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
     primarybutton: {
@@ -96,6 +98,17 @@ const useStyles = makeStyles(theme => ({
 const UserCaseCard = (props) => {
     const [fullopen, setFullOpen] = useState(false);
     const classes = useStyles();
+    const [invoices, setInvoices] = useState({mediator:{},invoice:[]});
+
+    // Grab invoices from server
+    async function fetchInvoices() {
+        let res = await axioswithAuth().get(`invoices/case/${props.case.id}`)
+        setInvoices(res.data);
+    }
+
+    useEffect(() => {
+        fetchInvoices();
+    },[])
 
     /**
      * Dialog functions
@@ -107,6 +120,11 @@ const UserCaseCard = (props) => {
         setFullOpen(false);
     }
 
+   const pendingInvoices = invoices.invoice.filter(function(element){
+       return element.paid_at === null
+   })
+   
+ 
 
     if(props.case.court_case === 1 || props.case.court_case === true || props.case.court_case === 'true') {
 
@@ -117,10 +135,12 @@ const UserCaseCard = (props) => {
                 sm={11}
                 md={props.numCases === 1 ? 12 : 5}
                 lg={props.numCases === 1 ? 12 : 5.5}>
-                <Card className={classes.paper}>
-                    <h6 className="ribbon">Court Case</h6>
-                    {/* Use <Typography variant="overline />" */}
+                <Card className={classes.paper}> 
 
+                {( pendingInvoices.length>0
+        ) ?  [<FontAwesomeIcon icon={faMoneyCheckAlt} style={{color:"green",fontSize:"20px"}} />, " Pending-Invoice"] : null } */}
+                    <h6 id="ribbon">Court Case</h6>
+                    {/* Use <Typography variant="overline />" */}
                     <CardContent style={{width:'100%'}}>
                             <h6 className="case-label" style={{marginBottom:'8px', color: '#5C90C1', fontWeight: 'bold'}}>Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
                             <h5 id="case-dispute">{props.case.dispute_category}</h5>
@@ -174,8 +194,13 @@ const UserCaseCard = (props) => {
             sm={11}
             md={props.numCases === 1 ? 12 : 5}
             lg={props.numCases === 1 ? 12 : 5.5}>
-            <Card className={classes.paper}>
-                <h6 className="ribbon" style={{width: '50%'}}>Non-Court Case</h6>
+            <Card className={classes.paper}> 
+
+         
+            {( pendingInvoices.length>0
+        ) ?  [<FontAwesomeIcon icon={faMoneyCheckAlt} style={{color:"green",fontSize:"20px"}} />, " Pending-Invoice"] : null }
+
+                <h6 id="ribbon" style={{width: '50%'}}>Non-Court Case</h6>
                 <CardContent style={{width:'100%'}}>
                         <h6 className="case-label" style={{marginBottom:'8px', fontWeight: 'bold'}}>Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
                         <h5 id="case-dispute">{props.case.dispute_category}</h5>
