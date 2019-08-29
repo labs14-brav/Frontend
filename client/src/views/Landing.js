@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button, makeStyles, useTheme} from "@material-ui/core";
 import Stepper from '@material-ui/core/Stepper';
@@ -26,10 +26,6 @@ import findMediator from '../images/findMediator.jpg';
 import caseActivity from '../images/caseActivity.jpg';
 import invoices from '../images/invoices.jpg';
 import settingPage from '../images/SettingPage.jpg';
-
-
-
-
 
 /**
  * Define Data for Mapping
@@ -184,8 +180,6 @@ function Landing() {
       setActiveStep(prevActiveStep => prevActiveStep - 1);
     }
 
-
-
     return (
     <>
         <div className="landing">
@@ -213,7 +207,6 @@ function Landing() {
                     </Button>
                 </Link>
                 <Link to="/auth" style={{textDecoration:"none"}} data-testid="login-link">
-
                     <Button
                     id="navLogin"
                     className={classes.button}
