@@ -1,27 +1,220 @@
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+
 .landing {
+    z-index: 0;
+    background-color: rgb(211, 211, 211);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: cover;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: block;
+    .brav-logo {
+        width: 250px;
+        margin: auto 0;
+        animation: 3s ease-out 0s 1 slideInFromLeft;
+       
+    }
+    .nav{
+        display: flex;
+        display: flex;
+        flex-direction: row;
+        align-items: center; 
+        justify-content: space-around;
+        align-content: center;
+        padding: 10px;
+        height: 110px;
+        background-color: rgb(89, 142, 191) ;
+        width: 100vw;
+        z-index: 99;
+        margin-bottom: 50px;
+
+        &:hover {
+            box-shadow: 0 3px 6px rgba(0,0,0,0.25), 0 2px 2px rgba(0,0,0,0.22);
+            }
+        #navSignUp,#navLogin{
+            background-color: rgba(89, 142, 191,.9);
+            border: 1px;
+            &:hover {
+                box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+                color:#598EBF;
+                background-color: white;
+                }
+        }
+       
+       
+    }
+
+    .cover2{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .cover{
+            width:60%;
+            max-width: 600px;
+            text-align: center;
+        }
+      
+     }
+}
+
+
+
+@media screen and (max-width: 600px){
+    .cover{
+    margin-bottom: 30px;
+    }
+    #navSignUp{
+        display: none;
+    }
+    #navLogin{
+        margin-left:20px;
+        margin-right: 20px;
+    }
+}
+
+
+.stepper .MuiSvgIcon-root{
+    color:#598EBF !important;
+}
+
+
+.how{
+    height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:#598EBF;
-    height:100vh;
     flex-direction: column;
+    margin-top: 50px;
+    .alternativeMediation{
+        max-width: 600px;
+        margin: 20px 5px;
+        text-align: center;
+    }
+    
+    .stepper{
+        max-width: 600px;
+        min-width: 80%;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+       
+        #sign-up{
+            position: relative !important ;
+            margin-top: 60px; 
+            
+            }
+        }
 }
-.landingNav{
-    display:flex;
-    justify-content: flex-end;
-    width: 100%;
-    background-color: transparent;
-    z-index:10;
-    position: absolute;
+@media screen and (max-width: 700px){
+    .how{
+        margin-top: 60px;
+        background-color:rgb(212, 212, 211);
+        .alternativeMediation{
+            margin: 20px 15px;
+            font-size: 3vw !important;
+        }
+    }
+    #sign-up{
+        margin-top: 40px;
+        }
 }
-.brav-logo {
-    width: 60%;
+@media screen and (max-width: 500px){
+    
+    .stepper .MuiTypography-root{
+            font-size: 3vw;
+        }
 }
-.login {
+
+
+     
+
+.featuresSection{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    background-color: #598EBF;
+    margin-top: 100px;
+    flex-direction: column;
+    text-align: center;
+    background-color:rgb(212, 212, 211);
+    .featuresBox{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: space-evenly;
+        flex-wrap: wrap;
+        max-width: 1100px;
+        margin: 0 auto;
+       
+        .features{
+        padding: 20px;
+        
+            .icon{
+                font-size: 90px !important;
+                padding: 5px;
+                }
+        }
+    }
+    
 }
+
+
+.appStore{
+    margin-top:100px;
+    background-color:#598EBF;
+    padding: 50px 0;
+    height: 670px;
+    .smartphone {
+        position: relative;
+        width: 250px;
+        height: 450px;
+        margin: auto;
+        border: 5px rgb(40, 40, 48) solid;
+        border-top-width: 30px;
+        border-bottom-width: 30px;
+        border-radius: 36px;
+        &:hover {
+            box-shadow: 0 24px 54px rgba(0,0,0,0.25), 0 20px 20px rgba(0,0,0,0.22);
+            }
+        .content{
+            height: 575px;
+            z-index: -2;
+           
+          }
+        
+      }
+      #mobilebuttons{
+        max-width: 200px;
+        margin:0 auto;
+        border-radius: 5px;
+        background: none;
+        padding-bottom: 20px;
+        margin-top: -5px;
+       
+       
+  }
+  .playButton{
+    width: 200px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    
+}
+}
+.footer{
+  width: 100%;
+  border-top: 2px solid black;
+  padding: 15px;
+}
+
+
+  
+

@@ -8,13 +8,13 @@ import React from 'react'
  * Import styles
  */
 
-import './Pagination.scss'
+import './styles/Pagination.scss'
 
 /**
  * Define component
  */
 
-const Pagination = ({mediatorsPerPage, totalMediators, paginate, currentPage}) => {
+const Pagination = ({mediatorsPerPage, totalMediators, paginate,currentPage}) => {
     const pageNumbers = [];
 
     for (let i = 1; i <= Math.ceil(totalMediators/mediatorsPerPage); i++) {

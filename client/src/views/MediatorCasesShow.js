@@ -2,24 +2,24 @@
  * Dependencies
  */
 
-import React, { useState } from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { Card } from '@material-ui/core';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import MediatorCasesShowStyle from './styles/MediatorCasesShowStyle';
-import MediatorPendingCaseList from '../components/MediatorPendingCaseList';
-import MediatorActiveCaseList from '../components/MediatorActiveCaseList';
-import MediatorCompletedCaseList from '../components/MediatorCompletedCaseList';
-import { faCreditCard }  from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState } from "react";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { Card } from "@material-ui/core";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import MediatorCasesShowStyle from "./styles/MediatorCasesShowStyle";
+import MediatorPendingCaseList from "../components/MediatorPendingCaseList";
+import MediatorActiveCaseList from "../components/MediatorActiveCaseList";
+import MediatorCompletedCaseList from "../components/MediatorCompletedCaseList";
+import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ConnectBankAccountLink } from "./styles/index";
 
 /**
  * Import styles
  */
 
-import './MediatorCasesShow.scss';
+import './styles/MediatorCasesShow.scss';
 
 /**
  * Define styles
@@ -79,7 +79,6 @@ const StyledTabs = withStyles({
         }
     }
 })(props => <Tabs {...props} TabIndicatorProps={{ children: <div /> }} />);
-
 
 const useStyles = makeStyles(() => ({
     container: {
@@ -172,13 +171,14 @@ function MediatorCasesShow() {
         if (newValue === 2) setSelectedTab("completed");
     }
 
-    const is_stripe_connected = localStorage.getItem("is_stripe_connected")
-    console.log('is_stripe_connected', is_stripe_connected, is_stripe_connected.constructor)
+    const is_stripe_connected = localStorage.getItem("is_stripe_connected");
 
-    if (is_stripe_connected === true || 
+    if (is_stripe_connected === true ||
         is_stripe_connected === "true" ||
-        is_stripe_connected === 1||
-        is_stripe_connected === "1") {
+        is_stripe_connected === 1 ||
+        is_stripe_connected === "1"
+
+    ) {
         return (
             <MediatorCasesShowStyle>
                 <NavTabs
@@ -211,37 +211,43 @@ function MediatorCasesShow() {
     } else {
         return (
             <div className={classes.container}>
-                        <h3 className={classes.title}>Mediator</h3>
+                <h3 className={classes.title}>Mediator Payment Registration</h3>
                 <section className={classes.cardContainer}>
                     <Card className={classes.card}>
-                            <div className={classes.cardTitle}>
-                                    <strong>Activate Stripe Account</strong>
-                                    
-                                <div className={classes.divider}> </div>
-                            </div>
-                            <div className={classes.cardContent}>
-                                    <p className={classes.text}>
-                                        In order to access our  services an account with Stripe Services must be created. 
-                                        Stripe is the best platform for running an internet business and handles billions of dollars 
-                                        every year for forward-thinking businesses like our mediation site.  If you you are eager to start your business click the button in order to make sure you get registered 
-                                        to recieve payments.For more information click the link 
-                                        below.<br/>
-                                        <a style={{ textDecoration:"none" }}
-                                        href="https://stripe.com/about" target="_blank"
-                                        >
-                                        Visit Stripe
-                                        </a>
-                                    </p>
-                                    <a
-                                        style={{ textDecoration:"none" }}
-                                        href={`https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_ABPUiwwNjwxtQ0OypoG43e6Pw4Z32vOp&redirect_uri=${process.env.REACT_APP_URL}/stripe-callback`}
-                                    >
-                                    <ConnectBankAccountLink>
-                                    <FontAwesomeIcon icon={faCreditCard} style={{paddingRight:"10px",fontSize:"30px"}}/> 
-                                        Connect Bank Account
-                                    </ConnectBankAccountLink>
-                                    </a>
-                            </div>
+                        <div className={classes.cardTitle}>
+                            <strong>Activate your Stripe Account</strong>
+
+                            <div className={classes.divider}> </div>
+                        </div>
+                        <div className={classes.cardContent}>
+                            <p className={classes.text}>
+                                In order to access our services, an account with
+                                Stripe Services must be created. Stripe is the
+                                best platform for running an internet business
+                                and handles billions of dollars every year for
+                                forward-thinking businesses like our mediation
+                                platform. If you you are eager to expand your
+                                business, please click the button below to register with Stripe in order to recieve payments.
+                                 If you are still unsure and would like more information regarding Stripe, click the link below.
+                                <br />
+                            </p>
+
+                          <a style={{ textDecoration:"none" }}
+                              href={`https://dashboard.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_ABPUiwwNjwxtQ0OypoG43e6Pw4Z32vOp&redirect_uri=${process.env.REACT_APP_URL}/stripe-callback`}>
+                            <ConnectBankAccountLink>
+
+                            <FontAwesomeIcon icon={faCreditCard} style={{paddingRight:"10px",fontSize:"30px"}}/>
+                                Connect Bank Account
+                            </ConnectBankAccountLink>
+                          </a>
+                        </div>
+                        <a
+                                    style={{ textDecoration: "none", alignSelf: 'flex-start'}}
+                                    href="https://stripe.com/about"
+                                    target="_blank"
+                                >
+                                    Stripe Information
+                            </a>
                     </Card>
                 </section>
             </div>
@@ -253,4 +259,4 @@ function MediatorCasesShow() {
  *  Export view
  */
 
-export default MediatorCasesShow
+export default MediatorCasesShow;

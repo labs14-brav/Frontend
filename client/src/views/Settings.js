@@ -2,10 +2,11 @@
  * Dependencies
  */
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { DeactivateAccountButton } from "../components/index";
 import { Link } from "react-router-dom";
 import { makeStyles, Card } from "@material-ui/core";
+import LinearProgress from '@material-ui/core/LinearProgress';
 import { BecomeMediatorLink } from "./styles/index";
 
 /**
@@ -80,7 +81,14 @@ const useStyles = makeStyles(() => ({
 
 function Settings() {
     const classes = useStyles();
+    const [isLoading, setIsLoading] = useState(true);
     const userType = localStorage.getItem("type");
+
+    useEffect(() => {
+      setIsLoading(false);
+    }, []);
+
+    if (isLoading) return <LinearProgress />
 
     return (
         <div className={classes.container}>
@@ -95,11 +103,11 @@ function Settings() {
                         </div>
                         <div className={classes.cardContent}>
                             <p className={classes.text}>
-                                Are you a certified mediator? Join the Brav
+                                Are you a certified mediator? Join the Brāv
                                 platform! Upon approval by one of our admins,
                                 you will be able to market your services as a
-                                mediator directly to our users. You will be
-                                payed directly from the app! Click below to
+                                mediator directly to our users, and
+                                be paid through the app! Click below to
                                 submit your application!
                             </p>
                             <Link

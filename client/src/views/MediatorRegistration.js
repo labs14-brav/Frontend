@@ -42,7 +42,6 @@ const MenuProps = {
 
 const useStyles = makeStyles(theme => ({
     container: {
-        paddingTop: "10%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -128,7 +127,7 @@ function MediatorRegistration(props) {
     const handleSubmit = () => {
         let parcel = values;
         if (parcel.specialization.length > 0) {
-           parcel.specialization = JSON.stringify(parcel.specialization); 
+           parcel.specialization = JSON.stringify(parcel.specialization);
         }
         if (parcel.language.length > 0) {
             parcel.language = JSON.stringify(parcel.language);
@@ -142,7 +141,7 @@ function MediatorRegistration(props) {
             .catch(error => {
                 handleErrorOpen();
                 console.error(error);
-            })   
+            })
 
             // Resetting specialization and language to avoid .join errors with the stringified selected values
             setValues({
@@ -169,7 +168,7 @@ function MediatorRegistration(props) {
     return (
         <>
             <Container maxWidth="sm" className={classes.container}>
-            <Typography style={{textAlign:"center", paddingBottom: '20px'}} variant="h3" data-testid="heading-h3">Mediator Registration</Typography>
+            <Typography style={{textAlign:"center", paddingBottom: "20px",marginTop:"100px"}} variant="h3" data-testid="heading-h3">Mediator Registration</Typography>
             <Typography style={{textAlign:"center"}} variant="subtitle2">All fields are required for submission.</Typography>
             <FormGroup>
             <TextField
@@ -180,12 +179,13 @@ function MediatorRegistration(props) {
                     variant="outlined"
                     data-testid="input-name"
                 />
-                
+
                 <TextField
                     label="General Details"
                     value={values.general_details}
                     onChange={handleChange("general_details")}
                     data-testid="input-general_details"
+                    className={classes.textField}
                 />
                 <TextField
                     value={values.license}
@@ -193,7 +193,7 @@ function MediatorRegistration(props) {
                     data-testid="input-license"
                     className={classes.textField}
                     label="License"
-                    helperText="for more than one separate by comma"
+                    helperText="List any licenses related directly to your mediator qualifications. Separate multiple with commas."
                     variant= "outlined"
                 />
                 <FormControl className={classes.select}>
@@ -212,14 +212,14 @@ function MediatorRegistration(props) {
                 </FormControl>
 
                 <FormControl  className={classes.select}>
-                    <InputLabel htmlFor="select-multiple-checkbox">
+                    <InputLabel htmlFor="select-specialization-checkbox">
                         Specializations
                     </InputLabel>
                     <Select
                         multiple
                         value={values.specialization}
                         onChange={handleChange("specialization")}
-                        input={<Input id="select-multiple-checkbox" />}
+                        input={<Input id="select-specialization-checkbox" />}
                         data-testid="input-specialization"
                         renderValue={() => values.specialization.join(", ")}
                         MenuProps={MenuProps}
@@ -238,14 +238,14 @@ function MediatorRegistration(props) {
                 </FormControl>
 
                 <FormControl  className={classes.select}>
-                    <InputLabel htmlFor="select-multiple-checkbox">
+                    <InputLabel htmlFor="select-language-checkbox">
                         Language
                     </InputLabel>
                     <Select
                         multiple
                         value={values.language}
                         onChange={handleChange("language")}
-                        input={<Input id="select-multiple-checkbox" />}
+                        input={<Input id="select-language-checkbox" />}
                         renderValue={selected => selected.join(", ")}
                         data-testid="input-language"
                         MenuProps={MenuProps}
@@ -263,7 +263,7 @@ function MediatorRegistration(props) {
                     <TextField
                         id="standard-dense"
                         type="number"
-                        label="Price"
+                        label="Price - $/hr"
                         value={values.price}
                         min={0}
                         step={1}
@@ -271,12 +271,13 @@ function MediatorRegistration(props) {
                         data-testid="input-price"
                         className={classes.select}
                         margin="dense"
-                        helperText="Dollars/Hour"
+                        helperText="You will be able to adjust your rate on a case-by-case basis."
                     />
 
                     <TextField
                     className={classes.textField}
-                    label="Brief Personal Summary"
+                    label="Brief Professional Summary"
+                    helperText="Use this to distinguish yourself in a user's search for a mediator."
                     value={values.professional_bio}
                     multiline
                     rows="8"

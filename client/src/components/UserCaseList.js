@@ -11,7 +11,7 @@ import axioswithAuth from '../helpers/axioswithAuth';
  * Import styles
  */
 
-import './UserCaseList.scss';
+import './styles/UserCaseList.scss';
 
 /**
  * Define component

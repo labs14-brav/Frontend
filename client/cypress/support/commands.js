@@ -1,25 +1,37 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This is will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+/**
+ * Dependencies
+ */
+
+const firebase = require('firebase');
+
+/**
+ * Constants
+ */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBvzVQ-z1QTrLw1-F0Wu4T-893_CAomYCA",
+  authDomain: "brav-3077e.firebaseapp.com",
+  databaseURL: "https://brav-3077e.firebaseio.com",
+  projectId: "brav-3077e",
+  storageBucket: "brav-3077e.appspot.com",
+  messagingSenderId: "373999219897",
+  appId: "1:373999219897:web:d583304cf31051df"
+};
+
+/**
+ * Initialize firebase
+ */
+
+firebase.initializeApp(firebaseConfig);
+
+/**
+ * Define commands
+ */
+
+Cypress.Commands.add("login", (email, password) => {
+  return firebase.auth().signInWithEmailAndPassword(email, password);
+})
+
+Cypress.Commands.add("logout", (email, password) => {
+  return firebase.auth().signOut();
+})
