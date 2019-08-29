@@ -29,6 +29,18 @@ context('View Case Details', () => {
     cy.contains('button', 'Documents')
     cy.contains('button', 'Add Information')
     cy.get('#trashButton')
+
+    /**
+     * Add Addendums
+     */
+
+    cy.contains('Add Information').click()
+    cy.get('#modal-text').type('Test addendum').type('{esc}')
+
+    /**
+     * Close Case Details
+     */
+
     cy.get('#exitButton').click()
   })
 })
