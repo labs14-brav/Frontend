@@ -362,9 +362,8 @@ function Landing() {
                     />
 
                 </div>
-                <a href="#">
+                <a href="https://play.google.com/store/apps/details?id=com.bravone.brav">
                     <img
-                    // there is no link yet for the appstore; remove comment when inserted
                         className="playButton"
                         src={require("../images/google-play-badge.png")}
                         alt="googlePlayStore"
