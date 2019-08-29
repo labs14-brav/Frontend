@@ -30,7 +30,7 @@ const useStyles = makeStyles(() => ({
 
   return (
     <div className="login">
-      <Card className={classes.card}>
+      <Card className={classes.card} style={{  backgroundColor:"rgb(212, 212, 211)",height:"100vh"}}>
         <div id='firebaseui-auth-container'></div>
         <div id='loader'></div>
       </Card>

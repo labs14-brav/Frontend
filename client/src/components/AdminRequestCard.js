@@ -78,15 +78,15 @@ const AdminRequestCard = (props) => {
           <CardContent >
               <h4 className='card-name'>{props.requests.name}</h4>
               <h5 className='card-email'> {props.requests.email} </h5>
-              <p id="case-label">License:</p>
+              <p className="case-label">License:</p>
               <p className='card-info'>{props.requests.license}</p>
-              <p id="case-label">Experience:</p>
+              <p className="case-label">Experience:</p>
               <p className='card-info'>{props.requests.experience}</p>
-              <p id="case-label">Specialization:</p>
+              <p className="case-label">Specialization:</p>
               <p className='card-info'> {props.requests.specialization}</p>
-              <p id="case-label">Language:</p>
+              <p className="case-label">Language:</p>
               <p className='card-info'>{props.requests.language}</p>
-              <p id="case-label">Price: </p>
+              <p className="case-label">Price: </p>
               <p className='card-info'>{props.requests.price}/hr</p>
           </CardContent>
 
