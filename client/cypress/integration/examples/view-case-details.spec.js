@@ -31,11 +31,18 @@ context('View Case Details', () => {
     cy.get('#trashButton')
 
     /**
-     * Add Addendums
+     * Addendums
      */
 
     cy.contains('Add Information').click()
     cy.get('#modal-text').type('Test addendum').type('{esc}')
+
+    /**
+     * Invoices
+     */
+
+    cy.contains('Invoices').click()
+    cy.contains('Pay Invoice')
 
     /**
      * Close Case Details
