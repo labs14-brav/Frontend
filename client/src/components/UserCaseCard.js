@@ -138,7 +138,7 @@ const UserCaseCard = (props) => {
                 <Card className={classes.paper}> 
 
                 {( pendingInvoices.length>0
-        ) ?  [<FontAwesomeIcon icon={faMoneyCheckAlt} style={{color:"green",fontSize:"20px"}} />, " Pending-Invoice"] : null } */}
+        ) ?  [<FontAwesomeIcon icon={faMoneyCheckAlt} style={{color:"green",fontSize:"20px"}} />, " Pending-Invoice"] : null }
                     <h6 id="ribbon">Court Case</h6>
                     {/* Use <Typography variant="overline />" */}
                     <CardContent style={{width:'100%'}}>
