@@ -28,6 +28,10 @@ const useStyles = makeStyles(theme => ({
         maxWidth: 400,
         color: "#598EBF"
     },
+    fee: {
+        fontSize: '10px',
+        color: 'lightgrey'
+    },
     dense: {
         marginTop: 19
     },
@@ -131,7 +135,7 @@ const InvoiceForm = props => {
     };
 
     return (
-        <div style={{ paddingTop: "100px" }}>
+        <div style={{ paddingTop: "50px" }}>
             <form
                 className={classes.container}
                 noValidate
@@ -160,6 +164,8 @@ const InvoiceForm = props => {
                     variant="outlined"
                     InputProps={InputProps}
                 />
+
+                <h6 className = "fee" >A 30% application fee will be deducted from the total amount.</h6>
 
                 <Button
                     className={classes.button}

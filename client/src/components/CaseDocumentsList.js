@@ -14,8 +14,8 @@ import CaseDocument from './CaseDocument';
  */
 
 function CaseDocumentsList(props) {
-    const [documents, setDocuments]= useState([]);
-    const [file, setFile]= useState({});
+    const [documents, setDocuments] = useState([]);
+    const [file, setFile] = useState({});
 
     useEffect(() => {
         fetchDocuments();
@@ -50,9 +50,9 @@ function CaseDocumentsList(props) {
             console.log('Upload success!', snapshot.constructor, snapshot);
             axioswithAuth().post(`/cases/${props.case.id}/documents`, { file_name: file.name })
                 .then(res => {
-                    console.log(res);
+                    fetchDocuments();
                     if (process.env.NODE_ENV === 'production') {
-                      mixpanel.track('Upload document', { distinct_id: localStorage.getItem('id') })
+                        mixpanel.track('Upload document', { distinct_id: localStorage.getItem('id') })
                     }
                 })
                 .catch(error => {
@@ -64,36 +64,37 @@ function CaseDocumentsList(props) {
     }
 
     if (documents.length > 0) {
-        return(
-          <>
-            <form onSubmit={handleSubmitUploader}>
-              <input required id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleInputChanges}></input>
-              <button type="submit">Upload</button>
-            </form>
+        return (
+            <>
+                <form onSubmit={handleSubmitUploader}>
+                    <input required id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleInputChanges}></input>
+                    <button type="submit">Upload</button>
+                </form>
 
-            <ul className="mt-2">
-                {documents.map((doc, index) => {
-                 return <CaseDocument key={index} document={doc} case={props.case} />
-                })}
-            </ul>
+                <ul className="mt-2">
+                    {documents.map((doc, index) => {
+                        return <CaseDocument key={index} document={doc} case={props.case} />
+                    })}
+                </ul>
 
-            <hr/>
+                <hr />
 
-            <div id="div-pdf"></div>
-            <img id="document-image" width="100%"></img>
-          </>
+                <div id="div-pdf"></div>
+                <img id="document-image" width="100%"></img>
+            </>
         )
     } else {
-    return(
-        <>
-            <Typography>There are no documents currently uploaded. Upload relevant case documents by clicking the button below.</Typography>
+        return (
+            <>
+                <Typography>There are no documents currently uploaded. Upload relevant case documents by clicking the button below.</Typography>
 
-            <form onSubmit={handleSubmitUploader}>
-              <input required id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleInputChanges}></input>
-              <button type="submit">Upload</button>
-            </form>
-        </>
-    )}
+                <form onSubmit={handleSubmitUploader}>
+                    <input required id="uploader" type="file" accept="image/*,.pdf,.doc" onChange={handleInputChanges}></input>
+                    <button type="submit">Upload</button>
+                </form>
+            </>
+        )
+    }
 }
 
 /**
