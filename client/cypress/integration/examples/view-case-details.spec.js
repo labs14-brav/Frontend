@@ -45,6 +45,13 @@ context('View Case Details', () => {
     cy.contains('Pay Invoice')
 
     /**
+     * Documents
+     */
+
+    cy.contains('Documents').click()
+    cy.get('#uploader').click()
+
+    /**
      * Close Case Details
      */
 
