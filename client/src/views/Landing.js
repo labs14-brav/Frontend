@@ -39,7 +39,7 @@ import settingPage from '../images/SettingPage.jpg';
 function getSteps() {
     return ['Create Account', 'Create Case', 'Search For Mediator','Mediate'];
   }
-  
+
 
 //   for stepper
 function getStepContent(step) {
@@ -67,13 +67,13 @@ function getStepContent(step) {
     {
       imgPath:caseActivity,
     },
-    {    
+    {
       imgPath:invoices,
     },
-    { 
+    {
       imgPath:settingPage,
     },
-   
+
   ];
 
 //   for info cards
@@ -87,22 +87,22 @@ function getStepContent(step) {
         icon:FileCopyIcon,
         label:"Documents",
         text:"Share information with your mediator using our file upload and viewing system."
-    }, 
+    },
     {
         icon:SearchIcon,
         label:"Mediators",
         text:"Filter our qualified mediators based on criteria such as hourly rate, specialty, language, or experience in the field."
-    }, 
+    },
     {
         icon:PaymentIcon,
         label:"Payment",
         text:"Facilitate payments through our secure platform."
-    }, 
+    },
     {
         icon:LanguageIcon,
         label:"Accessibility",
         text:"Take your cases on-the-go through our mobile application, currently available on Android."
-    }, 
+    },
     {
         icon:EmailIcon,
         label:"Notifications",
@@ -175,15 +175,15 @@ function Landing() {
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = getSteps();
     const maxSteps = images.length;
-  
+
     function handleNext() {
       setActiveStep(prevActiveStep => prevActiveStep + 1);
     }
-  
+
     function handleBack() {
       setActiveStep(prevActiveStep => prevActiveStep - 1);
     }
-  
+
 
 
     return (
@@ -223,7 +223,7 @@ function Landing() {
                     login
                     </Button>
                 </Link>
-                    
+
                 </div>
          </div>
 
@@ -240,10 +240,10 @@ function Landing() {
 
 
      {/* stepper */}
-     
+
         <div className="how">
         <h3>How Brāv Works</h3>
-        <div className="alternativeMediation">           
+        <div className="alternativeMediation">
              <h6>Mediation is a great alternative to the formal judicial system. Our platform makes mediation even easier for users to solve conflict through the use of our online tools.</h6>
         </div>
             <div className="howContent">
@@ -251,9 +251,9 @@ function Landing() {
             <div className="stepper">
                 <Stepper  activeStep={activeStep} orientation="vertical">
                     {steps.map((label, index) => (
-                                    
+
                     <Step id="step" key={label}>
-                    
+
                     <StepLabel  >{label}</StepLabel>
                 <StepContent >
                     <Typography>{getStepContent(index)}</Typography>
@@ -267,43 +267,42 @@ function Landing() {
                         >
                             Back
                         </Button>}
-                                        
+
                     {activeStep === steps.length - 1 ? null : <Button
                     style={{backgroundColor:"#598EBF"}}
                         variant="contained"
                         color="primary"
                         onClick={handleNext}
                         className={classes.button}
-                        > 
+                        >
                             next
                         </Button> }
-                 
+
                     </div>
-                    </div>                             
-                </StepContent>                           
+                    </div>
+                </StepContent>
                     </Step>
-                    
+
                 ))}
                 </Stepper>
 
-               
+
             </div>
-           
+
          </div>
 
-         <Link to="/auth" style={{textDecoration:"none"}} data-testid="signup-link">
+         <Link to="/auth" style={{textDecoration:"none"}}>
                     <Button
                         id="sign-up"
                         style={{backgroundColor:"#598EBF",color:"white",width:"300px"}}
                         className={classes.button}
                         variant="contained"
-                        color="primary"
-                        data-testid="signup-button">
+                        color="primary">
                         signup
                     </Button>
-                </Link>            
+                </Link>
         </div>
-                    
+
 
 {/* features sections */}
 
@@ -322,7 +321,7 @@ function Landing() {
                                                {element.label}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                                {element.text} 
+                                                {element.text}
                                 </Typography>
                                 </CardContent>
                                 </CardActionArea>
@@ -331,7 +330,7 @@ function Landing() {
                     )
                     })
                     }
-                              
+
             </div>
         </div>
 
@@ -368,7 +367,7 @@ function Landing() {
                         </Button>
                     }
                     />
-                                                
+
                 </div>
                 <a href="#">
                     <img
@@ -379,9 +378,9 @@ function Landing() {
                     />
                 </a>
             </div>
-           
+
             </div>
-        </div>    
+        </div>
     </div>
 
     <footer className="footer" style={{textAlign:"center"}}>
