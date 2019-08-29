@@ -27,7 +27,7 @@ function UserInvoiceList(props) {
         <>
         {invoices.length < 1 ? <div>You have no invoices waiting currently.</div> :
         invoices.invoice.map(element => {
-            return <UserInvoice key={element.id} invoice={element} mediator={invoices.mediator}/>})
+            return <UserInvoice key={element.id} invoice={element} mediator={invoices.mediator} />})
         }
         </>
     )

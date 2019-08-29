@@ -11,7 +11,7 @@ import axioswithAuth from "../helpers/axioswithAuth";
  * Import styles
  */
 
-import '../views/MediatorCasesShow.scss';
+import '../views/styles/MediatorCasesShow.scss';
 
 /**
  * Define component

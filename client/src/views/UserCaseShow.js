@@ -2,18 +2,19 @@
  * Dependencies
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import UserCaseList from '../components/UserCaseList';
 
 /**
  * Import styles
  */
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
-import './UserCaseShow.scss';
+import './styles/UserCaseShow.scss';
 
 /**
  * Define view
@@ -42,6 +43,13 @@ const useStyles = makeStyles(theme => ({
 
 const UserCaseShow = props => {
   const classes = useStyles();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
+  if (isLoading) return <LinearProgress />
 
   const buttonHandler = e => {
     e.preventDefault();

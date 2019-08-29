@@ -116,7 +116,7 @@ function NoMatch() {
                     <div className={classes.cardContent}>
                         <img
                             className={classes.image}
-                            src={require("../images/shutterstock_774749455.jpg")}
+                            src={require("../images/not_found.jpg")}
                         />
                         <p className={classes.text}>
                             You are getting this message beacause the page you
@@ -126,7 +126,7 @@ function NoMatch() {
                         <Link
                             style={{ color: "white" }}
                             className={classes.link}
-                            to="/"
+                            to={localStorage.getItem("type") === "mediator" ? "/mediator-cases" : "/cases"}
                             data-testid="link-returntomainpage"
                         >
                             <p

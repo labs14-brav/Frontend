@@ -11,14 +11,14 @@ import Grid from '@material-ui/core/Grid';
  * Import styles
  */
 
-import './UserCaseShow.scss';
+import './styles/UserCaseShow.scss';
 
 /**
  * Define view
  */
 
 function Search(props) {
-  return (   
+  return (
     <div  container style={{paddingTop:"5%",overflowX:"hidden",overflowY:"hidden"}} >
       <Grid container spacing={9} justify="center" style={{paddingTop:"100px"}}>
         <Grid item xs={12} >
@@ -26,7 +26,7 @@ function Search(props) {
         </Grid>
 
         <Grid item xs={12} md={9}  >
-          <MediatorFilter 
+          <MediatorFilter
           currentcase={props.location.state.currentcase}
           />
         </Grid>
