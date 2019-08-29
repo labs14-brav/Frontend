@@ -22,10 +22,13 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import EmailIcon from '@material-ui/icons/Email';
-import findMediator from '../images/findMediator.jpg';
+
 import caseActivity from '../images/caseActivity.jpg';
-import invoices from '../images/invoices.jpg';
-import settingPage from '../images/SettingPage.jpg';
+import caseDetailActivity from '../images/caseDetailActivity.jpg';
+import findMediator from '../images/findMediator.jpg';
+import mediatorDetailActivity from '../images/mediatorDetailActivity.jpg';
+import invoiceActivity from '../images/invoiceActivity.jpg';
+import paymentActivity from '../images/paymentActivity.jpg';
 
 /**
  * Define Data for Mapping
@@ -58,16 +61,22 @@ function getStepContent(step) {
 //   for phone carousel
   const images = [
     {
-      imgPath:findMediator
+      imgPath:caseActivity
     },
     {
-      imgPath:caseActivity,
+      imgPath:caseDetailActivity,
     },
     {
-      imgPath:invoices,
+      imgPath:findMediator,
     },
     {
-      imgPath:settingPage,
+      imgPath:mediatorDetailActivity,
+    },
+    {
+      imgPath:invoiceActivity,
+    },
+    {
+      imgPath:paymentActivity,
     },
 
   ];
@@ -362,9 +371,8 @@ function Landing() {
                     />
 
                 </div>
-                <a href="#">
+                <a href="https://play.google.com/store/apps/details?id=com.bravone.brav">
                     <img
-                    // there is no link yet for the appstore; remove comment when inserted
                         className="playButton"
                         src={require("../images/google-play-badge.png")}
                         alt="googlePlayStore"
