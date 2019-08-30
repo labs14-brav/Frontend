@@ -139,7 +139,7 @@ const UserCaseCard = (props) => {
 
                 {( pendingInvoices.length>0
         ) ?  [<FontAwesomeIcon icon={faMoneyCheckAlt} style={{color:"green",fontSize:"20px"}} />, " Pending-Invoice"] : null }
-                    <h6 id="ribbon">Court Case</h6>
+                    <h6 className="ribbon">Court Case</h6>
                     {/* Use <Typography variant="overline />" */}
                     <CardContent style={{width:'100%'}}>
                             <h6 className="case-label" style={{marginBottom:'8px', color: '#5C90C1', fontWeight: 'bold'}}>Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
@@ -200,7 +200,7 @@ const UserCaseCard = (props) => {
             {( pendingInvoices.length>0
         ) ?  [<FontAwesomeIcon icon={faMoneyCheckAlt} style={{color:"green",fontSize:"20px"}} />, " Pending-Invoice"] : null }
 
-                <h6 id="ribbon" style={{width: '50%'}}>Non-Court Case</h6>
+                <h6 className="ribbon" style={{width: '50%'}}>Non-Court Case</h6>
                 <CardContent style={{width:'100%'}}>
                         <h6 className="case-label" style={{marginBottom:'8px', fontWeight: 'bold'}}>Dispute <FontAwesomeIcon icon={faHandshake} /> Category </h6>
                         <h5 id="case-dispute">{props.case.dispute_category}</h5>
