@@ -1,5 +1,6 @@
 const firebase = require("firebase");
 const firebaseui = require("firebaseui");
+const axios = require("axios");
 
 var firebaseConfig = {
   apiKey: "AIzaSyBvzVQ-z1QTrLw1-F0Wu4T-893_CAomYCA",
@@ -17,11 +18,29 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 var uiConfig = {
   callbacks: {
-    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+    signInSuccessWithAuthResult: async function(authResult, redirectUrl) {
       // User successfully signed in.
       // Return type determines whether we continue the redirect automatically
       // or whether we leave that to developer to handle.
-      return true;
+      const user = authResult.user;
+
+      let token = await user.getIdToken();
+      axios
+        .post(`${process.env.REACT_APP_API_URL}/users/auth`, {
+          user: user,
+          token: token
+        })
+        .then(res => {
+          localStorage.setItem("type", res.data.type);
+          localStorage.setItem("id", res.data.id);
+          localStorage.setItem(
+            "is_stripe_connected",
+            res.data.is_stripe_connected
+          );
+        })
+        .catch(err => {
+          console.error(err);
+        });
     },
     uiShown: function() {
       // The widget is rendered.
