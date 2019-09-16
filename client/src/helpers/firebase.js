@@ -22,25 +22,7 @@ var uiConfig = {
       // User successfully signed in.
       // Return type determines whether we continue the redirect automatically
       // or whether we leave that to developer to handle.
-      const user = authResult.user;
-
-      let token = await user.getIdToken();
-      axios
-        .post(`${process.env.REACT_APP_API_URL}/users/auth`, {
-          user: user,
-          token: token
-        })
-        .then(res => {
-          localStorage.setItem("type", res.data.type);
-          localStorage.setItem("id", res.data.id);
-          localStorage.setItem(
-            "is_stripe_connected",
-            res.data.is_stripe_connected
-          );
-        })
-        .catch(err => {
-          console.error(err);
-        });
+      return true;
     },
     uiShown: function() {
       // The widget is rendered.
