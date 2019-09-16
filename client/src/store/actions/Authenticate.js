@@ -1,6 +1,6 @@
 import { LOG_IN_START, LOG_IN_SUCCESS, LOG_IN_FAILURE } from "./index";
 import axios from "axios";
-import { mixpanel } from "../helpers/index";
+import { mixpanel } from "../../helpers/index";
 
 const URL = process.env.REACT_APP_API_URL;
 const environment = process.env.NODE_ENV;
