@@ -7,40 +7,42 @@ const environment = process.env.NODE_ENV;
 
 export const authenticateUser = requestData => dispatch => {
   dispatch({ type: LOG_IN_START });
-  axios
+  return axios
     .post(`${URL}/users/auth`, requestData)
     .then(res => {
-      localStorage.setItem("type", res.data.type);
-      localStorage.setItem("id", res.data.id);
+      console.log(res.data);
+      const userID = res.data.id;
+      const type = res.data.type;
+      localStorage.setItem("type", type);
+      localStorage.setItem("id", userID);
+      localStorage.setItem("is_stripe_connected", res.data.is_stripe_connected);
       dispatch({ type: LOG_IN_SUCCESS });
-      if (res.data.type === "mediator") {
+      if (type === "mediator") {
         if (environment === "production") {
           mixpanel.track("Mediator sign in", {
-            distinct_id: localStorage.getItem("id")
+            distinct_id: userID
           });
         }
-
-        window.location = "/mediator-cases";
-      } else if (res.data.type === "admin") {
+        return "/mediator-cases";
+      } else if (type === "admin") {
         if (environment === "production") {
           mixpanel.track("Admin sign in", {
-            distinct_id: localStorage.getItem("id")
+            distinct_id: userID
           });
         }
-
-        window.location = "/admin";
+        return "/admin";
       } else {
         if (environment === "production") {
           mixpanel.track("User sign in", {
-            distinct_id: localStorage.getItem("id")
+            distinct_id: userID
           });
         }
-
-        window.location = "/cases";
+        return "/cases";
       }
     })
     .catch(err => {
       console.error(err);
       dispatch({ type: LOG_IN_FAILURE });
+      return "/users/login";
     });
 };

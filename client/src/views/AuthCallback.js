@@ -6,12 +6,13 @@ import React from "react";
 import firebase from "firebase";
 import { authenticateUser } from "../store/actions";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 /**
  * Define view
  */
 
-function AuthCallback({ authenticateUser }) {
+function AuthCallback({ authenticateUser, history }) {
   firebase.auth().onAuthStateChanged(async user => {
     // User is signed in.
     if (user) {
@@ -21,9 +22,10 @@ function AuthCallback({ authenticateUser }) {
         user,
         token
       };
-      authenticateUser(requestData);
       // call log in action creator here
       // pass in an object with user and token
+      const path = await authenticateUser(requestData);
+      history.push(path);
     } else {
       // User is signed out.
       window.location = "/users/login";
@@ -40,4 +42,4 @@ function AuthCallback({ authenticateUser }) {
 export default connect(
   null,
   { authenticateUser }
-)(AuthCallback);
+)(withRouter(AuthCallback));
