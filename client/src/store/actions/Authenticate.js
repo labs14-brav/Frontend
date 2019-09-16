@@ -10,7 +10,6 @@ export const authenticateUser = requestData => dispatch => {
   return axios
     .post(`${URL}/users/auth`, requestData)
     .then(res => {
-      console.log(res.data);
       const userID = res.data.id;
       const type = res.data.type;
       localStorage.setItem("type", type);

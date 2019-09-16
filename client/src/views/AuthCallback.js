@@ -16,7 +16,7 @@ function AuthCallback({ authenticateUser, history }) {
   firebase.auth().onAuthStateChanged(async user => {
     // User is signed in.
     if (user) {
-      let token = await user.getIdToken();
+      const token = await user.getIdToken();
       localStorage.setItem("token", token);
       const requestData = {
         user,
@@ -28,7 +28,7 @@ function AuthCallback({ authenticateUser, history }) {
       history.push(path);
     } else {
       // User is signed out.
-      window.location = "/users/login";
+      history.push("/users/login");
     }
   });
 
