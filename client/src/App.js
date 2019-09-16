@@ -4,6 +4,7 @@
 
 import uuid from "uuid";
 import React from "react";
+import { connect } from "react-redux";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import { NavBar } from "./components";
@@ -29,8 +30,8 @@ import "./App.scss";
  * Define component
  */
 
-function App() {
-  if (localStorage.getItem("token")) {
+function App({ loggedIn }) {
+  if (loggedIn) {
     return (
       <BrowserRouter>
         <Grid container style={{ height: "100vh" }}>
@@ -96,5 +97,11 @@ function App() {
 /**
  * Export component
  */
+const mapStateToProps = state => ({
+  loggedIn: state.authReducer.loggedIn
+});
 
-export default App;
+export default connect(
+  mapStateToProps,
+  {}
+)(App);
