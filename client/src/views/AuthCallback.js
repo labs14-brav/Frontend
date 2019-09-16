@@ -4,17 +4,24 @@
 
 import React from "react";
 import firebase from "firebase";
+import { authenticateUser } from "../store/actions";
+import { connect } from "react-redux";
 
 /**
  * Define view
  */
 
-function AuthCallback(props) {
+function AuthCallback({ authenticateUser }) {
   firebase.auth().onAuthStateChanged(async user => {
     // User is signed in.
     if (user) {
       let token = await user.getIdToken();
       localStorage.setItem("token", token);
+      const requestData = {
+        user,
+        token
+      };
+      authenticateUser(requestData);
       // call log in action creator here
       // pass in an object with user and token
     } else {
@@ -30,4 +37,7 @@ function AuthCallback(props) {
  * Export view
  */
 
-export default AuthCallback;
+export default connect(
+  null,
+  { authenticateUser }
+)(AuthCallback);
