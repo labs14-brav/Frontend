@@ -47,6 +47,19 @@ function App({ loggedIn }) {
               <Route
                 key={uuid.v4()}
                 exact
+                path="/terms-of-service"
+                component={TermsOfService}
+              />
+              ,
+              <Route
+                key={uuid.v4()}
+                exact
+                path="/privacy-policy"
+                component={PrivacyPolicy}
+              />
+              <Route
+                key={uuid.v4()}
+                exact
                 path="/"
                 render={() => <Redirect to="/cases" />}
               />
