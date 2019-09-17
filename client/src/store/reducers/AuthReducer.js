@@ -1,7 +1,8 @@
 import { LOG_IN_START, LOG_IN_SUCCESS, LOG_IN_FAILURE } from "../actions";
 
 const initialState = {
-  loggedIn: localStorage.getItem("id") ? true : false,
+  loggedIn:
+    localStorage.getItem("token") && localStorage.getItem("id") ? true : false,
   error: null
 };
 
