@@ -10,20 +10,20 @@ import { firebase } from "../helpers/index";
  * Define view
  */
 
-function Login({ loginDialog, closeLogin, test, setTest }) {
+function Login({ loginDialog, closeLogin, fireRender, setFireRender }) {
   useEffect(() => {
     if (loginDialog) {
       // console.log("effect fired");
-      setTest(true);
+      setFireRender(true);
     }
   }, [loginDialog]);
   useEffect(() => {
-    // console.log("test fire");
-    if (test) {
+    // console.log("fireRender fire");
+    if (fireRender) {
       // console.log("firebase fire");
       firebase();
     }
-  }, [test]);
+  }, [fireRender]);
 
   return (
     <Dialog open={loginDialog} onClose={closeLogin}>

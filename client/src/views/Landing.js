@@ -176,7 +176,7 @@ function Landing() {
   const steps = getSteps();
   const maxSteps = images.length;
   const [loginDialog, setLoginDialog] = useState(false);
-  const [test, setTest] = useState(false);
+  const [fireRender, setFireRender] = useState(false);
 
   function handleNext() {
     setActiveStep(prevActiveStep => prevActiveStep + 1);
@@ -192,7 +192,7 @@ function Landing() {
 
   function closeLogin() {
     setLoginDialog(false);
-    setTest(false);
+    setFireRender(false);
   }
 
   return (
@@ -348,8 +348,8 @@ function Landing() {
           <Login
             closeLogin={closeLogin}
             loginDialog={loginDialog}
-            test={test}
-            setTest={setTest}
+            fireRender={fireRender}
+            setFireRender={setFireRender}
           />
 
           {/* mobile app mock */}
