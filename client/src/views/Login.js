@@ -16,7 +16,7 @@ function Login({ loginDialog, closeLogin, fireRender, setFireRender }) {
       // console.log("effect fired");
       setFireRender(true);
     }
-  }, [loginDialog]);
+  }, [loginDialog, setFireRender]);
   useEffect(() => {
     // console.log("fireRender fire");
     if (fireRender) {
