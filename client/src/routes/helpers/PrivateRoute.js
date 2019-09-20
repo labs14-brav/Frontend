@@ -16,6 +16,7 @@ const PrivateRoute = ({
   path,
   exact
 }) => {
+  // Check for logged in state in redux
   if (exact) {
     return (
       <Route
