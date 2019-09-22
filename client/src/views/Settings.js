@@ -5,95 +5,164 @@
 import React, { useState, useEffect } from "react";
 import { DeactivateAccountButton } from "../components/index";
 import { Link } from "react-router-dom";
-import { makeStyles, Card } from "@material-ui/core";
+import { makeStyles, Card, InputLabel, TextField, Button } from "@material-ui/core";
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { BecomeMediatorLink } from "./styles/index";
+import useStyles from "./styles/_settings.js";
+import axioswithAuth from '../helpers/axioswithAuth';
 
 /**
  * Define view
  */
 
-const useStyles = makeStyles(() => ({
-    container: {
-        marginTop: "70px",
-        paddingTop: "20px",
-        maxWidth: "800px",
-        margin: "0 auto",
-        color: "grey",
-        width: "95%"
-    },
-    cardContainer: {
-        maxWidth: "800px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "center",
-        overflowX: "hidden",
-        overflowY: "hidden"
-    },
-    card: {
-        maxWidth: "800px",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        alignItems: "center",
-        minHeight: "200px",
-        margin: "10px",
-        padding: "30px"
-    },
-    title: {
-        color: "black"
-    },
-    cardTitle: {
-        display: "flex",
-        justifyContent: "flex-start",
-        width: "100%",
-        margin: "0",
-        flexDirection: "column"
-    },
-    divider: {
-        border: ".5px solid lightgrey",
-        width: "100%",
-        margin: "0px",
-        marginTop: "10px"
-    },
-    cardContent: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        width: "100%",
-        margin: "30px 0px",
-        color: "grey",
-        minHeight: "80px"
-    },
-    text: {
-        margin: "20px 0px"
-    },
-    link: {
-        textDecoration: "none"
-    }
-}));
-
-/**
- * Define view
- */
 
 function Settings() {
     const classes = useStyles();
     const [isLoading, setIsLoading] = useState(true);
+    const [user, setUser] = useState({});
+    const [updatingInfo, setUpdatingInfo] = useState(false);
     const userType = localStorage.getItem("type");
+    const userId = localStorage.getItem("id");
+    const [inputs, setInputs] = useState({
+        name: "",
+        professional_bio: "",
+        language: "",
+        city: "",
+        state: "",
+    });
+
 
     useEffect(() => {
-      setIsLoading(false);
+        setIsLoading(false);
+        axioswithAuth()
+            .get(`users/${userId}`)
+            .then((res) => {
+                console.log(res);
+                setUser(res.data);
+            })
+            .catch((err) => {
+                console.error(err)
+            })
     }, []);
+
+    const handleSubmit = () => {
+        const inputValues = Object.entries(inputs);
+        const profileChanges = inputValues.filter((value) => value[1].length > 0);
+        console.log(inputValues)
+        const changesObject = {}
+        profileChanges.forEach((value) => changesObject.value[0] = value[1]);
+        console.log(changesObject);
+
+        // axioswithAuth()
+        //     .put(`/users/${userId}/update-user`, inputs)
+        //     .then(res => {
+        //         console.log(res);
+        //     })
+        //     .catch(error => {
+        //         console.error(error);
+        //     })
+    }
+
+    const handleChange = (e) => {
+        console.log(e.target.name);
+        setInputs({ ...inputs, [e.target.name]: e.target.value });
+    }
 
     if (isLoading) return <LinearProgress />
 
     return (
         <div className={classes.container}>
-            <h3 className={classes.title}>Site settings</h3>
-            <p>General user settings</p>
+
+            <Card className={classes.mainCard}>
+                <div className={classes.cardTitle}>
+                    <strong>User Profile</strong>
+                    <div className={classes.divider}> </div>
+                </div>
+                {
+                    !updatingInfo ?
+                        <div className={classes.mainCardContent}>
+                            <div className={classes.fieldContainer}>
+                                <strong className={classes.fieldLabel}>Name: </strong>
+                                <p>{user.name}</p>
+                            </div>
+                            <div className={classes.fieldContainer}>
+                                <strong className={classes.fieldLabel}>Bio: </strong>
+                                <p>{user.professional_bio}</p>
+                            </div>
+                            <div className={classes.fieldContainer}>
+                                <strong className={classes.fieldLabel}>Language: </strong>
+                                <p>{user.language}</p>
+                            </div>
+                            <div className={classes.fieldContainer}>
+                                <strong className={classes.fieldLabel}>City: </strong>
+                                <p>{user.city}</p>
+                            </div>
+                            <div className={classes.fieldContainer}>
+                                <strong className={classes.fieldLabel}>State: </strong>
+                                <p>{user.state}</p>
+                            </div>
+                            <Button className={classes.updateButton} onClick={() => setUpdatingInfo(true)}>Update Profile</Button>
+                        </div>
+                        :
+                        <div className={classes.mainCardContent}>
+                            <form className={classes.textFieldsContainer}>
+                                <div className={classes.inputContainer}>
+                                    <InputLabel>Name</InputLabel>
+                                    <TextField
+                                        name="name"
+                                        onChange={handleChange}
+                                        value={inputs.name}
+                                        className={classes.textField}
+                                        variant="outlined"
+                                        placeholder={`${user.name}`} />
+                                </div>
+                                <div className={classes.inputContainer}>
+                                    <InputLabel>Bio</InputLabel>
+                                    <TextField
+                                        name="professional_bio"
+                                        onChange={handleChange}
+                                        value={inputs.professional_bio}
+                                        className={classes.textField}
+                                        variant="outlined"
+                                        placeholder={`${user.professional_bio}`} />
+                                </div>
+                                <div className={classes.inputContainer}>
+                                    <InputLabel>Language</InputLabel>
+                                    <TextField
+                                        name="language"
+                                        onChange={handleChange}
+                                        value={inputs.language}
+                                        className={classes.textField}
+                                        variant="outlined"
+                                        placeholder={`${user.language}`} />
+                                </div>
+                                <div className={classes.inputContainer}>
+                                    <InputLabel>City</InputLabel>
+                                    <TextField
+                                        name="city"
+                                        onChange={handleChange}
+                                        value={inputs.city}
+                                        className={classes.textField}
+                                        variant="outlined"
+                                        placeholder={`${user.city}`} />
+                                </div>
+                                <div className={classes.inputContainer}>
+                                    <InputLabel>State</InputLabel>
+                                    <TextField
+                                        name="state"
+                                        onChange={handleChange}
+                                        value={inputs.state}
+                                        className={classes.textField}
+                                        variant="outlined"
+                                        placeholder={`${user.state}`} />
+                                </div>
+                            </form>
+                            {/* <img src="https://images.unsplash.com/photo-1549920867-1629df28cdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" className={classes.profilePicture} /> */}
+                            <Button className={classes.updateButton} onClick={handleSubmit}>Save</Button>
+                        </div>
+                }
+            </Card>
+
             <section className={classes.cardContainer}>
                 {userType === "mediator" ? null : (
                     <Card className={classes.card}>
