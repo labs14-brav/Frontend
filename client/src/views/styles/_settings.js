@@ -69,21 +69,6 @@ const useStyles = makeStyles((theme) => ({
     link: {
         textDecoration: "none"
     },
-    textFieldContainer: {
-        marginTop: "20px",
-        width: "100%",
-        [theme.breakpoints.down('sm')]: {
-            width: "100%",
-            marginBottom: "20px"
-        }
-    },
-    textField: {
-        width: "70%",
-        marginTop: "5px",
-        backgroundColor: "white",
-        borderRadius: "5px",
-        maxHeight: "40px",
-    },
     profilePicture: {
         width: "auto",
         height: "auto",
@@ -113,12 +98,26 @@ const useStyles = makeStyles((theme) => ({
     },
     fieldContainer: {
         width: "100%",
+        display: "flex"
     },
     fieldLabel: {
         width: "30%"
     },
     fieldValue: {
-        fontWeight: "bold"
+        width: "70%",
+        fontWeight: "bold",
+        marginTop: "10px"
+    },
+    inputFieldLabel: {
+        display: "flex",
+        width: "250px",
+        alignItems: "center",
+        marginTop: "5px"
+    },
+    inputField: {
+        fontWeight: "bold",
+        width: "100%",
+        marginTop: "5px"
     },
     profile: {
         padding: "30px",
@@ -152,6 +151,12 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between"
+    },
+    buttonContainer: {
+        display: "flex",
+        width: "310px",
+        justifyContent: "space-between"
+
     }
 }));
 

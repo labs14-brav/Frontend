@@ -19,10 +19,13 @@ import axioswithAuth from '../helpers/axioswithAuth';
 function Settings() {
     const classes = useStyles();
     const [isLoading, setIsLoading] = useState(true);
-    const [user, setUser] = useState({});
-    const [updatingInfo, setUpdatingInfo] = useState(false);
-    const userType = localStorage.getItem("type");
-    const userId = localStorage.getItem("id");
+    const [user, setUser] = useState({
+        name: "",
+        professional_bio: "",
+        language: "",
+        city: "",
+        state: "",
+    });
     const [inputs, setInputs] = useState({
         name: "",
         professional_bio: "",
@@ -30,42 +33,46 @@ function Settings() {
         city: "",
         state: "",
     });
+    const [updatingInfo, setUpdatingInfo] = useState(false);
+    const userType = localStorage.getItem("type");
+    const userId = localStorage.getItem("id");
 
 
-    useEffect(() => {
-        setIsLoading(false);
+    const fetchUser = () => {
         axioswithAuth()
             .get(`users/${userId}`)
             .then((res) => {
-                console.log(res);
                 setUser(res.data);
+                setInputs(res.data);
+                setUpdatingInfo(false);
             })
             .catch((err) => {
                 console.error(err)
             })
+    };
+
+    useEffect(() => {
+        setIsLoading(false);
+        fetchUser();
     }, []);
 
     const handleSubmit = () => {
-        const inputValues = Object.entries(inputs);
-        const profileChanges = inputValues.filter((value) => value[1].length > 0);
-        console.log(inputValues)
-        const changesObject = {}
-        profileChanges.forEach((value) => changesObject.value[0] = value[1]);
-        console.log(changesObject);
-
-        // axioswithAuth()
-        //     .put(`/users/${userId}/update-user`, inputs)
-        //     .then(res => {
-        //         console.log(res);
-        //     })
-        //     .catch(error => {
-        //         console.error(error);
-        //     })
+        axioswithAuth()
+            .put(`/users/${userId}/update-user`, inputs)
+            .then(res => {
+                fetchUser();
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
     const handleChange = (e) => {
-        console.log(e.target.name);
         setInputs({ ...inputs, [e.target.name]: e.target.value });
+    }
+
+    const cancelUserUpdate = (e) => {
+        setUpdatingInfo(false);
     }
 
     if (isLoading) return <LinearProgress />
@@ -76,11 +83,10 @@ function Settings() {
                 <div>
                     <h3>{user.name}</h3>
                     <p className={classes.profileText}>{user.email}</p>
-                    <p className={classes.profileText} >{`Fluent in ${user.language}`}</p>
-                    <p className={classes.profileText} >{`From ${user.city}, ${user.state}`}</p>
+                    <p className={classes.profileText} >{`${user.city}, ${user.state}`}</p>
                     <p className={classes.profileText} >{user.professional_bio}</p>
                 </div>
-                <img className={classes.profilePicture} src="https://images.unsplash.com/photo-1547841022-b558accc7ef8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" />
+                {/* <img className={classes.profilePicture} src="https://images.unsplash.com/photo-1547841022-b558accc7ef8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" /> */}
             </Card>
 
             <div className={classes.sectionTitleContainer} >
@@ -101,10 +107,6 @@ function Settings() {
                                 <td className={classes.fieldValue} >{user.name}</td>
                             </tr>
                             <tr className={classes.fieldContainer} >
-                                <td className={classes.fieldLabel}>Bio: </td>
-                                <td className={classes.fieldValue}>{user.professional_bio}</td>
-                            </tr>
-                            <tr className={classes.fieldContainer} >
                                 <td className={classes.fieldLabel}>City: </td>
                                 <td className={classes.fieldValue}>{user.language}</td>
 
@@ -117,65 +119,76 @@ function Settings() {
                                 <td className={classes.fieldLabel}>State: </td>
                                 <td className={classes.fieldValue}>{user.state}</td>
                             </tr>
+                            <tr className={classes.fieldContainer} >
+                                <td className={classes.fieldLabel}>Bio: </td>
+                                <td className={classes.fieldValue}>{user.professional_bio}</td>
+                            </tr>
                         </table>
                         <Button className={classes.updateButton} onClick={() => setUpdatingInfo(true)}>Update Profile</Button>
                     </div>
                     :
-                    <div className={classes.mainCardContent}>
-                        <form className={classes.textFieldsContainer}>
-                            <div className={classes.inputContainer}>
-                                <InputLabel>Name</InputLabel>
-                                <TextField
-                                    name="name"
-                                    onChange={handleChange}
-                                    value={inputs.name}
-                                    className={classes.textField}
-                                    variant="outlined"
-                                    placeholder={`${user.name}`} />
+                    <div className={classes.staticInfoContainer}>
+                        <div className={classes.textFieldsContainer}>
+                            <div className={classes.fieldContainer}>
+                                <div className={classes.inputFieldLabel}>Name</div>
+                                <td className={classes.inputField}>
+                                    <TextField
+                                        name="name"
+                                        onChange={handleChange}
+                                        value={inputs.name}
+                                        variant="outlined"
+                                        className={classes.inputField} />
+                                </td>
                             </div>
-                            <div className={classes.inputContainer}>
-                                <InputLabel>Bio</InputLabel>
-                                <TextField
-                                    name="professional_bio"
-                                    onChange={handleChange}
-                                    value={inputs.professional_bio}
-                                    className={classes.textField}
-                                    variant="outlined"
-                                    placeholder={`${user.professional_bio}`} />
-                            </div>
-                            <div className={classes.inputContainer}>
-                                <InputLabel>Language</InputLabel>
-                                <TextField
-                                    name="language"
-                                    onChange={handleChange}
-                                    value={inputs.language}
-                                    className={classes.textField}
-                                    variant="outlined"
-                                    placeholder={`${user.language}`} />
-                            </div>
-                            <div className={classes.inputContainer}>
-                                <InputLabel>City</InputLabel>
-                                <TextField
+                            <tr className={classes.fieldContainer}>
+                                <td className={classes.inputFieldLabel}>Language</td>
+                                <td className={classes.inputField}>
+                                    <TextField
+                                        name="language"
+                                        onChange={handleChange}
+                                        value={inputs.language}
+                                        variant="outlined"
+                                        className={classes.inputField} />
+                                </td>
+                            </tr>
+                            <tr className={classes.fieldContainer}>
+                                <td className={classes.inputFieldLabel}>City</td>
+                                <td className={classes.inputField}><TextField
                                     name="city"
                                     onChange={handleChange}
                                     value={inputs.city}
-                                    className={classes.textField}
                                     variant="outlined"
-                                    placeholder={`${user.city}`} />
-                            </div>
-                            <div className={classes.inputContainer}>
-                                <InputLabel>State</InputLabel>
-                                <TextField
+                                    className={classes.inputField} />
+                                </td>
+                            </tr>
+                            <tr className={classes.fieldContainer}>
+                                <td className={classes.inputFieldLabel}>State</td>
+                                <td className={classes.inputField}><TextField
                                     name="state"
                                     onChange={handleChange}
                                     value={inputs.state}
-                                    className={classes.textField}
                                     variant="outlined"
-                                    placeholder={`${user.state}`} />
-                            </div>
-                        </form>
-                        {/* <img src="https://images.unsplash.com/photo-1549920867-1629df28cdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" className={classes.profilePicture} /> */}
-                        <Button className={classes.updateButton} onClick={handleSubmit}>Save</Button>
+                                    className={classes.inputField} />
+                                </td>
+                            </tr>
+                            <tr className={classes.fieldContainer}>
+                                <td className={classes.inputFieldLabel}>Bio</td>
+                                <td className={classes.inputField}>
+                                    <TextField
+                                        multiline
+                                        rowsMax="4"
+                                        name="professional_bio"
+                                        onChange={handleChange}
+                                        value={inputs.professional_bio}
+                                        variant="outlined"
+                                        className={classes.inputField} />
+                                </td>
+                            </tr>
+                        </div>
+                        <div className={classes.buttonContainer}>
+                            <Button className={classes.updateButton} onClick={handleSubmit}>Save</Button>
+                            <Button className={classes.updateButton} onClick={cancelUserUpdate}>Cancel</Button>
+                        </div>
                     </div>
                 }
             </Card>
