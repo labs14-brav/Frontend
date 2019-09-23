@@ -80,7 +80,7 @@ function Settings() {
                     <p className={classes.profileText} >{`From ${user.city}, ${user.state}`}</p>
                     <p className={classes.profileText} >{user.professional_bio}</p>
                 </div>
-                <img className={classes.profilePicture} src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
+                <img className={classes.profilePicture} src="https://images.unsplash.com/photo-1547841022-b558accc7ef8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" />
             </Card>
 
             <div className={classes.sectionTitleContainer} >
@@ -88,93 +88,95 @@ function Settings() {
                 <p>Your personal information</p>
             </div>
 
-            <Card className={classes.mainCard}>
+            <Card className={classes.editProfileCard}>
                 <div className={classes.cardTitle}>
                     <strong>User Profile</strong>
                     <div className={classes.divider}> </div>
                 </div>
-                {
-                    !updatingInfo ?
-                        <div className={classes.mainCardContent}>
-                            <div className={classes.fieldContainer}>
-                                <strong className={classes.fieldLabel}>Name: </strong>
-                                <p>{user.name}</p>
+                {!updatingInfo ?
+                    <div className={classes.staticInfoContainer}>
+                        <table className={classes.staticInfo} >
+                            <tr className={classes.fieldContainer}>
+                                <td className={classes.fieldLabel}>Name: </td>
+                                <td className={classes.fieldValue} >{user.name}</td>
+                            </tr>
+                            <tr className={classes.fieldContainer} >
+                                <td className={classes.fieldLabel}>Bio: </td>
+                                <td className={classes.fieldValue}>{user.professional_bio}</td>
+                            </tr>
+                            <tr className={classes.fieldContainer} >
+                                <td className={classes.fieldLabel}>City: </td>
+                                <td className={classes.fieldValue}>{user.language}</td>
+
+                            </tr>
+                            <tr className={classes.fieldContainer} >
+                                <td className={classes.fieldLabel}>Language: </td>
+                                <td className={classes.fieldValue} >{user.city}</td>
+                            </tr>
+                            <tr className={classes.fieldContainer} >
+                                <td className={classes.fieldLabel}>State: </td>
+                                <td className={classes.fieldValue}>{user.state}</td>
+                            </tr>
+                        </table>
+                        <Button className={classes.updateButton} onClick={() => setUpdatingInfo(true)}>Update Profile</Button>
+                    </div>
+                    :
+                    <div className={classes.mainCardContent}>
+                        <form className={classes.textFieldsContainer}>
+                            <div className={classes.inputContainer}>
+                                <InputLabel>Name</InputLabel>
+                                <TextField
+                                    name="name"
+                                    onChange={handleChange}
+                                    value={inputs.name}
+                                    className={classes.textField}
+                                    variant="outlined"
+                                    placeholder={`${user.name}`} />
                             </div>
-                            <div className={classes.fieldContainer}>
-                                <strong className={classes.fieldLabel}>Bio: </strong>
-                                <p>{user.professional_bio}</p>
+                            <div className={classes.inputContainer}>
+                                <InputLabel>Bio</InputLabel>
+                                <TextField
+                                    name="professional_bio"
+                                    onChange={handleChange}
+                                    value={inputs.professional_bio}
+                                    className={classes.textField}
+                                    variant="outlined"
+                                    placeholder={`${user.professional_bio}`} />
                             </div>
-                            <div className={classes.fieldContainer}>
-                                <strong className={classes.fieldLabel}>Language: </strong>
-                                <p>{user.language}</p>
+                            <div className={classes.inputContainer}>
+                                <InputLabel>Language</InputLabel>
+                                <TextField
+                                    name="language"
+                                    onChange={handleChange}
+                                    value={inputs.language}
+                                    className={classes.textField}
+                                    variant="outlined"
+                                    placeholder={`${user.language}`} />
                             </div>
-                            <div className={classes.fieldContainer}>
-                                <strong className={classes.fieldLabel}>City: </strong>
-                                <p>{user.city}</p>
+                            <div className={classes.inputContainer}>
+                                <InputLabel>City</InputLabel>
+                                <TextField
+                                    name="city"
+                                    onChange={handleChange}
+                                    value={inputs.city}
+                                    className={classes.textField}
+                                    variant="outlined"
+                                    placeholder={`${user.city}`} />
                             </div>
-                            <div className={classes.fieldContainer}>
-                                <strong className={classes.fieldLabel}>State: </strong>
-                                <p>{user.state}</p>
+                            <div className={classes.inputContainer}>
+                                <InputLabel>State</InputLabel>
+                                <TextField
+                                    name="state"
+                                    onChange={handleChange}
+                                    value={inputs.state}
+                                    className={classes.textField}
+                                    variant="outlined"
+                                    placeholder={`${user.state}`} />
                             </div>
-                            <Button className={classes.updateButton} onClick={() => setUpdatingInfo(true)}>Update Profile</Button>
-                        </div>
-                        :
-                        <div className={classes.mainCardContent}>
-                            <form className={classes.textFieldsContainer}>
-                                <div className={classes.inputContainer}>
-                                    <InputLabel>Name</InputLabel>
-                                    <TextField
-                                        name="name"
-                                        onChange={handleChange}
-                                        value={inputs.name}
-                                        className={classes.textField}
-                                        variant="outlined"
-                                        placeholder={`${user.name}`} />
-                                </div>
-                                <div className={classes.inputContainer}>
-                                    <InputLabel>Bio</InputLabel>
-                                    <TextField
-                                        name="professional_bio"
-                                        onChange={handleChange}
-                                        value={inputs.professional_bio}
-                                        className={classes.textField}
-                                        variant="outlined"
-                                        placeholder={`${user.professional_bio}`} />
-                                </div>
-                                <div className={classes.inputContainer}>
-                                    <InputLabel>Language</InputLabel>
-                                    <TextField
-                                        name="language"
-                                        onChange={handleChange}
-                                        value={inputs.language}
-                                        className={classes.textField}
-                                        variant="outlined"
-                                        placeholder={`${user.language}`} />
-                                </div>
-                                <div className={classes.inputContainer}>
-                                    <InputLabel>City</InputLabel>
-                                    <TextField
-                                        name="city"
-                                        onChange={handleChange}
-                                        value={inputs.city}
-                                        className={classes.textField}
-                                        variant="outlined"
-                                        placeholder={`${user.city}`} />
-                                </div>
-                                <div className={classes.inputContainer}>
-                                    <InputLabel>State</InputLabel>
-                                    <TextField
-                                        name="state"
-                                        onChange={handleChange}
-                                        value={inputs.state}
-                                        className={classes.textField}
-                                        variant="outlined"
-                                        placeholder={`${user.state}`} />
-                                </div>
-                            </form>
-                            {/* <img src="https://images.unsplash.com/photo-1549920867-1629df28cdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" className={classes.profilePicture} /> */}
-                            <Button className={classes.updateButton} onClick={handleSubmit}>Save</Button>
-                        </div>
+                        </form>
+                        {/* <img src="https://images.unsplash.com/photo-1549920867-1629df28cdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" className={classes.profilePicture} /> */}
+                        <Button className={classes.updateButton} onClick={handleSubmit}>Save</Button>
+                    </div>
                 }
             </Card>
 
@@ -222,7 +224,7 @@ function Settings() {
                     </div>
                 </Card>
             </section>
-        </div>
+        </div >
     );
 }
 

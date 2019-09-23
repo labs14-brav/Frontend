@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
     link: {
         textDecoration: "none"
     },
-    textFieldsContainer: {
+    textFieldContainer: {
         marginTop: "20px",
         width: "100%",
         [theme.breakpoints.down('sm')]: {
@@ -77,21 +77,20 @@ const useStyles = makeStyles((theme) => ({
             marginBottom: "20px"
         }
     },
-    inputContainer: {
-        marginTop: "10px"
-    },
     textField: {
-        width: "100%",
+        width: "70%",
         marginTop: "5px",
         backgroundColor: "white",
-        borderRadius: "5px"
+        borderRadius: "5px",
+        maxHeight: "40px",
     },
     profilePicture: {
-        width: "200px",
-        height: "200px",
-        borderRadius: "50%"
+        width: "auto",
+        height: "auto",
+        maxWidth: "250px",
+        maxHeight: "250px",
     },
-    mainCard: {
+    editProfileCard: {
         maxWidth: "800px",
         width: "100%",
         display: "flex",
@@ -103,16 +102,23 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: "10px"
     },
     updateButton: {
-        backgroundColor: "green",
+        backgroundColor: "#e6e6e6",
         border: "whitesmoke",
-        color: "white",
-        marginTop: "20px"
+        color: "black",
+        marginTop: "20px",
+        width: "150px",
+        "&:hover": {
+            backgroundColor: "#c0c0c0"
+        }
     },
     fieldContainer: {
-        display: "flex"
+        width: "100%",
     },
     fieldLabel: {
-        marginRight: "7px"
+        width: "30%"
+    },
+    fieldValue: {
+        fontWeight: "bold"
     },
     profile: {
         padding: "30px",
@@ -126,6 +132,27 @@ const useStyles = makeStyles((theme) => ({
     sectionTitleContainer: {
         padding: "20px"
     },
+    staticInfo: {
+        width: "100%",
+    },
+    staticInfoContainer: {
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        marginTop: "20px"
+
+    },
+    labels: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between"
+    },
+    staticValues: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between"
+    }
 }));
 
 export default useStyles;
