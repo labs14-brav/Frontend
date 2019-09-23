@@ -72,6 +72,21 @@ function Settings() {
 
     return (
         <div className={classes.container}>
+            <Card className={classes.profile} >
+                <div>
+                    <h3>{user.name}</h3>
+                    <p className={classes.profileText}>{user.email}</p>
+                    <p className={classes.profileText} >{`Fluent in ${user.language}`}</p>
+                    <p className={classes.profileText} >{`From ${user.city}, ${user.state}`}</p>
+                    <p className={classes.profileText} >{user.professional_bio}</p>
+                </div>
+                <img className={classes.profilePicture} src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
+            </Card>
+
+            <div className={classes.sectionTitleContainer} >
+                <h3 className={classes.sectionTitle}>Profile</h3>
+                <p>Your personal information</p>
+            </div>
 
             <Card className={classes.mainCard}>
                 <div className={classes.cardTitle}>

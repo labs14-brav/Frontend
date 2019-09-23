@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "space-between",
         alignItems: "flex-end",
         minHeight: "200px",
-        margin: "10px",
         padding: "30px",
     },
     title: {
@@ -63,7 +62,6 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         width: "100%",
         maxWidth: "500px",
-        margin: "0 auto"
     },
     text: {
         margin: "20px 0px"
@@ -89,8 +87,9 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "5px"
     },
     profilePicture: {
-        width: "30%",
-        margin: "30px"
+        width: "200px",
+        height: "200px",
+        borderRadius: "50%"
     },
     mainCard: {
         maxWidth: "800px",
@@ -100,8 +99,8 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         alignItems: "flex-start",
         minHeight: "200px",
-        margin: "10px",
         padding: "30px",
+        marginBottom: "10px"
     },
     updateButton: {
         backgroundColor: "green",
@@ -110,12 +109,23 @@ const useStyles = makeStyles((theme) => ({
         marginTop: "20px"
     },
     fieldContainer: {
-        marginTop: "10px",
         display: "flex"
     },
     fieldLabel: {
         marginRight: "7px"
-    }
+    },
+    profile: {
+        padding: "30px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center"
+    },
+    profileText: {
+        color: "grey"
+    },
+    sectionTitleContainer: {
+        padding: "20px"
+    },
 }));
 
 export default useStyles;
