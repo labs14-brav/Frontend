@@ -13,6 +13,7 @@ import {
   MediatorRegistration,
   StripeCheckout,
   AdminHome,
+  Messaging,
   ErrorBoundary
 } from '../views/index';
 
@@ -22,10 +23,11 @@ import {
 
 const UsersRouter = [
   <Route key={uuid.v4()} exact path='/users' render={() => <Redirect to='/' />} />,
-  <Route key={uuid.v4()} path='/stripe-callback' render={() => <StripeCallback />}/>,
-  <Route key={uuid.v4()} path='/users/login' render={props => <Login {...props} />}/>,
-  <Route key={uuid.v4()} path='/users/register' render={props => <Login {...props} />}/>,
+  <Route key={uuid.v4()} path='/stripe-callback' render={() => <StripeCallback />} />,
+  <Route key={uuid.v4()} path='/users/login' render={props => <Login {...props} />} />,
+  <Route key={uuid.v4()} path='/users/register' render={props => <Login {...props} />} />,
   <Route key={uuid.v4()} path='/users/settings' render={(props) => <Settings {...props} />} />,
+  <Route key={uuid.v4()} path='/users/messaging' render={(props) => <Messaging {...props} />} />,
   <Route key={uuid.v4()} path='/users/mediator-registration' render={(props) => <MediatorRegistration {...props} />} />,
   <PrivateRoute key={uuid.v4()} path='/stripe/checkout/:id' component={StripeCheckout} errorBoundary={ErrorBoundary} />,
   <PrivateRoute key={uuid.v4()} path='/admin' component={AdminHome} errorBoundary={ErrorBoundary} />,

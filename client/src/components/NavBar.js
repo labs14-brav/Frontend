@@ -11,7 +11,7 @@ import Box from '@material-ui/core/Box';
 import useStyles from './styles/_navbar';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog, faSignOutAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faSignOutAlt, faEdit, faComments } from '@fortawesome/free-solid-svg-icons';
 
 /**
  *  Import styles
@@ -70,6 +70,10 @@ function NavBar(props) {
             <Toolbar className="bg-white" className={classes.navbar}>
 
               <span style={{ flexGrow: 1 }}></span>
+
+              <NavLink className={classes.commentsNavLink} activeClassName="activeNavButton" to={'/users/messaging'} ><Button>
+                <FontAwesomeIcon size="3x" icon={faComments} className={classes.icon} />
+              </Button></NavLink>
 
               <NavLink className={classes.navLink} activeClassName="activeNavButton" to={checkType()} ><Button>
                 <FontAwesomeIcon size="3x" icon={faEdit} className={classes.icon} />
