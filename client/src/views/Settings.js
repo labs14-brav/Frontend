@@ -186,8 +186,8 @@ function Settings() {
                             </tr>
                         </div>
                         <div className={classes.buttonContainer}>
-                            <Button className={classes.updateButton} onClick={handleSubmit}>Save</Button>
-                            <Button className={classes.updateButton} onClick={cancelUserUpdate}>Cancel</Button>
+                            <Button className={classes.saveButton} onClick={handleSubmit}>Save</Button>
+                            <Button className={classes.cancelButton} onClick={cancelUserUpdate}>Cancel</Button>
                         </div>
                     </div>
                 }

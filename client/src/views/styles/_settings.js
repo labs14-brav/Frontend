@@ -92,8 +92,40 @@ const useStyles = makeStyles((theme) => ({
         color: "black",
         marginTop: "20px",
         width: "150px",
+        lineHeight: "1.75",
+        fontWeight: 500,
+        boxShadow:
+            "0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)",
         "&:hover": {
             backgroundColor: "#c0c0c0"
+        }
+    },
+    saveButton: {
+        backgroundColor: "#5C90C1",
+        border: "whitesmoke",
+        color: "#FFF",
+        marginTop: "20px",
+        width: "150px",
+        lineHeight: "1.75",
+        fontWeight: 500,
+        boxShadow:
+            "0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)",
+        "&:hover": {
+            backgroundColor: "#507ca6"
+        }
+    },
+    cancelButton: {
+        backgroundColor: "#FFF",
+        border: "whitesmoke",
+        color: "grey",
+        marginTop: "20px",
+        width: "150px",
+        boxShadow:
+            "0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)",
+        lineHeight: "1.75",
+        fontWeight: 500,
+        "&:hover": {
+            backgroundColor: "#e6e6e6"
         }
     },
     fieldContainer: {
@@ -101,7 +133,8 @@ const useStyles = makeStyles((theme) => ({
         display: "flex"
     },
     fieldLabel: {
-        width: "30%"
+        width: "30%",
+        marginTop: "10px"
     },
     fieldValue: {
         width: "70%",
