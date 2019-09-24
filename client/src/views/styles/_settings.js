@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "flex-end",
         minHeight: "200px",
         padding: "30px",
+        marginTop: "10px"
     },
     title: {
         color: "black"
@@ -51,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         alignItems: "flex-start",
         margin: "30px 0px",
-        padding: "20px",
         color: "grey",
         minHeight: "80px"
     },
@@ -84,12 +84,11 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "flex-start",
         minHeight: "200px",
         padding: "30px",
-        marginBottom: "10px"
     },
     updateButton: {
         backgroundColor: "#e6e6e6",
         border: "whitesmoke",
-        color: "black",
+        color: "grey",
         marginTop: "20px",
         width: "150px",
         lineHeight: "1.75",
@@ -134,12 +133,14 @@ const useStyles = makeStyles((theme) => ({
     },
     fieldLabel: {
         width: "30%",
-        marginTop: "10px"
+        marginTop: "10px",
+        color: "grey"
     },
     fieldValue: {
         width: "70%",
-        fontWeight: "bold",
-        marginTop: "10px"
+        fontWeight: "regular",
+        marginTop: "10px",
+        color: "grey"
     },
     inputFieldLabel: {
         display: "flex",
@@ -148,7 +149,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: "5px"
     },
     inputField: {
-        fontWeight: "bold",
+        fontWeight: "regular",
         width: "100%",
         marginTop: "5px"
     },
