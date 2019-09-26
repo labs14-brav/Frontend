@@ -74,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
         height: "auto",
         maxWidth: "200px",
         height: "200px",
+        fit: "cover"
     },
     editProfileCard: {
         maxWidth: "800px",
