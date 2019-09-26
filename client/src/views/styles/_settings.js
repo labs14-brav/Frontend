@@ -70,10 +70,21 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: "none"
     },
     profilePicture: {
-        width: "auto",
-        height: "auto",
-        maxWidth: "250px",
-        maxHeight: "250px",
+        minWidth: "160px",
+        maxWidth: "160px",
+        height: "210px",
+        borderRadius: "5px",
+        marginLeft: "20px",
+        "&:hover": {
+            boxShadow:
+            "0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)",
+        },
+        [theme.breakpoints.down('sm')]: {
+            marginLeft: "0px",
+            marginBottom: "20px",
+            minWidth: "250px",
+            height: "300px",
+        }
     },
     editProfileCard: {
         maxWidth: "800px",
@@ -129,7 +140,14 @@ const useStyles = makeStyles((theme) => ({
     },
     fieldContainer: {
         width: "100%",
-        display: "flex"
+        display: "flex",
+    },
+    inputFieldContainer: {
+        width: "100%",
+        display: "flex",
+        [theme.breakpoints.down('xs')]: {
+            flexDirection: "column"
+        }
     },
     fieldLabel: {
         width: "30%",
@@ -157,7 +175,11 @@ const useStyles = makeStyles((theme) => ({
         padding: "30px",
         display: "flex",
         justifyContent: "space-between",
-        alignItems: "center"
+        alignItems: "center",
+        [theme.breakpoints.down('sm')]: {
+            alignItems: "flex-start",
+            flexDirection: "column-reverse"
+        }
     },
     profileText: {
         color: "grey"
@@ -191,6 +213,16 @@ const useStyles = makeStyles((theme) => ({
         width: "310px",
         justifyContent: "space-between"
 
+    },
+    editButton: {
+        position: "absolute", 
+        bottom: "5px", 
+        right: "5px", 
+        color: "white",
+        [theme.breakpoints.down('sm')]: {
+            bottom: "25px",
+            left: "180px"
+        }
     }
 }));
 

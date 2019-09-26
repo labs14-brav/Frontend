@@ -5,11 +5,13 @@
 import React, { useState, useEffect } from "react";
 import { DeactivateAccountButton } from "../components/index";
 import { Link } from "react-router-dom";
-import { makeStyles, Card, InputLabel, TextField, Button } from "@material-ui/core";
+import { makeStyles, Input, Card, InputLabel, TextField, Button } from "@material-ui/core";
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { BecomeMediatorLink } from "./styles/index";
 import useStyles from "./styles/_settings.js";
 import axioswithAuth from '../helpers/axioswithAuth';
+import { profileImageRef } from '../helpers/firebase';
+
 
 /**
  * Define view
@@ -19,6 +21,13 @@ import axioswithAuth from '../helpers/axioswithAuth';
 function Settings() {
     const classes = useStyles();
     const [isLoading, setIsLoading] = useState(true);
+    const [fileUpload, setfileUpload] = useState(React.createRef());
+    const [fileSubmitButton, setfileSubmitButton] = useState(React.createRef());
+    const [profileImage, setProfileImage] = useState({});
+    const userId = localStorage.getItem("id");
+    const fileRef = profileImageRef.child(`${userId}/profile-image`);
+    const [profileImageUrl, setProfileImageUrl] = useState("");
+
     const [user, setUser] = useState({
         name: "",
         professional_bio: "",
@@ -35,7 +44,6 @@ function Settings() {
     });
     const [updatingInfo, setUpdatingInfo] = useState(false);
     const userType = localStorage.getItem("type");
-    const userId = localStorage.getItem("id");
 
 
     const fetchUser = () => {
@@ -54,6 +62,7 @@ function Settings() {
     useEffect(() => {
         setIsLoading(false);
         fetchUser();
+        fetchUserProfileImage();
     }, []);
 
     const handleSubmit = () => {
@@ -75,6 +84,43 @@ function Settings() {
         setUpdatingInfo(false);
     }
 
+    const chooseProfileImage = (e) => {
+        fileUpload.current.click();
+    }
+
+    const submitImage = (e) => {
+        fileSubmitButton.current.click();
+    }
+
+    function fetchUserProfileImage() {
+        fileRef.getDownloadURL().then(url => {
+            setProfileImageUrl(url);
+        })
+        .catch(err => {
+            console.error(err);
+            setProfileImageUrl("https://firebasestorage.googleapis.com/v0/b/brav-3077e.appspot.com/o/brav-blue-logo.jpeg?alt=media&token=b7622a34-510b-4760-9e07-1b78973869f4");
+        })
+    }
+
+    const handleImageSelect = (e) => {
+        e.preventDefault();
+        const file = e.target.files[0]
+        if (!file) {
+            return;
+        }
+        if (file && file.size > 1e8) {
+            alert("File is too large. Maximum limit is 100MB.")
+            e.target.value = ''
+        } else {
+            fileRef.put(file).then((snapshot) => {
+                console.log('Upload success!', snapshot.constructor, snapshot);
+                fetchUserProfileImage();
+            }).catch(err => {
+                console.error(err)
+            });
+        }
+    }
+
     if (isLoading) return <LinearProgress />
 
     return (
@@ -86,7 +132,13 @@ function Settings() {
                     <p className={classes.profileText} >{`${user.city}, ${user.state}`}</p>
                     <p className={classes.profileText} >{user.professional_bio}</p>
                 </div>
-                {/* <img className={classes.profilePicture} src="https://images.unsplash.com/photo-1547841022-b558accc7ef8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" /> */}
+
+                <div style={{ position: "relative" }}>
+                    <img id="profile-image" onClick={chooseProfileImage} className={classes.profilePicture} src={profileImageUrl} />
+                    <Button className={classes.editButton} onClick={chooseProfileImage} >Edit</Button>
+
+                    <input onChange={handleImageSelect} style={{ display: "none" }}  required ref={fileUpload} id="uploader" type="file" accept="image/*,{}.pdf,.doc" />
+                </div>
             </Card>
 
             <div className={classes.sectionTitleContainer} >
@@ -129,7 +181,7 @@ function Settings() {
                     :
                     <div className={classes.staticInfoContainer}>
                         <div className={classes.textFieldsContainer}>
-                            <div className={classes.fieldContainer}>
+                            <tr className={classes.inputFieldContainer}>
                                 <div className={classes.inputFieldLabel}>Name</div>
                                 <td className={classes.inputField}>
                                     <TextField
@@ -139,8 +191,8 @@ function Settings() {
                                         variant="outlined"
                                         className={classes.inputField} />
                                 </td>
-                            </div>
-                            <tr className={classes.fieldContainer}>
+                            </tr>
+                            <tr className={classes.inputFieldContainer}>
                                 <td className={classes.inputFieldLabel}>Language</td>
                                 <td className={classes.inputField}>
                                     <TextField
@@ -151,7 +203,7 @@ function Settings() {
                                         className={classes.inputField} />
                                 </td>
                             </tr>
-                            <tr className={classes.fieldContainer}>
+                            <tr className={classes.inputFieldContainer}>
                                 <td className={classes.inputFieldLabel}>City</td>
                                 <td className={classes.inputField}><TextField
                                     name="city"
@@ -161,7 +213,7 @@ function Settings() {
                                     className={classes.inputField} />
                                 </td>
                             </tr>
-                            <tr className={classes.fieldContainer}>
+                            <tr className={classes.inputFieldContainer}>
                                 <td className={classes.inputFieldLabel}>State</td>
                                 <td className={classes.inputField}><TextField
                                     name="state"
@@ -171,7 +223,7 @@ function Settings() {
                                     className={classes.inputField} />
                                 </td>
                             </tr>
-                            <tr className={classes.fieldContainer}>
+                            <tr className={classes.inputFieldContainer}>
                                 <td className={classes.inputFieldLabel}>Bio</td>
                                 <td className={classes.inputField}>
                                     <TextField
