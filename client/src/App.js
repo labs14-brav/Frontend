@@ -13,6 +13,7 @@ import { UsersRouter, CasesRouter } from "./routes/index";
 import {
   Landing,
   Login,
+  Signup,
   TermsOfService,
   PrivacyPolicy,
   ErrorBoundary,
@@ -90,7 +91,9 @@ function App({ loggedIn }) {
             component={PrivacyPolicy}
           />
           ,
-          <Route key={uuid.v4()} exact path="/auth" component={Login} />
+          <Route key={uuid.v4()} exact path="/login" component={Login} />
+          ,
+          <Route key={uuid.v4()} exact path="/signup" component={Signup} />
           ,
           <PrivateRoute
             key={uuid.v4()}
