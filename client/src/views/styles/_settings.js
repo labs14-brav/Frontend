@@ -71,13 +71,16 @@ const useStyles = makeStyles((theme) => ({
     },
     profilePicture: {
         minWidth: "160px",
+        maxWidth: "160px",
         height: "210px",
         borderRadius: "5px",
+        marginLeft: "20px",
         "&:hover": {
             boxShadow:
             "0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)",
         },
         [theme.breakpoints.down('sm')]: {
+            marginLeft: "0px",
             marginBottom: "20px",
             minWidth: "250px",
             height: "300px",
@@ -174,6 +177,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "space-between",
         alignItems: "center",
         [theme.breakpoints.down('sm')]: {
+            alignItems: "flex-start",
             flexDirection: "column-reverse"
         }
     },
@@ -216,7 +220,8 @@ const useStyles = makeStyles((theme) => ({
         right: "5px", 
         color: "white",
         [theme.breakpoints.down('sm')]: {
-            bottom: "25px"
+            bottom: "25px",
+            left: "180px"
         }
     }
 }));
