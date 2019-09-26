@@ -134,7 +134,7 @@ function Settings() {
 
                 <div style={{ position: "relative" }}>
                     <img id="profile-image" onClick={chooseProfileImage} className={classes.profilePicture} src={profileImageUrl} />
-                    <Button onClick={chooseProfileImage} style={{ position: "absolute", bottom: "5px", right: "5px", color: "white" }} >Edit</Button>
+                    <Button className={classes.editButton} onClick={chooseProfileImage} >Edit</Button>
 
                     <input onChange={handleImageSelect} style={{ display: "none" }}  required ref={fileUpload} id="uploader" type="file" accept="image/*,{}.pdf,.doc" />
                 </div>
@@ -180,7 +180,7 @@ function Settings() {
                     :
                     <div className={classes.staticInfoContainer}>
                         <div className={classes.textFieldsContainer}>
-                            <div className={classes.fieldContainer}>
+                            <tr className={classes.inputFieldContainer}>
                                 <div className={classes.inputFieldLabel}>Name</div>
                                 <td className={classes.inputField}>
                                     <TextField
@@ -190,8 +190,8 @@ function Settings() {
                                         variant="outlined"
                                         className={classes.inputField} />
                                 </td>
-                            </div>
-                            <tr className={classes.fieldContainer}>
+                            </tr>
+                            <tr className={classes.inputFieldContainer}>
                                 <td className={classes.inputFieldLabel}>Language</td>
                                 <td className={classes.inputField}>
                                     <TextField
@@ -202,7 +202,7 @@ function Settings() {
                                         className={classes.inputField} />
                                 </td>
                             </tr>
-                            <tr className={classes.fieldContainer}>
+                            <tr className={classes.inputFieldContainer}>
                                 <td className={classes.inputFieldLabel}>City</td>
                                 <td className={classes.inputField}><TextField
                                     name="city"
@@ -212,7 +212,7 @@ function Settings() {
                                     className={classes.inputField} />
                                 </td>
                             </tr>
-                            <tr className={classes.fieldContainer}>
+                            <tr className={classes.inputFieldContainer}>
                                 <td className={classes.inputFieldLabel}>State</td>
                                 <td className={classes.inputField}><TextField
                                     name="state"
@@ -222,7 +222,7 @@ function Settings() {
                                     className={classes.inputField} />
                                 </td>
                             </tr>
-                            <tr className={classes.fieldContainer}>
+                            <tr className={classes.inputFieldContainer}>
                                 <td className={classes.inputFieldLabel}>Bio</td>
                                 <td className={classes.inputField}>
                                     <TextField
