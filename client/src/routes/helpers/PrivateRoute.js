@@ -2,27 +2,23 @@
  * Dependencies
  */
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
+import { connect } from "react-redux";
 import uuid from "uuid";
 
 /**
  * Define route component
  */
 
-const PrivateRoute = ({
-  component: Component,
-  errorBoundary: ErrorBoundary,
-  path,
-  exact
-}) => {
+const PrivateRoute = ({ errorBoundary: ErrorBoundary, component: Component }, ...props) => {
   // Check for logged in state in redux
-  if (exact) {
+  if (props.user) {
     return (
       <Route
         key={uuid.v4()}
         exact
-        path={path}
+        path={props.path}
         render={props => (
           <ErrorBoundary>
             <Component {...props} />
@@ -34,7 +30,7 @@ const PrivateRoute = ({
     return (
       <Route
         key={uuid.v4()}
-        path={path}
+        path={props.path}
         render={props => (
           <ErrorBoundary>
             <Component {...props} />
@@ -49,4 +45,11 @@ const PrivateRoute = ({
  * Export route component
  */
 
-export default PrivateRoute;
+const mapStateToProps = (state) => {
+  console.log(state.authReducer.user);
+  return {
+    user: state.authReducer.user
+  }
+}
+
+export default connect(mapStateToProps, null)(PrivateRoute);
