@@ -36,6 +36,7 @@ const onChange = (e) => {
         >
             Login with Google
         </Button>
+        <hr/>
         OR
         <form className={classes.loginForm}>
         <TextField
@@ -58,7 +59,7 @@ const onChange = (e) => {
             <Button className={classes.button}>Login with email</Button>
         </form>
         <p className={classes.error}>{props.error}</p>
-        <p>Don't have an account? <Link to="/signup">Signup</Link></p>
+        <p className={classes.bottomText} >Don't have an account? <Link to="/signup">Signup</Link></p>
       </Card>
     </div>
     );

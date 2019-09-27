@@ -15,10 +15,24 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
         minHeight: "600px",
         maxWidth: "400px",
-        justifyContent: "center"
+        margin: "10px"
+    },
+    cardStep2: {
+        padding: "0 20px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        minHeight: "600px",
+        width: "100%",
+        maxWidth: "550px",
+        justifyContent: "center",
+        height: "700px",
+        paddingTop: "0px",
+        paddingBottom: "220px",
+        margin: "10px"
     },
     logo: {
-        height: "100px"
+        height: "100px",
     },
     button: {
         backgroundColor: "#81a1c2",
@@ -42,10 +56,11 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: "450px",
         width: "100%",
         height: "200px",
+        marginTop: "10px"
     },
     formInput: {
         width: "100%",
-        margin: "10px 0",
+        margin: "20px 0",
         borderRadius: "5px",
         display: "flex",
         fontSize: ".9rem",
@@ -58,7 +73,11 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     bottomText: {
-        padding: "10px"
+        padding: "30px"
+    },
+    locationContainer: {
+        display: "flex",
+        width: "100%"
     }
 }));
 
