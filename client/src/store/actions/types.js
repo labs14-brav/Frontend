@@ -13,3 +13,4 @@ export const AUTH_FAILURE = "AUTH_FAILURE";
 export const CHECKING_USER = "CHECKING_USER";
 export const USER = "USER";
 export const NO_USER = "NO_USER";
+export const GOT_USER_INFO = "GOT_USER_INFO";

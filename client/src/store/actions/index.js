@@ -13,7 +13,8 @@ export {
   AUTH_FAILURE,
   CHECKING_USER,
   USER,
-  NO_USER
+  NO_USER,
+  GOT_USER_INFO
 } from "./types";
 
 export { fetchUsers } from "./fetchUsers";
