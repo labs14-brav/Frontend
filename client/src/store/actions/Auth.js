@@ -1,12 +1,33 @@
-import { LOG_IN_START, LOG_IN_SUCCESS, LOG_IN_FAILURE } from "./index";
+import { AUTH_START, AUTH_SUCCESS, AUTH_FAILURE, CHECKING_USER } from "./index";
 import axios from "axios";
 import { mixpanel } from "../../helpers/index";
+import Firebase from "../../helpers/firebase";
 
 const URL = process.env.REACT_APP_API_URL;
 const environment = process.env.NODE_ENV;
 
+export const checkingUser = () => dispatch => {
+  console.log("checking user")
+  dispatch({ type: CHECKING_USER });
+};
+
+export const loggedIn = (user) => dispatch => {
+  console.log(user, "<---- user");
+  dispatch({ type: CHECKING_USER });
+};
+
+export const loggedOut = () => dispatch => {
+  console.log("<---- No user");
+
+  dispatch({ type: CHECKING_USER });
+};
+
+export const signupWithGoogle = () => {
+  Firebase.signInWithGoogle();
+}
+
 export const authenticateUser = requestData => dispatch => {
-  dispatch({ type: LOG_IN_START });
+  dispatch({ type: AUTH_START });
   return axios
     .post(`${URL}/users/auth`, requestData)
     .then(res => {
@@ -15,7 +36,7 @@ export const authenticateUser = requestData => dispatch => {
       localStorage.setItem("type", type);
       localStorage.setItem("id", userID);
       localStorage.setItem("is_stripe_connected", res.data.is_stripe_connected);
-      dispatch({ type: LOG_IN_SUCCESS });
+      dispatch({ type: AUTH_SUCCESS });
       if (type === "mediator") {
         if (environment === "production") {
           mixpanel.track("Mediator sign in", {
@@ -41,7 +62,7 @@ export const authenticateUser = requestData => dispatch => {
     })
     .catch(err => {
       console.error(err);
-      dispatch({ type: LOG_IN_FAILURE });
+      dispatch({ type: AUTH_FAILURE });
       return "/users/login";
     });
 };

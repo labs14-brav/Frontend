@@ -8,12 +8,15 @@ export {
   FETCH_MEDIATORS_START,
   FETCH_MEDIATORS_SUCCESS,
   FETCH_MEDIATORS_FAILURE,
-  LOG_IN_START,
-  LOG_IN_SUCCESS,
-  LOG_IN_FAILURE
+  AUTH_START,
+  AUTH_SUCCESS,
+  AUTH_FAILURE,
+  CHECKING_USER,
+  USER,
+  NO_USER
 } from "./types";
 
 export { fetchUsers } from "./fetchUsers";
 export { mediatorRequest } from "./mediatorRequest";
 export { fetchMediators } from "./fetchMediators";
-export { authenticateUser } from "./Authenticate";
+export { authenticateUser } from "./Auth";

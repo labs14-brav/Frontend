@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
         height: "700px",
         paddingTop: "0px",
         paddingBottom: "220px",
-        margin: "10px"
+        margin: "10px",
+        position: "relative"
     },
     logo: {
         height: "100px",
@@ -72,12 +73,21 @@ const useStyles = makeStyles((theme) => ({
             border: "0px",
         }
     },
-    bottomText: {
-        padding: "30px"
+    bottomTextButton: {
+        textDecoration: "none"
+    },
+    bottomTextContainer: {
+        padding: "30px",
+        width: "350px",
+        textDecoration: "none"
     },
     locationContainer: {
         display: "flex",
         width: "100%"
+    },
+    bottomTextStep2: {
+        position: "absolute",
+        bottom: "40px"
     }
 }));
 

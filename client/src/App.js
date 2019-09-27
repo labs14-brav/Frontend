@@ -3,13 +3,15 @@
  */
 
 import uuid from "uuid";
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import { NavBar } from "./components";
 import { PrivateRoute } from "./routes/helpers/index";
 import { UsersRouter, CasesRouter } from "./routes/index";
+import { checkingUser, loggedIn, loggedOut } from "./store/actions/Auth";
+import Firebase from "./helpers/firebase";
 import {
   Landing,
   Login,
@@ -31,8 +33,24 @@ import "./App.scss";
  * Define component
  */
 
-function App({ loggedIn }) {
-  if (loggedIn) {
+function App(props) {
+
+  const authListener = () => {
+    props.checkingUser();
+    Firebase.auth.onAuthStateChanged((user) => {
+      if (user) {
+        props.loggedIn(user)
+      } else {
+        props.loggedOut(user)
+      }
+    });
+  }
+
+  useEffect(() => {
+    authListener();
+  }, [])
+
+  if (props.loggedIn) {
     return (
       <BrowserRouter>
         <Grid container style={{ height: "100vh" }}>
@@ -119,5 +137,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  {}
+  { checkingUser, loggedIn, loggedOut }
 )(App);

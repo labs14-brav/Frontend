@@ -7,7 +7,7 @@ import {
   TextField,
   Button
 } from "@material-ui/core";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import useStyles from "./styles/_auth.js"
 import { firebase } from "../helpers/index";
 
@@ -17,52 +17,52 @@ function Login(props) {
     email: "",
     password: "",
     signingUp: false,
-});
+  });
 
-const onChange = (e) => {
-  setInputs({ ...inputs, [e.target.name]: e.target.value })
-};
+  const onChange = (e) => {
+    setInputs({ ...inputs, [e.target.name]: e.target.value })
+  };
 
 
   return (
     <div className={classes.container}>
       <Card className={classes.card}>
-      <img className={classes.logo} src={require("../images/bravlogo.png")}></img>
+        <img className={classes.logo} src={require("../images/bravlogo.png")}></img>
         <p>Login with the following</p>
         <Divider variant="middle" />
         <Button
-            className={classes.button}
-            onClick={props.authWithGoogle}
+          className={classes.button}
+          onClick={props.authWithGoogle}
         >
-            Login with Google
+          Login with Google
         </Button>
-        <hr/>
+        <hr />
         OR
         <form className={classes.loginForm}>
-        <TextField
-          className={classes.formInput}
-          label="Email"
-          type="email"
-          name="email"
-          autoComplete="email"
-          margin="normal"
-          variant="outlined"
+          <TextField
+            className={classes.formInput}
+            label="Email"
+            type="email"
+            name="email"
+            autoComplete="email"
+            margin="normal"
+            variant="outlined"
           />
-        <TextField
-          className={classes.formInput}
-          label="Password"
-          type="password"
-          name="password"
-          margin="normal"
-          variant="outlined"
+          <TextField
+            className={classes.formInput}
+            label="Password"
+            type="password"
+            name="password"
+            margin="normal"
+            variant="outlined"
           />
-            <Button className={classes.button}>Login with email</Button>
+          <Button className={classes.button}>Login with email</Button>
         </form>
         <p className={classes.error}>{props.error}</p>
-        <p className={classes.bottomText} >Don't have an account? <Link to="/signup">Signup</Link></p>
+        <p className={classes.bottomTextContainer} >Don't have an account? <Link className={classes.bottomTextButton} to="/signup"><Button>Signup</Button></Link></p>
       </Card>
     </div>
-    );
-  }
-  
-  export default Login;
+  );
+}
+
+export default Login;
