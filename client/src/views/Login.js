@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Dialog from "@material-ui/core/Dialog";
-import Card from "@material-ui/core/Card";
-import Divider from "@material-ui/core/Divider";
-import Input from "@material-ui/core/Input";
+import {
+  Dialog,
+  Card,
+  Divider,
+  Input,
+  TextField,
+  Button
+} from "@material-ui/core";
 import {Link} from "react-router-dom";
-import TextField from "@material-ui/core/TextField";
 import useStyles from "./styles/_auth.js"
 import { firebase } from "../helpers/index";
 
@@ -24,15 +27,15 @@ const onChange = (e) => {
   return (
     <div className={classes.container}>
       <Card className={classes.card}>
-      <img className={classes.logo} src="https://firebasestorage.googleapis.com/v0/b/brav-3077e.appspot.com/o/brav-blue-logo.jpeg?alt=media&token=b7622a34-510b-4760-9e07-1b78973869f4"></img>
+      <img className={classes.logo} src={require("../images/bravlogo.png")}></img>
         <p>Login with the following</p>
         <Divider variant="middle" />
-        <button
+        <Button
             className={classes.button}
             onClick={props.authWithGoogle}
         >
             Login with Google
-        </button>
+        </Button>
         OR
         <form className={classes.loginForm}>
         <TextField
@@ -52,7 +55,7 @@ const onChange = (e) => {
           margin="normal"
           variant="outlined"
           />
-            <button className={classes.button}>Login</button>
+            <Button className={classes.button}>Login with email</Button>
         </form>
         <p className={classes.error}>{props.error}</p>
         <p>Don't have an account? <Link to="/signup">Signup</Link></p>

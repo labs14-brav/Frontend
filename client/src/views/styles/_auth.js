@@ -21,17 +21,17 @@ const useStyles = makeStyles((theme) => ({
         height: "100px"
     },
     button: {
-        width: "100%",
-        height: "40px",
-        margin: "10px",
-        fontSize: "1.2rem",
-        backgroundColor: "#4C7AA8",
-        maxWidth: "400px",
+        backgroundColor: "#81a1c2",
+        border: "whitesmoke",
         color: "white",
-        fontSize: "1rem",
-        borderRadius: "5px",
+        marginTop: "20px",
+        width: "100%",
+        lineHeight: "1.75",
+        fontWeight: 500,
+        boxShadow:
+            "0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)",
         "&:hover": {
-            backgroundColor: "#446d97"
+            backgroundColor: "#7490ae"
         }
     },
     loginForm: {
@@ -46,11 +46,9 @@ const useStyles = makeStyles((theme) => ({
     formInput: {
         width: "100%",
         margin: "10px 0",
-        padding: "10px",
         borderRadius: "5px",
         display: "flex",
         fontSize: ".9rem",
-        padding: "5px",
         height: "40px",
         "&:focus": {
             outline: "none",
@@ -59,6 +57,9 @@ const useStyles = makeStyles((theme) => ({
             border: "0px",
         }
     },
+    bottomText: {
+        padding: "10px"
+    }
 }));
 
 export default useStyles;
