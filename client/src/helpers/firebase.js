@@ -28,7 +28,8 @@ const Firebase = {
   sorageRef: storage.ref(),
   documentsRef: storageRef.child("documents"),
   profileImageRef: storageRef.child("profile-image"),
-  signInWithGoogle: () => { firebase.auth().signInWithRedirect(provider) }
+  signInWithGoogle: () => { firebase.auth().signInWithRedirect(provider) },
+  signOut: () => firebase.auth().signOut()
 }
 
 

@@ -40,9 +40,11 @@ function App(props) {
     props.checkingUser();
     Firebase.auth.onAuthStateChanged((user) => {
       if (user) {
-        props.loggedIn(user)
+        props.loggedIn(user);
       } else {
+        console.log(props);
         props.loggedOut()
+        props.params.history.push("/");
       }
     });
   }
@@ -52,7 +54,7 @@ function App(props) {
   }, [])
 
   if (props.started) {
-    return <AppLoader />
+    return <BrowserRouter><AppLoader /></BrowserRouter>
   } else {
     return (
       <BrowserRouter>
@@ -66,12 +68,17 @@ function App(props) {
             style={{ backgroundColor: "#ECF6FF" }}
           >
             <Switch>
+              <Route key={uuid.v4()} exact path="/" component={Landing} />,
               <Route
                 key={uuid.v4()}
                 exact
                 path="/terms-of-service"
                 component={TermsOfService}
               />
+              ,
+              <Route key={uuid.v4()} exact path="/login" component={Login} />
+              ,
+             <Route key={uuid.v4()} exact path="/signup" component={Signup} />
               ,
                 <Route
                 key={uuid.v4()}

@@ -1,4 +1,4 @@
-import { AUTH_START, AUTH_SUCCESS, AUTH_FAILURE, CHECKING_USER, USER, NO_USER, GOT_USER_INFO } from "../actions";
+import { AUTH_START, AUTH_SUCCESS, AUTH_FAILURE, CHECKING_USER, USER, NO_USER, GOT_USER_INFO, SIGN_OUT } from "../actions";
 
 const initialState = {
   user: false,
@@ -24,7 +24,9 @@ export const authReducer = (state = initialState, action) => {
     case USER:
       return { finished: false, error: null, started: false, user: true };
     case NO_USER:
-      return { finished: false, error: null, started: false, user: false };
+      return { finished: false, error: null, started: false, user: null };
+    case SIGN_OUT:
+      return { finished: false, error: null, started: false, user: null };
     default:
       return state;
   }
