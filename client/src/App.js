@@ -49,88 +49,80 @@ function App(props) {
 
   useEffect(() => {
     authListener();
-    console.log(props);
   }, [])
 
   if (props.started) {
     return <AppLoader />
   } else {
-    if (props.loggedIn) {
-      return (
-        <BrowserRouter>
-          <Grid container style={{ height: "100vh" }}>
-            <NavBar />
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              lg={12}
-              style={{ backgroundColor: "#ECF6FF" }}
-            >
-              <Switch>
+    return (
+      <BrowserRouter>
+        <Grid container style={{ height: "100vh" }}>
+          <NavBar />
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            lg={12}
+            style={{ backgroundColor: "#ECF6FF" }}
+          >
+            <Switch>
+              <Route
+                key={uuid.v4()}
+                exact
+                path="/terms-of-service"
+                component={TermsOfService}
+              />
+              ,
                 <Route
-                  key={uuid.v4()}
-                  exact
-                  path="/terms-of-service"
-                  component={TermsOfService}
-                />
-                ,
-                <Route
-                  key={uuid.v4()}
-                  exact
-                  path="/privacy-policy"
-                  component={PrivacyPolicy}
-                />
-                <Route
-                  key={uuid.v4()}
-                  exact
-                  path="/"
-                  render={() => <Redirect to="/cases" />}
-                />
-                ,{UsersRouter}
-                {CasesRouter}
-                <Route key={uuid.v4()} component={NoMatch} />
-              </Switch>
-            </Grid>
+                key={uuid.v4()}
+                exact
+                path="/privacy-policy"
+                component={PrivacyPolicy}
+              />
+              ,{UsersRouter}
+              ,{CasesRouter}
+              <Route key={uuid.v4()} component={NoMatch} />
+            </Switch>
           </Grid>
-        </BrowserRouter>
-      );
-    } else {
-      return (
-        <BrowserRouter>
-          <Switch>
-            <Route key={uuid.v4()} exact path="/" component={Landing} />,
-            <Route
-              key={uuid.v4()}
-              exact
-              path="/terms-of-service"
-              component={TermsOfService}
-            />
-            ,
-            <Route
-              key={uuid.v4()}
-              exact
-              path="/privacy-policy"
-              component={PrivacyPolicy}
-            />
-            ,
-            <Route key={uuid.v4()} exact path="/login" component={Login} />
-            ,
-            <Route key={uuid.v4()} exact path="/signup" component={Signup} />
-            ,
-            <PrivateRoute
-              key={uuid.v4()}
-              exact
-              path="/auth/callback"
-              component={AuthCallback}
-              errorBoundary={ErrorBoundary}
-            />
-            ,
-            <Redirect to="/" />
-          </Switch>
-        </BrowserRouter>
-      );
-    }
+        </Grid>
+      </BrowserRouter>
+    )
+    // else {
+    //   return (
+    //     <BrowserRouter>
+    //       <Switch>
+    //         <Route key={uuid.v4()} exact path="/" component={Landing} />,
+    //         <Route
+    //           key={uuid.v4()}
+    //           exact
+    //           path="/terms-of-service"
+    //           component={TermsOfService}
+    //         />
+    //         ,
+    //         <Route
+    //           key={uuid.v4()}
+    //           exact
+    //           path="/privacy-policy"
+    //           component={PrivacyPolicy}
+    //         />
+    //         ,
+    //         <Route key={uuid.v4()} exact path="/login" component={Login} />
+    //         ,
+    //         <Route key={uuid.v4()} exact path="/signup" component={Signup} />
+    //         ,
+    //         <PrivateRoute
+    //           key={uuid.v4()}
+    //           exact
+    //           path="/auth/callback"
+    //           component={AuthCallback}
+    //           errorBoundary={ErrorBoundary}
+    //         />
+    //         ,
+    //         <Redirect to="/" />
+    //       </Switch>
+    //     </BrowserRouter>
+    //   );
+    // }
   }
 }
 
@@ -138,7 +130,8 @@ function App(props) {
  * Export component
  */
 const mapStateToProps = state => ({
-  started: state.authReducer.started
+  started: state.authReducer.started,
+  user: state.authReducer.user
 });
 
 export default connect(

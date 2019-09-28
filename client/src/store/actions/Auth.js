@@ -64,43 +64,43 @@ export const signupWithGoogle = () => {
   Firebase.signInWithGoogle();
 }
 
-export const authenticateUser = requestData => dispatch => {
-  dispatch({ type: AUTH_START });
-  return axios
-    .post(`${URL}/users/auth`, requestData)
-    .then(res => {
-      const userID = res.data.id;
-      const type = res.data.type;
-      localStorage.setItem("type", type);
-      localStorage.setItem("id", userID);
-      localStorage.setItem("is_stripe_connected", res.data.is_stripe_connected);
-      dispatch({ type: AUTH_SUCCESS });
-      if (type === "mediator") {
-        if (environment === "production") {
-          mixpanel.track("Mediator sign in", {
-            distinct_id: userID
-          });
-        }
-        return "/mediator-cases";
-      } else if (type === "admin") {
-        if (environment === "production") {
-          mixpanel.track("Admin sign in", {
-            distinct_id: userID
-          });
-        }
-        return "/admin";
-      } else {
-        if (environment === "production") {
-          mixpanel.track("User sign in", {
-            distinct_id: userID
-          });
-        }
-        return "/cases";
-      }
-    })
-    .catch(err => {
-      console.error(err);
-      dispatch({ type: AUTH_FAILURE });
-      return "/users/login";
-    });
-};
+// export const authenticateUser = requestData => dispatch => {
+//   dispatch({ type: AUTH_START });
+//   return axios
+//     .post(`${URL}/users/auth`, requestData)
+//     .then(res => {
+//       const userID = res.data.id;
+//       const type = res.data.type;
+//       localStorage.setItem("type", type);
+//       localStorage.setItem("id", userID);
+//       localStorage.setItem("is_stripe_connected", res.data.is_stripe_connected);
+//       dispatch({ type: AUTH_SUCCESS });
+//       if (type === "mediator") {
+//         if (environment === "production") {
+//           mixpanel.track("Mediator sign in", {
+//             distinct_id: userID
+//           });
+//         }
+//         return "/mediator-cases";
+//       } else if (type === "admin") {
+//         if (environment === "production") {
+//           mixpanel.track("Admin sign in", {
+//             distinct_id: userID
+//           });
+//         }
+//         return "/admin";
+//       } else {
+//         if (environment === "production") {
+//           mixpanel.track("User sign in", {
+//             distinct_id: userID
+//           });
+//         }
+//         return "/cases";
+//       }
+//     })
+//     .catch(err => {
+//       console.error(err);
+//       dispatch({ type: AUTH_FAILURE });
+//       return "/users/login";
+//     });
+// };

@@ -3,7 +3,7 @@
  */
 
 import React, { useEffect } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import uuid from "uuid";
 
@@ -11,34 +11,17 @@ import uuid from "uuid";
  * Define route component
  */
 
-const PrivateRoute = ({ errorBoundary: ErrorBoundary, component: Component }, ...props) => {
+const PrivateRoute = ({ errorBoundary: ErrorBoundary, component: Component, ...rest }) => {
   // Check for logged in state in redux
-  if (props.user) {
-    return (
-      <Route
-        key={uuid.v4()}
-        exact
-        path={props.path}
-        render={props => (
-          <ErrorBoundary>
-            <Component {...props} />
-          </ErrorBoundary>
-        )}
-      />
-    );
-  } else {
-    return (
-      <Route
-        key={uuid.v4()}
-        path={props.path}
-        render={props => (
-          <ErrorBoundary>
-            <Component {...props} />
-          </ErrorBoundary>
-        )}
-      />
-    );
-  }
+
+  return (
+    <Route {...rest} render={props => {
+      if (rest.user) {
+        return <Component {...props} />;
+      } else {
+        return (<Redirect to="/" />);
+      }
+    }} />);
 };
 
 /**
@@ -46,7 +29,6 @@ const PrivateRoute = ({ errorBoundary: ErrorBoundary, component: Component }, ..
  */
 
 const mapStateToProps = (state) => {
-  console.log(state.authReducer.user);
   return {
     user: state.authReducer.user
   }

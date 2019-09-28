@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {
-  Dialog,
   Card,
   Divider,
-  Input,
   TextField,
   Button
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import useStyles from "./styles/_auth.js"
-import { firebase } from "../helpers/index";
 
 function Login(props) {
   const classes = useStyles();

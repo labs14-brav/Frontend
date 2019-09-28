@@ -20,4 +20,3 @@ export {
 export { fetchUsers } from "./fetchUsers";
 export { mediatorRequest } from "./mediatorRequest";
 export { fetchMediators } from "./fetchMediators";
-export { authenticateUser } from "./Auth";

@@ -7,8 +7,8 @@ import { NavLink } from 'react-router-dom';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import useStyles from './styles/_navbar';
+import Firebase from "../helpers/firebase";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faSignOutAlt, faEdit, faComments } from '@fortawesome/free-solid-svg-icons';
@@ -26,8 +26,10 @@ import './styles/UserCaseCard.scss';
 function NavBar(props) {
   const classes = useStyles();
   function logout() {
-    localStorage.clear()
-    window.location = '/'
+    localStorage.clear();
+    Firebase.auth.signOut().then(() => {
+      props.history.push('/');
+    })
   }
 
   function checkType() {
@@ -89,9 +91,5 @@ function NavBar(props) {
     );
   }
 };
-
-/**
- * Export component
- */
 
 export default NavBar;
