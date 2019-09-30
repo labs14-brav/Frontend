@@ -24,3 +24,4 @@ export { default as StripeCheckout } from "./StripeCheckout";
 export { default as TermsOfService } from "./TOS";
 export { default as UserCaseShow } from './UserCaseShow';
 export { default as Messaging } from './Messaging';
+export { default as Onboarding } from './Onboarding';

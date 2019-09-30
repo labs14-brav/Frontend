@@ -29,6 +29,8 @@ const Firebase = {
   documentsRef: storageRef.child("documents"),
   profileImageRef: storageRef.child("profile-image"),
   signInWithGoogle: () => { firebase.auth().signInWithRedirect(provider) },
+  signUpWithEmail: (email, password) => { firebase.auth().createUserWithEmailAndPassword(email, password) },
+  signInWithEmail: (email, password) => { firebase.auth().signInWithEmailAndPassword(email, password) },
   signOut: () => firebase.auth().signOut()
 }
 

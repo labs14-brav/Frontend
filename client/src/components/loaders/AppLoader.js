@@ -3,15 +3,17 @@ import Loader from 'react-loader-spinner';
 import { withRouter } from "react-router-dom";
 import useStyles from './styles/_appLoader';
 import { connect } from 'react-redux';
-import { Card } from '@material-ui/core';
 
 function AppLoader(props) {
     const classes = useStyles();
 
     useEffect(() => {
-        console.log(props.user);
         if (props.user) {
-            props.history.push("/cases")
+            if (props.user.name === null) {
+                props.history.push("/onboarding")
+            } else {
+                props.history.push("/cases")
+            }
         } else {
             props.history.push("/");
         }

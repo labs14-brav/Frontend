@@ -19,9 +19,8 @@ import {
   Signup,
   TermsOfService,
   PrivacyPolicy,
-  ErrorBoundary,
-  AuthCallback,
-  NoMatch
+  NoMatch,
+  Onboarding
 } from "./views";
 
 /**
@@ -42,9 +41,7 @@ function App(props) {
       if (user) {
         props.loggedIn(user);
       } else {
-        console.log(props);
         props.loggedOut()
-        props.params.history.push("/");
       }
     });
   }
@@ -54,7 +51,10 @@ function App(props) {
   }, [])
 
   if (props.started) {
-    return <BrowserRouter><AppLoader /></BrowserRouter>
+    return (
+      <BrowserRouter>
+        <Route component={AppLoader} />
+      </BrowserRouter>)
   } else {
     return (
       <BrowserRouter>
@@ -78,14 +78,11 @@ function App(props) {
               ,
               <Route key={uuid.v4()} exact path="/login" component={Login} />
               ,
-             <Route key={uuid.v4()} exact path="/signup" component={Signup} />
+              <Route key={uuid.v4()} exact path="/signup" component={Signup} />
               ,
-                <Route
-                key={uuid.v4()}
-                exact
-                path="/privacy-policy"
-                component={PrivacyPolicy}
-              />
+              <Route key={uuid.v4()} exact path="/onboarding" component={Onboarding} />
+              ,
+              <Route key={uuid.v4()} exact path="/privacy-policy" component={PrivacyPolicy} />
               ,{UsersRouter}
               ,{CasesRouter}
               <Route key={uuid.v4()} component={NoMatch} />
@@ -94,42 +91,6 @@ function App(props) {
         </Grid>
       </BrowserRouter>
     )
-    // else {
-    //   return (
-    //     <BrowserRouter>
-    //       <Switch>
-    //         <Route key={uuid.v4()} exact path="/" component={Landing} />,
-    //         <Route
-    //           key={uuid.v4()}
-    //           exact
-    //           path="/terms-of-service"
-    //           component={TermsOfService}
-    //         />
-    //         ,
-    //         <Route
-    //           key={uuid.v4()}
-    //           exact
-    //           path="/privacy-policy"
-    //           component={PrivacyPolicy}
-    //         />
-    //         ,
-    //         <Route key={uuid.v4()} exact path="/login" component={Login} />
-    //         ,
-    //         <Route key={uuid.v4()} exact path="/signup" component={Signup} />
-    //         ,
-    //         <PrivateRoute
-    //           key={uuid.v4()}
-    //           exact
-    //           path="/auth/callback"
-    //           component={AuthCallback}
-    //           errorBoundary={ErrorBoundary}
-    //         />
-    //         ,
-    //         <Redirect to="/" />
-    //       </Switch>
-    //     </BrowserRouter>
-    //   );
-    // }
   }
 }
 

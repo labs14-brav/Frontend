@@ -20,7 +20,7 @@ export const authReducer = (state = initialState, action) => {
     case CHECKING_USER:
       return { started: true };
     case GOT_USER_INFO:
-      return { ...state, user: { ...state.user, token: action.payload } };
+      return { ...state, user: { ...state.user, ...action.payload } };
     case USER:
       return { finished: false, error: null, started: false, user: true };
     case NO_USER:

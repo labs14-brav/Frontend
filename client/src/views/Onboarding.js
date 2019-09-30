@@ -1,28 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
     Card,
     Divider,
     TextField,
     Button
 } from "@material-ui/core";
-import { signupWithGoogle } from "../store/actions/Auth";
 import { connect } from "react-redux";
+import axioswithAuth from "../helpers/axioswithAuth";
 import useStyles from "./styles/_auth.js"
 
 function Onboarding(props) {
     const classes = useStyles();
     const [signupMethod, setSignupMethod] = useState(null);
 
-    const [user, setUser] = useState({
+    const [userInfo, setUserInfo] = useState({
         name: "",
         city: "",
         state: "",
-        languages: "",
+        language: "",
         professional_bio: "",
     });
 
     const onChange = (e) => {
-        setCredentials({ ...credentials, [e.target.name]: e.target.value })
+        setUserInfo({ ...userInfo, [e.target.name]: e.target.value })
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axioswithAuth()
+            .put(`/users/${props.user.id}/update-user`, userInfo)
+            .then(res => {
+                console.log("success!!!");
+                props.history.push("/cases");
+            })
+            .catch(error => {
+                console.error(error);
+            })
     };
 
     return (
@@ -31,14 +44,14 @@ function Onboarding(props) {
                 <img className={classes.logo} src={require("../images/bravlogo.png")}></img>
                 <p>Tell us about yourself!</p>
                 <Divider variant="middle" />
-                <form className={classes.loginForm} onSubmit={signupMethod === "email" ? handleSignupWithEmail : handleSignupWithGoogle}>
+                <form className={classes.loginForm} onSubmit={handleSubmit}>
                     <TextField
                         className={classes.formInput}
                         label="Full Name"
                         name="name"
                         margin="normal"
                         variant="outlined"
-                        onChange={onChangeUserInfo}
+                        onChange={onChange}
                     />
                     <div className={classes.locationContainer}>
                         <TextField
@@ -47,7 +60,7 @@ function Onboarding(props) {
                             name="city"
                             margin="normal"
                             variant="outlined"
-                            onChange={onChangeUserInfo}
+                            onChange={onChange}
                         />
                         <TextField
                             className={classes.formInput}
@@ -55,17 +68,17 @@ function Onboarding(props) {
                             name="state"
                             margin="normal"
                             variant="outlined"
-                            onChange={onChangeUserInfo}
+                            onChange={onChange}
 
                         />
                     </div>
                     <TextField
                         className={classes.formInput}
                         label="Languages"
-                        name="languages"
+                        name="language"
                         margin="normal"
                         variant="outlined"
-                        onChange={onChangeUserInfo}
+                        onChange={onChange}
 
                     />
 
@@ -73,10 +86,10 @@ function Onboarding(props) {
                         multiline
                         className={classes.formInput}
                         label="Bio"
-                        name="bio"
+                        name="professional_bio"
                         margin="normal"
                         variant="outlined"
-                        onChange={onChangeUserInfo}
+                        onChange={onChange}
 
                     />
 
@@ -88,4 +101,10 @@ function Onboarding(props) {
     );
 }
 
-export default connect(null, { signupWithGoogle })(Onboarding);
+const mapStateToProps = state => {
+    return {
+        user: state.authReducer.user
+    }
+}
+
+export default connect(mapStateToProps, null)(Onboarding);

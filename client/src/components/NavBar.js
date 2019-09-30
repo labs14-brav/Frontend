@@ -2,8 +2,8 @@
  * Dependencies
  */
 
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink, withRouter } from 'react-router-dom';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -29,6 +29,7 @@ function NavBar(props) {
   function logout() {
     localStorage.clear();
     props.signOut();
+    props.history.push("/");
   }
 
   function checkType() {
@@ -40,22 +41,8 @@ function NavBar(props) {
     }
   }
 
-  if (localStorage.getItem("type") === 'admin') {
-    return props.user ? (
-      <Grid container style={{ position: 'absolute', boxShadow: "5px 0px 8px #888888" }} className="navBarTop">
-        <Grid item xs={4} sm={3} lg={2} className="bg-brav-secondary">
-          <h1 className="bravHeader">Brāv</h1>
-        </Grid>
-        <Grid item xs={8} sm={9} lg={10}>
-          <nav position="static" color="default">
-            <Toolbar className="bg-white">
-              <span style={{ flexGrow: 1 }}></span>
-              <Button onClick={logout}>Sign Out</Button>
-            </Toolbar>
-          </nav>
-        </Grid>
-      </Grid>
-    ) : null;
+  if (props.location.pathname === "/onboarding") {
+    return null;
   } else {
     return props.user ? (
       <Grid container style={{ position: 'absolute', boxShadow: "5px 0px 8px #888888", overflow: "hidden" }} className="navBarTop">
@@ -94,4 +81,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { signOut })(NavBar);
+export default connect(mapStateToProps, { signOut })(withRouter(NavBar));

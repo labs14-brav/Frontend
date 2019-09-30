@@ -5,22 +5,26 @@ import {
   TextField,
   Button
 } from "@material-ui/core";
-import { signinWithGoogle } from "../store/actions/Auth";
+import { signInWithEmail } from "../store/actions/Auth";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import useStyles from "./styles/_auth.js"
 
 function Login(props) {
   const classes = useStyles();
-  const [inputs, setInputs] = useState({
+  const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
 
   const onChange = (e) => {
-    setInputs({ ...inputs, [e.target.name]: e.target.value })
+    setCredentials({ ...credentials, [e.target.name]: e.target.value })
   };
 
+  const handleSignInWithEmail = (e) => {
+    e.preventDefault();
+    props.signInWithEmail(credentials.email, credentials.password);
+  };
 
   return (
     <div className={classes.container}>
@@ -36,7 +40,7 @@ function Login(props) {
         </Button>
         <hr />
         OR
-        <form className={classes.loginForm}>
+        <form onSubmit={handleSignInWithEmail} className={classes.loginForm}>
           <TextField
             className={classes.formInput}
             label="Email"
@@ -45,6 +49,7 @@ function Login(props) {
             autoComplete="email"
             margin="normal"
             variant="outlined"
+            onChange={onChange}
           />
           <TextField
             className={classes.formInput}
@@ -53,8 +58,9 @@ function Login(props) {
             name="password"
             margin="normal"
             variant="outlined"
+            onChange={onChange}
           />
-          <Button className={classes.button}>Login with email</Button>
+          <Button type="submit" className={classes.button}>Login with email</Button>
         </form>
         <p className={classes.error}>{props.error}</p>
         <p className={classes.bottomTextContainer} >Don't have an account? <Link className={classes.bottomTextButton} to="/signup"><Button>Signup</Button></Link></p>
@@ -63,4 +69,4 @@ function Login(props) {
   );
 }
 
-export default connect(null, { signinWithGoogle })(Login);
+export default connect(null, { signInWithEmail })(Login);

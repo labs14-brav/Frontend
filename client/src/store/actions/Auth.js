@@ -1,4 +1,4 @@
-import { AUTH_START, AUTH_SUCCESS, AUTH_FAILURE, CHECKING_USER, SIGN_OUT } from "./index";
+import { AUTH_START, AUTH_SUCCESS, AUTH_FAILURE, CHECKING_USER, SIGN_OUT, GOT_USER_INFO } from "./index";
 import axios from "../../helpers/axioswithAuth";
 import { mixpanel } from "../../helpers/index";
 import Firebase from "../../helpers/firebase";
@@ -11,7 +11,6 @@ export const checkingUser = () => dispatch => {
 };
 
 export const loggedIn = (user) => dispatch => {
-  dispatch({ type: "GOT_USER_INFO", payload: user.ra });
   localStorage.setItem("token", user.ra);
   axios()
     .post(`/users/auth`, user.ra)
@@ -21,6 +20,7 @@ export const loggedIn = (user) => dispatch => {
       localStorage.setItem("type", type);
       localStorage.setItem("id", userID);
       localStorage.setItem("is_stripe_connected", res.data.is_stripe_connected);
+      dispatch({ type: GOT_USER_INFO, payload: res.data });
       dispatch({ type: AUTH_SUCCESS, payload: res.data });
       if (type === "mediator") {
         if (environment === "production") {
@@ -56,30 +56,23 @@ export const loggedOut = () => dispatch => {
   dispatch({ type: SIGN_OUT });
 };
 
-export const signupWithGoogle = (userInfo) => dispatch => {
-  Firebase.signInWithGoogle().then((user) => {
-    return axios()
-      .post(`/users/auth`, user.ra).then(() => { console.log("hello") })
-  }).then(res => {
-    console.log(res)
-    const userID = res.data.id;
-    const type = res.data.type;
-    localStorage.setItem("type", type);
-    localStorage.setItem("id", userID);
-    localStorage.setItem("is_stripe_connected", res.data.is_stripe_connected);
-    return axios().put(`/users/${userID}/update-user`, userInfo);
-  }).then((res) => {
-    console.log(res);
-    dispatch({ type: AUTH_SUCCESS, payload: res.data });
-  })
-    .catch(err => {
-      console.error(err);
-      dispatch({ type: AUTH_FAILURE });
-      return "/users/login";
-    })
+export const signUpWithEmail = (email, password) => dispatch => {
+  dispatch({ type: AUTH_START });
+  Firebase.signUpWithEmail(email, password)
+}
+
+export const signInWithEmail = (email, password) => dispatch => {
+  dispatch({ type: AUTH_START });
+  Firebase.signInWithEmail(email, password)
+}
+
+export const signUpWithGoogle = () => dispatch => {
+  dispatch({ type: AUTH_START });
+  Firebase.signInWithGoogle();
 }
 
 export const signinWithGoogle = (user) => dispatch => {
+  dispatch({ type: AUTH_START });
   Firebase.signInWithGoogle();
 }
 
