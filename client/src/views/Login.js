@@ -5,6 +5,8 @@ import {
   TextField,
   Button
 } from "@material-ui/core";
+import { signinWithGoogle } from "../store/actions/Auth";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import useStyles from "./styles/_auth.js"
 
@@ -13,7 +15,6 @@ function Login(props) {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
-    signingUp: false,
   });
 
   const onChange = (e) => {
@@ -29,7 +30,7 @@ function Login(props) {
         <Divider variant="middle" />
         <Button
           className={classes.button}
-          onClick={props.authWithGoogle}
+          onClick={props.signinWithGoogle}
         >
           Login with Google
         </Button>
@@ -62,4 +63,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default connect(null, { signinWithGoogle })(Login);

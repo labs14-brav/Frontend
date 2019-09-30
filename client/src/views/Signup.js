@@ -14,33 +14,48 @@ import useStyles from "./styles/_auth.js"
 
 function Signup(props) {
   const classes = useStyles();
-  const [step, setStep] = useState(1);
-  const [inputs, setInputs] = useState({
+  const [signupMethod, setSignupMethod] = useState(null);
+  const [credentials, setCredentials] = useState({
     email: "",
     password: "",
-    signingUp: false,
+  });
+  const [user, setUser] = useState({
+    name: "",
+    city: "",
+    state: "",
+    languages: "",
+    professional_bio: "",
   });
 
   const onChange = (e) => {
-    setInputs({ ...inputs, [e.target.name]: e.target.value })
+    setCredentials({ ...credentials, [e.target.name]: e.target.value })
   };
 
-  const handleSignupWithGoogle = () => {
-    console.log(props);
-    props.signupWithGoogle();
+  const onChangeUserInfo = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value })
+  };
+
+  const handleSignupWithGoogle = (e) => {
+    e.preventDefault();
+    props.signupWithGoogle(user);
+    console.log("signing up with google");
+  };
+
+  const handleSignupWithEmail = (e) => {
+    e.preventDefault();
+    console.log("signing up with email");
   };
 
   return (
     <div className={classes.container}>
-      {step === 1 ?
+      {signupMethod === null ?
         <Card className={classes.card}>
           <img className={classes.logo} src={require("../images/bravlogo.png")}></img>
           <p>Signup with the following</p>
           <Divider variant="middle" />
           <Button
-            onClick={() => setStep(2)}
+            onClick={() => setSignupMethod("google")}
             className={classes.button}
-            onClick={handleSignupWithGoogle}
           >
             Signup with Google
         </Button>
@@ -55,6 +70,7 @@ function Signup(props) {
               autoComplete="email"
               margin="normal"
               variant="outlined"
+              onChange={onChange}
             />
             <TextField
               className={classes.formInput}
@@ -63,8 +79,9 @@ function Signup(props) {
               name="password"
               margin="normal"
               variant="outlined"
+              onChange={onChange}
             />
-            <Button onClick={() => setStep(2)} className={classes.button}>Signup with Email</Button>
+            <Button onClick={() => setSignupMethod("email")} className={classes.button}>Signup with Email</Button>
           </form>
           <p className={classes.bottomTextContainer}>Already  have an account? <Link className={classes.bottomTextButton} to="/login"><Button>Login</Button></Link></p>
         </Card> :
@@ -72,13 +89,14 @@ function Signup(props) {
           <img className={classes.logo} src={require("../images/bravlogo.png")}></img>
           <p>Tell us about yourself!</p>
           <Divider variant="middle" />
-          <form className={classes.loginForm}>
+          <form className={classes.loginForm} onSubmit={signupMethod === "email" ? handleSignupWithEmail : handleSignupWithGoogle}>
             <TextField
               className={classes.formInput}
               label="Full Name"
-              name="fullName"
+              name="name"
               margin="normal"
               variant="outlined"
+              onChange={onChangeUserInfo}
             />
             <div className={classes.locationContainer}>
               <TextField
@@ -87,6 +105,7 @@ function Signup(props) {
                 name="city"
                 margin="normal"
                 variant="outlined"
+                onChange={onChangeUserInfo}
               />
               <TextField
                 className={classes.formInput}
@@ -94,14 +113,18 @@ function Signup(props) {
                 name="state"
                 margin="normal"
                 variant="outlined"
+                onChange={onChangeUserInfo}
+
               />
             </div>
             <TextField
               className={classes.formInput}
-              label="Full Name"
+              label="Languages"
               name="languages"
               margin="normal"
               variant="outlined"
+              onChange={onChangeUserInfo}
+
             />
 
             <TextField
@@ -111,11 +134,13 @@ function Signup(props) {
               name="bio"
               margin="normal"
               variant="outlined"
+              onChange={onChangeUserInfo}
+
             />
 
-            <Button className={classes.button}>Signup</Button>
+            <Button type="submit" className={classes.button}>Signup</Button>
           </form>
-          <Button onClick={() => setStep(1)} className={classes.bottomTextStep2}>Go Back</Button>
+          <Button onClick={() => setSignupMethod(null)} className={classes.bottomTextStep2}>Go Back</Button>
         </Card>
       }
     </div>

@@ -9,6 +9,7 @@ function AppLoader(props) {
     const classes = useStyles();
 
     useEffect(() => {
+        console.log(props.user);
         if (props.user) {
             props.history.push("/cases")
         } else {
@@ -18,9 +19,7 @@ function AppLoader(props) {
 
     return (
         <div className={classes.container}>
-            <Card className={classes.loaderCard}>
-                <Loader type="Oval" color="#5C90C1" height={80} width={80} />
-            </Card>
+            <Loader type="Oval" color="#5C90C1" height={80} width={80} />
         </div>
     )
 }

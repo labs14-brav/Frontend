@@ -16,7 +16,6 @@ export const loggedIn = (user) => dispatch => {
   axios()
     .post(`/users/auth`, user.ra)
     .then(res => {
-      console.log(res.data, "user data that needs to be set to app state");
       const userID = res.data.id;
       const type = res.data.type;
       localStorage.setItem("type", type);
@@ -57,7 +56,30 @@ export const loggedOut = () => dispatch => {
   dispatch({ type: SIGN_OUT });
 };
 
-export const signupWithGoogle = () => {
+export const signupWithGoogle = (userInfo) => dispatch => {
+  Firebase.signInWithGoogle().then((user) => {
+    return axios()
+      .post(`/users/auth`, user.ra).then(() => { console.log("hello") })
+  }).then(res => {
+    console.log(res)
+    const userID = res.data.id;
+    const type = res.data.type;
+    localStorage.setItem("type", type);
+    localStorage.setItem("id", userID);
+    localStorage.setItem("is_stripe_connected", res.data.is_stripe_connected);
+    return axios().put(`/users/${userID}/update-user`, userInfo);
+  }).then((res) => {
+    console.log(res);
+    dispatch({ type: AUTH_SUCCESS, payload: res.data });
+  })
+    .catch(err => {
+      console.error(err);
+      dispatch({ type: AUTH_FAILURE });
+      return "/users/login";
+    })
+}
+
+export const signinWithGoogle = (user) => dispatch => {
   Firebase.signInWithGoogle();
 }
 
