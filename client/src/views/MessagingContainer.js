@@ -30,18 +30,32 @@ function MessagingContainer() {
           setMessageCollection(prevMessage => {
             return prevMessage.filter(message => message.id !== change.doc.id);
           });
-        } else {
+        } else if (change.type === "added") {
           // Add message
           const newMessage = change.doc.data();
-          if (newMessage.timestamp) {
-            newMessage.id = change.doc.id;
-            setMessageCollection(prevMessage => {
-              return [...prevMessage, newMessage];
+          newMessage.id = change.doc.id;
+          setMessageCollection(prevMessage => {
+            return [...prevMessage, newMessage];
+          });
+        } else {
+          const newMessage = change.doc.data();
+          newMessage.id = change.doc.id;
+          setMessageCollection(prevMessage => {
+            return prevMessage.map(message => {
+              if (message.id === change.doc.id) {
+                return newMessage;
+              } else {
+                return message;
+              }
             });
-          }
+          });
         }
       });
     });
+  };
+
+  const submitImage = e => {
+    e.preventDefault();
   };
   return (
     <main className="mdl-layout__content mdl-color--grey-100">
@@ -56,7 +70,7 @@ function MessagingContainer() {
           <div className="mdl-card__supporting-text mdl-color-text--grey-600">
             <MessageList messages={messageCollection} />
             <MessageForm />
-            <form id="image-form">
+            <form id="image-form" onSubmit={submitImage}>
               <input
                 id="mediaCapture"
                 type="file"
