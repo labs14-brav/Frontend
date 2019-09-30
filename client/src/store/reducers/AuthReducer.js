@@ -1,7 +1,6 @@
 import { AUTH_START, AUTH_SUCCESS, AUTH_FAILURE, CHECKING_USER, USER, NO_USER, GOT_USER_INFO, SIGN_OUT } from "../actions";
 
 const initialState = {
-  user: false,
   started: false,
   finished: false,
   error: null,

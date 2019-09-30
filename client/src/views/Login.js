@@ -5,7 +5,7 @@ import {
   TextField,
   Button
 } from "@material-ui/core";
-import { signInWithEmail } from "../store/actions/Auth";
+import { signInWithEmail, signInWithGoogle } from "../store/actions/Auth";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import useStyles from "./styles/_auth.js"
@@ -29,12 +29,12 @@ function Login(props) {
   return (
     <div className={classes.container}>
       <Card className={classes.card}>
-        <img className={classes.logo} src={require("../images/bravlogo.png")}></img>
+        <img className={classes.logo} src={require("../images/brav-logo.png")}></img>
         <p>Login with the following</p>
         <Divider variant="middle" />
         <Button
           className={classes.button}
-          onClick={props.signinWithGoogle}
+          onClick={props.signInWithGoogle}
         >
           Login with Google
         </Button>
@@ -69,4 +69,4 @@ function Login(props) {
   );
 }
 
-export default connect(null, { signInWithEmail })(Login);
+export default connect(null, { signInWithEmail, signInWithGoogle })(Login);

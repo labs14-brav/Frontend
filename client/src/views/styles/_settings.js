@@ -223,6 +223,9 @@ const useStyles = makeStyles((theme) => ({
             bottom: "25px",
             left: "180px"
         }
+    },
+    signInWithGoogle: {
+        border: "1px solid red"
     }
 }));
 

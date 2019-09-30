@@ -30,7 +30,7 @@ function Signup(props) {
   return (
     <div className={classes.container}>
       <Card className={classes.card}>
-        <img className={classes.logo} src={require("../images/bravlogo.png")}></img>
+        <img className={classes.logo} src={require("../images/brav-logo.png")}></img>
         <p>Signup with the following</p>
         <Divider variant="middle" />
         <Button onClick={props.signUpWithGoogle} className={classes.button}>

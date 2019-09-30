@@ -71,7 +71,7 @@ export const signUpWithGoogle = () => dispatch => {
   Firebase.signInWithGoogle();
 }
 
-export const signinWithGoogle = (user) => dispatch => {
+export const signInWithGoogle = (user) => dispatch => {
   dispatch({ type: AUTH_START });
   Firebase.signInWithGoogle();
 }
@@ -80,7 +80,8 @@ export const signOut = () => dispatch => {
   dispatch({ type: AUTH_START });
   Firebase.signOut()
     .then(() => {
-      dispatch({ type: AUTH_SUCCESS });
+      localStorage.clear();
+      dispatch({ type: SIGN_OUT });
     }).catch(() => {
       dispatch({ type: AUTH_FAILURE });
     })

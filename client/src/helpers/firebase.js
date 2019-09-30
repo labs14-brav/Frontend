@@ -25,7 +25,7 @@ const provider = new firebase.auth.GoogleAuthProvider();
 const Firebase = {
   auth: firebase.auth(),
   storage: firebase.storage(),
-  sorageRef: storage.ref(),
+  storageRef: storage.ref(),
   documentsRef: storageRef.child("documents"),
   profileImageRef: storageRef.child("profile-image"),
   signInWithGoogle: () => { firebase.auth().signInWithRedirect(provider) },
