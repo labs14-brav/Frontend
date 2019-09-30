@@ -11,27 +11,38 @@ import uuid from "uuid";
  * Define route component
  */
 
-const PrivateRoute = ({ errorBoundary: ErrorBoundary, component: Component, ...rest }) => {
+const PrivateRoute = ({
+  errorBoundary: ErrorBoundary,
+  component: Component,
+  ...rest
+}) => {
   // Check for logged in state in redux
 
   return (
-    <Route {...rest} render={props => {
-      if (rest.user) {
-        return <Component {...props} />;
-      } else {
-        return (<Redirect to="/" />);
-      }
-    }} />);
+    <Route
+      {...rest}
+      render={props => {
+        if (rest.user) {
+          return <Component {...props} />;
+        } else {
+          return <Redirect to="/" />;
+        }
+      }}
+    />
+  );
 };
 
 /**
  * Export route component
  */
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     user: state.authReducer.user
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, null)(PrivateRoute);
+export default connect(
+  mapStateToProps,
+  null
+)(PrivateRoute);

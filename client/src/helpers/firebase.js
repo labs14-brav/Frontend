@@ -1,5 +1,4 @@
 const firebase = require("firebase");
-const axios = require("axios");
 
 var firebaseConfig = {
   apiKey: "AIzaSyBvzVQ-z1QTrLw1-F0Wu4T-893_CAomYCA",
@@ -28,12 +27,17 @@ const Firebase = {
   storageRef: storage.ref(),
   documentsRef: storageRef.child("documents"),
   profileImageRef: storageRef.child("profile-image"),
-  signInWithGoogle: () => { firebase.auth().signInWithRedirect(provider) },
-  signUpWithEmail: (email, password) => { firebase.auth().createUserWithEmailAndPassword(email, password) },
-  signInWithEmail: (email, password) => { firebase.auth().signInWithEmailAndPassword(email, password) },
+  signInWithGoogle: () => {
+    firebase.auth().signInWithRedirect(provider);
+  },
+  signUpWithEmail: (email, password) => {
+    firebase.auth().createUserWithEmailAndPassword(email, password);
+  },
+  signInWithEmail: (email, password) => {
+    firebase.auth().signInWithEmailAndPassword(email, password);
+  },
   signOut: () => firebase.auth().signOut()
-}
-
+};
 
 export default Firebase;
 

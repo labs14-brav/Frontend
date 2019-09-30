@@ -210,7 +210,6 @@ function Landing() {
               alt="Brāv Logo"
             />
             <div>
-
               <Link style={{ textDecoration: "none" }} to="/signup">
                 <Button
                   id="navSignUp"
@@ -229,7 +228,8 @@ function Landing() {
                   className={classes.button}
                   variant="contained"
                   color="primary"
-                  data-testid="login-button">
+                  data-testid="login-button"
+                >
                   login
                 </Button>
               </Link>
@@ -384,8 +384,8 @@ function Landing() {
                         {theme.direction === "rtl" ? (
                           <KeyboardArrowLeft />
                         ) : (
-                            <KeyboardArrowRight />
-                          )}
+                          <KeyboardArrowRight />
+                        )}
                       </Button>
                     }
                     backButton={
@@ -397,8 +397,8 @@ function Landing() {
                         {theme.direction === "rtl" ? (
                           <KeyboardArrowRight />
                         ) : (
-                            <KeyboardArrowLeft />
-                          )}
+                          <KeyboardArrowLeft />
+                        )}
                         Back
                       </Button>
                     }

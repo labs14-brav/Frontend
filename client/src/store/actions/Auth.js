@@ -1,4 +1,11 @@
-import { AUTH_START, AUTH_SUCCESS, AUTH_FAILURE, CHECKING_USER, SIGN_OUT, GOT_USER_INFO } from "./index";
+import {
+  AUTH_START,
+  AUTH_SUCCESS,
+  AUTH_FAILURE,
+  CHECKING_USER,
+  SIGN_OUT,
+  GOT_USER_INFO
+} from "./index";
 import axios from "../../helpers/axioswithAuth";
 import { mixpanel } from "../../helpers/index";
 import Firebase from "../../helpers/firebase";
@@ -10,7 +17,7 @@ export const checkingUser = () => dispatch => {
   dispatch({ type: CHECKING_USER });
 };
 
-export const loggedIn = (user) => dispatch => {
+export const loggedIn = user => dispatch => {
   localStorage.setItem("token", user.ra);
   axios()
     .post(`/users/auth`, user.ra)
@@ -58,23 +65,23 @@ export const loggedOut = () => dispatch => {
 
 export const signUpWithEmail = (email, password) => dispatch => {
   dispatch({ type: AUTH_START });
-  Firebase.signUpWithEmail(email, password)
-}
+  Firebase.signUpWithEmail(email, password);
+};
 
 export const signInWithEmail = (email, password) => dispatch => {
   dispatch({ type: AUTH_START });
-  Firebase.signInWithEmail(email, password)
-}
+  Firebase.signInWithEmail(email, password);
+};
 
 export const signUpWithGoogle = () => dispatch => {
   dispatch({ type: AUTH_START });
   Firebase.signInWithGoogle();
-}
+};
 
-export const signInWithGoogle = (user) => dispatch => {
+export const signInWithGoogle = user => dispatch => {
   dispatch({ type: AUTH_START });
   Firebase.signInWithGoogle();
-}
+};
 
 export const signOut = () => dispatch => {
   dispatch({ type: AUTH_START });
@@ -82,7 +89,8 @@ export const signOut = () => dispatch => {
     .then(() => {
       localStorage.clear();
       dispatch({ type: SIGN_OUT });
-    }).catch(() => {
-      dispatch({ type: AUTH_FAILURE });
     })
-}
+    .catch(() => {
+      dispatch({ type: AUTH_FAILURE });
+    });
+};

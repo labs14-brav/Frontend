@@ -1,19 +1,34 @@
-import { AUTH_START, AUTH_SUCCESS, AUTH_FAILURE, CHECKING_USER, USER, NO_USER, GOT_USER_INFO, SIGN_OUT } from "../actions";
+import {
+  AUTH_START,
+  AUTH_SUCCESS,
+  AUTH_FAILURE,
+  CHECKING_USER,
+  USER,
+  NO_USER,
+  GOT_USER_INFO,
+  SIGN_OUT
+} from "../actions";
 
 const initialState = {
   started: false,
   finished: false,
   error: null,
-  user: null,
+  user: null
 };
 
 export const authReducer = (state = initialState, action) => {
-  const errorMessage = ""
+  const errorMessage = "";
   switch (action.type) {
     case AUTH_START:
       return { ...state, started: true };
     case AUTH_SUCCESS:
-      return { ...state, finished: true, started: false, error: null, user: { ...state.user, ...action.payload } };
+      return {
+        ...state,
+        finished: true,
+        started: false,
+        error: null,
+        user: { ...state.user, ...action.payload }
+      };
     case AUTH_FAILURE:
       return { ...state, error: errorMessage, started: false };
     case CHECKING_USER:
