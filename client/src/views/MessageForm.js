@@ -8,15 +8,14 @@ function MessageForm({ user }) {
 
   const submitMessage = e => {
     e.preventDefault();
-    const { email, photoUrl } = user;
     // Add a new message entry to the Firebase database.
     return firebase
       .firestore()
       .collection("messages")
       .add({
-        email: email,
+        email: "placeholder",
         text: messageText,
-        profileImageUrl: photoUrl,
+        profileImageUrl: "placeholder",
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       })
       .then(() => {
