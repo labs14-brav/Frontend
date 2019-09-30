@@ -23,6 +23,7 @@ import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import EmailIcon from "@material-ui/icons/Email";
 import Login from "./Login.js";
+import Signup from "./Signup.js";
 import caseActivity from "../images/caseActivity.jpg";
 import caseDetailActivity from "../images/caseDetailActivity.jpg";
 import findMediator from "../images/findMediator.jpg";
@@ -209,26 +210,29 @@ function Landing() {
               alt="Brāv Logo"
             />
             <div>
-              <Button
-                id="navSignUp"
-                className={classes.button}
-                onClick={openLogin}
-                variant="contained"
-                color="primary"
-                data-testid="signup-button"
-              >
-                signup
-              </Button>
-              <Button
-                onClick={openLogin}
-                id="navLogin"
-                className={classes.button}
-                variant="contained"
-                color="primary"
-                data-testid="login-button"
-              >
-                login
-              </Button>
+
+              <Link style={{ textDecoration: "none" }} to="/signup">
+                <Button
+                  id="navSignUp"
+                  className={classes.button}
+                  variant="contained"
+                  color="primary"
+                  data-testid="signup-button"
+                >
+                  signup
+                </Button>
+              </Link>
+
+              <Link style={{ textDecoration: "none" }} to="/login">
+                <Button
+                  id="navLogin"
+                  className={classes.button}
+                  variant="contained"
+                  color="primary"
+                  data-testid="login-button">
+                  login
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -380,8 +384,8 @@ function Landing() {
                         {theme.direction === "rtl" ? (
                           <KeyboardArrowLeft />
                         ) : (
-                          <KeyboardArrowRight />
-                        )}
+                            <KeyboardArrowRight />
+                          )}
                       </Button>
                     }
                     backButton={
@@ -393,8 +397,8 @@ function Landing() {
                         {theme.direction === "rtl" ? (
                           <KeyboardArrowRight />
                         ) : (
-                          <KeyboardArrowLeft />
-                        )}
+                            <KeyboardArrowLeft />
+                          )}
                         Back
                       </Button>
                     }

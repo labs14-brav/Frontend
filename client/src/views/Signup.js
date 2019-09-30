@@ -5,13 +5,14 @@ import {
   TextField,
   Button
 } from "@material-ui/core";
-import { signInWithEmail, signInWithGoogle } from "../store/actions/Auth";
+import { signUpWithGoogle, signUpWithEmail } from "../store/actions/Auth";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import useStyles from "./styles/_auth.js"
 
-function Login(props) {
+function Signup(props) {
   const classes = useStyles();
+  const [signupMethod, setSignupMethod] = useState(null);
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -21,26 +22,23 @@ function Login(props) {
     setCredentials({ ...credentials, [e.target.name]: e.target.value })
   };
 
-  const handleSignInWithEmail = (e) => {
+  const handleSignupWithEmail = (e) => {
     e.preventDefault();
-    props.signInWithEmail(credentials.email, credentials.password);
+    props.signUpWithEmail(credentials.email, credentials.password);
   };
 
   return (
     <div className={classes.container}>
       <Card className={classes.card}>
         <img className={classes.logo} src={require("../images/brav-logo.png")}></img>
-        <p>Login with the following</p>
+        <p>Signup with the following</p>
         <Divider variant="middle" />
-        <Button
-          className={classes.button}
-          onClick={props.signInWithGoogle}
-        >
-          Login with Google
+        <Button onClick={props.signUpWithGoogle} className={classes.button}>
+          Signup with Google
         </Button>
         <hr />
         OR
-        <form onSubmit={handleSignInWithEmail} className={classes.loginForm}>
+        <form className={classes.loginForm}>
           <TextField
             className={classes.formInput}
             label="Email"
@@ -60,13 +58,12 @@ function Login(props) {
             variant="outlined"
             onChange={onChange}
           />
-          <Button type="submit" className={classes.button}>Login with email</Button>
+          <Button onClick={handleSignupWithEmail} className={classes.button}>Signup with Email</Button>
         </form>
-        <p className={classes.error}>{props.error}</p>
-        <p className={classes.bottomTextContainer} >Don't have an account? <Link className={classes.bottomTextButton} to="/signup"><Button>Signup</Button></Link></p>
+        <p className={classes.bottomTextContainer}>Already  have an account? <Link className={classes.bottomTextButton} to="/login"><Button>Login</Button></Link></p>
       </Card>
     </div>
   );
 }
 
-export default connect(null, { signInWithEmail, signInWithGoogle })(Login);
+export default connect(null, { signUpWithGoogle, signUpWithEmail })(Signup);

@@ -2,51 +2,36 @@
  * Dependencies
  */
 
-import React from "react";
-import { Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import uuid from "uuid";
 
 /**
  * Define route component
  */
 
-const PrivateRoute = ({
-  component: Component,
-  errorBoundary: ErrorBoundary,
-  path,
-  exact
-}) => {
+const PrivateRoute = ({ errorBoundary: ErrorBoundary, component: Component, ...rest }) => {
   // Check for logged in state in redux
-  if (exact) {
-    return (
-      <Route
-        key={uuid.v4()}
-        exact
-        path={path}
-        render={props => (
-          <ErrorBoundary>
-            <Component {...props} />
-          </ErrorBoundary>
-        )}
-      />
-    );
-  } else {
-    return (
-      <Route
-        key={uuid.v4()}
-        path={path}
-        render={props => (
-          <ErrorBoundary>
-            <Component {...props} />
-          </ErrorBoundary>
-        )}
-      />
-    );
-  }
+
+  return (
+    <Route {...rest} render={props => {
+      if (rest.user) {
+        return <Component {...props} />;
+      } else {
+        return (<Redirect to="/" />);
+      }
+    }} />);
 };
 
 /**
  * Export route component
  */
 
-export default PrivateRoute;
+const mapStateToProps = (state) => {
+  return {
+    user: state.authReducer.user
+  }
+}
+
+export default connect(mapStateToProps, null)(PrivateRoute);

@@ -96,10 +96,10 @@ function Settings() {
         fileRef.getDownloadURL().then(url => {
             setProfileImageUrl(url);
         })
-        .catch(err => {
-            console.error(err);
-            setProfileImageUrl("https://firebasestorage.googleapis.com/v0/b/brav-3077e.appspot.com/o/brav-blue-logo.jpeg?alt=media&token=b7622a34-510b-4760-9e07-1b78973869f4");
-        })
+            .catch(err => {
+                console.error(err);
+                setProfileImageUrl("https://firebasestorage.googleapis.com/v0/b/brav-3077e.appspot.com/o/brav-blue-logo.jpeg?alt=media&token=b7622a34-510b-4760-9e07-1b78973869f4");
+            })
     }
 
     const handleImageSelect = (e) => {
@@ -126,7 +126,7 @@ function Settings() {
     return (
         <div className={classes.container}>
             <Card className={classes.profile} >
-                <div>
+                <div className={classes.profileInfo}>
                     <h3>{user.name}</h3>
                     <p className={classes.profileText}>{user.email}</p>
                     <p className={classes.profileText} >{`${user.city}, ${user.state}`}</p>
@@ -137,7 +137,7 @@ function Settings() {
                     <img id="profile-image" onClick={chooseProfileImage} className={classes.profilePicture} src={profileImageUrl} />
                     <Button className={classes.editButton} onClick={chooseProfileImage} >Edit</Button>
 
-                    <input onChange={handleImageSelect} style={{ display: "none" }}  required ref={fileUpload} id="uploader" type="file" accept="image/*,{}.pdf,.doc" />
+                    <input onChange={handleImageSelect} style={{ display: "none" }} required ref={fileUpload} id="uploader" type="file" accept="image/*,{}.pdf,.doc" />
                 </div>
             </Card>
 
