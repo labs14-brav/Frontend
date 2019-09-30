@@ -3,21 +3,24 @@
  */
 
 import uuid from "uuid";
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import { NavBar } from "./components";
 import { PrivateRoute } from "./routes/helpers/index";
 import { UsersRouter, CasesRouter } from "./routes/index";
+import { checkingUser, loggedIn, loggedOut } from "./store/actions/Auth";
+import Firebase from "./helpers/firebase";
+import AppLoader from "./components/loaders/AppLoader";
 import {
   Landing,
   Login,
+  Signup,
   TermsOfService,
   PrivacyPolicy,
-  ErrorBoundary,
-  AuthCallback,
-  NoMatch
+  NoMatch,
+  Onboarding
 } from "./views";
 
 /**
@@ -30,8 +33,29 @@ import "./App.scss";
  * Define component
  */
 
-function App({ loggedIn }) {
-  if (loggedIn) {
+function App(props) {
+
+  const authListener = () => {
+    props.checkingUser();
+    Firebase.auth.onAuthStateChanged((user) => {
+      if (user) {
+        props.loggedIn(user);
+      } else {
+        props.loggedOut()
+      }
+    });
+  }
+
+  useEffect(() => {
+    authListener();
+  }, [])
+
+  if (props.started) {
+    return (
+      <BrowserRouter>
+        <Route component={AppLoader} />
+      </BrowserRouter>)
+  } else {
     return (
       <BrowserRouter>
         <Grid container style={{ height: "100vh" }}>
@@ -44,6 +68,7 @@ function App({ loggedIn }) {
             style={{ backgroundColor: "#ECF6FF" }}
           >
             <Switch>
+              <Route key={uuid.v4()} exact path="/" component={Landing} />,
               <Route
                 key={uuid.v4()}
                 exact
@@ -51,59 +76,21 @@ function App({ loggedIn }) {
                 component={TermsOfService}
               />
               ,
-              <Route
-                key={uuid.v4()}
-                exact
-                path="/privacy-policy"
-                component={PrivacyPolicy}
-              />
-              <Route
-                key={uuid.v4()}
-                exact
-                path="/"
-                render={() => <Redirect to="/cases" />}
-              />
+              <Route key={uuid.v4()} exact path="/login" component={Login} />
+              ,
+              <Route key={uuid.v4()} exact path="/signup" component={Signup} />
+              ,
+              <Route key={uuid.v4()} exact path="/onboarding" component={Onboarding} />
+              ,
+              <Route key={uuid.v4()} exact path="/privacy-policy" component={PrivacyPolicy} />
               ,{UsersRouter}
-              {CasesRouter}
+              ,{CasesRouter}
               <Route key={uuid.v4()} component={NoMatch} />
             </Switch>
           </Grid>
         </Grid>
       </BrowserRouter>
-    );
-  } else {
-    return (
-      <BrowserRouter>
-        <Switch>
-          <Route key={uuid.v4()} exact path="/" component={Landing} />,
-          <Route
-            key={uuid.v4()}
-            exact
-            path="/terms-of-service"
-            component={TermsOfService}
-          />
-          ,
-          <Route
-            key={uuid.v4()}
-            exact
-            path="/privacy-policy"
-            component={PrivacyPolicy}
-          />
-          ,
-          <Route key={uuid.v4()} exact path="/auth" component={Login} />
-          ,
-          <PrivateRoute
-            key={uuid.v4()}
-            exact
-            path="/auth/callback"
-            component={AuthCallback}
-            errorBoundary={ErrorBoundary}
-          />
-          ,
-          <Redirect to="/" />
-        </Switch>
-      </BrowserRouter>
-    );
+    )
   }
 }
 
@@ -111,10 +98,11 @@ function App({ loggedIn }) {
  * Export component
  */
 const mapStateToProps = state => ({
-  loggedIn: state.authReducer.loggedIn
+  started: state.authReducer.started,
+  user: state.authReducer.user
 });
 
 export default connect(
   mapStateToProps,
-  {}
+  { checkingUser, loggedIn, loggedOut }
 )(App);

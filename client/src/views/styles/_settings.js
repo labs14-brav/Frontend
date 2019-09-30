@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: "20px",
         "&:hover": {
             boxShadow:
-            "0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)",
+                "0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)",
         },
         [theme.breakpoints.down('sm')]: {
             marginLeft: "0px",
@@ -177,7 +177,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "space-between",
         alignItems: "center",
         [theme.breakpoints.down('sm')]: {
-            alignItems: "flex-start",
+            alignItems: "center",
             flexDirection: "column-reverse"
         }
     },
@@ -215,14 +215,17 @@ const useStyles = makeStyles((theme) => ({
 
     },
     editButton: {
-        position: "absolute", 
-        bottom: "5px", 
-        right: "5px", 
+        position: "absolute",
+        bottom: "5px",
+        right: "5px",
         color: "white",
         [theme.breakpoints.down('sm')]: {
             bottom: "25px",
             left: "180px"
         }
+    },
+    signInWithGoogle: {
+        border: "1px solid red"
     }
 }));
 
