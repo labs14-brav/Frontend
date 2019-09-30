@@ -15,7 +15,10 @@ export const authenticateUser = requestData => dispatch => {
       localStorage.setItem("type", type);
       localStorage.setItem("id", userID);
       localStorage.setItem("is_stripe_connected", res.data.is_stripe_connected);
-      dispatch({ type: LOG_IN_SUCCESS });
+      const user = JSON.parse(
+        localStorage.getItem("firebaseui::rememberedAccounts")
+      )[0];
+      dispatch({ type: LOG_IN_SUCCESS, payload: user });
       if (type === "mediator") {
         if (environment === "production") {
           mixpanel.track("Mediator sign in", {
