@@ -211,7 +211,7 @@ function Landing() {
             />
             <div>
 
-              <Link to="/signup">
+              <Link style={{ textDecoration: "none" }} to="/signup">
                 <Button
                   id="navSignUp"
                   className={classes.button}
@@ -223,14 +223,14 @@ function Landing() {
                 </Button>
               </Link>
 
-              <Link to="/login">
+              <Link style={{ textDecoration: "none" }} to="/login">
                 <Button
                   id="navLogin"
                   className={classes.button}
                   variant="contained"
                   color="primary"
                   data-testid="login-button">
-                login
+                  login
                 </Button>
               </Link>
             </div>
@@ -384,8 +384,8 @@ function Landing() {
                         {theme.direction === "rtl" ? (
                           <KeyboardArrowLeft />
                         ) : (
-                          <KeyboardArrowRight />
-                        )}
+                            <KeyboardArrowRight />
+                          )}
                       </Button>
                     }
                     backButton={
@@ -397,8 +397,8 @@ function Landing() {
                         {theme.direction === "rtl" ? (
                           <KeyboardArrowRight />
                         ) : (
-                          <KeyboardArrowLeft />
-                        )}
+                            <KeyboardArrowLeft />
+                          )}
                         Back
                       </Button>
                     }
