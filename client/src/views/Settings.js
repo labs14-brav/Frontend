@@ -12,7 +12,7 @@ import useStyles from "./styles/_settings.js";
 import axioswithAuth from "../helpers/axioswithAuth";
 import { profileImageRef } from "../helpers/firebase";
 import { connect } from 'react-redux';
-import { fetchUser } from '../store/actions/Auth';
+import { fetchUser, updateUser } from '../store/actions/Auth';
 
 /**
  * Define view
@@ -40,23 +40,12 @@ function Settings(props) {
     }, []);
 
     const handleSubmit = () => {
-        axioswithAuth()
-            .put(`/users/${props.user.id}/update-user`, inputs)
-            .then(res => {
-                props.fetchUser(props.user.id);
-                setUpdatingInfo(false);
-            })
-            .catch(error => {
-                console.error(error);
-            });
+        props.updateUser(props.user.id, inputs);
+        setUpdatingInfo(false);
     };
 
     const handleChange = e => {
         setInputs({ ...inputs, [e.target.name]: e.target.value });
-    };
-
-    const cancelUserUpdate = e => {
-        setUpdatingInfo(false);
     };
 
     const chooseProfileImage = e => {
@@ -244,15 +233,8 @@ function Settings(props) {
                                 </tr>
                             </div>
                             <div className={classes.buttonContainer}>
-                                <Button className={classes.saveButton} onClick={handleSubmit}>
-                                    Save
-              </Button>
-                                <Button
-                                    className={classes.cancelButton}
-                                    onClick={cancelUserUpdate}
-                                >
-                                    Cancel
-              </Button>
+                                <Button className={classes.saveButton} onClick={handleSubmit}>Save</Button>
+                                <Button className={classes.cancelButton} onClick={() => setUpdatingInfo(false)}>Cancel</Button>
                             </div>
                         </div>
                     )}
@@ -305,4 +287,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchUser })(Settings);
+export default connect(mapStateToProps, { fetchUser, updateUser })(Settings);
