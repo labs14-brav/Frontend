@@ -1,4 +1,16 @@
-import { AUTH_START, AUTH_SUCCESS, AUTH_FAILURE, CHECKING_USER, USER, NO_USER, GOT_USER_INFO, SIGN_OUT } from "../actions";
+import {
+  AUTH_START,
+  AUTH_SUCCESS,
+  AUTH_FAILURE,
+  CHECKING_USER,
+  USER,
+  NO_USER,
+  GOT_USER_INFO,
+  SIGN_OUT,
+  FETCH_USER_START,
+  FETCH_USER_SUCCESS,
+  FETCH_USER_FAILURE
+} from "../actions";
 
 const initialState = {
   started: false,

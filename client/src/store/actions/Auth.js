@@ -1,4 +1,14 @@
-import { AUTH_START, AUTH_SUCCESS, AUTH_FAILURE, CHECKING_USER, SIGN_OUT, GOT_USER_INFO } from "./index";
+import {
+  AUTH_START,
+  AUTH_SUCCESS,
+  AUTH_FAILURE,
+  CHECKING_USER,
+  SIGN_OUT,
+  GOT_USER_INFO,
+  FETCH_USER_START,
+  FETCH_USER_SUCCESS,
+  FETCH_USER_FAILURE
+} from "./index";
 import axios from "../../helpers/axioswithAuth";
 import { mixpanel } from "../../helpers/index";
 import Firebase from "../../helpers/firebase";
@@ -12,6 +22,7 @@ export const checkingUser = () => dispatch => {
 
 export const loggedIn = (user) => dispatch => {
   localStorage.setItem("token", user.ra);
+  console.log(user.photoURL);
   axios()
     .post(`/users/auth`, user.ra)
     .then(res => {
@@ -59,6 +70,12 @@ export const loggedOut = () => dispatch => {
 export const signUpWithEmail = (email, password) => dispatch => {
   dispatch({ type: AUTH_START });
   Firebase.signUpWithEmail(email, password)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err);
+    })
 }
 
 export const signInWithEmail = (email, password) => dispatch => {
@@ -68,7 +85,13 @@ export const signInWithEmail = (email, password) => dispatch => {
 
 export const signUpWithGoogle = () => dispatch => {
   dispatch({ type: AUTH_START });
-  Firebase.signInWithGoogle();
+  Firebase.signInWithGoogle()
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err);
+    })
 }
 
 export const signInWithGoogle = (user) => dispatch => {
@@ -86,3 +109,18 @@ export const signOut = () => dispatch => {
       dispatch({ type: AUTH_FAILURE });
     })
 }
+
+export const fetchUser = userId => dispatch => {
+  dispatch({ type: FETCH_USER_START });
+
+  axios()
+    .get(`users/${userId}`)
+    .then((res) => {
+      console.log(res);
+      // dispatch({ type: FETCH_USER_SUCCESS });
+    })
+    .catch((err) => {
+      console.error(err)
+      // dispatch({ type: FETCH_USER_FAILURE });
+    })
+};

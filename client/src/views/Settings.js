@@ -1,16 +1,14 @@
-/**
- * Dependencies
- */
-
 import React, { useState, useEffect } from "react";
 import { DeactivateAccountButton } from "../components/index";
 import { Link } from "react-router-dom";
-import { makeStyles, Input, Card, InputLabel, TextField, Button } from "@material-ui/core";
+import { Card, TextField, Button } from "@material-ui/core";
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { BecomeMediatorLink } from "./styles/index";
 import useStyles from "./styles/_settings.js";
 import axioswithAuth from '../helpers/axioswithAuth';
 import { profileImageRef } from '../helpers/firebase';
+import { connect } from 'react-redux';
+import { fetchUser } from '../store/actions/Auth';
 
 
 /**
@@ -18,7 +16,7 @@ import { profileImageRef } from '../helpers/firebase';
  */
 
 
-function Settings() {
+function Settings(props) {
     const classes = useStyles();
     const [isLoading, setIsLoading] = useState(true);
     const [fileUpload, setfileUpload] = useState(React.createRef());
@@ -28,13 +26,8 @@ function Settings() {
     const fileRef = profileImageRef.child(`${userId}/profile-image`);
     const [profileImageUrl, setProfileImageUrl] = useState("");
 
-    const [user, setUser] = useState({
-        name: "",
-        professional_bio: "",
-        language: "",
-        city: "",
-        state: "",
-    });
+    const [user, setUser] = useState(props.user);
+
     const [inputs, setInputs] = useState({
         name: "",
         professional_bio: "",
@@ -44,7 +37,6 @@ function Settings() {
     });
     const [updatingInfo, setUpdatingInfo] = useState(false);
     const userType = localStorage.getItem("type");
-
 
     const fetchUser = () => {
         axioswithAuth()
@@ -60,6 +52,7 @@ function Settings() {
     };
 
     useEffect(() => {
+        console.log("user", props);
         setIsLoading(false);
         fetchUser();
         fetchUserProfileImage();
@@ -114,7 +107,11 @@ function Settings() {
         } else {
             fileRef.put(file).then((snapshot) => {
                 console.log('Upload success!', snapshot.constructor, snapshot);
-                fetchUserProfileImage();
+                fileRef.getDownloadURL().then(url => {
+                    console.log(url);
+                    setProfileImageUrl(url);
+                    props.fetchUser(props.user.id);
+                })
             }).catch(err => {
                 console.error(err)
             });
@@ -293,8 +290,10 @@ function Settings() {
     );
 }
 
-/**
- * Export view
- */
+const mapStateToProps = (state) => {
+    return {
+        user: state.authReducer.user
+    }
+}
 
-export default Settings;
+export default connect(mapStateToProps, { fetchUser })(Settings);
