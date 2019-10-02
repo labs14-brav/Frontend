@@ -15,7 +15,10 @@ export {
   USER,
   NO_USER,
   GOT_USER_INFO,
-  SIGN_OUT
+  SIGN_OUT,
+  FETCH_USER_START,
+  FETCH_USER_SUCCESS,
+  FETCH_USER_FAILURE
 } from "./types";
 
 export { fetchUsers } from "./fetchUsers";

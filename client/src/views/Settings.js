@@ -11,12 +11,14 @@ import { BecomeMediatorLink } from "./styles/index";
 import useStyles from "./styles/_settings.js";
 import axioswithAuth from "../helpers/axioswithAuth";
 import { profileImageRef } from "../helpers/firebase";
+import { connect } from 'react-redux';
+import { fetchUser } from '../store/actions/Auth';
 
 /**
  * Define view
  */
 
-function Settings() {
+function Settings(props) {
     const classes = useStyles();
     const [isLoading, setIsLoading] = useState(true);
     const [fileUpload, setfileUpload] = useState(React.createRef());
@@ -26,13 +28,7 @@ function Settings() {
     const fileRef = profileImageRef.child(`${userId}/profile-image`);
     const [profileImageUrl, setProfileImageUrl] = useState("");
 
-    const [user, setUser] = useState({
-        name: "",
-        professional_bio: "",
-        language: "",
-        city: "",
-        state: ""
-    });
+    const [user, setUser] = useState(props.user);
     const [inputs, setInputs] = useState({
         name: "",
         professional_bio: "",
@@ -45,7 +41,6 @@ function Settings() {
 
     useEffect(() => {
         setIsLoading(false);
-        fetchUser();
         fetchUserProfileImage();
     }, []);
 
@@ -309,8 +304,11 @@ function Settings() {
     );
 }
 
-/**
- * Export view
- */
 
-export default Settings;
+const mapStateToProps = state => {
+    return {
+        user: state.authReducer.user
+    }
+}
+
+export default connect(mapStateToProps, { fetchUser })(Settings);

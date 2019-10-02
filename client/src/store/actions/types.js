@@ -15,3 +15,6 @@ export const USER = "USER";
 export const NO_USER = "NO_USER";
 export const GOT_USER_INFO = "GOT_USER_INFO";
 export const SIGN_OUT = "SIGN_OUT";
+export const FETCH_USER_START = "FETCH_USER_START";
+export const FETCH_USER_SUCCESS = "FETCH_USER_SUCCESS";
+export const FETCH_USER_FAILURE = "FETCH_USER_FAILURE";
