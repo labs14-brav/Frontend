@@ -30,11 +30,11 @@ function Settings(props) {
 
     const [user, setUser] = useState(props.user);
     const [inputs, setInputs] = useState({
-        name: "",
-        professional_bio: "",
-        language: "",
-        city: "",
-        state: ""
+        name: props.user.name,
+        professional_bio: props.user.professional_bio,
+        language: props.user.language,
+        city: props.user.city,
+        state: props.user.state
     });
     const [updatingInfo, setUpdatingInfo] = useState(false);
     const userType = localStorage.getItem("type");
