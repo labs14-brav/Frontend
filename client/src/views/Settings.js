@@ -30,8 +30,9 @@ function Settings(props) {
         professional_bio: props.user.professional_bio,
         language: props.user.language,
         city: props.user.city,
-        state: props.user.state
+        state: props.user.state,
     });
+
     const [updatingInfo, setUpdatingInfo] = useState(false);
     const userType = localStorage.getItem("type");
 
@@ -60,7 +61,7 @@ function Settings(props) {
         fileRef
             .getDownloadURL()
             .then(url => {
-                setProfileImageUrl(url);
+                props.updateUser(props.user.id, { profile_image: url })
             })
             .catch(err => {
                 console.error(err);
@@ -107,7 +108,7 @@ function Settings(props) {
                         id="profile-image"
                         onClick={chooseProfileImage}
                         className={classes.profilePicture}
-                        src={profileImageUrl}
+                        src={props.user.profile_image ? props.user.profile_image : require('../images/avatar-1577909_960_720.png')}
                     />
                     <Button className={classes.editButton} onClick={chooseProfileImage}>
                         Edit
