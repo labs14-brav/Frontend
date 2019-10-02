@@ -105,11 +105,10 @@ export const fetchUser = userId => dispatch => {
   axios()
     .get(`users/${userId}`)
     .then((res) => {
-      console.log(res);
-      // dispatch({ type: FETCH_USER_SUCCESS });
+      dispatch({ type: FETCH_USER_SUCCESS, payload: res.data });
     })
     .catch((err) => {
       console.error(err)
-      // dispatch({ type: FETCH_USER_FAILURE });
+      dispatch({ type: FETCH_USER_FAILURE });
     })
 };

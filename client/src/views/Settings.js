@@ -20,15 +20,11 @@ import { fetchUser } from '../store/actions/Auth';
 
 function Settings(props) {
     const classes = useStyles();
-    const [isLoading, setIsLoading] = useState(true);
     const [fileUpload, setfileUpload] = useState(React.createRef());
     const [fileSubmitButton, setfileSubmitButton] = useState(React.createRef());
     const [profileImage, setProfileImage] = useState({});
-    const userId = localStorage.getItem("id");
-    const fileRef = profileImageRef.child(`${userId}/profile-image`);
+    const fileRef = profileImageRef.child(`${props.user.id}/profile-image`);
     const [profileImageUrl, setProfileImageUrl] = useState("");
-
-    const [user, setUser] = useState(props.user);
     const [inputs, setInputs] = useState({
         name: props.user.name,
         professional_bio: props.user.professional_bio,
@@ -40,15 +36,15 @@ function Settings(props) {
     const userType = localStorage.getItem("type");
 
     useEffect(() => {
-        setIsLoading(false);
         fetchUserProfileImage();
     }, []);
 
     const handleSubmit = () => {
         axioswithAuth()
-            .put(`/users/${userId}/update-user`, inputs)
+            .put(`/users/${props.user.id}/update-user`, inputs)
             .then(res => {
-                fetchUser();
+                props.fetchUser(props.user.id);
+                setUpdatingInfo(false);
             })
             .catch(error => {
                 console.error(error);
@@ -107,16 +103,14 @@ function Settings(props) {
         }
     };
 
-    if (isLoading) return <LinearProgress />;
-
     return (
         <div className={classes.container}>
             <Card className={classes.profile}>
                 <div>
-                    <h3>{user.name}</h3>
-                    <p className={classes.profileText}>{user.email}</p>
-                    <p className={classes.profileText}>{`${user.city}, ${user.state}`}</p>
-                    <p className={classes.profileText}>{user.professional_bio}</p>
+                    <h3>{props.user.name}</h3>
+                    <p className={classes.profileText}>{props.user.email}</p>
+                    <p className={classes.profileText}>{`${props.user.city}, ${props.user.state}`}</p>
+                    <p className={classes.profileText}>{props.user.professional_bio}</p>
                 </div>
 
                 <div style={{ position: "relative" }}>
@@ -157,23 +151,23 @@ function Settings(props) {
                         <table className={classes.staticInfo}>
                             <tr className={classes.fieldContainer}>
                                 <td className={classes.fieldLabel}>Name: </td>
-                                <td className={classes.fieldValue}>{user.name}</td>
+                                <td className={classes.fieldValue}>{props.user.name}</td>
                             </tr>
                             <tr className={classes.fieldContainer}>
                                 <td className={classes.fieldLabel}>City: </td>
-                                <td className={classes.fieldValue}>{user.language}</td>
+                                <td className={classes.fieldValue}>{props.user.language}</td>
                             </tr>
                             <tr className={classes.fieldContainer}>
                                 <td className={classes.fieldLabel}>Language: </td>
-                                <td className={classes.fieldValue}>{user.city}</td>
+                                <td className={classes.fieldValue}>{props.user.city}</td>
                             </tr>
                             <tr className={classes.fieldContainer}>
                                 <td className={classes.fieldLabel}>State: </td>
-                                <td className={classes.fieldValue}>{user.state}</td>
+                                <td className={classes.fieldValue}>{props.user.state}</td>
                             </tr>
                             <tr className={classes.fieldContainer}>
                                 <td className={classes.fieldLabel}>Bio: </td>
-                                <td className={classes.fieldValue}>{user.professional_bio}</td>
+                                <td className={classes.fieldValue}>{props.user.professional_bio}</td>
                             </tr>
                         </table>
                         <Button

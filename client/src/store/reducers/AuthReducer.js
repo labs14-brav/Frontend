@@ -15,6 +15,7 @@ import {
 const initialState = {
   started: false,
   finished: false,
+  isFetchingUser: false,
   error: null,
   user: null
 };
@@ -36,6 +37,10 @@ export const authReducer = (state = initialState, action) => {
       return { ...state, error: errorMessage, started: false };
     case CHECKING_USER:
       return { started: true };
+    case FETCH_USER_START:
+      return { ...state, isFetchingUser: true };
+    case FETCH_USER_SUCCESS:
+      return { ...state, isFetchingUser: false, user: action.payload };
     case GOT_USER_INFO:
       return { ...state, user: { ...state.user, ...action.payload } };
     case USER:
