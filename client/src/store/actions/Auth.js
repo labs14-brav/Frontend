@@ -94,3 +94,14 @@ export const signOut = () => dispatch => {
       dispatch({ type: AUTH_FAILURE });
     });
 };
+
+export const fetchUser = (userId) => dispatch => {
+  axios()
+    .get(`users/${userId}`)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+};
