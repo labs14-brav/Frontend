@@ -69,23 +69,6 @@ const useStyles = makeStyles((theme) => ({
     link: {
         textDecoration: "none"
     },
-    profilePicture: {
-        minWidth: "160px",
-        maxWidth: "160px",
-        height: "210px",
-        borderRadius: "5px",
-        marginLeft: "20px",
-        "&:hover": {
-            boxShadow:
-                "0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)",
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginLeft: "0px",
-            marginBottom: "20px",
-            minWidth: "250px",
-            height: "300px",
-        }
-    },
     editProfileCard: {
         maxWidth: "800px",
         width: "100%",
@@ -176,13 +159,44 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        [theme.breakpoints.down('sm')]: {
-            alignItems: "center",
-            flexDirection: "column-reverse"
+        [theme.breakpoints.down('xs')]: {
+            flexDirection: "column-reverse",
+            justifyContent: "center",
+        }
+    },
+    profileImageContainer: {
+        [theme.breakpoints.down('xs')]: {
+            display: "flex",
+            justifyContent: "center"
+        }
+    },
+    profileTextContainer: {
+        [theme.breakpoints.down('xs')]: {
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+            width: "100%"
+        }
+    },
+    profileImage: {
+        minWidth: "160px",
+        maxWidth: "160px",
+        height: "210px",
+        borderRadius: "5px",
+        "&:hover": {
+            boxShadow:
+                "0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)",
+        },
+        [theme.breakpoints.down('xs')]: {
+            marginLeft: "0px",
+            marginBottom: "20px",
+            minWidth: "250px",
+            height: "300px",
         }
     },
     profileText: {
-        color: "grey"
+        color: "grey",
+        marginRight: "20px",
     },
     sectionTitleContainer: {
         padding: "20px"
@@ -212,21 +226,17 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         width: "310px",
         justifyContent: "space-between"
-
     },
     editButton: {
         position: "absolute",
         bottom: "5px",
         right: "5px",
         color: "white",
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('xs')]: {
             bottom: "25px",
-            left: "180px"
+            left: "140px"
         }
     },
-    signInWithGoogle: {
-        border: "1px solid red"
-    }
 }));
 
 export default useStyles;

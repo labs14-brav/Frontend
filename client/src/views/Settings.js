@@ -6,10 +6,8 @@ import React, { useState, useEffect } from "react";
 import { DeactivateAccountButton } from "../components/index";
 import { Link } from "react-router-dom";
 import { Card, TextField, Button } from "@material-ui/core";
-import LinearProgress from "@material-ui/core/LinearProgress";
 import { BecomeMediatorLink } from "./styles/index";
 import useStyles from "./styles/_settings.js";
-import axioswithAuth from "../helpers/axioswithAuth";
 import { profileImageRef } from "../helpers/firebase";
 import { connect } from 'react-redux';
 import { fetchUser, updateUser } from '../store/actions/Auth';
@@ -96,23 +94,21 @@ function Settings(props) {
     return (
         <div className={classes.container}>
             <Card className={classes.profile}>
-                <div>
+                <div className={classes.profileTextContainer}>
                     <h3>{props.user.name}</h3>
                     <p className={classes.profileText}>{props.user.email}</p>
                     <p className={classes.profileText}>{`${props.user.city}, ${props.user.state}`}</p>
                     <p className={classes.profileText}>{props.user.professional_bio}</p>
                 </div>
 
-                <div style={{ position: "relative" }}>
+                <div className={classes.profileImageContainer} style={{ position: "relative" }}>
                     <img
                         id="profile-image"
                         onClick={chooseProfileImage}
-                        className={classes.profilePicture}
+                        className={classes.profileImage}
                         src={props.user.profile_image ? props.user.profile_image : require('../images/avatar-1577909_960_720.png')}
                     />
-                    <Button className={classes.editButton} onClick={chooseProfileImage}>
-                        Edit
-          </Button>
+                    <Button className={classes.editButton} onClick={chooseProfileImage}>Edit</Button>
 
                     <input
                         onChange={handleImageSelect}
