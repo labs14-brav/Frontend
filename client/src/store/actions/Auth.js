@@ -4,7 +4,13 @@ import {
   AUTH_FAILURE,
   CHECKING_USER,
   SIGN_OUT,
-  GOT_USER_INFO
+  GOT_USER_INFO,
+  FETCH_USER_START,
+  FETCH_USER_SUCCESS,
+  FETCH_USER_FAILURE,
+  UPDATE_USER_START,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAILURE
 } from "./index";
 import axios from "../../helpers/axioswithAuth";
 import { mixpanel } from "../../helpers/index";
@@ -19,6 +25,7 @@ export const checkingUser = () => dispatch => {
 
 export const loggedIn = user => dispatch => {
   localStorage.setItem("token", user.ra);
+  console.log(user.photoURL);
   axios()
     .post(`/users/auth`, user.ra)
     .then(res => {
@@ -92,5 +99,32 @@ export const signOut = () => dispatch => {
     })
     .catch(() => {
       dispatch({ type: AUTH_FAILURE });
+    });
+};
+
+export const fetchUser = userId => dispatch => {
+  dispatch({ type: FETCH_USER_START });
+
+  axios()
+    .get(`users/${userId}`)
+    .then((res) => {
+      dispatch({ type: FETCH_USER_SUCCESS, payload: res.data });
+    })
+    .catch((err) => {
+      console.error(err)
+      dispatch({ type: FETCH_USER_FAILURE });
+    })
+}
+  ;
+export const updateUser = (userId, changes) => dispatch => {
+  dispatch({ type: UPDATE_USER_START });
+  axios()
+    .put(`/users/${userId}/update-user`, changes)
+    .then(res => {
+      dispatch({ type: UPDATE_USER_SUCCESS, payload: res.data.updatedUser });
+    })
+    .catch(error => {
+      dispatch({ type: UPDATE_USER_FAILURE });
+      console.error(error);
     });
 };
