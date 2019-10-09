@@ -5,6 +5,7 @@ import {
     TextField,
     Button
 } from "@material-ui/core";
+import { fetchUser } from "../store/actions/Auth";
 import { connect } from "react-redux";
 import axioswithAuth from "../helpers/axioswithAuth";
 import useStyles from "./styles/_auth.js"
@@ -30,7 +31,7 @@ function Onboarding(props) {
         axioswithAuth()
             .put(`/users/${props.user.id}/update-user`, userInfo)
             .then(res => {
-                console.log("success!!!");
+                props.fetchUser(props.user.id);
                 props.history.push("/cases");
             })
             .catch(error => {
@@ -107,4 +108,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(Onboarding);
+export default connect(mapStateToProps, { fetchUser })(Onboarding);
