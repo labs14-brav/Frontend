@@ -9,10 +9,10 @@ function AppLoader(props) {
 
   useEffect(() => {
     if (props.user) {
-      if (props.user.is_onboarded === false || props.user.is_onboarded === "false") {
-        props.history.push("/onboarding");
-      } else {
+      if (props.user.is_onboarded) {
         props.history.push("/cases");
+      } else {
+        props.history.push("/onboarding");
       }
     } else {
       props.history.push("/");
