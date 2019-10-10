@@ -3,8 +3,10 @@ import {
     Card,
     Divider,
     TextField,
-    Button
+    Button,
+    Checkbox
 } from "@material-ui/core";
+import { fetchUser } from "../store/actions/Auth";
 import { connect } from "react-redux";
 import axioswithAuth from "../helpers/axioswithAuth";
 import useStyles from "./styles/_auth.js"
@@ -19,6 +21,8 @@ function Onboarding(props) {
         state: "",
         language: "",
         professional_bio: "",
+        type: "user",
+        is_onboarded: true
     });
 
     const onChange = (e) => {
@@ -30,7 +34,7 @@ function Onboarding(props) {
         axioswithAuth()
             .put(`/users/${props.user.id}/update-user`, userInfo)
             .then(res => {
-                console.log("success!!!");
+                props.fetchUser(props.user.id);
                 props.history.push("/cases");
             })
             .catch(error => {
@@ -38,13 +42,30 @@ function Onboarding(props) {
             })
     };
 
+    const handleCheckbox = () => {
+        userInfo.type === "user" ? setUserInfo({ ...userInfo, type: "mediator" }
+        ) : setUserInfo({ ...userInfo, type: "user" });
+    }
+
     return (
         <div className={classes.container}>
             <Card className={classes.cardStep2}>
-                <img className={classes.logo} src={require("../images/bravlogo.png")}></img>
+                <img className={classes.logo} src={require("../images/brav-logo.png")}></img>
                 <p>Tell us about yourself!</p>
                 <Divider variant="middle" />
                 <form className={classes.loginForm} onSubmit={handleSubmit}>
+                    <div className={classes.checkboxContainer}>
+                        <p className={classes.checkboxText} >Register as mediator</p>
+                        <Checkbox
+                            checked={userInfo.type === "mediator"}
+                            onChange={handleCheckbox}
+                            value="checkedB"
+                            color="primary"
+                            inputProps={{
+                                'aria-label': 'secondary checkbox',
+                            }}
+                        />
+                    </div>
                     <TextField
                         className={classes.formInput}
                         label="Full Name"
@@ -93,9 +114,9 @@ function Onboarding(props) {
 
                     />
 
-                    <Button type="submit" className={classes.button}>Signup</Button>
+                    <Button type="submit" className={classes.button}>Continue</Button>
                 </form>
-                <Button onClick={() => setSignupMethod(null)} className={classes.bottomTextStep2}>Go Back</Button>
+                {/* <Button onClick={() => setSignupMethod(null)} className={classes.bottomTextStep2}>Go Back</Button> */}
             </Card>
         </div>
     );
@@ -107,4 +128,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(Onboarding);
+export default connect(mapStateToProps, { fetchUser })(Onboarding);

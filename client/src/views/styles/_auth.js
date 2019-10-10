@@ -88,6 +88,15 @@ const useStyles = makeStyles((theme) => ({
     bottomTextStep2: {
         position: "absolute",
         bottom: "40px"
+    },
+    checkboxContainer: {
+        width: "100%",
+        display: "flex",
+        justifyContent: "flex-end",
+        alignItems: "center"
+    },
+    checkboxText: {
+        padding: 0
     }
 }));
 
