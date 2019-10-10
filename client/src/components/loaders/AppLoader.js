@@ -9,7 +9,6 @@ function AppLoader(props) {
 
   useEffect(() => {
     if (props.user) {
-      console.log(props.user.is_onboarded, " is user onboarded")
       if (props.user.is_onboarded === false || props.user.is_onboarded === "false" || props.user.useEffect === 0) {
         props.history.push("/onboarding");
       } else {
